@@ -1,18 +1,23 @@
 export interface Section {
   title: string;
   description: string;
-  placeholderText: string;
+  placeholderText?: string;
+  content?: string;
+  image?: string;
 }
 
 export interface Project {
   id: string;
   title: string;
   subtitle: string;
-  category: '8020REI' | 'Habi' | 'Personal';
-  type: string; // e.g., "SaaS Product" or "Design System"
+  category: '8020REI' | 'Habi' | 'Freelance';
+  type: string;
+  role: string;
+  duration: string;
+  tools: string[];
   tags: string[];
-  thumbnailGradient: string; // CSS gradient string for abstract thumb
-  sections: Section[]; // The structure for the case study
+  thumbnailGradient: string;
+  sections: Section[];
 }
 
 export interface ExperienceItem {

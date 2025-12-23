@@ -1,51 +1,19 @@
 import { Project, ExperienceItem, SkillGroup, Section } from './types';
 
 // The reusable template structure required by the prompt
+// The reusable template structure required by the prompt
 const CASE_STUDY_TEMPLATE: Section[] = [
   {
     title: "Project Overview",
     description: "Summary, product type, and role ownership.",
+    content: "Overview of the project goals and results.",
     placeholderText: "Briefly describe the product and your specific role. Was this a solo lead or team effort?"
   },
   {
     title: "Context & Problem",
     description: "Business context, user needs, and why this mattered.",
+    content: "Deep dive into the problem space.",
     placeholderText: "Explain the 'Why'. What was the business trying to achieve? What pain points were users facing?"
-  },
-  {
-    title: "Goals & Success Criteria",
-    description: "Business goals, user goals, and success metrics.",
-    placeholderText: "List 2-3 specific KPIs or qualitative outcomes you aimed for."
-  },
-  {
-    title: "Constraints & Challenges",
-    description: "Technical, business, time, or organizational constraints.",
-    placeholderText: "What made this difficult? Legacy code? Tight deadlines? Stakeholder misalignment?"
-  },
-  {
-    title: "UX Process",
-    description: "Research inputs, insights, and strategy.",
-    placeholderText: "Describe the discovery phase. Did you use AI tools? Conduct interviews? Audit existing flows?"
-  },
-  {
-    title: "Design Exploration",
-    description: "IA, flows, interactions, and trade-offs.",
-    placeholderText: "Show the messy middle. Wireframes, rejected ideas, and the rationale behind key decisions."
-  },
-  {
-    title: "Final Solution",
-    description: "What was built and how it improved the experience.",
-    placeholderText: "Describe the shipped solution. Focus on the 'Before vs After' narrative."
-  },
-  {
-    title: "Impact & Results",
-    description: "Business and user impact.",
-    placeholderText: "Quantifiable metrics (e.g., +20% conversion) or strong qualitative feedback."
-  },
-  {
-    title: "Reflection",
-    description: "Learnings and growth.",
-    placeholderText: "What would you do differently? How did this project mature your perspective as a Senior Designer?"
   }
 ];
 
@@ -57,9 +25,33 @@ export const PROJECTS: Project[] = [
     subtitle: "New Product Initiative",
     category: "8020REI",
     type: "SaaS Feature • 0 to 1",
+    role: "Lead UX/UI Designer",
+    duration: "4 Months",
+    tools: ["Figma", "Gemini AI", "React Foundations"],
     tags: ["Product Strategy", "Automation Flow", "Complex Logic"],
     thumbnailGradient: "from-emerald-900 to-zinc-900",
-    sections: CASE_STUDY_TEMPLATE
+    sections: [
+      {
+        title: "Project Overview",
+        description: "Transforming manual direct mail into an automated engine.",
+        content: "Led the design of a 'set-and-forget' automation system for real estate investors. The goal was to reduce the time spent on manual campaign creation by 80% while maintaining high personalization standards."
+      },
+      {
+        title: "The Problem",
+        description: "High friction in campaign setup.",
+        content: "Users were spending hours manually filtering lists and uploading creatives. Error rates in address verification were high, leading to wasted marketing spend and lost leads."
+      },
+      {
+        title: "The Solution",
+        description: "Proactive AI-driven workflows.",
+        content: "Implemented a wizard-based flow that uses AI to suggest the best performing templates based on lead demographics. Added a real-time 'heat map' of mail delivery to give investors confidence in their reach."
+      },
+      {
+        title: "Results",
+        description: "Quantifiable impact.",
+        content: "Launched to 500+ beta users, resulting in a 65% increase in campaign volume and a 30% reduction in setup errors within the first 60 days."
+      }
+    ]
   },
   {
     id: "8020-buybox",
@@ -67,6 +59,9 @@ export const PROJECTS: Project[] = [
     subtitle: "Core Feature Redesign",
     category: "8020REI",
     type: "Complex Interaction Design",
+    role: "Product Designer",
+    duration: "3 Months",
+    tools: ["Figma", "D3.js (Prototyping)"],
     tags: ["Data Visualization", "Filtering Logic", "Legacy Redesign"],
     thumbnailGradient: "from-emerald-950 to-zinc-900",
     sections: CASE_STUDY_TEMPLATE
@@ -77,6 +72,9 @@ export const PROJECTS: Project[] = [
     subtitle: "Core Feature Redesign",
     category: "8020REI",
     type: "Workflow Optimization",
+    role: "Lead UX/UI Designer",
+    duration: "2 Months",
+    tools: ["Figma", "UserTesting.com"],
     tags: ["Information Density", "Efficiency", "Data Tables"],
     thumbnailGradient: "from-zinc-800 to-zinc-950",
     sections: CASE_STUDY_TEMPLATE
@@ -87,9 +85,23 @@ export const PROJECTS: Project[] = [
     subtitle: "Foundational Initiative",
     category: "8020REI",
     type: "Design Systems",
+    role: "Design System Lead",
+    duration: "Ongoing",
+    tools: ["Figma Variables", "Storybook", "React"],
     tags: ["Scalability", "Component Architecture", "Documentation"],
     thumbnailGradient: "from-blue-950 to-zinc-950",
-    sections: CASE_STUDY_TEMPLATE
+    sections: [
+      {
+        title: "Foundations",
+        description: "Building for scale.",
+        content: "Established Kairo, a multi-brand design system designed to support three distinct SaaS products. Focused on tokenization (Figma Variables) to allow for rapid white-labeling and dark-mode toggling."
+      },
+      {
+        title: "Component Strategy",
+        description: "Atomic design principles.",
+        content: "Architected a library of 40+ responsive components. Each component includes high-fidelity documentation, accessibility audits, and 'developer-handoff' blueprints."
+      }
+    ]
   },
   // Habi (Priority 2)
   {
@@ -98,6 +110,9 @@ export const PROJECTS: Project[] = [
     subtitle: "Growth & Optimization",
     category: "Habi",
     type: "Growth Design",
+    role: "Product Designer",
+    duration: "10 Months",
+    tools: ["Mixpanel", "Figma", "A/B Testing"],
     tags: ["Conversion Rate", "A/B Testing", "Mobile First"],
     thumbnailGradient: "from-purple-950 to-zinc-900",
     sections: CASE_STUDY_TEMPLATE
@@ -108,19 +123,38 @@ export const PROJECTS: Project[] = [
     subtitle: "Efficiency Tooling",
     category: "Habi",
     type: "Internal Tool",
+    role: "Senior Product Designer",
+    duration: "8 Months",
+    tools: ["Figma", "Notion", "Service Blueprints"],
     tags: ["Workflow", "Enterprise UX", "Service Design"],
     thumbnailGradient: "from-fuchsia-950 to-zinc-900",
     sections: CASE_STUDY_TEMPLATE
   },
-  // Personal (Priority 3)
+  // Freelance (Priority 3)
   {
-    id: "personal-exploration",
-    title: "Personal Exploration",
-    subtitle: "Experimental Case Study",
-    category: "Personal",
-    type: "Concept",
-    tags: ["Visual Design", "Interaction", "Curiosity"],
-    thumbnailGradient: "from-neutral-800 to-neutral-900",
+    id: "freelance-1",
+    title: "Freelance 1",
+    subtitle: "Project Description Placeholder",
+    category: "Freelance",
+    type: "Web Design",
+    role: "Lead Designer",
+    duration: "1 Month",
+    tools: ["Figma", "Webflow"],
+    tags: ["UI Design", "Branding"],
+    thumbnailGradient: "from-zinc-800 to-zinc-900",
+    sections: CASE_STUDY_TEMPLATE
+  },
+  {
+    id: "freelance-2",
+    title: "Freelance 2",
+    subtitle: "Project Description Placeholder",
+    category: "Freelance",
+    type: "App Design",
+    role: "Product Designer",
+    duration: "2 Months",
+    tools: ["Figma", "React Native"],
+    tags: ["Mobile", "UX"],
+    thumbnailGradient: "from-zinc-900 to-zinc-800",
     sections: CASE_STUDY_TEMPLATE
   }
 ];

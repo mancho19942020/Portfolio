@@ -15,71 +15,103 @@ export const ProjectDetail: React.FC = () => {
   return (
     <div className="min-h-screen bg-background text-zinc-100 selection:bg-zinc-700 selection:text-white pb-20">
       <NavBar />
-      
+
       <main className="max-w-4xl mx-auto px-6 pt-32">
         {/* Project Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16 border-b border-border pb-8"
+          className="mb-12"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <span className="px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-xs font-mono text-zinc-400">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[10px] font-mono text-zinc-400">
               {project.category}
             </span>
-            <span className="text-xs font-mono text-zinc-500 uppercase tracking-widest">
+            <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.2em]">
               {project.type}
             </span>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">
+          <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-6 text-white leading-[1.1]">
             {project.title}
           </h1>
-          <p className="text-xl text-zinc-400 max-w-2xl">
+          <p className="text-xl text-zinc-400 max-w-2xl leading-relaxed">
             {project.subtitle}
           </p>
         </motion.div>
 
-        {/* The Reusable Template Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-12">
-          
-          {/* Left Column: Metadata / Quick info could go here in future */}
-          
-          {/* Main Content Area */}
-          <div className="md:col-span-12 space-y-16">
-            {project.sections.map((section, index) => (
-              <motion.section 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group"
-              >
-                <div className="flex flex-col md:flex-row md:items-baseline gap-6 mb-4">
-                  <h2 className="text-lg font-bold text-white uppercase tracking-wider w-full md:w-1/4 shrink-0">
-                    {section.title}
-                  </h2>
-                  <div className="w-full md:w-3/4">
-                    <p className="text-sm font-mono text-zinc-500 mb-4 border-l-2 border-zinc-800 pl-3">
-                      {section.description}
-                    </p>
-                    
-                    {/* Placeholder Block - Visual indicator that this is a template */}
-                    <div className="p-8 rounded-lg border border-dashed border-zinc-800 bg-zinc-900/20 text-zinc-600 font-mono text-sm">
-                      <span className="block mb-2 text-zinc-500 font-bold">[CONTENT PLACEHOLDER]</span>
-                      {section.placeholderText}
-                    </div>
-                  </div>
-                </div>
-              </motion.section>
-            ))}
+        {/* Project Metadata Bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-y border-zinc-900 mb-20"
+        >
+          <div>
+            <h4 className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-2">Role</h4>
+            <p className="text-sm text-zinc-300">{project.role}</p>
           </div>
+          <div>
+            <h4 className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-2">Duration</h4>
+            <p className="text-sm text-zinc-300">{project.duration}</p>
+          </div>
+          <div className="col-span-2">
+            <h4 className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-2">Tools & Tech</h4>
+            <div className="flex flex-wrap gap-2">
+              {project.tools.map(tool => (
+                <span key={tool} className="text-xs text-zinc-400 bg-zinc-900/50 px-2 py-1 rounded border border-zinc-800/50">
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Main Content Area */}
+        <div className="space-y-24">
+          {project.sections.map((section, index) => (
+            <motion.section
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16"
+            >
+              <div className="md:col-span-4">
+                <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em] mb-4">
+                  {section.title}
+                </h2>
+                <p className="text-sm text-zinc-400 leading-relaxed font-light">
+                  {section.description}
+                </p>
+              </div>
+
+              <div className="md:col-span-8">
+                {section.content ? (
+                  <div className="text-lg md:text-xl text-zinc-200 leading-relaxed font-light">
+                    {section.content}
+                  </div>
+                ) : (
+                  <div className="p-10 rounded-2xl border border-dashed border-zinc-800 bg-zinc-900/10 text-zinc-600 font-mono text-sm group-hover:border-zinc-700 transition-colors">
+                    <span className="block mb-4 text-zinc-500 font-bold opacity-50">[CONTENT STRATEGY PENDING]</span>
+                    {section.placeholderText}
+                  </div>
+                )}
+
+                {section.image && (
+                  <div className="mt-12 aspect-video bg-zinc-900 rounded-2xl border border-zinc-800 overflow-hidden">
+                    {/* Image space */}
+                  </div>
+                )}
+              </div>
+            </motion.section>
+          ))}
         </div>
 
-        <div className="mt-24 pt-12 border-t border-border flex justify-between items-center text-zinc-500 font-mono text-xs">
-          <span>{project.title}</span>
+        <footer className="mt-40 pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-600 font-mono text-[10px] uppercase tracking-widest">
+          <span>{project.title} — {project.category}</span>
           <span>© 2025 Germán David Alvarez</span>
-        </div>
+        </footer>
       </main>
     </div>
   );

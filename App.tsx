@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { ProjectDetail } from './pages/ProjectDetail';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Handles scrolling to top when route changes
 const ScrollToTop = () => {
@@ -23,14 +24,23 @@ const GlobalBackground = () => (
 );
 
 const AppContent = () => {
+  const location = useLocation();
   return (
-    <>
-      <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/project/:id" element={<ProjectDetail />} />
-      </Routes>
-    </>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      >
+        <ScrollToTop />
+        <Routes location={location}>
+          <Route path="/" element={<Home />} />
+          <Route path="/project/:id" element={<ProjectDetail />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 

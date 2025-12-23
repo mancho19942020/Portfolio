@@ -16,6 +16,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, large = false
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${project.thumbnailGradient} opacity-20 group-hover:opacity-30 transition-opacity`} />
 
+      {/* Subtle Preview Image Layer */}
+      <div className="absolute inset-x-0 bottom-0 top-1/4 overflow-hidden opacity-[0.03] group-hover:opacity-[0.07] transition-opacity pointer-events-none">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop')] bg-cover bg-center rounded-b-2xl mix-blend-overlay" />
+        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+      </div>
+
       <div className="relative p-6 h-full flex flex-col justify-between min-h-[280px]">
         <div>
           <div className="flex justify-between items-start mb-4">
