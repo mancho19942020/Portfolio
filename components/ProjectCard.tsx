@@ -12,7 +12,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, large = false
   return (
     <Link
       to={`/project/${project.id}`}
-      className={`group relative block w-full h-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md shadow-lg shadow-black/20 hover:bg-zinc-900/80 hover:border-white/20 hover:shadow-xl hover:shadow-black/40 transition-all duration-300`}
+      className={`glow-reactive glow-card group relative block w-full h-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md shadow-lg shadow-black/20 hover:bg-zinc-900/80 hover:border-white/20 hover:shadow-xl hover:shadow-black/40 transition-all duration-300`}
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${project.thumbnailGradient} opacity-20 group-hover:opacity-30 transition-opacity`} />
 

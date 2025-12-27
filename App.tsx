@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { motion, AnimatePresence } from 'framer-motion';
+import { CursorGlow } from './components/CursorGlow';
 
 // Handles scrolling to top when route changes
 const ScrollToTop = () => {
@@ -29,6 +30,7 @@ const AppContent = () => {
     <AnimatePresence mode="wait">
       <motion.div
         key={location.pathname}
+        className="relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -48,6 +50,7 @@ const App: React.FC = () => {
   return (
     <HashRouter>
       <GlobalBackground />
+      <CursorGlow />
       <AppContent />
     </HashRouter>
   );

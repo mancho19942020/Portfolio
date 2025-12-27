@@ -23,7 +23,7 @@ export const NavBar: React.FC = () => {
           ) : (
             <button
               onClick={() => navigate(-1)}
-              className="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
+              className="glow-reactive glow-button flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span className="text-sm font-medium">Back</span>
@@ -36,13 +36,13 @@ export const NavBar: React.FC = () => {
             href="https://linkedin.com/in/germanalvarezg"
             target="_blank"
             rel="noreferrer"
-            className="text-xs font-mono text-zinc-400 hover:text-white transition-colors"
+            className="glow-reactive glow-button text-xs font-mono text-zinc-400 hover:text-white transition-colors"
           >
             LINKEDIN
           </a>
           <a
             href="mailto:mancho19942010@hotmail.com"
-            className="text-xs font-mono text-zinc-400 hover:text-white transition-colors"
+            className="glow-reactive glow-button text-xs font-mono text-zinc-400 hover:text-white transition-colors"
           >
             CONTACT
           </a>

@@ -84,19 +84,19 @@ export const Home: React.FC = () => {
               <div className="flex flex-wrap items-center gap-6">
                 <button
                   onClick={() => scrollToSection('work')}
-                  className="px-8 py-4 bg-zinc-100 text-black font-semibold rounded-sm hover:bg-white transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="glow-reactive glow-button px-8 py-4 bg-zinc-100 text-black font-semibold rounded-sm hover:bg-white transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   View Work
                 </button>
                 <button
                   onClick={() => scrollToSection('about')}
-                  className="px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
+                  className="glow-reactive glow-button px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
                 >
                   About Me
                 </button>
                 <button
                   type="button"
-                  className="px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
+                  className="glow-reactive glow-button px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
                 >
                   Let's Talk
                 </button>
@@ -218,7 +218,7 @@ export const Home: React.FC = () => {
         <section className="py-32 md:py-48 border-t border-zinc-900 text-center">
           <ScrollReveal>
             <h2 className="text-3xl md:text-5xl font-bold mb-10">Let's build something scalable.</h2>
-            <a href="mailto:mancho19942010@hotmail.com" className="inline-block px-12 py-5 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-lg">
+            <a href="mailto:mancho19942010@hotmail.com" className="glow-reactive glow-button inline-block px-12 py-5 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-lg">
               Get in Touch
             </a>
           </ScrollReveal>
