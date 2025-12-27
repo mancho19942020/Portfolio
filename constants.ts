@@ -4,7 +4,7 @@ export const PROJECTS: Project[] = [
   // 8020REI (Priority 1)
   {
     id: "8020-dm-campaign",
-    title: "DM Campaign Automation",
+    title: "DM campaign",
     subtitle: "New Product Initiative",
     category: "8020REI",
     type: "SaaS Feature • 0 to 1",
@@ -81,7 +81,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "8020-buybox",
-    title: "BuyBox Editor Redesign",
+    title: "Buybox editor redesign",
     subtitle: "Core Feature Redesign",
     category: "8020REI",
     type: "Complex Interaction Design",
@@ -156,7 +156,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "8020-property-list",
-    title: "Property List & Rapid Response",
+    title: "Property list",
     subtitle: "Core Feature Redesign",
     category: "8020REI",
     type: "Workflow Optimization",
@@ -231,7 +231,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "8020-kairo",
-    title: "Kairo Design System",
+    title: "Kairo design system",
     subtitle: "Foundational Initiative",
     category: "8020REI",
     type: "Design Systems",
@@ -307,7 +307,7 @@ export const PROJECTS: Project[] = [
   // Habi (Priority 2)
   {
     id: "habi-funnels",
-    title: "Acquisition Funnels",
+    title: "Smart funnel",
     subtitle: "Growth & Optimization",
     category: "Habi",
     type: "Growth Design",
@@ -382,7 +382,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "habi-internal",
-    title: "Internal Ops Platform",
+    title: "Internal OPS",
     subtitle: "Efficiency Tooling",
     category: "Habi",
     type: "Internal Tool",

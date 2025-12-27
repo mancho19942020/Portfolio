@@ -8,7 +8,7 @@ export const NavBar: React.FC = () => {
   const isHome = location.pathname === '/';
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-black">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-[#0B0B0B]">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-2">
           {isHome ? (

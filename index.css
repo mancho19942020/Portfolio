@@ -1,4 +1,18 @@
 /* Global cursor + glow layers */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  background-color: #0B0B0B;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 .cursor-enabled,
 .cursor-enabled * {
   cursor: none;
@@ -83,5 +97,12 @@
   .glow-reactive,
   .glow-reactive::before {
     transition: none;
+  }
+}
+
+@media (pointer: coarse), (hover: none) {
+  .cursor-dot,
+  .cursor-glow {
+    display: none;
   }
 }

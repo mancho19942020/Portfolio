@@ -19,8 +19,7 @@ const ScrollToTop = () => {
 // Subtle Animated Background Component
 const GlobalBackground = () => (
   <>
-    <div className="fixed inset-0 -z-50 bg-black" />
-    <div className="fixed inset-0 z-[100] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150"></div>
+    <div className="fixed inset-0 -z-50 bg-[#0B0B0B]" />
   </>
 );
 
