@@ -258,16 +258,18 @@ export const Home: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="https://wa.me/573015247033"
-                className="glow-reactive glow-button inline-flex items-center justify-center px-10 py-4 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-base"
+                target="_blank"
+                rel="noreferrer"
+                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-base w-60 whitespace-nowrap"
                 aria-label="Contact via WhatsApp"
               >
                 WhatsApp
               </a>
               <a
-                href="https://calendly.com/your-handle/meeting"
+                href="https://calendly.com/mancho19942020/30min"
                 target="_blank"
                 rel="noreferrer"
-                className="glow-reactive glow-button inline-flex items-center justify-center px-10 py-4 border border-zinc-800 text-zinc-200 font-semibold rounded-sm hover:border-zinc-500 hover:text-white transition-colors text-base"
+                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 border border-zinc-800 text-zinc-200 font-semibold rounded-sm hover:border-zinc-500 hover:text-white transition-colors text-base w-60 whitespace-nowrap"
               >
                 Schedule meeting
               </a>
@@ -277,7 +279,8 @@ export const Home: React.FC = () => {
 
         <footer className="py-20 text-center text-zinc-700 text-xs font-mono">
           <ScrollReveal>
-            <p>© 2025 Germán David Alvarez.</p>
+            <p>This portfolio was built using only free resources and AI agents, such as ChatGPT Codex, Gemini Pro and Cursor as code editor.</p>
+            <p className="mt-2">© 2025 Germán David Alvarez.</p>
           </ScrollReveal>
         </footer>
 
