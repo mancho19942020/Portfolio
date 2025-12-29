@@ -260,7 +260,7 @@ export const Home: React.FC = () => {
                 href="https://wa.me/573015247033"
                 target="_blank"
                 rel="noreferrer"
-                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-base w-60 whitespace-nowrap"
+                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-base w-full sm:w-60 whitespace-nowrap"
                 aria-label="Contact via WhatsApp"
               >
                 WhatsApp
@@ -269,7 +269,7 @@ export const Home: React.FC = () => {
                 href="https://calendly.com/mancho19942020/30min"
                 target="_blank"
                 rel="noreferrer"
-                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 border border-zinc-800 text-zinc-200 font-semibold rounded-sm hover:border-zinc-500 hover:text-white transition-colors text-base w-60 whitespace-nowrap"
+                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 border border-zinc-800 text-zinc-200 font-semibold rounded-sm hover:border-zinc-500 hover:text-white transition-colors text-base w-full sm:w-60 whitespace-nowrap"
               >
                 Schedule meeting
               </a>
