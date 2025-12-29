@@ -8,9 +8,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export const Home: React.FC = () => {
   // Filter projects by category
-  const reiProjects = PROJECTS.filter(p => p.category === '8020REI');
-  const habiProjects = PROJECTS.filter(p => p.category === 'Habi');
-  const freelanceProjects = PROJECTS.filter(p => p.category === 'Freelance');
+  const reiOrder = [
+    "BuyBox editor redesign",
+    "Property list and view redesign",
+    "Kairo design system",
+    "DM Automation"
+  ];
+  const habiOrder = ["Smart funnel", "Internal Ops"];
+
+  const reiProjects = PROJECTS.filter(p => p.category === '8020REI').sort(
+    (a, b) => reiOrder.indexOf(a.title) - reiOrder.indexOf(b.title)
+  );
+  const habiProjects = PROJECTS.filter(p => p.category === 'Habi').sort(
+    (a, b) => habiOrder.indexOf(a.title) - habiOrder.indexOf(b.title)
+  );
+  const freelanceProjects = PROJECTS.filter(p => p.category === 'Freelance').slice(0, 1);
 
   // Hero Text Rotation Logic
   const titles = [
@@ -45,66 +57,72 @@ export const Home: React.FC = () => {
       <main className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* HERO SECTION */}
-        <section className="min-h-[90vh] flex flex-col relative">
+        <section className="min-h-[calc(100svh-4rem)] md:min-h-[calc(100vh-4rem)] flex flex-col relative pt-16 pb-16">
           <div className="flex-1 flex flex-col justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 60 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-5xl"
-            >
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-10 leading-[1.1]">
-                Designing and building <br />
-                <div className="relative h-[1.2em] overflow-hidden">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={index}
-                      initial={{ y: 50, opacity: 0, filter: 'blur(8px)' }}
-                      animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-                      exit={{ y: -50, opacity: 0, filter: 'blur(8px)' }}
-                      transition={{ duration: 0.8, ease: "easeOut" }}
-                      className="absolute top-0 left-0 text-zinc-500 block"
-                    >
-                      {titles[index]}.
-                    </motion.span>
-                  </AnimatePresence>
-                </div>
-              </h1>
+            <div className="flex flex-col gap-10">
+              <motion.div
+                initial={{ opacity: 0, y: 60 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className="max-w-5xl flex flex-col gap-8 md:gap-10"
+              >
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
+                  Designing and building <br />
+                  <div className="relative min-h-[2.4em] md:min-h-0 md:h-[1.2em] md:overflow-hidden">
+                    <AnimatePresence mode="wait">
+                      <motion.span
+                        key={index}
+                        initial={{ y: 50, opacity: 0, filter: 'blur(8px)' }}
+                        animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
+                        exit={{ y: -50, opacity: 0, filter: 'blur(8px)' }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="md:absolute md:top-0 md:left-0 text-zinc-500 block w-full whitespace-normal break-words"
+                      >
+                        {titles[index]}.
+                      </motion.span>
+                    </AnimatePresence>
+                  </div>
+                </h1>
 
-              <p className="text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed mb-0 font-light">
-                I design and simplify complex desktop and mobile products through scalable design systems and vibecoding-driven workflows.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 1.2 }}
-              className="mt-16 flex flex-wrap items-center gap-6 w-full"
-            >
-              <div className="flex flex-wrap items-center gap-6">
-                <button
-                  onClick={() => scrollToSection('work')}
-                  className="px-8 py-4 bg-zinc-100 text-black font-semibold rounded-sm hover:bg-white transition-all hover:scale-[1.02] active:scale-[0.98]"
-                >
-                  View Work
-                </button>
-                <button
-                  onClick={() => scrollToSection('about')}
-                  className="px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
-                >
-                  About Me
-                </button>
-                <button
-                  type="button"
-                  className="px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
-                >
-                  Let's Talk
-                </button>
-              </div>
-              <span className="ml-auto w-full md:w-auto flex md:justify-end">
-                <ArrowDown className="text-zinc-700 w-6 h-6 animate-bounce" />
-              </span>
-            </motion.div>
+                <p className="text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed font-light">
+                  I design and simplify complex desktop and mobile products through scalable design systems and vibecoding-driven workflows..
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6, duration: 1.2 }}
+                className="flex flex-col gap-8 w-full"
+              >
+                <div className="flex flex-col gap-6 min-[770px]:flex-row min-[770px]:items-center">
+                  <div className="grid grid-cols-2 gap-4 w-full min-[770px]:flex min-[770px]:w-auto min-[770px]:items-center">
+                    <button
+                      onClick={() => scrollToSection('work')}
+                      className="glow-reactive glow-button w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
+                    >
+                      View Work
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('about')}
+                      className="glow-reactive glow-button w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
+                    >
+                      About Me
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection('cta')}
+                      className="glow-reactive glow-button w-full min-[770px]:w-44 px-8 py-4 bg-zinc-100 text-black font-semibold rounded-sm hover:bg-white transition-all hover:scale-[1.02] active:scale-[0.98] col-span-2 min-[770px]:col-span-1"
+                    >
+                      Let's Talk
+                    </button>
+                  </div>
+                  <div className="w-full flex items-center py-6 min-[770px]:py-0 min-[770px]:w-auto min-[770px]:ml-auto">
+                    <ArrowDown className="text-zinc-700 w-6 h-6 animate-bounce" />
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </section>
 
@@ -114,8 +132,8 @@ export const Home: React.FC = () => {
             <div className="mb-12 md:mb-16">
               <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">Selected Work</h2>
               <h3 className="text-3xl md:text-4xl font-bold mb-4">8020REI</h3>
-              <p className="text-zinc-400 text-lg font-light leading-relaxed whitespace-nowrap">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
+              <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-2xl">
+                PropTech data provider
               </p>
             </div>
           </ScrollReveal>
@@ -131,10 +149,10 @@ export const Home: React.FC = () => {
           <ScrollReveal>
             <div className="mb-12 md:mb-16">
               <h3 className="text-3xl md:text-4xl font-bold mb-4">Habi</h3>
-              <p className="text-zinc-400 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+              <p className="text-zinc-400 text-lg">PropTech mobile-first service provider for sellers and buyers</p>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-32 md:mb-48">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 md:mb-32">
             {habiProjects.map((project, i) => (
               <ScrollReveal key={project.id} delay={i * 0.1} className="col-span-1">
                 <ProjectCard project={project} />
@@ -144,14 +162,13 @@ export const Home: React.FC = () => {
 
           <ScrollReveal>
             <div className="mb-12 md:mb-16">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">Freelance</h3>
-              <p className="text-zinc-400 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+              <h3 className="text-3xl md:text-4xl font-bold mb-4">Case study</h3>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-0">
             {freelanceProjects.map((project, i) => (
-              <ScrollReveal key={project.id} delay={i * 0.1} className="col-span-1">
-                <ProjectCard project={project} />
+              <ScrollReveal key={project.id} delay={i * 0.1} className="md:col-span-2">
+                <ProjectCard project={project} large />
               </ScrollReveal>
             ))}
           </div>
@@ -170,6 +187,21 @@ export const Home: React.FC = () => {
                 I thrive in environments where I can build scalable design systems (like Kairo)
                 and collaborate closely with engineering to ship polished, performant software.
               </p>
+              <div className="mt-10 space-y-4">
+                <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</h3>
+                <div className="space-y-4 text-sm text-zinc-400">
+                  <div>
+                    <p className="text-zinc-200">Industrial Designer</p>
+                    <p className="text-zinc-500">Pontificia Universidad Javeriana</p>
+                    <p className="text-zinc-600">2011 – 2016</p>
+                  </div>
+                  <div>
+                    <p className="text-zinc-200">Master’s in Branding and Brand Strategy, Design and Visual Communication</p>
+                    <p className="text-zinc-500">OBS Business School</p>
+                    <p className="text-zinc-600">2020 – 2021</p>
+                  </div>
+                </div>
+              </div>
             </ScrollReveal>
           </div>
 
@@ -180,13 +212,18 @@ export const Home: React.FC = () => {
                 {EXPERIENCE.map((exp, i) => (
                   <div key={i} className="group">
                     <h4 className="font-semibold text-zinc-100 group-hover:text-white transition-colors text-lg mb-1">{exp.company}</h4>
-                    <div className="flex justify-between items-baseline mb-4">
+                    <div className="flex flex-col gap-2 mb-4">
                       <span className="text-base text-zinc-400">{exp.role}</span>
-                      <span className="text-xs font-mono text-zinc-600">{exp.period}</span>
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-zinc-600">
+                        <span>{exp.period}</span>
+                        {exp.location ? <span>• {exp.location}</span> : null}
+                      </div>
                     </div>
-                    <p className="text-sm text-zinc-500 leading-relaxed max-w-sm">
-                      {exp.description[0]}
-                    </p>
+                    <ul className="space-y-2 text-sm text-zinc-500 leading-relaxed max-w-sm list-disc pl-4">
+                      {exp.description.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
@@ -215,18 +252,35 @@ export const Home: React.FC = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-32 md:py-48 border-t border-zinc-900 text-center">
+        <section id="cta" className="py-32 md:py-48 border-t border-zinc-900 text-center">
           <ScrollReveal>
             <h2 className="text-3xl md:text-5xl font-bold mb-10">Let's build something scalable.</h2>
-            <a href="mailto:mancho19942010@hotmail.com" className="inline-block px-12 py-5 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-lg">
-              Get in Touch
-            </a>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <a
+                href="https://wa.me/573015247033"
+                target="_blank"
+                rel="noreferrer"
+                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-base w-60 whitespace-nowrap"
+                aria-label="Contact via WhatsApp"
+              >
+                WhatsApp
+              </a>
+              <a
+                href="https://calendly.com/mancho19942020/30min"
+                target="_blank"
+                rel="noreferrer"
+                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 border border-zinc-800 text-zinc-200 font-semibold rounded-sm hover:border-zinc-500 hover:text-white transition-colors text-base w-60 whitespace-nowrap"
+              >
+                Schedule meeting
+              </a>
+            </div>
           </ScrollReveal>
         </section>
 
         <footer className="py-20 text-center text-zinc-700 text-xs font-mono">
           <ScrollReveal>
-            <p>© 2025 Germán David Alvarez.</p>
+            <p>This portfolio was built using only free resources and AI agents, such as ChatGPT Codex, Gemini Pro and Cursor as code editor.</p>
+            <p className="mt-2">© 2025 Germán David Alvarez.</p>
           </ScrollReveal>
         </footer>
 

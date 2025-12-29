@@ -6,6 +6,33 @@ export interface Section {
   image?: string;
 }
 
+export interface ProjectImage {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
+export interface ProjectNarrative {
+  introduction: {
+    company: string;
+    industry: string;
+    year: string;
+    summary: string;
+  };
+  role: {
+    title: string;
+    responsibilities: string[];
+  };
+  challenge: {
+    summary: string;
+    painPoints: string[];
+    constraints: string[];
+    insights: string[];
+  };
+  approach: string[];
+  outcome: string[];
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -17,7 +44,8 @@ export interface Project {
   tools: string[];
   tags: string[];
   thumbnailGradient: string;
-  sections: Section[];
+  narrative: ProjectNarrative;
+  images: ProjectImage[];
 }
 
 export interface ExperienceItem {

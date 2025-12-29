@@ -1,0 +1,108 @@
+/* Global cursor + glow layers */
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: clip;
+  background-color: #0B0B0B;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.cursor-enabled,
+.cursor-enabled * {
+  cursor: none;
+}
+
+.cursor-dot,
+.cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  will-change: transform, opacity;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #ffffff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.55);
+  transform: translate3d(-999px, -999px, 0) translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.cursor-glow {
+  width: 920px;
+  height: 920px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center, rgba(255, 140, 0, 0.096) 0%, rgba(255, 140, 0, 0.04) 25%, rgba(255, 140, 0, 0.0) 62%);
+  transform: translate3d(-999px, -999px, 0) translate(-50%, -50%);
+  z-index: 5;
+  mix-blend-mode: screen;
+  filter: blur(4px);
+}
+
+.cursor-dot.is-visible,
+.cursor-glow.is-visible {
+  opacity: 1;
+}
+
+/* Reactive glow for cards and buttons */
+.glow-reactive {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+.glow-reactive::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  background: radial-gradient(140px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 140, 0, 0.18), rgba(255, 140, 0, 0.0) 60%);
+  pointer-events: none;
+}
+
+.glow-reactive:hover::before,
+.glow-reactive:focus-visible::before {
+  opacity: 1;
+}
+
+.glow-card:hover,
+.glow-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 120, 0, 0.08);
+}
+
+.glow-button:hover,
+.glow-button:focus-visible {
+  box-shadow: 0 0 0 1px rgba(255, 140, 0, 0.25), 0 8px 20px rgba(255, 120, 0, 0.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot,
+  .cursor-glow {
+    display: none;
+  }
+
+  .glow-reactive,
+  .glow-reactive::before {
+    transition: none;
+  }
+}
+
+@media (pointer: coarse), (hover: none) {
+  .cursor-dot,
+  .cursor-glow {
+    display: none;
+  }
+}
