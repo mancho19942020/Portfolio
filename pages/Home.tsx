@@ -57,7 +57,7 @@ export const Home: React.FC = () => {
       <main className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* HERO SECTION */}
-        <section className="min-h-[calc(100svh-4rem)] md:min-h-[calc(100vh-4rem)] flex flex-col relative pt-16 pb-16">
+        <section className="min-h-[calc(100svh-4rem)] md:min-h-[calc(100vh-4rem)] flex flex-col relative pt-24 md:pt-16 pb-16">
           <div className="flex-1 flex flex-col justify-center">
             <div className="flex flex-col gap-10">
               <motion.div
