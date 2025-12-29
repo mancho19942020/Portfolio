@@ -14,6 +14,8 @@ export const ProjectDetail: React.FC = () => {
 
   const primaryImages = project.images.slice(0, 2);
   const secondaryImages = project.images.slice(2);
+  const isCaseStudy = project.category === 'Freelance';
+  const categoryLabel = isCaseStudy ? 'UX/UI case study' : project.category;
 
   return (
     <div className="min-h-screen bg-background text-zinc-100 selection:bg-zinc-700 selection:text-white pb-20">
@@ -28,12 +30,14 @@ export const ProjectDetail: React.FC = () => {
               className="space-y-6"
             >
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[10px] font-mono text-zinc-400">
-                  {project.category}
+                <span className={`px-3 py-1 bg-zinc-900 border border-zinc-800 rounded-full text-[10px] font-mono text-zinc-400${isCaseStudy ? '' : ' uppercase'}`}>
+                  {categoryLabel}
                 </span>
-                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.2em]">
-                  {project.type}
-                </span>
+                {!isCaseStudy && (
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.2em]">
+                    {project.type}
+                  </span>
+                )}
               </div>
               <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.1]">
                 {project.title}
@@ -109,33 +113,33 @@ export const ProjectDetail: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-zinc-400">
                 <div className="space-y-3">
                   <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">Pain Points</p>
-                  <ul className="space-y-2">
+                  <div className="divide-y divide-zinc-800/60">
                     {project.narrative.challenge.painPoints.map((item) => (
-                      <li key={item} className="leading-relaxed">
+                      <div key={item} className="py-3 leading-relaxed">
                         {item}
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
                 <div className="space-y-3">
                   <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">Constraints</p>
-                  <ul className="space-y-2">
+                  <div className="divide-y divide-zinc-800/60">
                     {project.narrative.challenge.constraints.map((item) => (
-                      <li key={item} className="leading-relaxed">
+                      <div key={item} className="py-3 leading-relaxed">
                         {item}
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
                 <div className="space-y-3">
                   <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">Insights</p>
-                  <ul className="space-y-2">
+                  <div className="divide-y divide-zinc-800/60">
                     {project.narrative.challenge.insights.map((item) => (
-                      <li key={item} className="leading-relaxed">
+                      <div key={item} className="py-3 leading-relaxed">
                         {item}
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
             </motion.section>
@@ -156,7 +160,7 @@ export const ProjectDetail: React.FC = () => {
               className="space-y-6"
             >
               <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">Approach</h2>
-              <ul className="space-y-3 text-lg text-zinc-200 leading-relaxed font-light">
+              <ul className="space-y-3 text-lg text-zinc-200 leading-relaxed font-light list-disc pl-5">
                 {project.narrative.approach.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -171,7 +175,7 @@ export const ProjectDetail: React.FC = () => {
               className="space-y-6"
             >
               <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">Outcome</h2>
-              <ul className="space-y-3 text-lg text-zinc-200 leading-relaxed font-light">
+              <ul className="space-y-3 text-lg text-zinc-200 leading-relaxed font-light list-disc pl-5">
                 {project.narrative.outcome.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
