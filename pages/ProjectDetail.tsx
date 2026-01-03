@@ -60,7 +60,7 @@ export const ProjectDetail: React.FC = () => {
                     href={nowAppResearchPdf}
                     target="_blank"
                     rel="noreferrer"
-                    className="glow-reactive glow-button inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-zinc-100 text-black font-semibold hover:bg-white transition-colors"
+                    className="glow-reactive glow-button btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm font-semibold transition-colors"
                   >
                     Review research document
                     <Search className="w-4 h-4" aria-hidden="true" />
