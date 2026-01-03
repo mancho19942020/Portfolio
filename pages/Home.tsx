@@ -26,12 +26,12 @@ export const Home: React.FC = () => {
 
   // Hero Text Rotation Logic
   const titles = [
-    "PropTech Solutions",
-    "Investor-focused platforms",
-    "Operational dashboards",
-    "High-stakes decision tools",
-    "Workflow-heavy SaaS",
-    "AI-driven platforms"
+    { mobileTop: "ai-driven", mobileBottom: "platforms", desktop: "ai-driven platforms" },
+    { mobileTop: "prop-tech", mobileBottom: "solutions", desktop: "prop-tech solutions" },
+    { mobileTop: "investor-focused", mobileBottom: "platforms", desktop: "investor-focused platforms" },
+    { mobileTop: "operational", mobileBottom: "dashboards", desktop: "operational dashboards" },
+    { mobileTop: "high-stakes", mobileBottom: "decision tools", desktop: "high-stakes decision tools" },
+    { mobileTop: "workflow-heavy", mobileBottom: "SaaS", desktop: "workflow-heavy SaaS" }
   ];
   const [index, setIndex] = useState(0);
 
@@ -97,9 +97,11 @@ export const Home: React.FC = () => {
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="max-w-5xl flex flex-col gap-8 md:gap-10"
               >
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1]">
-                  Designing and building <br />
-                  <div className="relative min-h-[2.4em] md:min-h-0 md:h-[1.2em] md:overflow-hidden">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] md:leading-[1.1]">
+                  <span className="text-zinc-500 block md:inline">Designing</span>
+                  <span className="text-zinc-500 block md:inline md:ml-2">and building</span>
+                  <br />
+                  <div className="relative min-h-[2.4em] md:min-h-0 md:h-[1.2em] md:overflow-hidden -mt-8 md:mt-0">
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={index}
@@ -107,9 +109,11 @@ export const Home: React.FC = () => {
                         animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
                         exit={{ y: -50, opacity: 0, filter: 'blur(8px)' }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="md:absolute md:top-0 md:left-0 text-zinc-500 block w-full whitespace-normal break-words"
+                        className="md:absolute md:top-0 md:left-0 text-zinc-100 block w-full whitespace-normal break-words"
                       >
-                        {titles[index]}.
+                        <span className="block md:hidden">{titles[index].mobileTop}</span>
+                        <span className="block md:hidden">{titles[index].mobileBottom}</span>
+                        <span className="hidden md:inline">{titles[index].desktop}</span>
                       </motion.span>
                     </AnimatePresence>
                   </div>
@@ -130,20 +134,20 @@ export const Home: React.FC = () => {
                   <div className="grid grid-cols-2 gap-4 w-full min-[770px]:flex min-[770px]:w-auto min-[770px]:items-center">
                     <button
                       onClick={() => scrollToSection('work')}
-                      className="glow-reactive glow-button w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
+                      className="glow-reactive glow-button btn-outline w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm font-semibold transition-colors"
                     >
                       View Work
                     </button>
                     <button
                       onClick={() => scrollToSection('about')}
-                      className="glow-reactive glow-button w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm hover:border-zinc-500 transition-colors text-zinc-400 hover:text-white"
+                      className="glow-reactive glow-button btn-outline w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm font-semibold transition-colors"
                     >
                       About Me
                     </button>
                     <button
                       type="button"
                       onClick={() => scrollToSection('cta')}
-                      className="glow-reactive glow-button w-full min-[770px]:w-44 px-8 py-4 bg-zinc-100 text-black font-semibold rounded-sm hover:bg-white transition-all hover:scale-[1.02] active:scale-[0.98] col-span-2 min-[770px]:col-span-1"
+                      className="glow-reactive glow-button btn-primary w-full min-[770px]:w-44 px-8 py-4 font-semibold rounded-sm transition-all hover:scale-[1.02] active:scale-[0.98] col-span-2 min-[770px]:col-span-1"
                     >
                       Let's Talk
                     </button>
@@ -158,7 +162,7 @@ export const Home: React.FC = () => {
         </section>
 
         {/* PROJECTS SECTION */}
-        <section id="work" className="py-32 md:py-48 border-t border-zinc-900 scroll-mt-24">
+        <section id="work" className="py-24 md:py-36 scroll-mt-24">
           <ScrollReveal>
             <div className="mb-12 md:mb-16">
               <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">Selected Work</h2>
@@ -210,7 +214,7 @@ export const Home: React.FC = () => {
         </section>
 
         {/* ABOUT & EXPERIENCE SECTION */}
-        <section id="about" className="py-32 md:py-48 border-t border-zinc-900 grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 scroll-mt-24">
+        <section id="about" className="py-24 md:py-36 grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 scroll-mt-24">
           <div className="md:col-span-4">
             <ScrollReveal>
               <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">About</h2>
@@ -287,26 +291,26 @@ export const Home: React.FC = () => {
         </section>
 
         {/* CTA */}
-        <section id="cta" className="py-32 md:py-48 border-t border-zinc-900 text-center">
+        <section id="cta" className="py-24 md:py-36 text-center">
           <ScrollReveal>
             <h2 className="text-3xl md:text-5xl font-bold mb-10">Let's build something scalable.</h2>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://wa.me/573015247033"
-                target="_blank"
-                rel="noreferrer"
-                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 bg-zinc-100 text-black font-bold rounded-sm hover:bg-white hover:scale-[1.02] transition-all text-base w-full sm:w-60 whitespace-nowrap"
-                aria-label="Contact via WhatsApp"
-              >
-                WhatsApp
-              </a>
-              <a
                 href="https://calendly.com/mancho19942020/30min"
                 target="_blank"
                 rel="noreferrer"
-                className="glow-reactive glow-button inline-flex items-center justify-center px-12 py-4 border border-zinc-800 text-zinc-200 font-semibold rounded-sm hover:border-zinc-500 hover:text-white transition-colors text-base w-full sm:w-60 whitespace-nowrap"
+                className="glow-reactive glow-button btn-outline inline-flex items-center justify-center px-12 py-4 border border-zinc-800 font-semibold rounded-sm transition-colors text-base w-full sm:w-60 whitespace-nowrap"
               >
                 Schedule meeting
+              </a>
+              <a
+                href="https://wa.me/573015247033"
+                target="_blank"
+                rel="noreferrer"
+                className="glow-reactive glow-button btn-primary inline-flex items-center justify-center px-12 py-4 font-semibold rounded-sm hover:scale-[1.02] transition-all text-base w-full sm:w-60 whitespace-nowrap"
+                aria-label="Contact via WhatsApp"
+              >
+                WhatsApp
               </a>
             </div>
           </ScrollReveal>

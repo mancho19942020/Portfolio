@@ -5,7 +5,43 @@ body,
   width: 100%;
   min-height: 100%;
   overflow-x: clip;
-  background-color: #0B0B0B;
+  background-color: var(--app-bg);
+}
+
+:root {
+  --app-bg: #f6f5f2;
+  --app-bg-gradient: radial-gradient(circle at 50% -20%, #ffffff 0%, #f6f5f2 70%),
+    radial-gradient(circle at 0% 100%, #ece9e4 0%, #f6f5f2 50%);
+  --app-text: #101828;
+  --app-scrollbar: #d1d5db;
+  --app-scrollbar-hover: #9ca3af;
+  --btn-primary-bg: #1f1f1b;
+  --btn-primary-text: #f9f7f2;
+  --btn-primary-hover: #2a2a25;
+  --btn-outline-border: #2f2a22;
+  --btn-outline-text: #1f1f1b;
+  --btn-outline-hover: rgba(31, 31, 27, 0.08);
+  --btn-outline-bg: #eeebe6;
+  --cursor-dot: #374151;
+  --cursor-dot-shadow: rgba(55, 65, 81, 0.35);
+}
+
+html[data-theme='dark'] {
+  --app-bg: #0B0B0B;
+  --app-bg-gradient: radial-gradient(circle at 50% -20%, #18181b 0%, #000000 70%),
+    radial-gradient(circle at 0% 100%, #09090b 0%, #000000 50%);
+  --app-text: #fafafa;
+  --app-scrollbar: #27272a;
+  --app-scrollbar-hover: #3f3f46;
+  --btn-primary-bg: #f2efe9;
+  --btn-primary-text: #141414;
+  --btn-primary-hover: #ffffff;
+  --btn-outline-border: #f2efe9;
+  --btn-outline-text: #f2efe9;
+  --btn-outline-hover: rgba(242, 239, 233, 0.08);
+  --btn-outline-bg: transparent;
+  --cursor-dot: #ffffff;
+  --cursor-dot-shadow: rgba(255, 255, 255, 0.55);
 }
 
 *,
@@ -33,8 +69,8 @@ body,
   width: 8px;
   height: 8px;
   border-radius: 9999px;
-  background: #ffffff;
-  box-shadow: 0 0 6px rgba(255, 255, 255, 0.55);
+  background: var(--cursor-dot);
+  box-shadow: 0 0 6px var(--cursor-dot-shadow);
   transform: translate3d(-999px, -999px, 0) translate(-50%, -50%);
   z-index: 9999;
 }
@@ -48,6 +84,149 @@ body,
   z-index: 5;
   mix-blend-mode: screen;
   filter: blur(4px);
+  display: none;
+}
+
+html[data-theme='light'] .mix-blend-overlay {
+  mix-blend-mode: multiply;
+}
+
+html[data-theme='light'] .bg-background {
+  background-color: #f6f5f2;
+}
+
+html[data-theme='light'] .bg-\[\#0B0B0B\] {
+  background-color: #f6f5f2;
+}
+
+html[data-theme='light'] .text-white {
+  color: #111827;
+}
+
+html[data-theme='light'] .text-zinc-100 {
+  color: #111827;
+}
+
+html[data-theme='light'] .text-zinc-200 {
+  color: #1f2937;
+}
+
+html[data-theme='light'] .text-zinc-300 {
+  color: #374151;
+}
+
+html[data-theme='light'] .text-zinc-400 {
+  color: #4b5563;
+}
+
+html[data-theme='light'] .text-zinc-500 {
+  color: #6b7280;
+}
+
+html[data-theme='light'] .text-zinc-600 {
+  color: #9ca3af;
+}
+
+html[data-theme='light'] .text-zinc-700 {
+  color: #9ca3af;
+}
+
+html[data-theme='light'] .bg-zinc-900 {
+  background-color: #ffffff;
+}
+
+html[data-theme='light'] .bg-zinc-900\/80 {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+html[data-theme='light'] .bg-zinc-900\/50 {
+  background-color: rgba(255, 255, 255, 0.72);
+}
+
+html[data-theme='light'] .bg-zinc-900\/40 {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+html[data-theme='light'] .bg-zinc-950\/50 {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme='light'] .bg-zinc-700 {
+  background-color: #e5e7eb;
+}
+
+html[data-theme='light'] .border-zinc-900 {
+  border-color: #e5e7eb;
+}
+
+html[data-theme='light'] .border-zinc-800 {
+  border-color: #e5e7eb;
+}
+
+html[data-theme='light'] .border-zinc-800\/50 {
+  border-color: rgba(229, 231, 235, 0.8);
+}
+
+html[data-theme='light'] .border-zinc-700 {
+  border-color: #d1d5db;
+}
+
+html[data-theme='light'] .border-zinc-500 {
+  border-color: #d1d5db;
+}
+
+html[data-theme='light'] .border-white\/10 {
+  border-color: rgba(17, 24, 39, 0.1);
+}
+
+html[data-theme='light'] .border-white\/20 {
+  border-color: rgba(17, 24, 39, 0.2);
+}
+
+html[data-theme='light'] .border-border\/50 {
+  border-color: rgba(209, 213, 219, 0.7);
+}
+
+html[data-theme='light'] .shadow-lg {
+  box-shadow: none;
+}
+
+html[data-theme='light'] .shadow-black\/20 {
+  --tw-shadow-color: rgba(0, 0, 0, 0.08);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+html[data-theme='light'] .shadow-xl {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme='light'] .shadow-black\/40 {
+  --tw-shadow-color: rgba(0, 0, 0, 0.12);
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+html[data-theme='light'] .bg-zinc-800 {
+  background-color: #e5e7eb;
+}
+
+html[data-theme='light'] .logo-mark {
+  background-color: #111827;
+}
+
+html[data-theme='light'] .logo-text {
+  color: #f9fafb;
+}
+
+html[data-theme='light'] .card-title {
+  color: #374151;
+}
+
+html[data-theme='light'] .via-zinc-950\/40 {
+  --tw-gradient-stops: var(--tw-gradient-from), rgba(255, 255, 255, 0.55), var(--tw-gradient-to);
+}
+
+html[data-theme='light'] .to-zinc-950 {
+  --tw-gradient-to: #ffffff;
 }
 
 .cursor-dot.is-visible,
@@ -67,25 +246,49 @@ body,
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 200ms ease;
-  background: radial-gradient(140px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 140, 0, 0.18), rgba(255, 140, 0, 0.0) 60%);
   pointer-events: none;
-}
-
-.glow-reactive:hover::before,
-.glow-reactive:focus-visible::before {
-  opacity: 1;
 }
 
 .glow-card:hover,
 .glow-card:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(255, 120, 0, 0.08);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .glow-button:hover,
 .glow-button:focus-visible {
-  box-shadow: 0 0 0 1px rgba(255, 140, 0, 0.25), 0 8px 20px rgba(255, 120, 0, 0.06);
+  box-shadow: none;
+}
+
+.btn-primary {
+  background-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border-color: transparent;
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--btn-primary-hover);
+}
+
+.btn-outline {
+  border-color: var(--btn-outline-border);
+  color: var(--btn-outline-text);
+}
+
+.btn-outline:hover,
+.btn-outline:focus-visible {
+  background-color: var(--btn-outline-hover);
+}
+
+html[data-theme='light'] .btn-outline {
+  background-color: var(--btn-outline-bg);
+  border-color: transparent;
+}
+
+html[data-theme='light'] .btn-outline:hover,
+html[data-theme='light'] .btn-outline:focus-visible {
+  background-color: #e4e0d9;
 }
 
 @media (prefers-reduced-motion: reduce) {

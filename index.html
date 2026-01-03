@@ -7,6 +7,14 @@
   <title>Germán David Alvarez | Lead Product Designer</title>
   <meta name="description"
     content="Portfolio of Germán David Alvarez, Lead Product Designer specializing in SaaS, Real Estate Tech, and Design Systems." />
+  <script>
+    (() => {
+      const stored = localStorage.getItem('theme');
+      const theme = stored === 'dark' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme;
+    })();
+  </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,11 +43,9 @@
   </script>
   <style>
     body {
-      background-color: #000000;
-      background-image:
-        radial-gradient(circle at 50% -20%, #18181b 0%, #000000 70%),
-        radial-gradient(circle at 0% 100%, #09090b 0%, #000000 50%);
-      color: #fafafa;
+      background-color: var(--app-bg);
+      background-image: var(--app-bg-gradient);
+      color: var(--app-text);
       min-height: 100vh;
     }
 
@@ -53,12 +59,12 @@
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #27272a;
+      background: var(--app-scrollbar);
       border-radius: 10px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-      background: #3f3f46;
+      background: var(--app-scrollbar-hover);
     }
   </style>
   <script type="importmap">

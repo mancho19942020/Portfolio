@@ -44,7 +44,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, large = false
             <ArrowUpRight className="w-5 h-5 text-zinc-500 group-hover:text-white transition-colors" />
           </div>
 
-          <h3 className="text-2xl font-bold text-zinc-100 mb-1 group-hover:translate-x-1 transition-transform">
+          <h3 className="card-title text-2xl font-bold text-zinc-100 mb-1 group-hover:translate-x-1 transition-transform">
             {project.title}
           </h3>
           <p className="text-sm text-zinc-400 font-medium">
