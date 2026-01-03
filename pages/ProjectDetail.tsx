@@ -3,6 +3,8 @@ import { useParams, Navigate } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { NavBar } from '../components/NavBar';
 import { motion } from 'framer-motion';
+import { Search } from 'lucide-react';
+import nowAppResearchPdf from '../assets/docs/nowapp-research.pdf';
 
 export const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -16,6 +18,7 @@ export const ProjectDetail: React.FC = () => {
   const secondaryImages = project.images.slice(2);
   const isCaseStudy = project.category === 'Freelance';
   const categoryLabel = isCaseStudy ? 'UX/UI case study' : project.category;
+  const showNowAppResearch = project.id === 'freelance-1';
 
   return (
     <div className="min-h-screen bg-background text-zinc-100 selection:bg-zinc-700 selection:text-white pb-20">
@@ -51,6 +54,19 @@ export const ProjectDetail: React.FC = () => {
               <p className="text-lg text-zinc-200 leading-relaxed font-light">
                 {project.narrative.introduction.summary}
               </p>
+              {showNowAppResearch && (
+                <div>
+                  <a
+                    href={nowAppResearchPdf}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="glow-reactive glow-button inline-flex items-center justify-center gap-2 px-6 py-3 rounded-sm bg-zinc-100 text-black font-semibold hover:bg-white transition-colors"
+                  >
+                    Review research document
+                    <Search className="w-4 h-4" aria-hidden="true" />
+                  </a>
+                </div>
+              )}
             </motion.section>
 
             <div className="lg:hidden space-y-6">

@@ -19,9 +19,9 @@ export const Home: React.FC = () => {
   const reiProjects = PROJECTS.filter(p => p.category === '8020REI').sort(
     (a, b) => reiOrder.indexOf(a.title) - reiOrder.indexOf(b.title)
   );
-  const habiProjects = PROJECTS.filter(p => p.category === 'Habi').sort(
-    (a, b) => habiOrder.indexOf(a.title) - habiOrder.indexOf(b.title)
-  );
+  const habiProjects = PROJECTS.filter(
+    p => p.category === 'Habi' && p.title !== 'Internal Ops'
+  ).sort((a, b) => habiOrder.indexOf(a.title) - habiOrder.indexOf(b.title));
   const freelanceProjects = PROJECTS.filter(p => p.category === 'Freelance').slice(0, 1);
 
   // Hero Text Rotation Logic
@@ -41,6 +41,37 @@ export const Home: React.FC = () => {
     }, 3500); // Slow, relaxed timing
     return () => clearInterval(timer);
   }, [titles.length]);
+
+  useEffect(() => {
+    const targetId = sessionStorage.getItem('scroll-target');
+    if (!targetId) {
+      return;
+    }
+
+    const tryScroll = () => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ block: 'start' });
+        sessionStorage.removeItem('scroll-target');
+        sessionStorage.removeItem('scroll-home');
+        return true;
+      }
+      return false;
+    };
+
+    if (tryScroll()) {
+      return;
+    }
+
+    const retry = setTimeout(() => {
+      if (!tryScroll()) {
+        sessionStorage.removeItem('scroll-target');
+        sessionStorage.removeItem('scroll-home');
+      }
+    }, 200);
+
+    return () => clearTimeout(retry);
+  }, []);
 
   // Handle smooth scrolling
   const scrollToSection = (id: string) => {
@@ -154,8 +185,12 @@ export const Home: React.FC = () => {
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 md:mb-32">
             {habiProjects.map((project, i) => (
-              <ScrollReveal key={project.id} delay={i * 0.1} className="col-span-1">
-                <ProjectCard project={project} />
+              <ScrollReveal
+                key={project.id}
+                delay={i * 0.1}
+                className={habiProjects.length === 1 ? "md:col-span-2" : "col-span-1"}
+              >
+                <ProjectCard project={project} large={habiProjects.length === 1} />
               </ScrollReveal>
             ))}
           </div>

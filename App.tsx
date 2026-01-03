@@ -1,17 +1,48 @@
-import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import React, { useLayoutEffect, useRef } from 'react';
+import { HashRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CursorGlow } from './components/CursorGlow';
 
-// Handles scrolling to top when route changes
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
+// Restores scroll position on back/forward navigation
+const ScrollManager = () => {
+  const location = useLocation();
+  const navigationType = useNavigationType();
+  const positions = useRef(new Map<string, number>());
+  const locationKey = `${location.pathname}${location.search}${location.hash}`;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    return () => {
+      positions.current.set(locationKey, window.scrollY);
+    };
+  }, [locationKey]);
+
+  useLayoutEffect(() => {
+    if (location.pathname === '/') {
+      const targetId = sessionStorage.getItem('scroll-target');
+      if (targetId) {
+        return;
+      }
+
+      const stored = sessionStorage.getItem('scroll-home');
+      if (stored !== null) {
+        const y = Number(stored);
+        sessionStorage.removeItem('scroll-home');
+        window.scrollTo(0, Number.isNaN(y) ? 0 : y);
+        return;
+      }
+    }
+
+    if (navigationType === 'POP') {
+      const savedPosition = positions.current.get(locationKey);
+      if (savedPosition !== undefined) {
+        window.scrollTo(0, savedPosition);
+        return;
+      }
+    }
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [locationKey, navigationType]);
 
   return null;
 };
@@ -35,7 +66,7 @@ const AppContent = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
       >
-        <ScrollToTop />
+        <ScrollManager />
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
