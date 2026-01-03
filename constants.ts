@@ -1,4 +1,17 @@
 import { Project, ExperienceItem, SkillGroup } from './types';
+import buybox01 from './assets/projects/buybox/01.jpg';
+import buybox02 from './assets/projects/buybox/02.jpg';
+import buybox03 from './assets/projects/buybox/03.jpg';
+import buybox04 from './assets/projects/buybox/04.jpg';
+import buybox05 from './assets/projects/buybox/05.jpg';
+import buybox06 from './assets/projects/buybox/06.jpg';
+import buybox07 from './assets/projects/buybox/07.jpg';
+import propertyList01 from './assets/projects/property-list/01.jpg';
+import propertyList02 from './assets/projects/property-list/02.jpg';
+import propertyList03 from './assets/projects/property-list/03.jpg';
+import propertyList04 from './assets/projects/property-list/04.jpg';
+import propertyList05 from './assets/projects/property-list/05.jpg';
+import propertyList06 from './assets/projects/property-list/06.jpg';
 
 export const PROJECTS: Project[] = [
   // 8020REI (Priority 1)
@@ -170,20 +183,32 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=80",
-        alt: "Complex filter configuration interface"
+        src: buybox01,
+        alt: "BuyBox editor redesign screen 01"
       },
       {
-        src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=80",
-        alt: "Productivity workspace"
+        src: buybox02,
+        alt: "BuyBox editor redesign screen 02"
       },
       {
-        src: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80",
-        alt: "Design iteration review"
+        src: buybox03,
+        alt: "BuyBox editor redesign screen 03"
       },
       {
-        src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
-        alt: "Engineering collaboration"
+        src: buybox04,
+        alt: "BuyBox editor redesign screen 04"
+      },
+      {
+        src: buybox05,
+        alt: "BuyBox editor redesign screen 05"
+      },
+      {
+        src: buybox06,
+        alt: "BuyBox editor redesign screen 06"
+      },
+      {
+        src: buybox07,
+        alt: "BuyBox editor redesign screen 07"
       }
     ]
   },
@@ -269,20 +294,28 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80",
-        alt: "Operational dashboard review"
+        src: propertyList01,
+        alt: "Property list and view redesign screen 01"
       },
       {
-        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
-        alt: "Lead management analytics"
+        src: propertyList02,
+        alt: "Property list and view redesign screen 02"
       },
       {
-        src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
-        alt: "Lead pipeline metrics"
+        src: propertyList03,
+        alt: "Property list and view redesign screen 03"
       },
       {
-        src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
-        alt: "Team working session"
+        src: propertyList04,
+        alt: "Property list and view redesign screen 04"
+      },
+      {
+        src: propertyList05,
+        alt: "Property list and view redesign screen 05"
+      },
+      {
+        src: propertyList06,
+        alt: "Property list and view redesign screen 06"
       }
     ]
   },
