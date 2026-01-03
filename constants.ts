@@ -1,4 +1,38 @@
 import { Project, ExperienceItem, SkillGroup } from './types';
+import buybox01 from './assets/projects/buybox/01.jpg';
+import buybox02 from './assets/projects/buybox/02.jpg';
+import buybox03 from './assets/projects/buybox/03.jpg';
+import buybox04 from './assets/projects/buybox/04.jpg';
+import buybox05 from './assets/projects/buybox/05.jpg';
+import buybox06 from './assets/projects/buybox/06.jpg';
+import buybox07 from './assets/projects/buybox/07.jpg';
+import propertyList01 from './assets/projects/property-list/01.jpg';
+import propertyList02 from './assets/projects/property-list/02.jpg';
+import propertyList03 from './assets/projects/property-list/03.jpg';
+import propertyList04 from './assets/projects/property-list/04.jpg';
+import propertyList05 from './assets/projects/property-list/05.jpg';
+import propertyList06 from './assets/projects/property-list/06.jpg';
+import kairo01 from './assets/projects/kairo/01.jpg';
+import kairo02 from './assets/projects/kairo/02.jpg';
+import kairo03 from './assets/projects/kairo/03.jpg';
+import kairo04 from './assets/projects/kairo/04.jpg';
+import kairo05 from './assets/projects/kairo/05.jpg';
+import kairo06 from './assets/projects/kairo/06.jpg';
+import dmAutomation01 from './assets/projects/dm-automation/01.jpg';
+import dmAutomation02 from './assets/projects/dm-automation/02.jpg';
+import dmAutomation03 from './assets/projects/dm-automation/03.jpg';
+import dmAutomation04 from './assets/projects/dm-automation/04.jpg';
+import dmAutomation05 from './assets/projects/dm-automation/05.jpg';
+import smartFunnel01 from './assets/projects/smart-funnel/01.jpg';
+import smartFunnel02 from './assets/projects/smart-funnel/02.jpg';
+import smartFunnel03 from './assets/projects/smart-funnel/03.jpg';
+import smartFunnel04 from './assets/projects/smart-funnel/04.jpg';
+import nowApp01 from './assets/projects/now-app/01.jpg';
+import nowApp02 from './assets/projects/now-app/02.jpg';
+import nowApp03 from './assets/projects/now-app/03.jpg';
+import nowApp04 from './assets/projects/now-app/04.jpg';
+import nowApp05 from './assets/projects/now-app/05.jpg';
+import nowApp06 from './assets/projects/now-app/06.jpg';
 
 export const PROJECTS: Project[] = [
   // 8020REI (Priority 1)
@@ -77,20 +111,24 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
-        alt: "Campaign performance dashboard"
+        src: dmAutomation01,
+        alt: "DM Automation screen 01"
       },
       {
-        src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
-        alt: "Automation analytics overview"
+        src: dmAutomation02,
+        alt: "DM Automation screen 02"
       },
       {
-        src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80",
-        alt: "Data visualization detail"
+        src: dmAutomation03,
+        alt: "DM Automation screen 03"
       },
       {
-        src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80",
-        alt: "Team planning session"
+        src: dmAutomation04,
+        alt: "DM Automation screen 04"
+      },
+      {
+        src: dmAutomation05,
+        alt: "DM Automation screen 05"
       }
     ]
   },
@@ -170,20 +208,32 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1400&q=80",
-        alt: "Complex filter configuration interface"
+        src: buybox01,
+        alt: "BuyBox editor redesign screen 01"
       },
       {
-        src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=80",
-        alt: "Productivity workspace"
+        src: buybox02,
+        alt: "BuyBox editor redesign screen 02"
       },
       {
-        src: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80",
-        alt: "Design iteration review"
+        src: buybox03,
+        alt: "BuyBox editor redesign screen 03"
       },
       {
-        src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
-        alt: "Engineering collaboration"
+        src: buybox04,
+        alt: "BuyBox editor redesign screen 04"
+      },
+      {
+        src: buybox05,
+        alt: "BuyBox editor redesign screen 05"
+      },
+      {
+        src: buybox06,
+        alt: "BuyBox editor redesign screen 06"
+      },
+      {
+        src: buybox07,
+        alt: "BuyBox editor redesign screen 07"
       }
     ]
   },
@@ -269,20 +319,28 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80",
-        alt: "Operational dashboard review"
+        src: propertyList01,
+        alt: "Property list and view redesign screen 01"
       },
       {
-        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
-        alt: "Lead management analytics"
+        src: propertyList02,
+        alt: "Property list and view redesign screen 02"
       },
       {
-        src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
-        alt: "Lead pipeline metrics"
+        src: propertyList03,
+        alt: "Property list and view redesign screen 03"
       },
       {
-        src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
-        alt: "Team working session"
+        src: propertyList04,
+        alt: "Property list and view redesign screen 04"
+      },
+      {
+        src: propertyList05,
+        alt: "Property list and view redesign screen 05"
+      },
+      {
+        src: propertyList06,
+        alt: "Property list and view redesign screen 06"
       }
     ]
   },
@@ -360,20 +418,28 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80",
-        alt: "Design system components"
+        src: kairo01,
+        alt: "Kairo design system screen 01"
       },
       {
-        src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=80",
-        alt: "Design toolkit workspace"
+        src: kairo02,
+        alt: "Kairo design system screen 02"
       },
       {
-        src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80",
-        alt: "Documentation review session"
+        src: kairo03,
+        alt: "Kairo design system screen 03"
       },
       {
-        src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
-        alt: "Component development"
+        src: kairo04,
+        alt: "Kairo design system screen 04"
+      },
+      {
+        src: kairo05,
+        alt: "Kairo design system screen 05"
+      },
+      {
+        src: kairo06,
+        alt: "Kairo design system screen 06"
       }
     ]
   },
@@ -443,20 +509,20 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80",
-        alt: "Mobile product interface"
+        src: smartFunnel01,
+        alt: "Smart funnel screen 01"
       },
       {
-        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
-        alt: "Funnel performance analytics"
+        src: smartFunnel02,
+        alt: "Smart funnel screen 02"
       },
       {
-        src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
-        alt: "Conversion dashboard"
+        src: smartFunnel03,
+        alt: "Smart funnel screen 03"
       },
       {
-        src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
-        alt: "Growth team collaboration"
+        src: smartFunnel04,
+        alt: "Smart funnel screen 04"
       }
     ]
   },
@@ -607,20 +673,28 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80",
-        alt: "Marketing site design"
+        src: nowApp01,
+        alt: "NowApp screen 01"
       },
       {
-        src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80",
-        alt: "Client collaboration"
+        src: nowApp02,
+        alt: "NowApp screen 02"
       },
       {
-        src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=80",
-        alt: "Visual identity exploration"
+        src: nowApp03,
+        alt: "NowApp screen 03"
       },
       {
-        src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
-        alt: "Site build review"
+        src: nowApp04,
+        alt: "NowApp screen 04"
+      },
+      {
+        src: nowApp05,
+        alt: "NowApp screen 05"
+      },
+      {
+        src: nowApp06,
+        alt: "NowApp screen 06"
       }
     ]
   },

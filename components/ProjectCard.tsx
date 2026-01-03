@@ -17,14 +17,22 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, large = false
   return (
     <Link
       to={`/project/${project.id}`}
-      className={`glow-reactive glow-card group relative isolate block w-full h-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md shadow-lg shadow-black/20 hover:bg-zinc-900/80 hover:border-white/20 hover:shadow-xl hover:shadow-black/40 transition-all duration-300`}
+      onClick={() => {
+        sessionStorage.setItem('scroll-home', String(window.scrollY));
+        sessionStorage.setItem('scroll-target', `project-${project.id}`);
+      }}
+      id={`project-${project.id}`}
+      className={`glow-reactive glow-card group relative isolate block w-full h-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/50 backdrop-blur-md shadow-lg shadow-black/20 hover:bg-zinc-900/80 hover:border-white/20 hover:shadow-xl hover:shadow-black/40 transition-all duration-300 scroll-mt-24`}
     >
       <div className={`absolute inset-0 bg-gradient-to-br ${project.thumbnailGradient} opacity-20 group-hover:opacity-30 transition-opacity`} />
 
       {/* Subtle Preview Image Layer */}
-      <div className="absolute inset-x-0 bottom-0 top-1/4 overflow-hidden opacity-[0.03] group-hover:opacity-[0.07] transition-opacity pointer-events-none">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop')] bg-cover bg-center rounded-b-2xl mix-blend-overlay" />
-        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
+      <div className="absolute inset-0 overflow-hidden opacity-[0.05] group-hover:opacity-[0.09] transition-opacity pointer-events-none">
+        <div
+          className="absolute inset-0 bg-no-repeat bg-cover bg-right mix-blend-overlay"
+          style={{ backgroundImage: `url(${project.images[0]?.src})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-l from-transparent via-zinc-950/40 to-zinc-950" />
       </div>
 
       <div className="relative p-6 h-full flex flex-col justify-between min-h-[280px]">
