@@ -836,7 +836,7 @@ export const EXPERIENCE: ExperienceItem[] = [
 export const SKILLS: SkillGroup[] = [
   {
     category: "Core Strategy",
-    items: ["Scalable design systems", "UX research", "Information architecture", "UX strategy"]
+    items: ["UX Strategy", "UX Research", "Vibecoding", "Collaboration"]
   },
   {
     category: "AI & Tools",
