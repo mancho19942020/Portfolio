@@ -42,7 +42,7 @@ export const ProjectDetail: React.FC = () => {
                   </span>
                 )}
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+              <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-[1.1]">
                 {project.title}
               </h1>
               <p className="text-xl text-zinc-400 leading-relaxed">

@@ -164,11 +164,11 @@ export const Home: React.FC = () => {
         {/* PROJECTS SECTION */}
         <section id="work" className="py-24 md:py-36 scroll-mt-24">
           <ScrollReveal>
-            <div className="mb-12 md:mb-16">
+            <div className="mb-6 md:mb-8">
               <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">Selected Work</h2>
               <h3 className="text-3xl md:text-4xl font-bold mb-4">8020REI</h3>
               <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-2xl">
-                PropTech data provider
+                PropTech, direct mail automation, skip trace and predictive data provider
               </p>
             </div>
           </ScrollReveal>
@@ -182,9 +182,11 @@ export const Home: React.FC = () => {
           </div>
 
           <ScrollReveal>
-            <div className="mb-12 md:mb-16">
+            <div className="mb-6 md:mb-8">
               <h3 className="text-3xl md:text-4xl font-bold mb-4">Habi</h3>
-              <p className="text-zinc-400 text-lg">PropTech mobile-first service provider for sellers and buyers</p>
+              <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-2xl">
+                PropTech mobile-first service provider for sellers and buyers
+              </p>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 md:mb-32">
@@ -200,7 +202,7 @@ export const Home: React.FC = () => {
           </div>
 
           <ScrollReveal>
-            <div className="mb-12 md:mb-16">
+            <div className="mb-6 md:mb-8">
               <h3 className="text-3xl md:text-4xl font-bold mb-4">Case study</h3>
             </div>
           </ScrollReveal>
@@ -249,8 +251,8 @@ export const Home: React.FC = () => {
               <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">Experience</h2>
               <div className="space-y-12">
                 {EXPERIENCE.map((exp, i) => (
-                  <div key={i} className="group">
-                    <h4 className="font-semibold text-zinc-100 group-hover:text-white transition-colors text-lg mb-1">{exp.company}</h4>
+                  <div key={i}>
+                    <h4 className="font-semibold text-zinc-100 text-lg mb-1">{exp.company}</h4>
                     <div className="flex flex-col gap-2 mb-4">
                       <span className="text-base text-zinc-400">{exp.role}</span>
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-zinc-600">
@@ -278,7 +280,7 @@ export const Home: React.FC = () => {
                     <h5 className="text-sm font-bold text-zinc-300 mb-4">{group.category}</h5>
                     <div className="flex flex-wrap gap-2.5">
                       {group.items.map(skill => (
-                        <span key={skill} className="px-3.5 py-1.5 rounded-sm bg-zinc-900/40 border border-zinc-800 text-[11px] text-zinc-400 font-mono hover:border-zinc-700 hover:text-zinc-300 transition-colors cursor-default">
+                        <span key={skill} className="px-3.5 py-1.5 rounded-sm bg-zinc-900/40 border border-zinc-800 text-[11px] text-zinc-400 font-mono cursor-default">
                           {skill}
                         </span>
                       ))}
