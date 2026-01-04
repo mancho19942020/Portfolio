@@ -120,7 +120,7 @@ export const Home: React.FC = () => {
                 </h1>
 
                 <p className="text-base md:text-lg text-zinc-400 max-w-2xl leading-relaxed font-light">
-                  I design and simplify complex desktop and mobile products through scalable design systems and vibecoding-driven workflows..
+                  I design and simplify complex desktop and mobile products through scalable design systems and vibecoding-driven workflows.
                 </p>
               </motion.div>
 
