@@ -794,18 +794,14 @@ export const EXPERIENCE: ExperienceItem[] = [
     role: "Product Designer",
     period: "Aug 2023 – Jun 2024",
     location: "Hybrid · Colombia",
+    secondaryRole: "Creative Designer",
+    secondaryPeriod: "Aug 2022 – Aug 2023",
+    secondaryLocation: "",
     description: [
-      "Acquisition funnels and internal platforms",
-      "Product optimization and experimentation",
-      "Collaboration with cross-functional teams"
-    ]
-  },
-  {
-    company: "Habi",
-    role: "Creative Designer",
-    period: "Aug 2022 – Aug 2023",
-    location: "",
-    description: [
+      "Design and audit the acquisition funnel experience",
+      "Design internal operations tools",
+      "Build and iterate AI customer service prompts",
+      "UX research with cross-functional teams",
       "Brand and marketing systems",
       "Campaign and visual communication across channels"
     ]
