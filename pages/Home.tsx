@@ -1,10 +1,76 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { NavBar } from '../components/NavBar';
-import { ProjectCard } from '../components/ProjectCard';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { PROJECTS, EXPERIENCE, SKILLS } from '../constants';
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+type ExperienceItem = (typeof EXPERIENCE)[number];
+type ExperienceItemWithSecondary = ExperienceItem & {
+  secondaryRole?: string;
+  secondaryPeriod?: string;
+  secondaryLocation?: string;
+};
+
+const ExperienceCard: React.FC<{ exp: ExperienceItemWithSecondary; index: number }> = ({ exp, index }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const listId = `experience-details-${index}`;
+
+  return (
+    <div className="rounded-sm border border-zinc-800 bg-zinc-900/40 px-3 py-3">
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <h4 className="font-semibold text-zinc-100 text-base mb-1">{exp.company}</h4>
+          <div className="flex flex-col gap-1.5">
+            <span className="text-sm text-zinc-400">{exp.role}</span>
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-mono text-zinc-600">
+              <span>{exp.period}</span>
+              {exp.location ? <span>• {exp.location}</span> : null}
+            </div>
+            {exp.secondaryRole ? (
+              <div className="mt-1.5">
+                <span className="text-sm text-zinc-400">{exp.secondaryRole}</span>
+                <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-mono text-zinc-600">
+                  <span>{exp.secondaryPeriod}</span>
+                  {exp.secondaryLocation ? <span>• {exp.secondaryLocation}</span> : null}
+                </div>
+              </div>
+            ) : null}
+          </div>
+        </div>
+        <button
+          type="button"
+          onClick={() => setIsExpanded((prev) => !prev)}
+          aria-expanded={isExpanded}
+          aria-controls={listId}
+          className="shrink-0 p-1.5 text-zinc-500 hover:text-zinc-300 transition-colors"
+        >
+          <span className="sr-only">{isExpanded ? 'Collapse experience details' : 'Expand experience details'}</span>
+          <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
+        </button>
+      </div>
+      <AnimatePresence initial={false}>
+        {isExpanded ? (
+          <motion.div
+            id={listId}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="overflow-hidden"
+          >
+            <ul className="mt-3 space-y-1.5 text-sm text-zinc-500 leading-relaxed max-w-sm list-disc pl-4">
+              {exp.description.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </div>
+  );
+};
 
 export const Home: React.FC = () => {
   // Filter projects by category
@@ -23,6 +89,27 @@ export const Home: React.FC = () => {
     p => p.category === 'Habi' && p.title !== 'Internal Ops'
   ).sort((a, b) => habiOrder.indexOf(a.title) - habiOrder.indexOf(b.title));
   const freelanceProjects = PROJECTS.filter(p => p.category === 'Freelance').slice(0, 1);
+  const initialWorkProject = reiProjects[0] ?? habiProjects[0] ?? freelanceProjects[0];
+  const [activeProjectId, setActiveProjectId] = useState(initialWorkProject?.id ?? '');
+  const activeProject = PROJECTS.find((project) => project.id === activeProjectId) ?? initialWorkProject;
+
+  const workSections = [
+    {
+      title: '8020REI',
+      description: 'PropTech, direct mail automation, skip trace and predictive data provider',
+      projects: reiProjects
+    },
+    {
+      title: 'Habi',
+      description: 'PropTech mobile-first service provider for sellers and buyers',
+      projects: habiProjects
+    },
+    {
+      title: 'Case study',
+      description: '',
+      projects: freelanceProjects
+    }
+  ];
 
   // Hero Text Rotation Logic
   const titles = [
@@ -133,16 +220,16 @@ export const Home: React.FC = () => {
                 <div className="flex flex-col gap-6 min-[770px]:flex-row min-[770px]:items-center">
                   <div className="grid grid-cols-2 gap-4 w-full min-[770px]:flex min-[770px]:w-auto min-[770px]:items-center">
                     <button
-                      onClick={() => scrollToSection('work')}
-                      className="glow-reactive glow-button btn-outline w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm font-semibold transition-colors"
-                    >
-                      View Work
-                    </button>
-                    <button
                       onClick={() => scrollToSection('about')}
                       className="glow-reactive glow-button btn-outline w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm font-semibold transition-colors"
                     >
                       About Me
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('work')}
+                      className="glow-reactive glow-button btn-outline w-full min-[770px]:w-44 px-8 py-4 border border-zinc-800 rounded-sm font-semibold transition-colors"
+                    >
+                      View Work
                     </button>
                     <button
                       type="button"
@@ -161,60 +248,6 @@ export const Home: React.FC = () => {
           </div>
         </section>
 
-        {/* PROJECTS SECTION */}
-        <section id="work" className="py-24 md:py-36 scroll-mt-24">
-          <ScrollReveal>
-            <div className="mb-6 md:mb-8">
-              <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">Selected Work</h2>
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">8020REI</h3>
-              <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-2xl">
-                PropTech, direct mail automation, skip trace and predictive data provider
-              </p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 md:mb-32">
-            {reiProjects.map((project, i) => (
-              <ScrollReveal key={project.id} delay={i * 0.1} className={i === 0 || i === 3 ? "md:col-span-2" : "col-span-1"}>
-                <ProjectCard project={project} large={i === 0 || i === 3} />
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal>
-            <div className="mb-6 md:mb-8">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">Habi</h3>
-              <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-2xl">
-                PropTech mobile-first service provider for sellers and buyers
-              </p>
-            </div>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 md:mb-32">
-            {habiProjects.map((project, i) => (
-              <ScrollReveal
-                key={project.id}
-                delay={i * 0.1}
-                className={habiProjects.length === 1 ? "md:col-span-2" : "col-span-1"}
-              >
-                <ProjectCard project={project} large={habiProjects.length === 1} />
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal>
-            <div className="mb-6 md:mb-8">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">Case study</h3>
-            </div>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-0">
-            {freelanceProjects.map((project, i) => (
-              <ScrollReveal key={project.id} delay={i * 0.1} className="md:col-span-2">
-                <ProjectCard project={project} large />
-              </ScrollReveal>
-            ))}
-          </div>
-        </section>
-
         {/* ABOUT & EXPERIENCE SECTION */}
         <section id="about" className="py-24 md:py-36 grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 scroll-mt-24">
           <div className="md:col-span-4">
@@ -225,7 +258,7 @@ export const Home: React.FC = () => {
                 My work is grounded in research, validated by data, and accelerated by AI tools.
               </p>
               <p className="text-zinc-500 text-base leading-relaxed">
-                I thrive in environments where I can build scalable design systems (like Kairo)
+                I thrive in environments where I can build scalable products
                 and collaborate closely with engineering to ship polished, performant software.
               </p>
               <div className="mt-10 space-y-4">
@@ -249,23 +282,9 @@ export const Home: React.FC = () => {
           <div className="md:col-span-4">
             <ScrollReveal delay={0.2}>
               <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">Experience</h2>
-              <div className="space-y-12">
+              <div className="space-y-4">
                 {EXPERIENCE.map((exp, i) => (
-                  <div key={i}>
-                    <h4 className="font-semibold text-zinc-100 text-lg mb-1">{exp.company}</h4>
-                    <div className="flex flex-col gap-2 mb-4">
-                      <span className="text-base text-zinc-400">{exp.role}</span>
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-zinc-600">
-                        <span>{exp.period}</span>
-                        {exp.location ? <span>• {exp.location}</span> : null}
-                      </div>
-                    </div>
-                    <ul className="space-y-2 text-sm text-zinc-500 leading-relaxed max-w-sm list-disc pl-4">
-                      {exp.description.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ExperienceCard key={i} exp={exp} index={i} />
                 ))}
               </div>
             </ScrollReveal>
@@ -289,6 +308,101 @@ export const Home: React.FC = () => {
                 ))}
               </div>
             </ScrollReveal>
+          </div>
+        </section>
+
+        {/* PROJECTS SECTION */}
+        <section id="work" className="py-24 md:py-36 scroll-mt-24">
+          <ScrollReveal>
+            <div className="mb-12 md:mb-16">
+              <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-6">Selected Work</h2>
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_360px] gap-12 lg:gap-16">
+            <div className="space-y-12">
+              {workSections.map((section, sectionIndex) => (
+                <ScrollReveal key={section.title} delay={sectionIndex * 0.1}>
+                  <div>
+                    <div className="mb-4">
+                      <h3 className="text-2xl md:text-3xl font-bold text-zinc-100">{section.title}</h3>
+                      {section.description ? (
+                        <p className="text-zinc-500 text-sm md:text-base font-light mt-2 max-w-2xl">
+                          {section.description}
+                        </p>
+                      ) : null}
+                    </div>
+                    <ol>
+                      {section.projects.map((project, projectIndex) => {
+                        const isActive = project.id === activeProject?.id;
+                        return (
+                          <li key={project.id} className="border-t border-zinc-800 first:border-t-0">
+                            <Link
+                              to={`/project/${project.id}`}
+                              onClick={() => {
+                                sessionStorage.setItem('scroll-home', String(window.scrollY));
+                                sessionStorage.setItem('scroll-target', `project-${project.id}`);
+                              }}
+                              onMouseEnter={() => setActiveProjectId(project.id)}
+                              onFocus={() => setActiveProjectId(project.id)}
+                              id={`project-${project.id}`}
+                              aria-current={isActive ? 'true' : undefined}
+                              className={`group flex items-start gap-4 py-4 transition-colors ${isActive ? 'text-zinc-100' : 'text-zinc-300 hover:text-zinc-100'}`}
+                            >
+                              <span className="mt-1 text-[10px] font-mono tracking-widest text-zinc-500">
+                                {String(projectIndex + 1).padStart(2, '0')}
+                              </span>
+                              <div className="flex-1">
+                                <h4 className="text-lg md:text-xl font-semibold">
+                                  {project.title}
+                                </h4>
+                                <p className="text-xs md:text-sm text-zinc-500 font-medium">
+                                  {project.subtitle}
+                                </p>
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {project.tags.map(tag => (
+                                    <span key={tag} className="text-[10px] font-mono text-zinc-500">
+                                      /{tag}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ol>
+                  </div>
+                </ScrollReveal>
+              ))}
+            </div>
+
+            <div className="hidden lg:block">
+              <div className="sticky top-28">
+                <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-2">
+                  <AnimatePresence mode="wait">
+                    {activeProject?.images?.[0] ? (
+                      <motion.img
+                        key={activeProject.id}
+                        src={activeProject.images[0].src}
+                        alt={activeProject.images[0].alt}
+                        className="h-[420px] w-full rounded-xl object-cover"
+                        initial={{ opacity: 0, y: 12, scale: 0.98 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -12, scale: 0.98 }}
+                        transition={{ duration: 0.35, ease: 'easeOut' }}
+                      />
+                    ) : null}
+                  </AnimatePresence>
+                </div>
+                {activeProject ? (
+                  <div className="mt-4 flex items-center justify-between text-xs font-mono text-zinc-500">
+                    <span>{activeProject.category}</span>
+                    <span>{activeProject.title}</span>
+                  </div>
+                ) : null}
+              </div>
+            </div>
           </div>
         </section>
 

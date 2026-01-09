@@ -54,6 +54,9 @@ export interface ExperienceItem {
   period: string;
   location: string;
   description: string[];
+  secondaryRole?: string;
+  secondaryPeriod?: string;
+  secondaryLocation?: string;
 }
 
 export interface SkillGroup {
