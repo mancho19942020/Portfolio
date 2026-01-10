@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar } from '../components/NavBar';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { InterestsRibbon } from '../components/InterestsRibbon';
 import { PROJECTS, EXPERIENCE, SKILLS } from '../constants';
 import { ArrowDown, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -246,6 +247,13 @@ export const Home: React.FC = () => {
               </motion.div>
             </div>
           </div>
+        </section>
+
+        {/* INTERESTS RIBBON */}
+        <section id="interests" className="py-10 md:py-12 scroll-mt-24">
+          <ScrollReveal>
+            <InterestsRibbon />
+          </ScrollReveal>
         </section>
 
         {/* ABOUT & EXPERIENCE SECTION */}

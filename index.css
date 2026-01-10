@@ -147,8 +147,20 @@ html[data-theme='light'] .bg-zinc-900\/40 {
   background-color: rgba(255, 255, 255, 0.6);
 }
 
+html[data-theme='light'] .bg-zinc-950\/40 {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
 html[data-theme='light'] .bg-zinc-950\/50 {
   background-color: rgba(255, 255, 255, 0.7);
+}
+
+html[data-theme='light'] .bg-zinc-950\/90 {
+  background-color: rgba(255, 255, 255, 0.92);
+}
+
+html[data-theme='light'] .bg-black\/60 {
+  background-color: rgba(0, 0, 0, 0.35);
 }
 
 html[data-theme='light'] .bg-zinc-700 {
@@ -308,4 +320,13 @@ html[data-theme='light'] .btn-outline:focus-visible {
   .cursor-glow {
     display: none;
   }
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
