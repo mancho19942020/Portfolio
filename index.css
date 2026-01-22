@@ -72,6 +72,16 @@ html[data-theme='light'] .select-field {
   cursor: none;
 }
 
+.interest-tag {
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+
+html[data-theme='light'] .interest-tag:hover {
+  border-color: #9ca3af;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
 .cursor-dot,
 .cursor-glow {
   position: fixed;

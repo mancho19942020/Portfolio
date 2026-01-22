@@ -9,6 +9,7 @@ interface InterestItem {
   prefix?: string;
   label: string;
   action: string;
+  tag?: string;
   helper: string;
   icon: React.ReactNode;
 }
@@ -31,6 +32,7 @@ const INTERESTS: InterestItem[] = [
     id: 'pong',
     label: 'videogames',
     action: 'Play pong',
+    tag: 'PlayPong',
     helper: 'Real-time interaction with keyboard or touch.',
     icon: <Gamepad2 className="h-4 w-4" />
   },
@@ -38,6 +40,7 @@ const INTERESTS: InterestItem[] = [
     id: 'movies',
     label: 'movies & TV',
     action: 'Mood tracker',
+    tag: 'TryMoodTracker',
     helper: 'Quick survey to match your mood with a recommendation.',
     icon: <Film className="h-4 w-4" />
   },
@@ -45,6 +48,7 @@ const INTERESTS: InterestItem[] = [
     id: 'fitness',
     label: 'fitness',
     action: 'Create workout',
+    tag: 'CreateAWorkoutNow',
     helper: 'Simple inputs, practical output.',
     icon: <Dumbbell className="h-4 w-4" />
   },
@@ -53,6 +57,7 @@ const INTERESTS: InterestItem[] = [
     prefix: 'I have',
     label: 'two dogs',
     action: 'Play Tamagotchi',
+    tag: 'PlayTamagotchi',
     helper: 'A quiet, retro-inspired companion.',
     icon: <Dog className="h-4 w-4" />
   }
@@ -1189,6 +1194,7 @@ const InterestModal: React.FC<{
   onClose: () => void;
 }> = ({ interest, onClose }) => {
   const prefix = interest.prefix ?? 'I like';
+  const tag = interest.tag ?? toHashTag(interest.action);
   return (
     <motion.div
       className="fixed inset-0 z-[60] flex items-center justify-center px-4 py-8"
@@ -1215,7 +1221,7 @@ const InterestModal: React.FC<{
               <span>{interest.label}</span>
             </div>
             <h3 className="text-2xl font-semibold font-mono tracking-wide">
-              {prefix} {interest.label} #{toHashTag(interest.action)}
+              #{tag} {prefix} {interest.label}
             </h3>
             <p className="text-sm text-zinc-400">{interest.helper}</p>
           </div>
@@ -1267,12 +1273,13 @@ export const InterestsRibbon: React.FC = () => {
               key={interest.id}
               type="button"
               onClick={() => handleOpen(interest)}
-              className="glow-reactive glow-button flex w-full items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-2 text-sm text-zinc-200 transition-colors hover:border-zinc-600 md:w-auto"
+              className="glow-reactive glow-button interest-tag flex w-full items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-2 text-sm text-zinc-200 transition-colors hover:border-zinc-600 md:w-auto"
               aria-label={`Open ${interest.label} feature`}
             >
               <span className="text-zinc-500">{interest.icon}</span>
               <span className="font-mono tracking-wide">
-                {getPrefix(interest)} {interest.label} #{toHashTag(interest.action)}
+                <span className="text-zinc-200">#{interest.tag ?? toHashTag(interest.action)}</span>
+                <span className="ml-2 text-zinc-400">{getPrefix(interest)} {interest.label}</span>
               </span>
             </button>
           ))}
