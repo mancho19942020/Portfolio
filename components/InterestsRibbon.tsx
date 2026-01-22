@@ -40,7 +40,7 @@ const INTERESTS: InterestItem[] = [
     id: 'movies',
     label: 'movies & TV',
     action: 'Mood tracker',
-    tag: 'TryMoodTracker',
+    tag: 'TryMoodWatch',
     helper: 'Quick survey to match your mood with a recommendation.',
     icon: <Film className="h-4 w-4" />
   },
@@ -1277,7 +1277,7 @@ export const InterestsRibbon: React.FC = () => {
               aria-label={`Open ${interest.label} feature`}
             >
               <span className="text-zinc-500">{interest.icon}</span>
-              <span className="font-mono tracking-wide">
+              <span className="font-mono tracking-[0.02em] whitespace-nowrap">
                 <span className="text-zinc-200">#{interest.tag ?? toHashTag(interest.action)}</span>
                 <span className="ml-2 text-zinc-400">{getPrefix(interest)} {interest.label}</span>
               </span>
