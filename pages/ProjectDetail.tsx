@@ -1,10 +1,50 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { PROJECTS } from '../constants';
+import { ProjectNarrativeChapter } from '../types';
 import { NavBar } from '../components/NavBar';
 import { motion } from 'framer-motion';
 import { Search } from 'lucide-react';
 import nowAppResearchPdf from '../assets/docs/nowapp-research.pdf';
+
+const buildFallbackChapters = (project: (typeof PROJECTS)[number]): ProjectNarrativeChapter[] => {
+  const focusHighlights = [...project.narrative.challenge.painPoints, ...project.narrative.challenge.constraints];
+  return [
+    {
+      label: 'Act 01',
+      title: 'Context and product tension',
+      paragraphs: [
+        project.narrative.introduction.summary,
+        project.narrative.challenge.summary
+      ],
+      highlights: focusHighlights.slice(0, 5)
+    },
+    {
+      label: 'Act 02',
+      title: 'What discovery made clear',
+      paragraphs: [
+        'Discovery reframed the scope around concrete user behavior, operational limits, and the decisions users needed to make with confidence.'
+      ],
+      highlights: project.narrative.challenge.insights
+    },
+    {
+      label: 'Act 03',
+      title: 'How the solution was shaped',
+      paragraphs: [
+        'The solution focused on reducing friction, introducing guidance at the right moments, and aligning design decisions with measurable product outcomes.'
+      ],
+      highlights: project.narrative.approach
+    },
+    {
+      label: 'Act 04',
+      title: 'Impact and follow-through',
+      paragraphs: [
+        'Success was measured through adoption, execution quality, and confidence in decision making after release.'
+      ],
+      highlights: project.narrative.outcome
+    }
+  ];
+};
 
 export const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,6 +59,7 @@ export const ProjectDetail: React.FC = () => {
   const isCaseStudy = project.category === 'Freelance';
   const categoryLabel = isCaseStudy ? 'UX/UI case study' : project.category;
   const showNowAppResearch = project.id === 'freelance-1';
+  const chapters = project.narrative.chapters ?? buildFallbackChapters(project);
 
   return (
     <div className="min-h-screen bg-background text-zinc-100 selection:bg-zinc-700 selection:text-white pb-20">
@@ -122,41 +163,31 @@ export const ProjectDetail: React.FC = () => {
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="space-y-6"
             >
-              <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">Challenge & Discovery</h2>
-              <p className="text-lg text-zinc-200 leading-relaxed font-light">
-                {project.narrative.challenge.summary}
-              </p>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-zinc-400">
-                <div className="space-y-3">
-                  <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">Pain Points</p>
-                  <div className="divide-y divide-zinc-800/60">
-                    {project.narrative.challenge.painPoints.map((item) => (
-                      <div key={item} className="py-3 leading-relaxed">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">Constraints</p>
-                  <div className="divide-y divide-zinc-800/60">
-                    {project.narrative.challenge.constraints.map((item) => (
-                      <div key={item} className="py-3 leading-relaxed">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">Insights</p>
-                  <div className="divide-y divide-zinc-800/60">
-                    {project.narrative.challenge.insights.map((item) => (
-                      <div key={item} className="py-3 leading-relaxed">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">Case narrative</h2>
+              <div className="space-y-8">
+                {chapters.map((chapter, index) => (
+                  <article key={`${chapter.label}-${chapter.title}`} className="relative pl-7 sm:pl-9 border-l border-zinc-800/80">
+                    <span className="absolute -left-[8px] top-1.5 h-4 w-4 rounded-full bg-zinc-950 border border-zinc-700" />
+                    <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">{chapter.label}</p>
+                    <h3 className="mt-2 text-xl text-zinc-100 leading-tight">
+                      {index + 1}. {chapter.title}
+                    </h3>
+                    <div className="mt-4 space-y-3">
+                      {chapter.paragraphs.map((paragraph) => (
+                        <p key={paragraph} className="text-base md:text-lg text-zinc-300 leading-relaxed font-light">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                    {chapter.highlights && chapter.highlights.length > 0 ? (
+                      <ul className="mt-4 space-y-2 text-sm text-zinc-400 leading-relaxed list-disc pl-5">
+                        {chapter.highlights.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </article>
+                ))}
               </div>
             </motion.section>
 
@@ -167,36 +198,6 @@ export const ProjectDetail: React.FC = () => {
                 </div>
               ))}
             </div>
-
-            <motion.section
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-6"
-            >
-              <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">Approach</h2>
-              <ul className="space-y-3 text-lg text-zinc-200 leading-relaxed font-light list-disc pl-5">
-                {project.narrative.approach.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </motion.section>
-
-            <motion.section
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="space-y-6"
-            >
-              <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">Outcome</h2>
-              <ul className="space-y-3 text-lg text-zinc-200 leading-relaxed font-light list-disc pl-5">
-                {project.narrative.outcome.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </motion.section>
           </div>
 
           <aside className="hidden lg:block">

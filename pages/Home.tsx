@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavBar } from '../components/NavBar';
 import { ScrollReveal } from '../components/ScrollReveal';
+import { ToolsCarousel } from '../components/ToolsCarousel';
 import { InterestsRibbon } from '../components/InterestsRibbon';
 import { PROJECTS, EXPERIENCE, SKILLS } from '../constants';
 import { ArrowDown, ChevronDown } from 'lucide-react';
@@ -77,9 +78,9 @@ export const Home: React.FC = () => {
   // Filter projects by category
   const reiOrder = [
     "BuyBox editor redesign",
-    "Property list and view redesign",
+    "Properties view redesign",
     "Kairo design system",
-    "DM Automation"
+    "DM campaign"
   ];
   const habiOrder = ["Smart funnel", "Internal Ops"];
 
@@ -93,6 +94,9 @@ export const Home: React.FC = () => {
   const initialWorkProject = reiProjects[0] ?? habiProjects[0] ?? freelanceProjects[0];
   const [activeProjectId, setActiveProjectId] = useState(initialWorkProject?.id ?? '');
   const activeProject = PROJECTS.find((project) => project.id === activeProjectId) ?? initialWorkProject;
+  const activePreviewImage = activeProject
+    ? activeProject.images[activeProject.previewImageIndex ?? 0] ?? activeProject.images[0]
+    : undefined;
 
   const workSections = [
     {
@@ -176,7 +180,7 @@ export const Home: React.FC = () => {
       <main className="max-w-7xl mx-auto px-6 md:px-12">
 
         {/* HERO SECTION */}
-        <section className="min-h-[calc(100svh-4rem)] md:min-h-[calc(100vh-4rem)] flex flex-col relative pt-24 md:pt-16 pb-16">
+        <section className="min-h-[calc(100svh-4rem)] md:min-h-[calc(100vh-4rem)] flex flex-col relative py-24 md:py-24">
           <div className="flex-1 flex flex-col justify-center">
             <div className="flex flex-col gap-10">
               <motion.div
@@ -249,15 +253,22 @@ export const Home: React.FC = () => {
           </div>
         </section>
 
+        {/* TOOLS CAROUSEL */}
+        <section id="tools" className="py-24 md:py-36">
+          <ScrollReveal>
+            <ToolsCarousel />
+          </ScrollReveal>
+        </section>
+
         {/* INTERESTS RIBBON */}
-        <section id="interests" className="py-10 md:py-12 scroll-mt-24">
+        <section id="interests" className="py-24 md:py-36 scroll-mt-24">
           <ScrollReveal>
             <InterestsRibbon />
           </ScrollReveal>
         </section>
 
         {/* ABOUT & EXPERIENCE SECTION */}
-        <section id="about" className="py-24 md:py-36 grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 scroll-mt-24">
+        <section id="about" className="pt-24 md:pt-36 pb-24 md:pb-36 grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 scroll-mt-24">
           <div className="md:col-span-4">
             <ScrollReveal>
               <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">About</h2>
@@ -389,12 +400,13 @@ export const Home: React.FC = () => {
               <div className="sticky top-28">
                 <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-2">
                   <AnimatePresence mode="wait">
-                    {activeProject?.images?.[0] ? (
+                    {activePreviewImage ? (
                       <motion.img
                         key={activeProject.id}
-                        src={activeProject.images[0].src}
-                        alt={activeProject.images[0].alt}
+                        src={activePreviewImage.src}
+                        alt={activePreviewImage.alt}
                         className="h-[420px] w-full rounded-xl object-cover"
+                        style={{ objectPosition: activeProject.previewImagePosition ?? 'center' }}
                         initial={{ opacity: 0, y: 12, scale: 0.98 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -12, scale: 0.98 }}
@@ -442,7 +454,7 @@ export const Home: React.FC = () => {
 
         <footer className="py-20 text-center text-zinc-700 text-xs font-mono">
           <ScrollReveal>
-            <p>This portfolio was built using only free resources and AI agents, such as ChatGPT Codex, Gemini Pro and Cursor as code editor.</p>
+            <p>Built with Cursor, GPT codex, Claude and Gemini.</p>
             <p className="mt-2">© 2025 Germán David Alvarez.</p>
           </ScrollReveal>
         </footer>

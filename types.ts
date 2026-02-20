@@ -12,6 +12,13 @@ export interface ProjectImage {
   caption?: string;
 }
 
+export interface ProjectNarrativeChapter {
+  label: string;
+  title: string;
+  paragraphs: string[];
+  highlights?: string[];
+}
+
 export interface ProjectNarrative {
   introduction: {
     company: string;
@@ -31,6 +38,7 @@ export interface ProjectNarrative {
   };
   approach: string[];
   outcome: string[];
+  chapters?: ProjectNarrativeChapter[];
 }
 
 export interface Project {
@@ -44,6 +52,8 @@ export interface Project {
   tools: string[];
   tags: string[];
   thumbnailGradient: string;
+  previewImageIndex?: number;
+  previewImagePosition?: string;
   narrative: ProjectNarrative;
   images: ProjectImage[];
 }

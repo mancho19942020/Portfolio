@@ -13,6 +13,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, large = false
   const categoryClassName = project.category === 'Freelance'
     ? "inline-block px-2 py-1 bg-zinc-950/50 border border-zinc-800 rounded text-[10px] font-mono tracking-wider text-zinc-400"
     : "inline-block px-2 py-1 bg-zinc-950/50 border border-zinc-800 rounded text-[10px] font-mono uppercase tracking-wider text-zinc-400";
+  const previewImage = project.images[project.previewImageIndex ?? 0] ?? project.images[0];
 
   return (
     <Link
@@ -30,7 +31,10 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, large = false
       <div className="absolute inset-0 overflow-hidden opacity-[0.05] group-hover:opacity-[0.09] transition-opacity pointer-events-none">
         <div
           className="absolute inset-0 bg-no-repeat bg-cover bg-right mix-blend-overlay"
-          style={{ backgroundImage: `url(${project.images[0]?.src})` }}
+          style={{
+            backgroundImage: `url(${previewImage?.src})`,
+            backgroundPosition: project.previewImagePosition ?? 'right'
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-l from-transparent via-zinc-950/40 to-zinc-950" />
       </div>

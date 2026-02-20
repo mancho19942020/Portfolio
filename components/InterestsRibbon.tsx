@@ -552,6 +552,7 @@ const FitnessPlan: React.FC = () => {
 };
 
 type PetMood = 'Calm' | 'Happy' | 'Tired' | 'Hungry' | 'Sad';
+type PetAction = 'feed' | 'play' | 'pet';
 
 interface TamagotchiState {
   hunger: number;
@@ -569,9 +570,10 @@ interface TamagotchiState {
   };
 }
 
-const PET_STORAGE_KEY = 'portfolio.tamagotchi';
-
 const clampStat = (value: number) => Math.max(0, Math.min(100, value));
+const PET_TICK_MS = 1200;
+const PET_AGE_ACCELERATION = 12; // 1 real minute ~= 12 in-game minutes
+const ACTION_VISUAL_DURATION_MS = 900;
 
 const deriveMood = (state: Pick<TamagotchiState, 'hunger' | 'happiness' | 'energy' | 'alive'>): PetMood => {
   if (!state.alive) return 'Sad';
@@ -602,56 +604,36 @@ const createFreshPet = (): TamagotchiState => {
   return { ...base, mood: deriveMood(base) };
 };
 
-const loadPetState = (): TamagotchiState => {
-  if (typeof window === 'undefined') return createFreshPet();
-  const stored = window.localStorage.getItem(PET_STORAGE_KEY);
-  if (!stored) return createFreshPet();
-  try {
-    const parsed = JSON.parse(stored) as TamagotchiState;
-    return {
-      ...createFreshPet(),
-      ...parsed
-    };
-  } catch (error) {
-    return createFreshPet();
-  }
-};
-
-const savePetState = (state: TamagotchiState) => {
-  if (typeof window === 'undefined') return;
-  window.localStorage.setItem(PET_STORAGE_KEY, JSON.stringify(state));
-};
-
 const applyTimeDecay = (state: TamagotchiState, now: number): TamagotchiState => {
   if (!state.alive) {
     return { ...state, lastUpdated: now };
   }
 
-  const elapsedMinutes = Math.max(0, (now - state.lastUpdated) / 60000);
-  if (elapsedMinutes <= 0.01) {
+  const elapsedSeconds = Math.max(0, (now - state.lastUpdated) / 1000);
+  if (elapsedSeconds <= 0.15) {
     return state;
   }
 
-  // Slightly faster decay to make the experience feel responsive in short sessions.
-  const hungerIncrease = 3.4 * elapsedMinutes;
-  const energyDecrease = 2.4 * elapsedMinutes;
-  const baseHappinessDecrease = 1.0 * elapsedMinutes;
+  // Fast-session balancing: noticeable change in 3-5 seconds, high engagement in ~1 minute.
+  const hungerIncrease = 0.72 * elapsedSeconds;
+  const energyDecrease = 0.56 * elapsedSeconds;
+  const baseHappinessDecrease = 0.34 * elapsedSeconds;
 
   let hunger = clampStat(state.hunger + hungerIncrease);
   let energy = clampStat(state.energy - energyDecrease);
   let happiness = clampStat(state.happiness - baseHappinessDecrease);
 
-  if (hunger >= 70) {
-    happiness = clampStat(happiness - 1.6 * elapsedMinutes);
+  if (hunger >= 65) {
+    happiness = clampStat(happiness - 0.52 * elapsedSeconds);
   }
-  if (energy <= 30) {
-    happiness = clampStat(happiness - 1.4 * elapsedMinutes);
+  if (energy <= 35) {
+    happiness = clampStat(happiness - 0.46 * elapsedSeconds);
   }
 
-  const inCritical = hunger >= 92 || energy <= 8;
+  const inCritical = hunger >= 96 || energy <= 4;
   const criticalSince = inCritical ? (state.criticalSince ?? now) : null;
   const criticalDuration = inCritical && criticalSince ? now - criticalSince : 0;
-  const alive = criticalDuration < 1000 * 60 * 45;
+  const alive = criticalDuration < 1000 * 25;
 
   const next = {
     ...state,
@@ -668,30 +650,32 @@ const applyTimeDecay = (state: TamagotchiState, now: number): TamagotchiState =>
 
 const applyAction = (
   state: TamagotchiState,
-  action: 'feed' | 'play' | 'pet'
+  action: PetAction
 ): TamagotchiState => {
   if (!state.alive) return state;
   const now = Date.now();
   const elapsedSinceAction = Math.max(0, (now - state.lastAction[action]) / 1000);
-  const cooldown = action === 'pet' ? 6 : 10;
+  const cooldown = action === 'pet' ? 2 : 3.5;
   const softness = Math.min(1, elapsedSinceAction / cooldown);
-  const diminishing = 0.6 + 0.4 * softness;
+  const diminishing = 0.45 + 0.55 * softness;
 
   let hunger = state.hunger;
   let energy = state.energy;
   let happiness = state.happiness;
 
   if (action === 'feed') {
-    hunger = clampStat(hunger - 24 * diminishing);
-    happiness = clampStat(happiness + 7 * diminishing);
+    hunger = clampStat(hunger - 34 * diminishing);
+    happiness = clampStat(happiness + 11 * diminishing);
+    energy = clampStat(energy + 5 * diminishing);
   }
   if (action === 'play') {
-    happiness = clampStat(happiness + 18 * diminishing);
-    energy = clampStat(energy - 14 * diminishing);
-    hunger = clampStat(hunger + 6 * (1 - diminishing));
+    happiness = clampStat(happiness + 26 * diminishing);
+    energy = clampStat(energy - 17 * diminishing);
+    hunger = clampStat(hunger + 8 * (1 - diminishing));
   }
   if (action === 'pet') {
-    happiness = clampStat(happiness + 10 * diminishing);
+    happiness = clampStat(happiness + 14 * diminishing);
+    energy = clampStat(energy + 2 * diminishing);
   }
 
   const next = {
@@ -710,64 +694,181 @@ const applyAction = (
 };
 
 const formatAge = (createdAt: number) => {
-  const minutes = Math.max(0, Math.floor((Date.now() - createdAt) / 60000));
+  const acceleratedMinutes = Math.max(
+    0,
+    Math.floor(((Date.now() - createdAt) / 60000) * PET_AGE_ACCELERATION)
+  );
+  const minutes = acceleratedMinutes;
   if (minutes < 60) return `${minutes} min`;
   const hours = Math.floor(minutes / 60);
   const remainder = minutes % 60;
   return `${hours}h ${remainder}m`;
 };
 
-const PET_SPRITES: Record<PetMood, string[]> = {
-  Happy: [
-    '00111100',
-    '01111110',
-    '11011011',
-    '11111111',
-    '11100111',
-    '01111110',
-    '00111100',
-    '00000000'
-  ],
-  Calm: [
-    '00111100',
-    '01111110',
-    '11011011',
-    '11111111',
-    '11111111',
-    '01100110',
-    '00111100',
-    '00000000'
-  ],
-  Tired: [
-    '00111100',
-    '01111110',
-    '11000011',
-    '11111111',
-    '11111111',
-    '01111110',
-    '00111100',
-    '00000000'
-  ],
-  Hungry: [
-    '00111100',
-    '01111110',
-    '11011011',
-    '11111111',
-    '11111111',
-    '01100110',
-    '00100100',
-    '00000000'
-  ],
-  Sad: [
-    '00111100',
-    '01111110',
-    '11011011',
-    '11111111',
-    '11111111',
-    '01100110',
-    '00111100',
-    '00011000'
-  ]
+const PET_SPRITES: Record<
+  PetMood,
+  { idle: string[]; blink: string[]; action: string[] }
+> = {
+  Happy: {
+    idle: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11100111',
+      '01111110',
+      '00111100',
+      '00000000'
+    ],
+    blink: [
+      '00111100',
+      '01111110',
+      '11000011',
+      '11111111',
+      '11100111',
+      '01111110',
+      '00111100',
+      '00000000'
+    ],
+    action: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11000011',
+      '01111110',
+      '00111100',
+      '00000000'
+    ]
+  },
+  Calm: {
+    idle: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11111111',
+      '01100110',
+      '00111100',
+      '00000000'
+    ],
+    blink: [
+      '00111100',
+      '01111110',
+      '11000011',
+      '11111111',
+      '11111111',
+      '01100110',
+      '00111100',
+      '00000000'
+    ],
+    action: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11100111',
+      '01100110',
+      '00111100',
+      '00000000'
+    ]
+  },
+  Tired: {
+    idle: [
+      '00111100',
+      '01111110',
+      '11000011',
+      '11111111',
+      '11111111',
+      '01111110',
+      '00111100',
+      '00000000'
+    ],
+    blink: [
+      '00111100',
+      '01111110',
+      '11000011',
+      '11111111',
+      '11100111',
+      '01111110',
+      '00111100',
+      '00000000'
+    ],
+    action: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11111111',
+      '01111110',
+      '00111100',
+      '00000000'
+    ]
+  },
+  Hungry: {
+    idle: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11111111',
+      '01100110',
+      '00100100',
+      '00000000'
+    ],
+    blink: [
+      '00111100',
+      '01111110',
+      '11000011',
+      '11111111',
+      '11111111',
+      '01100110',
+      '00100100',
+      '00000000'
+    ],
+    action: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11100111',
+      '01111110',
+      '00100100',
+      '00000000'
+    ]
+  },
+  Sad: {
+    idle: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11111111',
+      '01100110',
+      '00111100',
+      '00011000'
+    ],
+    blink: [
+      '00111100',
+      '01111110',
+      '11000011',
+      '11111111',
+      '11111111',
+      '01100110',
+      '00111100',
+      '00011000'
+    ],
+    action: [
+      '00111100',
+      '01111110',
+      '11011011',
+      '11111111',
+      '11100111',
+      '01100110',
+      '00111100',
+      '00011000'
+    ]
+  }
 };
 
 const DEAD_SPRITE = [
@@ -781,13 +882,25 @@ const DEAD_SPRITE = [
   '10000001'
 ];
 
-const getPetSprite = (mood: PetMood, alive: boolean) => {
-  return alive ? PET_SPRITES[mood] : DEAD_SPRITE;
+const getPetSprite = (
+  mood: PetMood,
+  alive: boolean,
+  frame: number,
+  isActionActive: boolean
+) => {
+  if (!alive) return DEAD_SPRITE;
+  if (isActionActive) return PET_SPRITES[mood].action;
+  return frame % 2 === 0 ? PET_SPRITES[mood].idle : PET_SPRITES[mood].blink;
 };
 
 const TamagotchiPet: React.FC = () => {
-  const [pet, setPet] = useState<TamagotchiState>(() => loadPetState());
+  const [pet, setPet] = useState<TamagotchiState>(() => createFreshPet());
   const [showHelp, setShowHelp] = useState(false);
+  const [spriteFrame, setSpriteFrame] = useState(0);
+  const [activeAction, setActiveAction] = useState<{
+    type: PetAction;
+    until: number;
+  } | null>(null);
 
   useEffect(() => {
     const now = Date.now();
@@ -795,19 +908,52 @@ const TamagotchiPet: React.FC = () => {
     const timer = window.setInterval(() => {
       const tickNow = Date.now();
       setPet((current) => applyTimeDecay(current, tickNow));
-    }, 20000);
+    }, PET_TICK_MS);
     return () => window.clearInterval(timer);
   }, []);
 
   useEffect(() => {
-    savePetState(pet);
-  }, [pet]);
+    const timer = window.setInterval(() => {
+      setSpriteFrame((current) => (current + 1) % 2);
+    }, 450);
+    return () => window.clearInterval(timer);
+  }, []);
 
-  const handleAction = (action: 'feed' | 'play' | 'pet') => {
+  useEffect(() => {
+    if (!activeAction) return;
+    const timeout = window.setTimeout(() => {
+      setActiveAction((current) => {
+        if (!current) return null;
+        return current.until <= Date.now() ? null : current;
+      });
+    }, Math.max(0, activeAction.until - Date.now()));
+    return () => window.clearTimeout(timeout);
+  }, [activeAction]);
+
+  const handleAction = (action: PetAction) => {
     setPet((current) => applyAction(current, action));
+    setActiveAction({
+      type: action,
+      until: Date.now() + ACTION_VISUAL_DURATION_MS
+    });
   };
 
-  const sprite = getPetSprite(pet.mood, pet.alive);
+  const isActionActive = Boolean(activeAction && activeAction.until > Date.now());
+  const sprite = getPetSprite(pet.mood, pet.alive, spriteFrame, isActionActive);
+  const pixelColor = !pet.alive
+    ? 'rgba(148, 163, 127, 0.45)'
+    : isActionActive
+      ? 'rgba(190, 242, 100, 0.96)'
+      : pet.mood === 'Hungry'
+        ? 'rgba(250, 204, 21, 0.95)'
+        : pet.mood === 'Tired'
+          ? 'rgba(203, 213, 225, 0.9)'
+          : pet.mood === 'Sad'
+            ? 'rgba(148, 163, 184, 0.9)'
+            : pet.mood === 'Happy'
+              ? 'rgba(134, 239, 172, 0.95)'
+              : 'rgba(148, 163, 127, 0.9)';
+  const actionLabel = activeAction?.type ? activeAction.type.toUpperCase() : null;
 
   return (
     <div className="space-y-6">
@@ -831,7 +977,19 @@ const TamagotchiPet: React.FC = () => {
             <span>Pet</span>
           </div>
           <div className="mt-4 flex items-center justify-center">
-            <div className="rounded-xl border border-[#2d3526] bg-gradient-to-br from-[#1a2218] via-[#0f1410] to-[#0b0f0b] p-5 shadow-[inset_0_0_20px_rgba(148,163,127,0.12)]">
+            <motion.div
+              className="rounded-xl border border-[#2d3526] bg-gradient-to-br from-[#1a2218] via-[#0f1410] to-[#0b0f0b] p-5 shadow-[inset_0_0_20px_rgba(148,163,127,0.12)]"
+              animate={
+                isActionActive
+                  ? { scale: [1, 1.09, 1], y: [0, -2, 0], rotate: [0, -1.3, 1.3, 0] }
+                  : { y: spriteFrame === 0 ? 0 : -1, scale: 1, rotate: 0 }
+              }
+              transition={
+                isActionActive
+                  ? { duration: 0.4, ease: 'easeInOut' }
+                  : { duration: 0.18, ease: 'easeOut' }
+              }
+            >
               <div className="grid grid-cols-8 gap-[2px]">
                 {sprite.map((row, rowIndex) =>
                   row.split('').map((pixel, colIndex) => (
@@ -839,17 +997,20 @@ const TamagotchiPet: React.FC = () => {
                       key={`${rowIndex}-${colIndex}`}
                       className="h-2.5 w-2.5 md:h-3 md:w-3"
                       style={{
-                        backgroundColor: pixel === '1' ? 'rgba(148, 163, 127, 0.9)' : 'transparent'
+                        backgroundColor: pixel === '1' ? pixelColor : 'transparent'
                       }}
                     />
                   ))
                 )}
               </div>
-            </div>
+            </motion.div>
           </div>
           <div className="mt-4 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-zinc-500">
             <span>Hunger {Math.round(pet.hunger)}%</span>
             <span>Energy {Math.round(pet.energy)}%</span>
+          </div>
+          <div className="mt-2 h-5 text-center text-[10px] font-mono uppercase tracking-[0.25em] text-zinc-500">
+            {isActionActive && actionLabel ? `${actionLabel} action` : 'Idle'}
           </div>
         </div>
 
@@ -888,7 +1049,7 @@ const TamagotchiPet: React.FC = () => {
         <button
           type="button"
           onClick={() => handleAction('feed')}
-          className="glow-reactive glow-button w-full rounded-md border border-zinc-700 bg-zinc-950/70 px-3 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:border-zinc-500 hover:bg-zinc-900/70 disabled:cursor-not-allowed disabled:opacity-40"
+          className="glow-reactive glow-button btn-primary w-full rounded-sm px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
           disabled={!pet.alive}
         >
           Feed
@@ -896,7 +1057,7 @@ const TamagotchiPet: React.FC = () => {
         <button
           type="button"
           onClick={() => handleAction('play')}
-          className="glow-reactive glow-button w-full rounded-md border border-zinc-700 bg-zinc-950/70 px-3 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:border-zinc-500 hover:bg-zinc-900/70 disabled:cursor-not-allowed disabled:opacity-40"
+          className="glow-reactive glow-button btn-primary w-full rounded-sm px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
           disabled={!pet.alive}
         >
           Play
@@ -904,7 +1065,7 @@ const TamagotchiPet: React.FC = () => {
         <button
           type="button"
           onClick={() => handleAction('pet')}
-          className="glow-reactive glow-button w-full rounded-md border border-zinc-700 bg-zinc-950/70 px-3 py-3 text-sm font-semibold text-zinc-100 transition-colors hover:border-zinc-500 hover:bg-zinc-900/70 disabled:cursor-not-allowed disabled:opacity-40"
+          className="glow-reactive glow-button btn-primary w-full rounded-sm px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
           disabled={!pet.alive}
         >
           Pet
@@ -924,10 +1085,10 @@ const TamagotchiPet: React.FC = () => {
       {showHelp ? (
         <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 text-sm text-zinc-300">
           <ul className="list-disc space-y-2 pl-4 text-zinc-400">
-            <li>Keep hunger low and energy above 30%.</li>
-            <li>Feed reduces hunger. Play boosts happiness but drains energy.</li>
-            <li>Pet gives a quick mood lift with no penalty.</li>
-            <li>Check in for a minute or two — it’s designed for quick sessions.</li>
+            <li>Stats update fast: this mini experience is tuned for 1-minute sessions.</li>
+            <li>Feed quickly lowers hunger and restores some energy.</li>
+            <li>Play gives big happiness boosts but uses energy.</li>
+            <li>Pet gives a quick mood lift and a small energy bump.</li>
           </ul>
         </div>
       ) : null}

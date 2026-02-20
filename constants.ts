@@ -38,13 +38,13 @@ export const PROJECTS: Project[] = [
   // 8020REI (Priority 1)
   {
     id: "8020-dm-campaign",
-    title: "DM Automation",
-    subtitle: "New Product Initiative",
+    title: "DM campaign",
+    subtitle: "New product initiative",
     category: "8020REI",
     type: "SaaS Feature • 0 to 1",
     role: "Lead Product Designer",
     duration: "3 months",
-    tools: ["Figma", "Figma Make", "Google Analytics", "Heap", "Clarity"],
+    tools: ["Figma", "Figma Make", "Google Analytics", "Heap", "Clarity", "ChatGPT"],
     tags: ["Product Strategy", "Automation Flow", "Complex Logic"],
     thumbnailGradient: "from-emerald-900 to-zinc-900",
     narrative: {
@@ -52,7 +52,7 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "DM Automation is an automated direct mail system that builds on RapidResponse. It eliminates manual workflows, reduces time-to-contact, and turns direct mail into a data-driven, automated channel integrated into the platform."
+        summary: "DM campaign is an automated direct mail system that builds on RapidResponse. It eliminates manual workflows, reduces time-to-contact, and turns direct mail into a data-driven, automated channel integrated into the platform."
       },
       role: {
         title: "Lead Product Designer",
@@ -107,40 +107,107 @@ export const PROJECTS: Project[] = [
         "Targets include a 50% increase in active usage",
         "Targets include positive CSAT feedback among active users",
         "Targets include expanded testing, optimization, and automation capabilities"
+      ],
+      chapters: [
+        {
+          label: "Act 01",
+          title: "From manual execution to product opportunity",
+          paragraphs: [
+            "Direct mail was already part of investor workflows, but execution happened outside the platform through fragmented vendors and manual coordination.",
+            "The product opportunity was to turn direct mail into a native capability that could react to data events in real time, not hours or days later."
+          ],
+          highlights: [
+            "Campaign setup was slow and fragmented",
+            "Outreach timing depended on manual follow-up",
+            "Messaging quality was disconnected from live data"
+          ]
+        },
+        {
+          label: "Act 02",
+          title: "Discovery aligned trust, control, and automation",
+          paragraphs: [
+            "Research across leadership, stakeholders, and active investors showed that automation alone was not enough. Users needed to understand what would happen, why it would happen, and what it would cost.",
+            "That shifted the scope from a simple trigger engine to a guided system with explicit rules, visibility, and auditability."
+          ],
+          highlights: [
+            "Automation needed transparent logic",
+            "Pricing, sequencing, and status had to be visible",
+            "Onboarding had to explain tradeoffs before activation"
+          ]
+        },
+        {
+          label: "Act 03",
+          title: "A two-track automation model",
+          paragraphs: [
+            "I defined two core trigger models: one based on live data updates (RapidResponse) and one based on list delivery events (SmartDrop).",
+            "This created a flexible structure that matched different investor operating models without forcing one rigid campaign type."
+          ],
+          highlights: [
+            "Real-time trigger path for rapid reactions",
+            "List-event trigger path for scheduled operations",
+            "Guided setup with guardrails and explicit decisions"
+          ]
+        },
+        {
+          label: "Act 04",
+          title: "Designing confidence into execution",
+          paragraphs: [
+            "The interaction layer focused on reducing uncertainty: clear configuration states, campaign progress, and delivery feedback at each step.",
+            "I also introduced onboarding and system language that translated complex automation rules into investor-facing decisions."
+          ],
+          highlights: [
+            "Clear campaign state and progress visibility",
+            "Configuration guardrails to prevent risky setup",
+            "Integrated performance tracking and exports"
+          ]
+        },
+        {
+          label: "Act 05",
+          title: "Early adoption and measurable direction",
+          paragraphs: [
+            "Early usage validated the need: 12 clients adopted the product and teams reported faster outreach with less operational friction.",
+            "Post-launch, we defined expansion metrics around active usage, satisfaction, and optimization capabilities to guide the next phase."
+          ],
+          highlights: [
+            "12 active clients in early adoption",
+            "Higher confidence in automated campaign execution",
+            "Clear roadmap for testing and optimization"
+          ]
+        }
       ]
     },
     images: [
       {
         src: dmAutomation01,
-        alt: "DM Automation screen 01"
+        alt: "DM campaign screen 01"
       },
       {
         src: dmAutomation02,
-        alt: "DM Automation screen 02"
+        alt: "DM campaign screen 02"
       },
       {
         src: dmAutomation03,
-        alt: "DM Automation screen 03"
+        alt: "DM campaign screen 03"
       },
       {
         src: dmAutomation04,
-        alt: "DM Automation screen 04"
+        alt: "DM campaign screen 04"
       },
       {
         src: dmAutomation05,
-        alt: "DM Automation screen 05"
+        alt: "DM campaign screen 05"
       }
     ]
   },
   {
     id: "8020-buybox",
     title: "BuyBox editor redesign",
-    subtitle: "Core Feature Redesign",
+    subtitle: "Core feature redesign",
     category: "8020REI",
     type: "Complex Interaction Design",
     role: "Product Designer",
     duration: "2 months",
-    tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics"],
+    tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics", "ChatGPT", "Zoom"],
     tags: ["Data Visualization", "Filtering Logic", "Legacy Redesign"],
     thumbnailGradient: "from-emerald-950 to-zinc-900",
     narrative: {
@@ -204,6 +271,73 @@ export const PROJECTS: Project[] = [
         "Improved transparency and trust between investors and Customer Success",
         "Higher confidence in decision-making through clearer feedback loops",
         "Post-release metrics were defined to validate outcomes once fully deployed"
+      ],
+      chapters: [
+        {
+          label: "Act 01",
+          title: "A critical feature was driving churn",
+          paragraphs: [
+            "The BuyBox editor was one of the most important decision surfaces in the platform, but it behaved like an expert-only rules engine.",
+            "When investors configured it incorrectly, list quality dropped, marketing output misaligned, and Customer Success had to intervene."
+          ],
+          highlights: [
+            "Misconfiguration created expensive downstream effects",
+            "Users lacked clear feedback on rule impact",
+            "Support dependency increased with account complexity"
+          ]
+        },
+        {
+          label: "Act 02",
+          title: "Evidence from escalations and discovery",
+          paragraphs: [
+            "Churn feedback and CS escalations showed a repeating pattern: users were asked to manage complexity without enough guidance.",
+            "Discovery clarified that investors needed interpretable outcomes, not more raw flexibility."
+          ],
+          highlights: [
+            "Dense layouts increased cognitive load",
+            "Marketing needs were disconnected from configuration",
+            "Errors were hard to detect before lists were generated"
+          ]
+        },
+        {
+          label: "Act 03",
+          title: "Reframing the editor as guided decision making",
+          paragraphs: [
+            "I reframed the product from a configuration table into a guided decision system that balances market opportunity, marketing capacity, and investor goals.",
+            "This meant structuring the experience around comprehension first, then control."
+          ],
+          highlights: [
+            "Modular rule groups and stronger hierarchy",
+            "Marketing Needs integrated into setup flow",
+            "Live previews to reduce trial-and-error behavior"
+          ]
+        },
+        {
+          label: "Act 04",
+          title: "Interaction design focused on preventable mistakes",
+          paragraphs: [
+            "The final interface made risky conditions visible through alerts, warnings, and clearer system language mapped to investor mental models.",
+            "I also used a focused, non-scroll layout to reduce misclicks and maintain context while editing complex criteria."
+          ],
+          highlights: [
+            "Warnings and alerts for misalignment",
+            "Improved information hierarchy and readability",
+            "Kairo-aligned UI for long-term consistency"
+          ]
+        },
+        {
+          label: "Act 05",
+          title: "Outcome targets tied to retention",
+          paragraphs: [
+            "The redesign was planned around measurable retention outcomes: faster valid setup, fewer errors, and less support burden.",
+            "Beyond metrics, the core gain was decision confidence for investors and clearer communication across Product and CS."
+          ],
+          highlights: [
+            "Target: 20% faster valid BuyBox setup",
+            "Target: 80% fewer configuration errors",
+            "Target: 50% fewer BuyBox-related support tickets"
+          ]
+        }
       ]
     },
     images: [
@@ -239,13 +373,13 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "8020-property-list",
-    title: "Property list and view redesign",
-    subtitle: "Core Feature Redesign",
+    title: "Properties view redesign",
+    subtitle: "Core feature redesign",
     category: "8020REI",
     type: "Workflow Optimization",
     role: "Lead Product Designer",
     duration: "2 Months",
-    tools: ["Figma", "Figma make", "Heap", "Clarity", "Google Analytics"],
+    tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics", "ChatGPT", "GPT"],
     tags: ["Information Density", "Efficiency", "Data Tables"],
     thumbnailGradient: "from-zinc-800 to-zinc-950",
     narrative: {
@@ -315,46 +449,115 @@ export const PROJECTS: Project[] = [
         "Increased engagement with views and filters in nearly 60% of sessions",
         "Improved overall perception of the platform as a reliable source of property intelligence",
         "Reduced cognitive load while increasing trust and confidence"
+      ],
+      chapters: [
+        {
+          label: "Act 01",
+          title: "The core workflow was leaking value",
+          paragraphs: [
+            "The property list and property view were high-traffic surfaces, but investors were leaving the platform to validate opportunities in external tools.",
+            "That behavior made it clear the product was acting as a data exporter instead of a decision environment."
+          ],
+          highlights: [
+            "Users copied addresses to external platforms",
+            "Critical property signals were hard to interpret",
+            "Navigation and hierarchy added cognitive friction"
+          ]
+        },
+        {
+          label: "Act 02",
+          title: "Discovery clarified what investors optimize for",
+          paragraphs: [
+            "Research showed investors needed fast confidence signals: score, distress context, historical direction, and relevance to active buying criteria.",
+            "The challenge was not missing data volume, but missing narrative structure in how data was presented."
+          ],
+          highlights: [
+            "Opportunity assessment had to happen in seconds",
+            "Historical trends increased trust in decisions",
+            "Filters and views were central daily behaviors"
+          ]
+        },
+        {
+          label: "Act 03",
+          title: "Designing list and detail as connected stories",
+          paragraphs: [
+            "I treated the property view as a guided narrative and the list as an exploration surface, ensuring each served a distinct decision phase.",
+            "This split reduced context switching and gave users a clearer progression from scanning to evaluation to action."
+          ],
+          highlights: [
+            "Signal-first layout and stronger section hierarchy",
+            "Explicit distress and editable attributes",
+            "Connection to BuyBoxes and ranking context"
+          ]
+        },
+        {
+          label: "Act 04",
+          title: "Execution focused on configurability without chaos",
+          paragraphs: [
+            "The redesign replaced rigid view controls with tab-based views, configurable columns, and a card view for lower per-item cognitive load.",
+            "I also expanded filters, improved search, and streamlined bulk actions to support higher-throughput workflows."
+          ],
+          highlights: [
+            "Tab-based view system",
+            "Configurable columns with strong defaults",
+            "Expanded filters, smart search, and better exports"
+          ]
+        },
+        {
+          label: "Act 05",
+          title: "Usage and trust improved together",
+          paragraphs: [
+            "Post-release signals showed both behavioral and sentiment gains, with stronger usage and positive feedback across high-frequency workflows.",
+            "The outcome was not only higher interaction volume, but better decision quality and platform trust."
+          ],
+          highlights: [
+            "50% increase in property-related usage",
+            "70%+ positive CSAT on post-interaction surveys",
+            "Around 80% reduction in bugs and reported issues"
+          ]
+        }
       ]
     },
     images: [
       {
         src: propertyList01,
-        alt: "Property list and view redesign screen 01"
+        alt: "Properties view redesign screen 01"
       },
       {
         src: propertyList02,
-        alt: "Property list and view redesign screen 02"
+        alt: "Properties view redesign screen 02"
       },
       {
         src: propertyList03,
-        alt: "Property list and view redesign screen 03"
+        alt: "Properties view redesign screen 03"
       },
       {
         src: propertyList04,
-        alt: "Property list and view redesign screen 04"
+        alt: "Properties view redesign screen 04"
       },
       {
         src: propertyList05,
-        alt: "Property list and view redesign screen 05"
+        alt: "Properties view redesign screen 05"
       },
       {
         src: propertyList06,
-        alt: "Property list and view redesign screen 06"
+        alt: "Properties view redesign screen 06"
       }
     ]
   },
   {
     id: "8020-kairo",
     title: "Kairo design system",
-    subtitle: "Foundational Initiative",
+    subtitle: "Foundational initiative",
     category: "8020REI",
     type: "Design Systems",
     role: "Design System Lead",
     duration: "Ongoing",
-    tools: ["Figma", "Figma Variables"],
+    tools: ["Figma", "Figma Make"],
     tags: ["Scalability", "Component Architecture", "Documentation"],
     thumbnailGradient: "from-blue-950 to-zinc-950",
+    previewImageIndex: 1,
+    previewImagePosition: "left center",
     narrative: {
       introduction: {
         company: "8020REI",
@@ -414,6 +617,73 @@ export const PROJECTS: Project[] = [
         "Enabled scalable growth into new product areas",
         "Improved collaboration between design and engineering",
         "System impact continues to evolve as adoption grows"
+      ],
+      chapters: [
+        {
+          label: "Act 01",
+          title: "Scaling without a shared system was unsustainable",
+          paragraphs: [
+            "When Kairo started, teams were shipping product work without a common visual or interaction foundation.",
+            "Each new feature increased design debt, implementation drift, and inconsistency for users moving between workflows."
+          ],
+          highlights: [
+            "No shared standards for UI components",
+            "Inconsistent language across screens",
+            "High collaboration overhead between design and engineering"
+          ]
+        },
+        {
+          label: "Act 02",
+          title: "The problem was more than visual inconsistency",
+          paragraphs: [
+            "Discovery showed the cost was operational as well as experiential: slower delivery, repeated debates, and reduced confidence in dense data interfaces.",
+            "A durable system needed to improve readability, accelerate build cycles, and clarify ownership."
+          ],
+          highlights: [
+            "Dense views increased cognitive load",
+            "Pattern inconsistency reduced trust and recognition",
+            "No clear contribution model for shared UI decisions"
+          ]
+        },
+        {
+          label: "Act 03",
+          title: "Building the foundations for product velocity",
+          paragraphs: [
+            "I defined system strategy and delivered foundations across typography, color semantics, spacing, and composable components for data-heavy products.",
+            "Tokenized decisions made the system easier to scale and easier to keep aligned between design artifacts and frontend code."
+          ],
+          highlights: [
+            "Token-based system foundations",
+            "Reusable component architecture",
+            "Accessibility and readability as baseline criteria"
+          ]
+        },
+        {
+          label: "Act 04",
+          title: "Adoption depended on workflows, not files",
+          paragraphs: [
+            "Beyond building components, I set up contribution and documentation workflows to make the system usable in real delivery cycles.",
+            "Cross-functional alignment turned Kairo into an operating model, not just a Figma library."
+          ],
+          highlights: [
+            "Design and engineering alignment rituals",
+            "Documentation and usage guidance",
+            "Shared pattern decisions across product and marketing"
+          ]
+        },
+        {
+          label: "Act 05",
+          title: "A system that compounds over time",
+          paragraphs: [
+            "Kairo established a shared source of truth and improved both product consistency and delivery speed.",
+            "Its impact keeps compounding as adoption grows and new product areas reuse the same primitives."
+          ],
+          highlights: [
+            "Reduced design and technical debt",
+            "Improved usability in dense workflows",
+            "Faster feature development through reuse"
+          ]
+        }
       ]
     },
     images: [
@@ -447,12 +717,12 @@ export const PROJECTS: Project[] = [
   {
     id: "habi-funnels",
     title: "Smart funnel",
-    subtitle: "Growth & Optimization",
+    subtitle: "Growth & optimization",
     category: "Habi",
     type: "Growth Design",
     role: "Product Designer",
     duration: "2 months",
-    tools: ["Figma", "Analytics platforms"],
+    tools: ["Figma", "Google Analytics", "ChatGPT", "Hotjar", "Clarity"],
     tags: ["Conversion Rate", "A/B Testing", "Mobile First"],
     thumbnailGradient: "from-purple-950 to-zinc-900",
     narrative: {
@@ -505,6 +775,73 @@ export const PROJECTS: Project[] = [
         "Higher completion rates on mobile devices",
         "Improved lead quality for downstream sales teams",
         "Stronger alignment between marketing goals and product execution"
+      ],
+      chapters: [
+        {
+          label: "Act 01",
+          title: "Conversion was blocked by friction-heavy onboarding",
+          paragraphs: [
+            "The Mexico acquisition flow asked users to complete an 11-screen process with high effort before they understood the value of finishing.",
+            "On mobile, this translated into drop-offs, lower trust, and lower qualified conversion."
+          ],
+          highlights: [
+            "Long multi-screen registration path",
+            "High perceived effort on mobile",
+            "Low value framing in early steps"
+          ]
+        },
+        {
+          label: "Act 02",
+          title: "Analytics exposed where intent was lost",
+          paragraphs: [
+            "Behavioral analysis showed concentrated abandonment in long form segments and moments where users felt asked for too much too soon.",
+            "This gave us a clear objective: preserve lead quality while reducing unnecessary effort."
+          ],
+          highlights: [
+            "Drop-off spikes around dense input blocks",
+            "Some inputs could be inferred from earlier answers",
+            "Flow sequence directly affected completion intent"
+          ]
+        },
+        {
+          label: "Act 03",
+          title: "Re-sequencing the funnel around momentum",
+          paragraphs: [
+            "I redesigned the flow from 11 screens to 7, using progressive disclosure and earlier value signals to maintain user momentum.",
+            "AI-assisted inference reduced redundant inputs while keeping qualification quality intact."
+          ],
+          highlights: [
+            "11 to 7 screens with mobile-first hierarchy",
+            "AI-assisted prefill and inference",
+            "Early value framing to increase continuation"
+          ]
+        },
+        {
+          label: "Act 04",
+          title: "Iteration through controlled experiments",
+          paragraphs: [
+            "Multiple variants were tested through A/B experiments to validate ordering, phrasing, and perceived effort.",
+            "Design decisions were tied to conversion and completion behavior rather than subjective preference."
+          ],
+          highlights: [
+            "A/B testing across funnel variants",
+            "Location-based recommendations",
+            "Internal property suggestions for faster qualification"
+          ]
+        },
+        {
+          label: "Act 05",
+          title: "Measured growth with stronger downstream quality",
+          paragraphs: [
+            "The redesign delivered a 30% increase in qualified conversion while shortening interaction time.",
+            "It also improved alignment between marketing acquisition goals and product execution quality."
+          ],
+          highlights: [
+            "30% lift in qualified lead conversion",
+            "Higher mobile completion rates",
+            "Better lead quality for sales teams"
+          ]
+        }
       ]
     },
     images: [
@@ -529,7 +866,7 @@ export const PROJECTS: Project[] = [
   {
     id: "habi-internal",
     title: "Internal Ops",
-    subtitle: "Efficiency Tooling",
+    subtitle: "Efficiency tooling",
     category: "Habi",
     type: "Internal Tool",
     role: "Product Designer",
@@ -608,13 +945,13 @@ export const PROJECTS: Project[] = [
   // Freelance (Priority 3)
   {
     id: "freelance-1",
-    title: "NowApp",
+    title: "Now App",
     subtitle: "Concept case study",
     category: "Freelance",
     type: "UX/UI case study",
     role: "UX/UI Designer",
     duration: "1 week",
-    tools: ["Figma"],
+    tools: ["Figma", "Google Slides", "ChatGPT"],
     tags: ["Research", "Concept", "Decision Flow"],
     thumbnailGradient: "from-zinc-800 to-zinc-900",
     narrative: {
@@ -622,7 +959,7 @@ export const PROJECTS: Project[] = [
         company: "Personal project",
         industry: "Streaming concept",
         year: "2024",
-        summary: "NowApp is a conceptual UX/UI case study designed to help users decide what to watch in under one minute. The work focuses on reducing decision fatigue through research-led, minimal decision steps and was never built or launched."
+        summary: "Now App is a conceptual UX/UI case study designed to help users decide what to watch in under one minute. The work focuses on reducing decision fatigue through research-led, minimal decision steps and was never built or launched."
       },
       role: {
         title: "UX/UI Designer",
@@ -669,39 +1006,106 @@ export const PROJECTS: Project[] = [
         "Reinforced the value of research depth before ideation",
         "Documented a repeatable process for future product work",
         "Positioned the case study as a learning exercise, not a production product"
+      ],
+      chapters: [
+        {
+          label: "Act 01",
+          title: "A concept born from decision fatigue",
+          paragraphs: [
+            "Now App started from a familiar streaming behavior: users spend more time choosing than watching.",
+            "The goal of the case study was to design a focused path that helps people decide in under one minute."
+          ],
+          highlights: [
+            "High choice overload in streaming experiences",
+            "Low confidence in generic recommendation feeds",
+            "Strong need for a clear starting point"
+          ]
+        },
+        {
+          label: "Act 02",
+          title: "Research before interface",
+          paragraphs: [
+            "In a one-week timeline, I prioritized qualitative research and synthesis to avoid jumping into UI without behavioral evidence.",
+            "Interviews and competitor analysis were used to map where users lose confidence and where guided decisions could help."
+          ],
+          highlights: [
+            "Interviews and pattern synthesis",
+            "Benchmark review across major streaming products",
+            "Problem framing around confidence, not only speed"
+          ]
+        },
+        {
+          label: "Act 03",
+          title: "Designing a narrow, guided decision path",
+          paragraphs: [
+            "The concept uses minimal branching and progressive disclosure so users process fewer decisions at each step.",
+            "Information architecture was structured to favor focus and reduce the perceived effort of choosing."
+          ],
+          highlights: [
+            "Guided flow with minimal decision branches",
+            "Mobile-first interaction model",
+            "Structured IA for focused progression"
+          ]
+        },
+        {
+          label: "Act 04",
+          title: "Turning insights into a testable concept",
+          paragraphs: [
+            "Because this was not a launched product, the work emphasized hypothesis clarity and validation criteria for a future build phase.",
+            "I documented how to evaluate time to decision, user confidence, and satisfaction if the concept moved to implementation."
+          ],
+          highlights: [
+            "Concept validation metrics defined",
+            "Learning-oriented framing of outcomes",
+            "Clear handoff narrative for future iteration"
+          ]
+        },
+        {
+          label: "Act 05",
+          title: "Outcome as process maturity",
+          paragraphs: [
+            "The strongest result was a repeatable approach: research depth first, concept clarity second, interface expression last.",
+            "Now App remains a strategic case study that demonstrates structured product thinking rather than shipping output."
+          ],
+          highlights: [
+            "Clear decision-confidence problem statement",
+            "Repeatable process for future product challenges",
+            "Positioned intentionally as a concept case study"
+          ]
+        }
       ]
     },
     images: [
       {
         src: nowApp01,
-        alt: "NowApp screen 01"
+        alt: "Now App screen 01"
       },
       {
         src: nowApp02,
-        alt: "NowApp screen 02"
+        alt: "Now App screen 02"
       },
       {
         src: nowApp03,
-        alt: "NowApp screen 03"
+        alt: "Now App screen 03"
       },
       {
         src: nowApp04,
-        alt: "NowApp screen 04"
+        alt: "Now App screen 04"
       },
       {
         src: nowApp05,
-        alt: "NowApp screen 05"
+        alt: "Now App screen 05"
       },
       {
         src: nowApp06,
-        alt: "NowApp screen 06"
+        alt: "Now App screen 06"
       }
     ]
   },
   {
     id: "freelance-2",
     title: "Freelance 2",
-    subtitle: "Project Description Placeholder",
+    subtitle: "Project description placeholder",
     category: "Freelance",
     type: "App Design",
     role: "Product Designer",
@@ -836,10 +1240,10 @@ export const SKILLS: SkillGroup[] = [
   },
   {
     category: "AI & Tools",
-    items: ["Figma", "Adobe Suite", "ChatGPT", "Gemini", "Claude", "Cursor", "Antigravity", "Heap", "Google Analytics", "Jira", "Asana"]
+    items: ["Figma", "Figma Make", "ChatGPT Codex", "Claude Code", "Gemini", "Cursor", "Adobe Suite"]
   },
   {
     category: "Technical",
-    items: ["Frontend foundations (HTML/CSS)", "Agile / Scrum", "Data visualization", "Terminal", "Git", "GitHub"]
+    items: ["React", "Tailwind CSS", "Next.js", "Nuxt", "Google Cloud BigQuery", "AWS", "Terminal (Warp)", "Git", "GitHub"]
   }
 ];
