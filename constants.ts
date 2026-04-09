@@ -623,7 +623,7 @@ export const PROJECTS: Project[] = [
         "Enabled exports and operational views for cross-functional decision loops"
       ],
       outcome: [
-        "Recovered approximately $100K in revenue by detecting and unblocking 100K+ stuck mailings",
+        "Recovered blocked revenue by detecting and unblocking stuck mailings through automated alert detection",
         "Tripled Properties API user adoption after surfacing and fixing 5 critical blockers",
         "Enabled company-wide self-serve access to analytics without new tooling subscriptions",
         "Established a shared decision layer across Product, Customer Success, and Operations",
@@ -690,7 +690,7 @@ export const PROJECTS: Project[] = [
             "Beyond metrics, the platform shifted team behavior: decisions moved from opinion-driven discussions to shared, evidence-based alignment."
           ],
           highlights: [
-            "100K+ blocked mailings detected and recovered",
+            "Blocked mailings detected and recovered through automated monitoring",
             "3x API adoption after resolving critical blockers",
             "Zero additional software spend for a company-wide intelligence layer"
           ]

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Germán David Alvarez — Lead Product Designer and Design Engineer with 7+ years of experience in B2B SaaS, PropTech, and complex data-driven products.">
+  <title>Germán David Alvarez — Lead Product Designer & Design Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0d0d0d;
+      --gray-dark: #374151;
+      --gray-mid: #6b7280;
+      --gray-light: #e5e7eb;
+      --gray-bg: #f9fafb;
+      --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-family: var(--font);
+      font-size: 10pt;
+      color: var(--black);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    body {
+      max-width: 210mm;
+      margin: 0 auto;
+      padding: 1.4cm 1.6cm;
+      background: #ffffff;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    @media print {
+      body { padding: 0; }
+      @page { size: A4; margin: 1.4cm 1.6cm; }
+      .no-break { page-break-inside: avoid; }
+    }
+
+    /* ─── Header ──────────────────────────────────────────────────────── */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-bottom: 14px;
+      border-bottom: 1.5px solid var(--black);
+      margin-bottom: 18px;
+    }
+
+    header h1 {
+      font-size: 21pt;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+
+    header .subtitle {
+      font-size: 9pt;
+      font-weight: 500;
+      color: var(--gray-dark);
+      letter-spacing: 0.01em;
+    }
+
+    header .contact {
+      text-align: right;
+      font-size: 8pt;
+      color: var(--gray-mid);
+      line-height: 1.85;
+    }
+
+    /* ─── Grid layout ─────────────────────────────────────────────────── */
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 28px;
+    }
+
+    /* ─── Section headings ────────────────────────────────────────────── */
+    h2 {
+      font-size: 6.5pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--gray-mid);
+      border-bottom: 1px solid var(--gray-light);
+      padding-bottom: 4px;
+      margin-bottom: 11px;
+    }
+
+    section { margin-bottom: 20px; }
+
+    /* ─── Summary ─────────────────────────────────────────────────────── */
+    .summary p {
+      font-size: 9pt;
+      font-weight: 300;
+      color: var(--gray-dark);
+      line-height: 1.7;
+    }
+
+    /* ─── Experience ──────────────────────────────────────────────────── */
+    .job { margin-bottom: 15px; }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1px;
+    }
+
+    .job-company {
+      font-size: 10pt;
+      font-weight: 700;
+    }
+
+    .job-period {
+      font-size: 7.5pt;
+      color: var(--gray-mid);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .job-role {
+      font-size: 8.5pt;
+      font-weight: 600;
+      color: var(--gray-dark);
+      margin-bottom: 2px;
+    }
+
+    .job-meta {
+      font-size: 7.5pt;
+      color: var(--gray-mid);
+      margin-bottom: 6px;
+    }
+
+    .job ul {
+      padding-left: 12px;
+      list-style-type: disc;
+    }
+
+    .job li {
+      font-size: 8.5pt;
+      color: var(--gray-dark);
+      line-height: 1.65;
+      margin-bottom: 2px;
+    }
+
+    .job li b {
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    /* ─── Projects ────────────────────────────────────────────────────── */
+    .project { margin-bottom: 13px; }
+
+    .project-title {
+      font-size: 8.5pt;
+      font-weight: 700;
+      margin-bottom: 1px;
+    }
+
+    .project-meta {
+      font-size: 7.5pt;
+      color: var(--gray-mid);
+      margin-bottom: 4px;
+    }
+
+    .project p {
+      font-size: 8pt;
+      color: var(--gray-dark);
+      line-height: 1.6;
+      margin-bottom: 3px;
+    }
+
+    .project .outcome {
+      font-size: 8pt;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    /* ─── Right column ────────────────────────────────────────────────── */
+    .right section { margin-bottom: 18px; }
+
+    /* Competencies */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .tag {
+      font-size: 7pt;
+      color: var(--gray-dark);
+      background: var(--gray-bg);
+      border: 1px solid var(--gray-light);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* Skills groups */
+    .skill-group { margin-bottom: 10px; }
+
+    .skill-label {
+      font-size: 7pt;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--gray-dark);
+      margin-bottom: 4px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3px;
+    }
+
+    .skill-tag {
+      font-size: 7pt;
+      color: var(--gray-dark);
+      background: var(--gray-bg);
+      border: 1px solid var(--gray-light);
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+
+    /* Education */
+    .edu { margin-bottom: 10px; }
+
+    .edu-degree {
+      font-size: 8pt;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .edu-school {
+      font-size: 7.5pt;
+      color: var(--gray-dark);
+    }
+
+    .edu-year {
+      font-size: 7.5pt;
+      color: var(--gray-mid);
+    }
+
+    /* Small text blocks */
+    .detail {
+      font-size: 8pt;
+      color: var(--gray-dark);
+      line-height: 1.75;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!-- HEADER                                                              -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <header>
+    <div>
+      <h1>Germán David Alvarez</h1>
+      <p class="subtitle">Lead Product Designer &nbsp;·&nbsp; UX/UI Designer &nbsp;·&nbsp; Design Engineer</p>
+    </div>
+    <div class="contact">
+      <a href="mailto:mancho19942010@hotmail.com">mancho19942010@hotmail.com</a><br>
+      <a href="https://linkedin.com/in/germanalvarezg">linkedin.com/in/germanalvarezg</a><br>
+      <a href="https://wa.me/573015247033">+57 301 524 7033</a><br>
+      Bogotá, Colombia &nbsp;·&nbsp; Open to remote
+    </div>
+  </header>
+
+  <div class="layout">
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- LEFT COLUMN                                                        -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <div class="left">
+
+      <!-- Summary -->
+      <section class="summary no-break">
+        <h2>Professional Summary</h2>
+        <p>
+          Lead Product Designer and Design Engineer with 7+ years of experience designing complex
+          B2B SaaS and PropTech products. Expert in end-to-end product design — from UX research
+          and strategy to interaction design, design systems, and production-grade full-stack
+          implementation. Shipped a complete internal analytics platform from concept to production
+          that recovered blocked revenue and tripled API adoption within
+          the first month. Consistently drives measurable outcomes through data-validated design
+          decisions, AI-augmented workflows, and close cross-functional collaboration with
+          Product, Engineering, Customer Success, and executive leadership.
+        </p>
+      </section>
+
+      <!-- Experience -->
+      <section class="experience">
+        <h2>Professional Experience</h2>
+
+        <div class="job no-break">
+          <div class="job-header">
+            <span class="job-company">8020REI</span>
+            <span class="job-period">Jun 2024 – Present</span>
+          </div>
+          <p class="job-role">Lead Product Designer &amp; Design Engineer</p>
+          <p class="job-meta">Remote &nbsp;·&nbsp; PropTech SaaS &nbsp;·&nbsp; B2B &nbsp;·&nbsp; U.S.-based</p>
+          <ul>
+            <li>Own product design strategy, discovery, and end-to-end execution across all platform initiatives for a B2B real estate investor operations SaaS</li>
+            <li>Designed and shipped <b>Metrics Hub</b> from zero to production: unified analytics platform across 6 data sources (Google Analytics, BigQuery, AWS Aurora, Firebase, Asana, Google Drive) — <b>recovered blocked revenue through automated alert detection</b>, tripled Properties API adoption, zero additional software spend</li>
+            <li>Led 0→1 design of <b>DM Campaign</b> (automated direct mail system) — adopted by <b>12 active clients</b> in early release, reduced operational friction and improved deal velocity</li>
+            <li>Led <b>Properties View redesign</b>: <b>50% increase in platform usage</b>, 70%+ positive CSAT, ~80% reduction in reported bugs across high-traffic investor workflows</li>
+            <li>Led <b>BuyBox Editor redesign</b> targeting a 20% reduction in time-to-valid-setup, <b>80% fewer configuration errors</b>, and 50% fewer support tickets</li>
+            <li>Developed and maintained the <b>Kairo and Axis design systems</b>, including reusable component libraries, token architecture, and automated quality gates</li>
+            <li>Designed complex data-heavy workflows including campaign automation, property intelligence dashboards, investor operations tools, and multi-source analytics interfaces</li>
+          </ul>
+        </div>
+
+        <div class="job no-break">
+          <div class="job-header">
+            <span class="job-company">TuHabi (Habi)</span>
+            <span class="job-period">Aug 2022 – Jun 2024</span>
+          </div>
+          <p class="job-role">Product Designer &nbsp;·&nbsp; Creative Designer</p>
+          <p class="job-meta">Hybrid &nbsp;·&nbsp; Bogotá, Colombia &nbsp;·&nbsp; PropTech</p>
+          <ul>
+            <li>Redesigned mobile-first acquisition funnel for Mexico: <b>30% increase in qualified lead conversion</b>, higher mobile completion rates, improved downstream lead quality for sales</li>
+            <li>Reduced registration flow from 11 to 7 screens using AI-assisted prefill, progressive disclosure, and A/B tested variants — validated through behavioral analytics</li>
+            <li>Designed internal operations platform for commercial and zone leaders managing teams and territories across cities, replacing spreadsheet-dependent workflows</li>
+            <li>Conducted UX research, built AI-driven customer service prompts, contributed to brand systems and multi-channel marketing campaigns</li>
+          </ul>
+        </div>
+
+        <div class="job no-break">
+          <div class="job-header">
+            <span class="job-company">Metro de Bogotá</span>
+            <span class="job-period">Nov 2018 – Aug 2023</span>
+          </div>
+          <p class="job-role">Creative Designer</p>
+          <p class="job-meta">On-site &nbsp;·&nbsp; Bogotá, Colombia &nbsp;·&nbsp; Public Infrastructure</p>
+          <ul>
+            <li>Designed large-scale public communication campaigns for one of Colombia's flagship infrastructure projects</li>
+            <li>Built and maintained internal communication systems: intranet design, editorial newsletters, advertising campaigns, and event materials</li>
+          </ul>
+        </div>
+
+        <div class="job no-break">
+          <div class="job-header">
+            <span class="job-company">Rd Studio</span>
+            <span class="job-period">Jul 2014 – Nov 2014</span>
+          </div>
+          <p class="job-role">Industrial Designer</p>
+          <p class="job-meta">Bogotá, Colombia</p>
+          <ul>
+            <li>3D modeling and product prototyping for industrial design projects</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Selected Projects -->
+      <section>
+        <h2>Selected Impact — Key Projects</h2>
+
+        <div class="project no-break">
+          <p class="project-title">Metrics Hub — Unified Internal Analytics Platform</p>
+          <p class="project-meta">8020REI &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Lead Designer & Full-Stack Builder</p>
+          <p>
+            Built end-to-end (UX architecture → full-stack implementation → cloud deployment). Unified 6 heterogeneous data
+            sources into a single operational dashboard for non-technical teams. 91 reusable widgets across 11 business domains.
+            Axis design system with automated quality gates. Stack: Next.js, React, TypeScript, Tailwind CSS, Fastify, BigQuery,
+            AWS Aurora, Firebase, Google Cloud Run, GitHub Actions.
+          </p>
+          <p class="outcome">→ Blocked revenue recovered &nbsp;·&nbsp; 3× API adoption &nbsp;·&nbsp; Company-wide self-serve analytics at zero additional cost</p>
+        </div>
+
+        <div class="project no-break">
+          <p class="project-title">DM Campaign — Automated Direct Mail System (0→1)</p>
+          <p class="project-meta">8020REI &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Lead Product Designer</p>
+          <p>
+            Designed a two-track automation system (RapidResponse + SmartDrop) turning direct mail into a native,
+            data-driven product channel. Included guided campaign setup, onboarding, performance tracking, and
+            transparent automation rules for real estate investor operations.
+          </p>
+          <p class="outcome">→ 12 active clients in early adoption &nbsp;·&nbsp; Higher platform stickiness &nbsp;·&nbsp; Faster deal velocity</p>
+        </div>
+
+        <div class="project no-break">
+          <p class="project-title">Properties View Redesign — Investor Decision Intelligence</p>
+          <p class="project-meta">8020REI &nbsp;·&nbsp; 2025 &nbsp;·&nbsp; Lead Product Designer</p>
+          <p>
+            Redesigned the highest-traffic platform surface to keep investors inside the product for decision-making
+            instead of external tools. Introduced signal-first layouts, tab-based view systems, configurable columns,
+            smart search, and expanded filters across a Kairo design system migration.
+          </p>
+          <p class="outcome">→ 50% usage increase &nbsp;·&nbsp; 70%+ positive CSAT &nbsp;·&nbsp; ~80% reduction in bugs and reported issues</p>
+        </div>
+
+        <div class="project no-break">
+          <p class="project-title">Smart Funnel — Mobile Acquisition Redesign</p>
+          <p class="project-meta">TuHabi &nbsp;·&nbsp; 2024 &nbsp;·&nbsp; Product Designer</p>
+          <p>
+            Mobile-first acquisition funnel redesign for the Mexico market. Applied AI-assisted data prefill,
+            progressive disclosure, and A/B experimentation to reduce steps while preserving qualification quality.
+          </p>
+          <p class="outcome">→ 30% increase in qualified lead conversion &nbsp;·&nbsp; Higher mobile completion rates</p>
+        </div>
+      </section>
+
+    </div><!-- /left -->
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- RIGHT COLUMN                                                       -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <div class="right">
+
+      <!-- Core Competencies (ATS keyword block) -->
+      <section>
+        <h2>Core Competencies</h2>
+        <div class="tags">
+          <span class="tag">Product Design</span>
+          <span class="tag">UX Strategy</span>
+          <span class="tag">UX Research</span>
+          <span class="tag">Interaction Design</span>
+          <span class="tag">Information Architecture</span>
+          <span class="tag">Design Systems</span>
+          <span class="tag">B2B SaaS</span>
+          <span class="tag">PropTech</span>
+          <span class="tag">Data Visualization</span>
+          <span class="tag">0→1 Product Design</span>
+          <span class="tag">Mobile-first Design</span>
+          <span class="tag">Full-stack Development</span>
+          <span class="tag">Cross-functional Leadership</span>
+          <span class="tag">A/B Testing</span>
+          <span class="tag">Conversion Rate Optimization</span>
+          <span class="tag">AI-augmented Workflows</span>
+          <span class="tag">Stakeholder Management</span>
+          <span class="tag">Usability Testing</span>
+          <span class="tag">Design Ops</span>
+          <span class="tag">Agile / Scrum</span>
+        </div>
+      </section>
+
+      <!-- Tools & Tech -->
+      <section>
+        <h2>Tools &amp; Technologies</h2>
+
+        <div class="skill-group">
+          <p class="skill-label">Design</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Figma</span>
+            <span class="skill-tag">Figma Make</span>
+            <span class="skill-tag">Adobe Illustrator</span>
+            <span class="skill-tag">Photoshop</span>
+            <span class="skill-tag">Premiere Pro</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-label">Development</p>
+          <div class="skill-tags">
+            <span class="skill-tag">React</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Tailwind CSS</span>
+            <span class="skill-tag">Nuxt</span>
+            <span class="skill-tag">Fastify</span>
+            <span class="skill-tag">Git / GitHub</span>
+            <span class="skill-tag">GitHub Actions</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-label">Data &amp; Cloud</p>
+          <div class="skill-tags">
+            <span class="skill-tag">BigQuery</span>
+            <span class="skill-tag">AWS Aurora</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">Google Cloud Run</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-label">Analytics &amp; Research</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Google Analytics</span>
+            <span class="skill-tag">Heap</span>
+            <span class="skill-tag">Hotjar</span>
+            <span class="skill-tag">Clarity</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-label">AI &amp; Productivity</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Claude Code</span>
+            <span class="skill-tag">ChatGPT / Codex</span>
+            <span class="skill-tag">Gemini</span>
+            <span class="skill-tag">Cursor</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <p class="skill-label">Collaboration</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Jira</span>
+            <span class="skill-tag">Asana</span>
+            <span class="skill-tag">Notion</span>
+            <span class="skill-tag">Confluence</span>
+            <span class="skill-tag">Zoom</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section>
+        <h2>Education</h2>
+        <div class="edu">
+          <p class="edu-degree">Master's in Branding, Brand Strategy &amp; Visual Communication</p>
+          <p class="edu-school">OBS Business School</p>
+          <p class="edu-year">2020 – 2021</p>
+        </div>
+        <div class="edu">
+          <p class="edu-degree">Bachelor in Industrial Design</p>
+          <p class="edu-school">Pontificia Universidad Javeriana</p>
+          <p class="edu-year">2011 – 2016</p>
+        </div>
+      </section>
+
+      <!-- Languages -->
+      <section>
+        <h2>Languages</h2>
+        <p class="detail">
+          Spanish &nbsp;—&nbsp; Native<br>
+          English &nbsp;—&nbsp; Professional proficiency
+        </p>
+      </section>
+
+      <!-- Portfolio note -->
+      <section>
+        <h2>Portfolio</h2>
+        <p class="detail">
+          <a href="https://linkedin.com/in/germanalvarezg">linkedin.com/in/germanalvarezg</a>
+        </p>
+      </section>
+
+    </div><!-- /right -->
+  </div><!-- /layout -->
+
+</body>
+</html>
