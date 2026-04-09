@@ -12,12 +12,12 @@ import propertyList03 from './assets/projects/property-list/03.jpg';
 import propertyList04 from './assets/projects/property-list/04.jpg';
 import propertyList05 from './assets/projects/property-list/05.jpg';
 import propertyList06 from './assets/projects/property-list/06.jpg';
-import kairo01 from './assets/projects/kairo/01.jpg';
-import kairo02 from './assets/projects/kairo/02.jpg';
-import kairo03 from './assets/projects/kairo/03.jpg';
-import kairo04 from './assets/projects/kairo/04.jpg';
-import kairo05 from './assets/projects/kairo/05.jpg';
-import kairo06 from './assets/projects/kairo/06.jpg';
+import metricsHub01 from './assets/projects/metrics-hub/01.jpg';
+import metricsHub02 from './assets/projects/metrics-hub/02.jpg';
+import metricsHub03 from './assets/projects/metrics-hub/03.jpg';
+import metricsHub04 from './assets/projects/metrics-hub/04.jpg';
+import metricsHub05 from './assets/projects/metrics-hub/05.jpg';
+import metricsHub06 from './assets/projects/metrics-hub/06.jpg';
 import dmAutomation01 from './assets/projects/dm-automation/01.jpg';
 import dmAutomation02 from './assets/projects/dm-automation/02.jpg';
 import dmAutomation03 from './assets/projects/dm-automation/03.jpg';
@@ -546,170 +546,181 @@ export const PROJECTS: Project[] = [
     ]
   },
   {
-    id: "8020-kairo",
-    title: "Kairo design system",
-    subtitle: "Foundational initiative",
+    id: "8020-metrics-hub",
+    title: "Metrics Hub",
+    subtitle: "Internal analytics platform",
     category: "8020REI",
-    type: "Design Systems",
-    role: "Design System Lead",
-    duration: "Ongoing",
-    tools: ["Figma", "Figma Make"],
-    tags: ["Scalability", "Component Architecture", "Documentation"],
-    thumbnailGradient: "from-blue-950 to-zinc-950",
-    previewImageIndex: 1,
+    type: "Unified Analytics Platform",
+    role: "Lead Product Designer & Builder",
+    duration: "2 months (ongoing)",
+    tools: [
+      "Figma",
+      "Claude Code",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Fastify",
+      "BigQuery",
+      "AWS Aurora",
+      "Firebase",
+      "Google Drive API",
+      "Asana API",
+      "Slack Web API",
+      "Google Cloud Run",
+      "GitHub Actions"
+    ],
+    tags: ["Data Unification", "Business Decisions", "Accessible Intelligence"],
+    thumbnailGradient: "from-cyan-950 to-zinc-950",
+    previewImageIndex: 0,
     previewImagePosition: "left center",
     narrative: {
       introduction: {
         company: "8020REI",
         industry: "PropTech SaaS",
-        year: "2024",
-        summary: "Created Kairo to establish a single source of truth across the platform. Before this initiative, there was no design system, UI patterns were inconsistent, and there was no shared framework between design, engineering, product, or marketing."
+        year: "2026",
+        summary: "Built an internal analytics platform that unified fragmented data from Google Analytics, BigQuery, AWS Aurora, Google Drive, Asana, and Grafana into one operational dashboard for non-technical teams."
       },
       role: {
-        title: "Design System Lead",
+        title: "Lead Product Designer & Builder",
         responsibilities: [
-          "Defined the system strategy, scope, and priorities",
-          "Built foundations and component standards for data-heavy workflows",
-          "Aligned design, engineering, product, and marketing on shared patterns",
-          "Established contribution and documentation workflows",
-          "Partnered with engineering to align Figma and frontend implementation"
+          "Identified the organizational need and led the initiative from concept to production",
+          "Mapped data ownership, access constraints, and business questions across teams",
+          "Designed the full information architecture, navigation, and widget workspace",
+          "Built frontend and backend layers for multi-source data exploration and monitoring",
+          "Defined the Axis design system and contribution workflows with automated quality gates"
         ]
       },
       challenge: {
-        summary: "The absence of a design system created usability issues, slowed development, increased design debt, and made the platform hard to scale.",
+        summary: "Business-critical metrics lived in disconnected tools, so teams made product, campaign, and customer decisions with partial evidence.",
         painPoints: [
-          "No shared component standards",
-          "Inconsistent visual language across screens",
-          "Poor readability in data-heavy views",
-          "High cognitive load for users",
-          "Fragmented collaboration between design and engineering",
-          "No clear ownership or documentation of UI decisions"
+          "Data was spread across six systems with different permissions and query models",
+          "Customer Success lacked reliable usage visibility for client guidance",
+          "Product teams debated assumptions instead of shared evidence",
+          "Accessing metrics required technical support and delayed decisions",
+          "Feature-level performance was hard to compare across workflows"
         ],
         constraints: [
-          "System needed to support ongoing product delivery",
-          "Patterns had to work across data-heavy workflows",
-          "Adoption required alignment across teams"
+          "Unify heterogeneous data without creating unsafe or expensive query patterns",
+          "Design for non-technical teams while preserving analytical depth",
+          "Ship using existing infrastructure and subscriptions only"
         ],
         insights: [
-          "Dense data without hierarchy increases cognitive load",
-          "Inconsistent patterns slow decisions and reduce trust",
-          "Lack of proximity and consistency breaks recognition",
-          "Unfamiliar interfaces raise learning effort",
-          "Poor contrast reduces legibility and scanability"
+          "The main problem was comprehension and accessibility, not data availability",
+          "Teams needed a consistent visual language across every metric surface",
+          "Alerting and proactive monitoring could unlock immediate business impact",
+          "Widget-level flexibility had to coexist with strong defaults and governance"
         ]
       },
       approach: [
-        "Established a single source of truth for UI and interaction patterns",
-        "Built a clear typography system optimized for data readability",
-        "Defined an accessible color system with semantic meanings",
-        "Standardized spacing, layout, and hierarchy rules",
-        "Created reusable, composable components for data-heavy use cases",
-        "Implemented token-based foundations for scalability and theming",
-        "Established proto-personas informed by ongoing research, stakeholder input, and user behavior analysis, which later evolved into formal personas",
-        "Aligned Figma foundations with frontend implementation",
-        "Documented usage guidelines and best practices"
+        "Mapped data domains, source ownership, and high-value business questions",
+        "Designed a three-level IA model for sections, sub-sections, and detail tabs",
+        "Built a widget-based workspace with reusable chart, table, and scorecard patterns",
+        "Connected six data sources into a single product surface with role-aware access",
+        "Created Axis design system foundations with reusable components and tokens",
+        "Implemented automated quality checks to enforce design and implementation consistency",
+        "Added monitoring views and alert flows for campaign and API health",
+        "Enabled exports and operational views for cross-functional decision loops"
       ],
       outcome: [
-        "Created a single source of truth across teams",
-        "Reduced design debt and visual inconsistency while reducing technical debt through reusable components and optimized implementation workflows",
-        "Improved readability and usability in data-heavy screens",
-        "Accelerated feature development through reuse",
-        "Enabled scalable growth into new product areas",
-        "Improved collaboration between design and engineering",
-        "System impact continues to evolve as adoption grows"
+        "Recovered approximately $100K in revenue by detecting and unblocking 100K+ stuck mailings",
+        "Tripled Properties API user adoption after surfacing and fixing 5 critical blockers",
+        "Enabled company-wide self-serve access to analytics without new tooling subscriptions",
+        "Established a shared decision layer across Product, Customer Success, and Operations",
+        "Reduced dependency on ad hoc data pulls for day-to-day product and business decisions"
       ],
       chapters: [
         {
           label: "Act 01",
-          title: "Scaling without a shared system was unsustainable",
+          title: "Critical decisions were disconnected from data",
           paragraphs: [
-            "When Kairo started, teams were shipping product work without a common visual or interaction foundation.",
-            "Each new feature increased design debt, implementation drift, and inconsistency for users moving between workflows."
+            "At 8020REI, data existed everywhere but understanding existed nowhere. Analytics, product metrics, campaign data, qualitative notes, and task execution all lived in separate systems.",
+            "That fragmentation forced teams to depend on assumptions and ad hoc support instead of a shared evidence layer for everyday decisions."
           ],
           highlights: [
-            "No shared standards for UI components",
-            "Inconsistent language across screens",
-            "High collaboration overhead between design and engineering"
+            "No unified decision surface across teams",
+            "Heavy dependency on technical support for basic insights",
+            "Feature and campaign priorities were hard to validate"
           ]
         },
         {
           label: "Act 02",
-          title: "The problem was more than visual inconsistency",
+          title: "Discovery mapped ownership, risk, and business logic",
           paragraphs: [
-            "Discovery showed the cost was operational as well as experiential: slower delivery, repeated debates, and reduced confidence in dense data interfaces.",
-            "A durable system needed to improve readability, accelerate build cycles, and clarify ownership."
+            "I mapped every data source, who owned it, what it answered, and where access or cost constraints could break reliability.",
+            "This technical mapping was paired with business discovery so each metric screen reflected real investor and operator workflows, not raw data dumps."
           ],
           highlights: [
-            "Dense views increased cognitive load",
-            "Pattern inconsistency reduced trust and recognition",
-            "No clear contribution model for shared UI decisions"
+            "Six sources aligned to one business model",
+            "Stakeholder alignment on access and governance",
+            "Business questions defined before interface decisions"
           ]
         },
         {
           label: "Act 03",
-          title: "Building the foundations for product velocity",
+          title: "Designing one coherent language for 91 widgets",
           paragraphs: [
-            "I defined system strategy and delivered foundations across typography, color semantics, spacing, and composable components for data-heavy products.",
-            "Tokenized decisions made the system easier to scale and easier to keep aligned between design artifacts and frontend code."
+            "I designed a three-level navigation model and a widget workspace that makes complex analytics scannable for non-technical users in seconds.",
+            "Across 11 business areas, the interface uses one consistent visual and interaction system so teams can move between domains without relearning patterns."
           ],
           highlights: [
-            "Token-based system foundations",
-            "Reusable component architecture",
-            "Accessibility and readability as baseline criteria"
+            "Three-level IA for depth without disorientation",
+            "Reusable widgets across analytics, operations, and product domains",
+            "Axis design system foundations for speed and consistency"
           ]
         },
         {
           label: "Act 04",
-          title: "Adoption depended on workflows, not files",
+          title: "From design ownership to full-stack execution",
           paragraphs: [
-            "Beyond building components, I set up contribution and documentation workflows to make the system usable in real delivery cycles.",
-            "Cross-functional alignment turned Kairo into an operating model, not just a Figma library."
+            "The initiative required hands-on execution across frontend, backend, integrations, deployment, and quality automation.",
+            "I built the platform to be extensible, with contribution workflows and automated checks so future collaborators can ship confidently within the same product standards."
           ],
           highlights: [
-            "Design and engineering alignment rituals",
-            "Documentation and usage guidance",
-            "Shared pattern decisions across product and marketing"
+            "End-to-end build from UX architecture to cloud deployment",
+            "Multi-source integrations with operational alerting",
+            "Automated quality gates and scalable contribution model"
           ]
         },
         {
           label: "Act 05",
-          title: "A system that compounds over time",
+          title: "Operational visibility translated into business impact",
           paragraphs: [
-            "Kairo established a shared source of truth and improved both product consistency and delivery speed.",
-            "Its impact keeps compounding as adoption grows and new product areas reuse the same primitives."
+            "Within the first month, alerting and monitoring workflows uncovered blocked campaign operations and API issues that directly impacted revenue and customer experience.",
+            "Beyond metrics, the platform shifted team behavior: decisions moved from opinion-driven discussions to shared, evidence-based alignment."
           ],
           highlights: [
-            "Reduced design and technical debt",
-            "Improved usability in dense workflows",
-            "Faster feature development through reuse"
+            "100K+ blocked mailings detected and recovered",
+            "3x API adoption after resolving critical blockers",
+            "Zero additional software spend for a company-wide intelligence layer"
           ]
         }
       ]
     },
     images: [
       {
-        src: kairo01,
-        alt: "Kairo design system screen 01"
+        src: metricsHub01,
+        alt: "Metrics Hub dashboard overview in dark mode"
       },
       {
-        src: kairo02,
-        alt: "Kairo design system screen 02"
+        src: metricsHub02,
+        alt: "Metrics Hub overview in light mode"
       },
       {
-        src: kairo03,
-        alt: "Kairo design system screen 03"
+        src: metricsHub03,
+        alt: "Business alerts and conversion funnel in Metrics Hub"
       },
       {
-        src: kairo04,
-        alt: "Kairo design system screen 04"
+        src: metricsHub04,
+        alt: "Properties API monitoring dashboard in Metrics Hub"
       },
       {
-        src: kairo05,
-        alt: "Kairo design system screen 05"
+        src: metricsHub05,
+        alt: "Product tasks operational board in Metrics Hub"
       },
       {
-        src: kairo06,
-        alt: "Kairo design system screen 06"
+        src: metricsHub06,
+        alt: "Engagement call detail view in Metrics Hub"
       }
     ]
   },
