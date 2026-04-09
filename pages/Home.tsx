@@ -474,10 +474,8 @@ export const Home: React.FC = () => {
             </ScrollReveal>
           </section>
           <footer className="px-6 md:px-10 pb-12 pt-8 text-center text-zinc-700 text-xs font-mono border-t border-zinc-800">
-            <ScrollReveal>
               <p>Built with Cursor, GPT codex, Claude and Gemini.</p>
               <p className="mt-2">© 2025 Germán David Alvarez.</p>
-            </ScrollReveal>
           </footer>
         </div>
 
