@@ -29,7 +29,7 @@ export const NavBar: React.FC = () => {
         <div className="flex items-center gap-2">
           {isHome ? (
             <span className="px-3.5 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/40 text-[11px] font-semibold text-zinc-100 tracking-tight">
-              Germán David Alvarez
+              Germán D. Alvarez
             </span>
           ) : (
             <button
