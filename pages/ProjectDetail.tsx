@@ -3,6 +3,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { ProjectNarrativeChapter } from '../types';
 import { NavBar } from '../components/NavBar';
+import { ImageLightbox } from '../components/ImageLightbox';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ChevronDown } from 'lucide-react';
 import nowAppResearchPdf from '../assets/docs/nowapp-research.pdf';
@@ -144,6 +145,7 @@ const buildFallbackChapters = (project: (typeof PROJECTS)[number]): ProjectNarra
 export const ProjectDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const project = PROJECTS.find((p) => p.id === id);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (!project) {
     return <Navigate to="/" replace />;
@@ -232,10 +234,13 @@ export const ProjectDetail: React.FC = () => {
             {/* Mobile images — first 2 */}
             {primaryImages.length > 0 && (
               <div className="lg:hidden space-y-3">
-                {primaryImages.map((image) => (
-                  <div
+                {primaryImages.map((image, i) => (
+                  <button
                     key={image.src}
-                    className="rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden"
+                    type="button"
+                    onClick={() => setLightboxIndex(i)}
+                    className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
+                    aria-label={`Open image ${i + 1} of ${project.images.length}`}
                   >
                     <img
                       src={image.src}
@@ -243,7 +248,7 @@ export const ProjectDetail: React.FC = () => {
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
-                  </div>
+                  </button>
                 ))}
               </div>
             )}
@@ -316,19 +321,25 @@ export const ProjectDetail: React.FC = () => {
             {/* Mobile images — rest */}
             {secondaryImages.length > 0 && (
               <div className="lg:hidden space-y-3">
-                {secondaryImages.map((image) => (
-                  <div
-                    key={image.src}
-                    className="rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden"
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                ))}
+                {secondaryImages.map((image, i) => {
+                  const globalIndex = i + primaryImages.length;
+                  return (
+                    <button
+                      key={image.src}
+                      type="button"
+                      onClick={() => setLightboxIndex(globalIndex)}
+                      className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
+                      aria-label={`Open image ${globalIndex + 1} of ${project.images.length}`}
+                    >
+                      <img
+                        src={image.src}
+                        alt={image.alt}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </button>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -336,10 +347,13 @@ export const ProjectDetail: React.FC = () => {
           {/* ── RIGHT COLUMN — sticky image panel ───────────────────────── */}
           <aside className="hidden lg:block">
             <div className="lg:sticky lg:top-24 space-y-3 lg:max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar">
-              {project.images.map((image) => (
-                <div
+              {project.images.map((image, i) => (
+                <button
                   key={image.src}
-                  className="rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden"
+                  type="button"
+                  onClick={() => setLightboxIndex(i)}
+                  className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
+                  aria-label={`Open image ${i + 1} of ${project.images.length}`}
                 >
                   <img
                     src={image.src}
@@ -347,7 +361,7 @@ export const ProjectDetail: React.FC = () => {
                     className="w-full h-full object-cover"
                     loading="lazy"
                   />
-                </div>
+                </button>
               ))}
             </div>
           </aside>
@@ -360,6 +374,13 @@ export const ProjectDetail: React.FC = () => {
           <span>© 2025 Germán David Alvarez</span>
         </footer>
       </main>
+
+      <ImageLightbox
+        images={project.images}
+        index={lightboxIndex}
+        onClose={() => setLightboxIndex(null)}
+        onNavigate={(i) => setLightboxIndex(i)}
+      />
     </div>
   );
 };

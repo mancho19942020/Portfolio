@@ -5,9 +5,10 @@ import { ScrollReveal } from '../components/ScrollReveal';
 import { ToolsCarousel } from '../components/ToolsCarousel';
 import { InterestsRibbon } from '../components/InterestsRibbon';
 import { PROJECTS, EXPERIENCE, SKILLS } from '../constants';
-import { ArrowDown, ArrowRight, ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowDown, ArrowRight, ChevronDown, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { Project } from '../types';
+import cvPdf from '../assets/docs/german-david-alvarez-cv.pdf';
 
 type ExperienceItem = (typeof EXPERIENCE)[number];
 type ExperienceItemWithSecondary = ExperienceItem & {
@@ -78,6 +79,127 @@ const ExperienceCard: React.FC<{ exp: ExperienceItemWithSecondary; index: number
     </div>
   );
 };
+
+// ─── AI workflow phase card (collapsible) ────────────────────────────────────
+type AIPhase = {
+  label: string;
+  title: string;
+  summary: string;
+  highlights: string[];
+};
+
+const AIPhaseCard: React.FC<{ phase: AIPhase; index: number }> = ({ phase, index }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const contentId = `ai-phase-content-${index}`;
+
+  return (
+    <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 overflow-hidden flex flex-col h-full">
+      <div className="px-5 pt-5 pb-4 flex-1">
+        <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-1.5">
+          {phase.label}
+        </p>
+        <h3 className="text-base font-semibold text-zinc-100 leading-snug">
+          {phase.title}
+        </h3>
+        <p className="mt-3 text-sm text-zinc-400 leading-relaxed">
+          {phase.summary}
+        </p>
+      </div>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={contentId}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: 'easeOut' }}
+            className="overflow-hidden"
+          >
+            <div className="px-5 pb-5 flex flex-col gap-2 pt-1">
+              {phase.highlights.map((item) => (
+                <div
+                  key={item}
+                  className="flex gap-3 items-start rounded-xl border border-zinc-800 bg-zinc-950/40 px-4 py-3"
+                >
+                  <span className="mt-1.5 w-1 h-1 rounded-full bg-zinc-600 shrink-0" />
+                  <p className="text-sm text-zinc-400 leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <button
+        type="button"
+        onClick={() => setIsOpen((prev) => !prev)}
+        aria-expanded={isOpen}
+        aria-controls={contentId}
+        className="w-full px-5 py-3.5 border-t border-zinc-800 flex items-center justify-between gap-3 text-left hover:bg-zinc-800/20 transition-colors"
+      >
+        <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+          {isOpen ? 'Collapse' : 'See details'}
+        </span>
+        <ChevronDown
+          className={`w-3.5 h-3.5 text-zinc-600 shrink-0 transition-transform duration-200 ${
+            isOpen ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+    </div>
+  );
+};
+
+const AI_PHASES: AIPhase[] = [
+  {
+    label: '01 — Research & Discovery',
+    title: 'Faster, broader, better-sourced research',
+    summary:
+      'AI accelerates how I gather and synthesize information at the start of a project — covering more ground and validating findings against multiple sources.',
+    highlights: [
+      'In-depth competitor and market research with Claude extensions and Perplexity',
+      'Analysis of platform data, meeting recordings, and user-interview transcripts',
+      'Designing screeners, methodologies, and test prototypes faster than I could alone',
+      'Multi-source verification across Claude, Gemini, ChatGPT, and NotebookLM',
+    ],
+  },
+  {
+    label: '02 — Alignment & Vision',
+    title: 'Turning findings into shared direction',
+    summary:
+      'I turn research into decision-ready stakeholder material — fast, structured, and easy to challenge before design begins.',
+    highlights: [
+      'Stakeholder-ready decks and dashboards generated from raw research',
+      'Product-vision artifacts to align teams before design starts',
+      'Iterative feedback loops with leadership and cross-functional partners',
+    ],
+  },
+  {
+    label: '03 — Design & Build',
+    title: 'From wireframe to feature branch',
+    summary:
+      'Manual design judgment stays at the core; AI pushes high-fidelity work into a real environment for testing — not a static mockup.',
+    highlights: [
+      'Main flows manually in Figma to preserve craft and design intent',
+      'Rapid wireframes and prototypes in Pencil for early stakeholder testing',
+      'High-fidelity work in Figma with Claude Code support',
+      'Designs pushed directly into a feature branch for in-product testing',
+    ],
+  },
+  {
+    label: '04 — Measure & Iterate',
+    title: 'Tracking every decision after launch',
+    summary:
+      'Shipping is the start, not the end. Every design decision is followed through the metrics that connect business outcomes to user behavior.',
+    highlights: [
+      'Adoption and performance tracking in Metrics Hub (designed and built end-to-end)',
+      'Alert systems for fast issue detection in production',
+      'Audits of feature-level performance against business and user goals',
+      'Continuous iteration grounded in qualitative and quantitative data',
+    ],
+  },
+];
 
 // ─── Project card (carousel) ──────────────────────────────────────────────────
 const WorkCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
@@ -163,7 +285,7 @@ const ProjectCarousel: React.FC<{ projects: Project[] }> = ({ projects }) => {
   return (
     <div>
       {/* Desktop nav buttons */}
-      <div className="hidden md:flex justify-end gap-2 mb-4 px-6 md:px-10">
+      <div className="hidden md:flex justify-end gap-2 mb-4 px-10 md:px-20">
         <button
           type="button"
           onClick={() => navigateCarousel(-1)}
@@ -185,7 +307,7 @@ const ProjectCarousel: React.FC<{ projects: Project[] }> = ({ projects }) => {
       {/* Scroll track — card's overflow-hidden clips the edges */}
       <div
         ref={containerRef}
-        className="flex gap-5 overflow-x-auto no-scrollbar px-6 md:px-10 pb-10"
+        className="flex gap-5 overflow-x-auto no-scrollbar px-10 md:px-20 pb-10"
       >
         {projects.map((project, i) => (
           <WorkCard key={project.id} project={project} index={i} />
@@ -200,24 +322,21 @@ const ProjectCarousel: React.FC<{ projects: Project[] }> = ({ projects }) => {
 export const Home: React.FC = () => {
 
   const reiOrder = ["Metrics Hub", "BuyBox editor redesign", "Properties view redesign", "DM campaign"];
-  const habiOrder = ["Smart funnel", "Internal Ops"];
 
   const reiProjects = PROJECTS.filter(p => p.category === '8020REI').sort(
     (a, b) => reiOrder.indexOf(a.title) - reiOrder.indexOf(b.title)
   );
-  const habiProjects = PROJECTS.filter(
-    p => p.category === 'Habi' && p.title !== 'Internal Ops'
-  ).sort((a, b) => habiOrder.indexOf(a.title) - habiOrder.indexOf(b.title));
-  const freelanceProjects = PROJECTS.filter(p => p.category === 'Freelance').slice(0, 1);
+  const habiProjects = PROJECTS.filter(p => p.category === 'Habi');
+  const freelanceProjects = PROJECTS.filter(p => p.category === 'Freelance');
   const orderedProjects = [...reiProjects, ...habiProjects, ...freelanceProjects];
 
   const titles = [
-    { desktop: "ai-driven platforms",    mobileLine1: "ai-driven",       mobileLine2: "platforms"   },
-    { desktop: "prop-tech solutions",    mobileLine1: "prop-tech",       mobileLine2: "solutions"   },
-    { desktop: "investor platforms",     mobileLine1: "investor",        mobileLine2: "platforms"   },
-    { desktop: "operational dashboards", mobileLine1: "operational",     mobileLine2: "dashboards"  },
-    { desktop: "high-stakes tools",      mobileLine1: "high-stakes",     mobileLine2: "tools"       },
-    { desktop: "workflow-heavy SaaS",    mobileLine1: "workflow-heavy",  mobileLine2: "SaaS"        },
+    { desktop: "AI-augmented platforms", mobileLine1: "AI-augmented",    mobileLine2: "platforms"    },
+    { desktop: "decision intelligence",  mobileLine1: "decision",        mobileLine2: "intelligence" },
+    { desktop: "0→1 verticals",          mobileLine1: "0→1",             mobileLine2: "verticals"    },
+    { desktop: "operational dashboards", mobileLine1: "operational",     mobileLine2: "dashboards"   },
+    { desktop: "high-stakes tools",      mobileLine1: "high-stakes",     mobileLine2: "tools"        },
+    { desktop: "workflow-heavy SaaS",    mobileLine1: "workflow-heavy",  mobileLine2: "SaaS"         },
   ];
   const [titleIndex, setTitleIndex] = useState(0);
 
@@ -266,7 +385,7 @@ export const Home: React.FC = () => {
 
         {/* ── CARD 1: HERO ─────────────────────────────────────────────────── */}
         <div className={CARD}>
-          <section className="px-6 md:px-10 min-h-[calc(100svh-5.5rem)] md:min-h-[calc(100vh-5.5rem)] flex flex-col py-14 md:py-20">
+          <section className="px-10 md:px-20 min-h-[calc(100svh-5.5rem)] md:min-h-[calc(100vh-5.5rem)] flex flex-col py-14 md:py-20">
             <div className="flex-1 flex flex-col justify-center">
               <div className="flex flex-col gap-10 md:gap-12">
 
@@ -350,13 +469,13 @@ export const Home: React.FC = () => {
 
         {/* ── CARD 2: TOOLS + INTERESTS ─────────────────────────────────────── */}
         <div className={CARD}>
-          <section id="tools" className="px-6 md:px-10 py-10">
+          <section id="tools" className="px-10 md:px-20 py-10">
             <ScrollReveal>
               <ToolsCarousel />
             </ScrollReveal>
           </section>
           <div className="border-t border-zinc-800" />
-          <section id="interests" className="px-6 md:px-10 py-10">
+          <section id="interests" className="px-10 md:px-20 py-10">
             <ScrollReveal>
               <InterestsRibbon />
             </ScrollReveal>
@@ -365,18 +484,21 @@ export const Home: React.FC = () => {
 
         {/* ── CARD 3: ABOUT + EXPERIENCE + EXPERTISE ────────────────────────── */}
         <div id="about" className={`${CARD} scroll-mt-4`}>
-          <section className="px-6 md:px-10 py-12 md:py-16 grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24">
+          <section className="px-10 md:px-20 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-20">
 
-            <div className="md:col-span-4">
+            <div>
               <ScrollReveal>
                 <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">About</h2>
                 <p className="text-zinc-300 leading-relaxed mb-8 text-lg md:text-xl font-light">
-                  With over 7 years of experience, I bridge the gap between complex data and intuitive interfaces.
-                  My work is grounded in research, validated by data, and accelerated by AI tools.
+                  Lead Product Designer and Design Engineer with 7+ years building complex B2B SaaS products.
+                  I bridge the gap between business decisions, complex data, and intuitive interfaces —
+                  grounded in research, validated by data, and accelerated by AI workflows.
                 </p>
                 <p className="text-zinc-500 text-base leading-relaxed">
-                  I thrive in environments where I can build scalable products
-                  and collaborate closely with engineering to ship polished, performant software.
+                  I act as a business stakeholder beyond design — coordinating cross-functional initiatives,
+                  managing feature performance, and partnering with executive leadership on new verticals.
+                  I also write production code: Metrics Hub is a working internal platform I designed and built
+                  in React, Next.js, TypeScript, and Tailwind.
                 </p>
                 <div className="mt-10 space-y-4">
                   <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</h3>
@@ -396,7 +518,7 @@ export const Home: React.FC = () => {
               </ScrollReveal>
             </div>
 
-            <div className="md:col-span-4">
+            <div>
               <ScrollReveal delay={0.2}>
                 <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">Experience</h2>
                 <div className="space-y-3">
@@ -407,7 +529,7 @@ export const Home: React.FC = () => {
               </ScrollReveal>
             </div>
 
-            <div className="md:col-span-4">
+            <div>
               <ScrollReveal delay={0.4}>
                 <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-8">Expertise</h2>
                 <div className="space-y-10">
@@ -433,10 +555,40 @@ export const Home: React.FC = () => {
           </section>
         </div>
 
+        {/* ── CARD: AI WORKFLOW ─────────────────────────────────────────────── */}
+        <div id="ai" className={`${CARD} scroll-mt-4`}>
+          <section className="px-10 md:px-20 py-14 md:py-20">
+            <ScrollReveal>
+              <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-6">
+                AI in my workflow
+              </h2>
+              <p className="text-zinc-300 text-lg md:text-xl font-light leading-relaxed mb-12 md:mb-16">
+                I use AI across every phase of design — from research to post-launch metrics.
+                The goal isn't to generate output faster, it's to think wider and check more sources before deciding.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {AI_PHASES.map((phase, i) => (
+                  <AIPhaseCard key={phase.label} phase={phase} index={i} />
+                ))}
+              </div>
+
+              <div className="mt-14 md:mt-16 pt-8 border-t border-zinc-800">
+                <p className="text-zinc-500 text-sm leading-relaxed">
+                  <span className="text-zinc-300 font-semibold">Multiple sources, deliberately.</span>{' '}
+                  Claude Code and Claude Desktop primarily; Gemini, ChatGPT, Perplexity, and NotebookLM to
+                  contrast results. Human judgment is the final filter — AI accelerates the work, it doesn't
+                  replace the criteria.
+                </p>
+              </div>
+            </ScrollReveal>
+          </section>
+        </div>
+
         {/* ── CARD 4: SELECTED WORK ─────────────────────────────────────────── */}
         <div id="work" className={`${CARD} scroll-mt-4`}>
           <ScrollReveal>
-            <div className="px-6 md:px-10 pt-10 pb-2">
+            <div className="px-10 md:px-20 pt-10 pb-2">
               <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-2">Selected Work</h2>
               <p className="text-zinc-500 text-sm font-light md:hidden">Swipe to browse · tap to open</p>
               <p className="text-zinc-500 text-sm font-light hidden md:block">Use arrows to browse · click to open</p>
@@ -449,10 +601,19 @@ export const Home: React.FC = () => {
 
         {/* ── CARD 5: CTA + FOOTER ──────────────────────────────────────────── */}
         <div id="cta" className={`${CARD} scroll-mt-4`}>
-          <section className="px-6 md:px-10 pt-16 md:pt-20 pb-10 text-center">
+          <section className="px-10 md:px-20 pt-16 md:pt-20 pb-10 text-center">
             <ScrollReveal>
               <h2 className="text-3xl md:text-5xl font-bold mb-10">Let's build something scalable.</h2>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href={cvPdf}
+                  download
+                  className="glow-reactive glow-button btn-outline inline-flex items-center justify-center gap-2 px-10 py-4 border border-zinc-800 font-semibold rounded-full transition-colors text-base w-full sm:w-auto whitespace-nowrap"
+                  aria-label="Download CV"
+                >
+                  <Download className="w-4 h-4" />
+                  Download CV
+                </a>
                 <a
                   href="https://calendly.com/mancho19942020/30min"
                   target="_blank"
@@ -473,9 +634,9 @@ export const Home: React.FC = () => {
               </div>
             </ScrollReveal>
           </section>
-          <footer className="px-6 md:px-10 pb-12 pt-8 text-center text-zinc-700 text-xs font-mono border-t border-zinc-800">
-              <p>Built with Cursor, GPT codex, Claude and Gemini.</p>
-              <p className="mt-2">© 2025 Germán David Alvarez.</p>
+          <footer className="px-10 md:px-20 pb-12 pt-8 text-center text-zinc-700 text-xs font-mono border-t border-zinc-800">
+              <p>Designed and shipped end-to-end by Germán David Alvarez.</p>
+              <p className="mt-2">© 2025 · Vibecoded with Claude Code, Cursor, GPT Codex, and Gemini.</p>
           </footer>
         </div>
 

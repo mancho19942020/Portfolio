@@ -39,28 +39,30 @@ export const PROJECTS: Project[] = [
   {
     id: "8020-dm-campaign",
     title: "DM campaign",
-    subtitle: "New product initiative",
+    subtitle: "Automated direct mail, integrated into the platform",
     category: "8020REI",
-    type: "SaaS Feature • 0 to 1",
-    role: "Lead Product Designer",
-    duration: "3 months",
+    type: "SaaS Feature • 0 to 1 + ongoing PM ownership",
+    role: "Lead Product Designer + Acting PM",
+    duration: "3 months design · ongoing PM ownership",
     tools: ["Figma", "Figma Make", "Google Analytics", "Heap", "Clarity", "ChatGPT"],
-    tags: ["Product Strategy", "Automation Flow", "Complex Logic"],
+    tags: ["Product Strategy", "Automation Flow", "Complex Logic", "PM Ownership"],
     thumbnailGradient: "from-emerald-900 to-zinc-900",
     narrative: {
       introduction: {
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "DM campaign is an automated direct mail system that builds on RapidResponse. It eliminates manual workflows, reduces time-to-contact, and turns direct mail into a data-driven, automated channel integrated into the platform."
+        summary: "DM campaign is an automated direct mail system that builds on RapidResponse. It eliminates manual workflows, reduces time-to-contact, and turns direct mail into a data-driven, automated channel integrated into the platform. Beyond initial design, I'm currently acting as PM for the feature — coordinating team initiatives, managing provider relationships, and tracking profitability — and partnering with the CCO on extending it into a new Direct DM business vertical."
       },
       role: {
-        title: "Lead Product Designer",
+        title: "Lead Product Designer + Acting PM",
         responsibilities: [
           "Owned end-to-end product design for the automation system",
           "Partnered with Product, Engineering, and Customer Success on scope and feasibility",
           "Defined interaction flows, guardrails, and system feedback states",
-          "Shaped onboarding, configuration, and performance visibility"
+          "Shaped onboarding, configuration, and performance visibility",
+          "Currently acting as PM: coordinating team initiatives, managing provider relationships, tracking feature profitability and performance",
+          "Partnering with the CCO on a new Direct DM business vertical"
         ]
       },
       challenge: {
@@ -202,7 +204,7 @@ export const PROJECTS: Project[] = [
   {
     id: "8020-buybox",
     title: "BuyBox editor redesign",
-    subtitle: "Core feature redesign",
+    subtitle: "From rules engine to guided decisions",
     category: "8020REI",
     type: "Complex Interaction Design",
     role: "Product Designer",
@@ -242,7 +244,8 @@ export const PROJECTS: Project[] = [
           "Performance limitations with large datasets",
           "Executive visibility and approval at each major decision",
           "Strict timelines tied to retention and growth goals",
-          "Dual audience of self-serve investors and CS-managed accounts"
+          "Dual audience of self-serve investors and CS-managed accounts",
+          "WCAG 2.1 AA compliance for color contrast, focus states, and error communication"
         ],
         insights: [
           "Investors need guidance, not just flexibility",
@@ -250,7 +253,8 @@ export const PROJECTS: Project[] = [
           "Previewing outcomes reduces trial-and-error behavior",
           "Defaults and guardrails outperform open-ended configuration",
           "Marketing capacity must shape acquisition criteria",
-          "Errors should be explicit, actionable, and impossible to miss"
+          "Errors should be explicit, actionable, and impossible to miss",
+          "Accessibility is a correctness requirement, not a finishing pass — color alone cannot carry meaning"
         ]
       },
       approach: [
@@ -258,8 +262,10 @@ export const PROJECTS: Project[] = [
         "Integrated Marketing Needs directly into BuyBox construction",
         "Added live preview of estimated property volume and balance",
         "Surfaced clear alerts and warnings for misalignment or risky configurations",
+        "Designed alerts and warnings against WCAG 2.1 AA: contrast ratios, explicit text, and icon plus color so meaning never depends on color alone",
         "Improved hierarchy and data prioritization to support decision-making",
         "Used a non-scroll, focused layout to reduce misclicks and friction",
+        "Defined keyboard navigation and visible focus states across rule groups, alerts, and modals",
         "Rewrote language to match investor mental models",
         "Aligned the UI with the Kairo design system for consistency and scalability"
       ],
@@ -320,8 +326,9 @@ export const PROJECTS: Project[] = [
             "I also used a focused, non-scroll layout to reduce misclicks and maintain context while editing complex criteria."
           ],
           highlights: [
-            "Warnings and alerts for misalignment",
+            "Warnings and alerts for misalignment, designed against WCAG 2.1 AA contrast and meaning-without-color rules",
             "Improved information hierarchy and readability",
+            "Keyboard-navigable rule groups with visible focus states",
             "Kairo-aligned UI for long-term consistency"
           ]
         },
@@ -374,7 +381,7 @@ export const PROJECTS: Project[] = [
   {
     id: "8020-property-list",
     title: "Properties view redesign",
-    subtitle: "Core feature redesign",
+    subtitle: "From data exporter to decision environment",
     category: "8020REI",
     type: "Workflow Optimization",
     role: "Lead Product Designer",
@@ -548,7 +555,7 @@ export const PROJECTS: Project[] = [
   {
     id: "8020-metrics-hub",
     title: "Metrics Hub",
-    subtitle: "Internal analytics platform",
+    subtitle: "Six data sources, one decision layer",
     category: "8020REI",
     type: "Unified Analytics Platform",
     role: "Lead Product Designer & Builder",
@@ -728,7 +735,7 @@ export const PROJECTS: Project[] = [
   {
     id: "habi-funnels",
     title: "Smart funnel",
-    subtitle: "Growth & optimization",
+    subtitle: "Mobile-first acquisition funnel",
     category: "Habi",
     type: "Growth Design",
     role: "Product Designer",
@@ -871,85 +878,6 @@ export const PROJECTS: Project[] = [
       {
         src: smartFunnel04,
         alt: "Smart funnel screen 04"
-      }
-    ]
-  },
-  {
-    id: "habi-internal",
-    title: "Internal Ops",
-    subtitle: "Efficiency tooling",
-    category: "Habi",
-    type: "Internal Tool",
-    role: "Product Designer",
-    duration: "2 months",
-    tools: ["Figma"],
-    tags: ["Workflow", "Enterprise UX", "Service Design"],
-    thumbnailGradient: "from-fuchsia-950 to-zinc-900",
-    narrative: {
-      introduction: {
-        company: "Habi",
-        industry: "Internal Operations",
-        year: "2023",
-        summary: "Designed an internal operations platform that helps commercial and zone leaders manage teams, territories, and assignments across cities."
-      },
-      role: {
-        title: "Product Designer",
-        responsibilities: [
-          "Led workflow analysis with internal stakeholders",
-          "Designed role-based UI for managers and operations teams",
-          "Aligned product behavior with internal CRM requirements"
-        ]
-      },
-      challenge: {
-        summary: "Team and zone management relied on spreadsheets and manual processes, creating operational friction and poor visibility.",
-        painPoints: [
-          "No clear visibility into who was working on which areas",
-          "Difficult to track team status and availability",
-          "High dependency on a single administrator",
-          "Poor UI clarity for internal stakeholders"
-        ],
-        constraints: [
-          "Changes needed to sync with the internal CRM",
-          "Zone logic varied across cities",
-          "Operations teams needed fast edits with low risk"
-        ],
-        insights: [
-          "Role-based visibility reduces decision friction",
-          "Clear zone language improves coordination",
-          "Instant updates prevent operational drift"
-        ]
-      },
-      approach: [
-        "Designed a clean, role-based internal UI",
-        "Standardized zone selection language across the platform",
-        "Enabled managers to create, edit, and assign zones visually",
-        "Built team member profiles with role, territory, and status",
-        "Synced all changes directly with the internal CRM"
-      ],
-      outcome: [
-        "Improved speed and accuracy of team and zone management",
-        "Increased operational transparency",
-        "Reduced dependency on a single operator",
-        "Faster onboarding of new sellers",
-        "Better alignment between internal operations and CRM data"
-      ]
-    },
-    images: [
-      {
-        src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=80",
-        alt: "Operations workflow overview"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
-        alt: "Internal dashboard analytics"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80",
-        alt: "Ops team planning"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80",
-        alt: "Platform development"
       }
     ]
   },
@@ -1113,81 +1041,6 @@ export const PROJECTS: Project[] = [
       }
     ]
   },
-  {
-    id: "freelance-2",
-    title: "Freelance 2",
-    subtitle: "Project description placeholder",
-    category: "Freelance",
-    type: "App Design",
-    role: "Product Designer",
-    duration: "2 Months",
-    tools: ["Figma", "React Native"],
-    tags: ["Mobile", "UX"],
-    thumbnailGradient: "from-zinc-900 to-zinc-800",
-    narrative: {
-      introduction: {
-        company: "Independent Client",
-        industry: "Consumer App",
-        year: "2021",
-        summary: "Designed a mobile-first product concept focused on habit tracking and lightweight coaching. The project balanced playful visual design with a clear onboarding flow."
-      },
-      role: {
-        title: "Product Designer",
-        responsibilities: [
-          "Defined onboarding, core flows, and UI patterns",
-          "Produced high-fidelity prototypes for stakeholder demos",
-          "Collaborated with engineering on React Native handoff"
-        ]
-      },
-      challenge: {
-        summary: "The product needed to feel motivating without adding friction.",
-        painPoints: [
-          "Drop-offs during onboarding",
-          "Limited clarity on daily actions",
-          "Overly dense tracking screens"
-        ],
-        constraints: [
-          "Small team with limited development resources",
-          "Need to ship an MVP quickly",
-          "Multiple feature ideas with no prioritization"
-        ],
-        insights: [
-          "Short onboarding increases first-week retention",
-          "Daily prompts outperform long forms",
-          "Clear progress visualization improves engagement"
-        ]
-      },
-      approach: [
-        "Streamlined onboarding to a three-step flow",
-        "Built a simple daily check-in and streak mechanic",
-        "Used visual progress cards to reinforce momentum",
-        "Defined an MVP roadmap with phased feature rollout"
-      ],
-      outcome: [
-        "Stronger prototype clarity for fundraising demos",
-        "Faster iteration cycle for MVP scope",
-        "Foundation for a cohesive mobile design system"
-      ]
-    },
-    images: [
-      {
-        src: "https://images.unsplash.com/photo-1559027615-5c6a1a234d8b?auto=format&fit=crop&w=1400&q=80",
-        alt: "Mobile app experience"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1400&q=80",
-        alt: "Mobile UI exploration"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1400&q=80",
-        alt: "Prototype review"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=80",
-        alt: "Engagement metrics sketch"
-      }
-    ]
-  }
 ];
 
 export const EXPERIENCE: ExperienceItem[] = [
