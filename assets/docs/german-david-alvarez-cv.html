@@ -10,11 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black: #0d0d0d;
-      --gray-dark: #374151;
-      --gray-mid: #6b7280;
-      --gray-light: #e5e7eb;
-      --gray-bg: #f9fafb;
+      --black: #0a0a0a;
+      --gray-900: #18181b;
+      --gray-700: #3f3f46;
+      --gray-500: #71717a;
+      --gray-400: #a1a1aa;
+      --gray-200: #e4e4e7;
+      --gray-100: #f4f4f5;
+      --gray-50: #fafafa;
+      --accent: #0f4c81;
       --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
@@ -23,6 +27,7 @@
     html {
       font-family: var(--font);
       font-size: 10pt;
+      line-height: 1.5;
       color: var(--black);
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -31,7 +36,7 @@
     body {
       max-width: 210mm;
       margin: 0 auto;
-      padding: 1.4cm 1.6cm;
+      padding: 1.3cm 1.5cm;
       background: #ffffff;
     }
 
@@ -39,7 +44,7 @@
 
     @media print {
       body { padding: 0; }
-      @page { size: A4; margin: 1.4cm 1.6cm; }
+      @page { size: A4; margin: 1.3cm 1.5cm; }
       .no-break { page-break-inside: avoid; }
     }
 
@@ -48,64 +53,68 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      padding-bottom: 14px;
-      border-bottom: 1.5px solid var(--black);
-      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--black);
+      margin-bottom: 16px;
     }
 
     header h1 {
-      font-size: 21pt;
+      font-size: 23pt;
       font-weight: 700;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.018em;
       line-height: 1;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
     }
 
     header .subtitle {
       font-size: 9pt;
-      font-weight: 500;
-      color: var(--gray-dark);
-      letter-spacing: 0.01em;
+      font-weight: 400;
+      color: var(--gray-700);
+      letter-spacing: 0.02em;
     }
 
     header .contact {
       text-align: right;
       font-size: 8pt;
-      color: var(--gray-mid);
+      color: var(--gray-500);
       line-height: 1.85;
+    }
+
+    header .contact a {
+      color: var(--gray-700);
     }
 
     /* ─── Grid layout ─────────────────────────────────────────────────── */
     .layout {
       display: grid;
-      grid-template-columns: 1fr 200px;
+      grid-template-columns: 1fr 205px;
       gap: 28px;
     }
 
     /* ─── Section headings ────────────────────────────────────────────── */
     h2 {
-      font-size: 6.5pt;
-      font-weight: 600;
+      font-size: 7pt;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--gray-mid);
-      border-bottom: 1px solid var(--gray-light);
-      padding-bottom: 4px;
-      margin-bottom: 11px;
+      letter-spacing: 0.22em;
+      color: var(--black);
+      border-bottom: 1px solid var(--gray-200);
+      padding-bottom: 5px;
+      margin-bottom: 10px;
     }
 
-    section { margin-bottom: 20px; }
+    section { margin-bottom: 16px; }
 
     /* ─── Summary ─────────────────────────────────────────────────────── */
     .summary p {
       font-size: 9pt;
-      font-weight: 300;
-      color: var(--gray-dark);
-      line-height: 1.7;
+      font-weight: 400;
+      color: var(--gray-700);
+      line-height: 1.6;
     }
 
     /* ─── Experience ──────────────────────────────────────────────────── */
-    .job { margin-bottom: 15px; }
+    .job { margin-bottom: 13px; }
 
     .job-header {
       display: flex;
@@ -115,40 +124,49 @@
     }
 
     .job-company {
-      font-size: 10pt;
+      font-size: 10.5pt;
       font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
     .job-period {
       font-size: 7.5pt;
-      color: var(--gray-mid);
-      font-weight: 400;
+      color: var(--gray-500);
+      font-weight: 500;
       white-space: nowrap;
+      letter-spacing: 0.02em;
     }
 
     .job-role {
       font-size: 8.5pt;
       font-weight: 600;
-      color: var(--gray-dark);
+      color: var(--gray-700);
       margin-bottom: 2px;
     }
 
     .job-meta {
       font-size: 7.5pt;
-      color: var(--gray-mid);
+      color: var(--gray-500);
       margin-bottom: 6px;
+      letter-spacing: 0.01em;
     }
 
     .job ul {
-      padding-left: 12px;
-      list-style-type: disc;
+      padding-left: 13px;
+      list-style-type: "›  ";
     }
 
     .job li {
       font-size: 8.5pt;
-      color: var(--gray-dark);
-      line-height: 1.65;
-      margin-bottom: 2px;
+      color: var(--gray-700);
+      line-height: 1.55;
+      margin-bottom: 3px;
+      padding-left: 2px;
+    }
+
+    .job li::marker {
+      color: var(--gray-400);
+      font-weight: 500;
     }
 
     .job li b {
@@ -156,36 +174,45 @@
       color: var(--black);
     }
 
-    /* ─── Projects ────────────────────────────────────────────────────── */
-    .project { margin-bottom: 13px; }
+    /* ─── Projects (Selected Impact) ──────────────────────────────────── */
+    .project { margin-bottom: 11px; }
 
     .project-title {
-      font-size: 8.5pt;
+      font-size: 9pt;
       font-weight: 700;
       margin-bottom: 1px;
+      letter-spacing: -0.005em;
     }
 
     .project-meta {
       font-size: 7.5pt;
-      color: var(--gray-mid);
+      color: var(--gray-500);
       margin-bottom: 4px;
+      letter-spacing: 0.01em;
     }
 
     .project p {
       font-size: 8pt;
-      color: var(--gray-dark);
-      line-height: 1.6;
-      margin-bottom: 3px;
+      color: var(--gray-700);
+      line-height: 1.55;
+      margin-bottom: 4px;
     }
 
     .project .outcome {
       font-size: 8pt;
       font-weight: 600;
       color: var(--black);
+      border-left: 2px solid var(--accent);
+      padding: 1px 0 1px 8px;
+      margin-top: 4px;
     }
 
     /* ─── Right column ────────────────────────────────────────────────── */
-    .right section { margin-bottom: 18px; }
+    .right section {
+      margin-bottom: 14px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
 
     /* Competencies */
     .tags {
@@ -196,22 +223,23 @@
 
     .tag {
       font-size: 7pt;
-      color: var(--gray-dark);
-      background: var(--gray-bg);
-      border: 1px solid var(--gray-light);
-      padding: 2px 6px;
-      border-radius: 3px;
+      color: var(--gray-700);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      padding: 3px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.01em;
     }
 
     /* Skills groups */
-    .skill-group { margin-bottom: 10px; }
+    .skill-group { margin-bottom: 9px; }
 
     .skill-label {
       font-size: 7pt;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--gray-dark);
+      letter-spacing: 0.12em;
+      color: var(--black);
       margin-bottom: 4px;
     }
 
@@ -223,37 +251,41 @@
 
     .skill-tag {
       font-size: 7pt;
-      color: var(--gray-dark);
-      background: var(--gray-bg);
-      border: 1px solid var(--gray-light);
-      padding: 2px 6px;
-      border-radius: 3px;
+      color: var(--gray-700);
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      padding: 3px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.01em;
     }
 
     /* Education */
-    .edu { margin-bottom: 10px; }
+    .edu { margin-bottom: 8px; }
 
     .edu-degree {
       font-size: 8pt;
       font-weight: 600;
-      line-height: 1.4;
+      line-height: 1.35;
+      margin-bottom: 1px;
     }
 
     .edu-school {
       font-size: 7.5pt;
-      color: var(--gray-dark);
+      color: var(--gray-700);
+      margin-bottom: 1px;
     }
 
     .edu-year {
       font-size: 7.5pt;
-      color: var(--gray-mid);
+      color: var(--gray-500);
+      letter-spacing: 0.02em;
     }
 
     /* Small text blocks */
     .detail {
       font-size: 8pt;
-      color: var(--gray-dark);
-      line-height: 1.75;
+      color: var(--gray-700);
+      line-height: 1.85;
     }
   </style>
 </head>
