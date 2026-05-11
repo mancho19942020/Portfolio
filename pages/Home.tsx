@@ -324,7 +324,7 @@ export const Home: React.FC = () => {
 
   const reiOrder = ["8020 ROOF", "Metrics Hub", "BuyBox editor redesign", "Properties view redesign", "DM campaign"];
 
-  const reiProjects = PROJECTS.filter(p => p.category === '8020REI').sort(
+  const reiProjects = PROJECTS.filter(p => p.category === '8020REI' && p.title !== 'DM campaign').sort(
     (a, b) => reiOrder.indexOf(a.title) - reiOrder.indexOf(b.title)
   );
   const habiProjects = PROJECTS.filter(p => p.category === 'Habi');
