@@ -5,7 +5,6 @@ import buybox03 from './assets/projects/buybox/03.jpg';
 import buybox04 from './assets/projects/buybox/04.jpg';
 import buybox05 from './assets/projects/buybox/05.jpg';
 import buybox06 from './assets/projects/buybox/06.jpg';
-import buybox07 from './assets/projects/buybox/07.jpg';
 import propertyList01 from './assets/projects/property-list/01.jpg';
 import propertyList02 from './assets/projects/property-list/02.jpg';
 import propertyList03 from './assets/projects/property-list/03.jpg';
@@ -562,10 +561,6 @@ export const PROJECTS: Project[] = [
       {
         src: buybox06,
         alt: "BuyBox editor redesign screen 06"
-      },
-      {
-        src: buybox07,
-        alt: "BuyBox editor redesign screen 07"
       }
     ]
   },
