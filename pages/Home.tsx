@@ -496,10 +496,10 @@ export const Home: React.FC = () => {
                   grounded in research, validated by data, and accelerated by AI workflows.
                 </p>
                 <p className="text-zinc-500 text-base leading-relaxed">
-                  I act as a business stakeholder beyond design — coordinating cross-functional initiatives,
-                  managing feature performance, and partnering with executive leadership on new verticals.
-                  I also write production code: Metrics Hub is a working internal platform I designed and built
-                  in React, Next.js, TypeScript, and Tailwind.
+                  I act as a business stakeholder beyond design — leading 0→1 product work on new business
+                  verticals and partnering with executive leadership. I also write production code: Metrics Hub
+                  and 8020 ROOF are working platforms I helped design and build end-to-end in React/Next.js
+                  and Vue/Nuxt.
                 </p>
                 <div className="mt-10 space-y-4">
                   <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</h3>

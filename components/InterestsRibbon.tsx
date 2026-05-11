@@ -309,7 +309,7 @@ const MoodTracker: React.FC = () => {
         <button
           type="button"
           onClick={buildRecommendation}
-          className="glow-reactive glow-button btn-primary inline-flex w-full items-center justify-center rounded-sm px-6 py-3 font-semibold transition-colors md:w-auto"
+          className="glow-reactive glow-button btn-primary inline-flex w-full items-center justify-center rounded-full px-6 py-3 font-semibold transition-colors md:w-auto"
         >
           Get recommendation
         </button>
@@ -521,7 +521,7 @@ const FitnessPlan: React.FC = () => {
         <button
           type="button"
           onClick={() => setPlan(buildPlan)}
-          className="glow-reactive glow-button btn-primary inline-flex w-full items-center justify-center rounded-sm px-6 py-3 font-semibold transition-colors md:w-auto"
+          className="glow-reactive glow-button btn-primary inline-flex w-full items-center justify-center rounded-full px-6 py-3 font-semibold transition-colors md:w-auto"
         >
           Generate plan
         </button>
@@ -1049,7 +1049,7 @@ const TamagotchiPet: React.FC = () => {
         <button
           type="button"
           onClick={() => handleAction('feed')}
-          className="glow-reactive glow-button btn-primary w-full rounded-sm px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
+          className="glow-reactive glow-button btn-primary w-full rounded-full px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
           disabled={!pet.alive}
         >
           Feed
@@ -1057,7 +1057,7 @@ const TamagotchiPet: React.FC = () => {
         <button
           type="button"
           onClick={() => handleAction('play')}
-          className="glow-reactive glow-button btn-primary w-full rounded-sm px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
+          className="glow-reactive glow-button btn-primary w-full rounded-full px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
           disabled={!pet.alive}
         >
           Play
@@ -1065,7 +1065,7 @@ const TamagotchiPet: React.FC = () => {
         <button
           type="button"
           onClick={() => handleAction('pet')}
-          className="glow-reactive glow-button btn-primary w-full rounded-sm px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
+          className="glow-reactive glow-button btn-primary w-full rounded-full px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
           disabled={!pet.alive}
         >
           Pet
@@ -1381,8 +1381,9 @@ const InterestModal: React.FC<{
               {interest.icon}
               <span>{interest.label}</span>
             </div>
-            <h3 className="text-2xl font-semibold font-mono tracking-wide">
-              #{tag} {prefix} {interest.label}
+            <h3 className="text-2xl font-bold tracking-tight">
+              <span className="font-mono text-zinc-300">#{tag}</span>{' '}
+              <span className="text-zinc-100">{prefix} {interest.label}</span>
             </h3>
             <p className="text-sm text-zinc-400">{interest.helper}</p>
           </div>
@@ -1437,7 +1438,7 @@ export const InterestsRibbon: React.FC = () => {
               key={interest.id}
               type="button"
               onClick={() => handleOpen(interest)}
-              className="glow-reactive glow-button interest-tag inline-flex w-full items-center gap-2 rounded-full border border-white/10 bg-zinc-900/55 backdrop-blur-md px-3 py-2 text-[11px] font-mono tracking-[0.04em] text-zinc-400 transition-colors hover:border-zinc-600 hover:text-zinc-200 md:w-auto"
+              className="glow-reactive glow-button interest-tag inline-flex w-full items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/40 backdrop-blur-md px-3 py-2 text-[11px] font-mono tracking-[0.04em] text-zinc-400 transition-colors hover:border-zinc-600 hover:text-zinc-200 md:w-auto"
               aria-label={`Open ${interest.label} feature`}
             >
               <span className="text-zinc-500 opacity-85 [&_svg]:h-3.5 [&_svg]:w-3.5">
