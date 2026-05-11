@@ -33,9 +33,200 @@ import nowApp03 from './assets/projects/now-app/03.jpg';
 import nowApp04 from './assets/projects/now-app/04.jpg';
 import nowApp05 from './assets/projects/now-app/05.jpg';
 import nowApp06 from './assets/projects/now-app/06.jpg';
+import roof000 from './assets/projects/8020roof/000.jpg';
+import roof001 from './assets/projects/8020roof/001.jpg';
+import roof002 from './assets/projects/8020roof/002.jpg';
+import roof003 from './assets/projects/8020roof/003.jpg';
+import roof004 from './assets/projects/8020roof/004.jpg';
+import roof005 from './assets/projects/8020roof/005.jpg';
+import roof006 from './assets/projects/8020roof/006.jpg';
+import roof007 from './assets/projects/8020roof/007.jpg';
 
 export const PROJECTS: Project[] = [
   // 8020REI (Priority 1)
+  {
+    id: "8020-roof",
+    title: "8020 ROOF",
+    subtitle: "Property intelligence and a marketing pipeline for the roofing vertical",
+    category: "8020REI",
+    type: "Multi-tenant B2B SaaS · 0→1 build",
+    role: "Lead Product Designer & Builder",
+    duration: "~1.5 months active build",
+    tools: [
+      "Figma",
+      "Claude Code",
+      "Nuxt 4",
+      "Vue 3",
+      "TypeScript",
+      "Tailwind CSS",
+      "FastAPI",
+      "SQLAlchemy 2.0",
+      "PostgreSQL (AWS Aurora)",
+      "Firebase Auth",
+      "AG Grid",
+      "Docker",
+      "Google Cloud Run",
+      "Firebase Hosting",
+      "GitHub Actions"
+    ],
+    tags: ["Design System", "Multi-tenant SaaS", "Vibecoding", "0→1"],
+    thumbnailGradient: "from-orange-950 to-zinc-900",
+    coverImage: {
+      src: roof000,
+      alt: "8020 ROOF cover"
+    },
+    team: {
+      note: "Three builders, no rigid lanes. Each of us led the area where we were strongest, but the three of us shipped frontend, backend, data, and QA together — equal effort, shared ownership of every aspect of the platform.",
+      members: [
+        {
+          name: "Camilo Rico",
+          role: "Product Director",
+          contribution: "Builder and data owner"
+        },
+        {
+          name: "Nicolas Hernandez",
+          role: "Lead QA",
+          contribution: "Builder, tests, and security owner"
+        },
+        {
+          name: "Germán Alvarez",
+          role: "Lead Product Designer",
+          contribution: "Builder and product UX / UI owner"
+        }
+      ]
+    },
+    narrative: {
+      introduction: {
+        company: "8020REI",
+        industry: "PropTech SaaS",
+        year: "2026",
+        summary: "Built a multi-client SaaS that turns a 100M+ row property database into ready-to-execute roofing marketing lists. Operators search and target properties, define a buybox, and run a five-stage fulfillment pipeline that emits direct-mail and cold-calling lists every month — replacing weeks of manual spreadsheet assembly with a self-serve platform."
+      },
+      role: {
+        title: "Lead Product Designer & Builder",
+        responsibilities: [
+          "Scaled the Axis design system into a production component library of 31 components with full dark mode and 45+ in-platform documentation pages",
+          "Led product design end-to-end across property intelligence, buybox configuration, fulfillment, and the door-knocking beta",
+          "Contributed to the codebase across the frontend with Claude Code as a development partner — UI flows, admin tooling, and reusable components",
+          "Audited every feature alongside the team, enforcing design system compliance and UX consistency before release",
+          "Helped validate the platform with two pilot clients, retiring spreadsheet-based marketing list delivery"
+        ]
+      },
+      challenge: {
+        summary: "8020REI had built a working data business around investor list generation, but the roofing vertical was being served by hand — manually assembled, manually scored, manually split Excel files. The business needed to prove a second vertical could ship without expanding the engineering team.",
+        painPoints: [
+          "Two pilot clients still receiving marketing lists as manual Excel exports",
+          "Manual scoring and channel splitting on every monthly cycle",
+          "No platform path for scaling the roofing vertical without new hires",
+          "100M+ property records to expose without exposing the underlying complexity",
+          "Internal mandate to ship a real product, not a service-delivery workflow"
+        ],
+        constraints: [
+          "Three-person team with no dedicated frontend or backend engineer",
+          "Multi-tenant county-level data isolation as a hard requirement",
+          "Production-grade design system before any feature work began"
+        ],
+        insights: [
+          "AI treated as a teammate across design, frontend, backend, and QA — not as autocomplete",
+          "Five user roles defined before the first screen was designed",
+          "Component coherence enforced platform-wide and audited each release",
+          "The platform's value came from removing manual steps, not adding features"
+        ]
+      },
+      approach: [
+        "Mapped the operator workflow into three jobs: find candidate properties, package them as a list, deliver them to a channel",
+        "Scaled Axis into 31 production components with semantic tokens, full dark mode, and a hard rule against raw HTML form elements",
+        "Shipped 45+ in-platform documentation pages so every screen built after week one stayed coherent",
+        "Built property intelligence first — virtualized table over the 100M-row dataset with saved views, multi-filter search, county scoping, and async exports",
+        "Layered the buybox builder, dashboard with real Aurora distress metrics, and the five-stage fulfillment pipeline",
+        "Added a beta door-knocking module with traveling-salesman-optimized field routes",
+        "Used Claude Code as a development teammate to ship UI flows, admin tooling, and reusable components"
+      ],
+      outcome: [
+        "Two pilot clients live in production; one reported 100% satisfaction",
+        "Excel-based monthly list delivery retired for the roofing vertical inside six weeks of active development",
+        "5-stage async fulfillment pipeline emitting ~20K direct-mail and ~115K cold-call records every cycle",
+        "Proved a three-person, mostly non-technical product team could ship production data SaaS",
+        "Playbook for the next vertical written along the way"
+      ],
+      chapters: [
+        {
+          label: "Act 01",
+          title: "Roofing operators were buying lists from spreadsheets",
+          paragraphs: [
+            "8020REI had built a working data business around real estate investor list generation, but the roofing vertical was being served by hand. Two pilot clients received their monthly marketing lists as Excel files — manually assembled, manually scored, manually split between direct mail and cold-calling channels.",
+            "The business needed to prove a second vertical could ship without expanding the engineering team. The bet was that the existing three-person product group, without dedicated frontend or backend engineers, could deliver a production SaaS by treating AI as a teammate."
+          ],
+          highlights: [
+            "Two pilot clients still receiving marketing lists as manual Excel exports",
+            "No platform path for scaling the roofing vertical without new hires",
+            "Internal mandate to ship a real product, not a service-delivery workflow"
+          ]
+        },
+        {
+          label: "Act 02",
+          title: "Three people, one hundred million rows, no rigid lanes",
+          paragraphs: [
+            "Camilo Rico (product director), Nicolas Hernandez (QA lead), and I (lead product designer) split the work without dividing it. Camilo owned the data layer and the fulfillment pipeline. Nicolas built the buybox logic and the security testing suite. I drove the design system and product design, and contributed code through Claude Code.",
+            "Before any feature was built, we mapped what we had against what the user actually needed: a 100M+ row Aurora property dataset, county-level access expressed as FIPS codes, propensity scoring from external partners, and an operator workflow that was really three jobs in a trench coat — find candidate properties, package them as a list, deliver them to a channel."
+          ],
+          highlights: [
+            "100M+ property records scoped by 5-digit county FIPS codes for multi-tenant isolation",
+            "Five user roles defined before the first screen was designed",
+            "AI treated as a teammate across design, frontend, backend, and QA"
+          ]
+        },
+        {
+          label: "Act 03",
+          title: "The design system shipped before the features did",
+          paragraphs: [
+            "We started from Axis — 8020REI's existing design system — and scaled it into a production-ready component library before any product feature was built. Thirty-one components, full light and dark mode, semantic tokens for color, typography, motion, and spacing, and a hard rule against raw HTML form elements anywhere in the platform.",
+            "That decision turned every later feature into composition rather than design work. Buttons, inputs, selects, tables, toasts, callouts, steppers, and skeleton loaders were already vetted. Engineering decisions about layout and feedback patterns were already documented as 45+ design system pages inside the platform itself, so every screen built after week one stayed visually and behaviorally coherent."
+          ],
+          highlights: [
+            "31 production Axis components shipped with full dark mode and WCAG AA contrast",
+            "45+ in-platform documentation pages governing colors, typography, motion, components, and patterns",
+            "Component coherence enforced as a hard rule and audited platform-wide before each release"
+          ]
+        },
+        {
+          label: "Act 04",
+          title: "From property search to a five-stage marketing pipeline",
+          paragraphs: [
+            "The feature stack landed in roughly the order an operator uses it. Property intelligence first — a virtualized table over the 100M-row dataset with saved views, multi-filter search, county scoping, bulk tagging, and async CSV/Excel exports. Then the buybox builder, a rule editor for defining a target audience that becomes the input to the rest of the platform. Then the dashboard, surfacing real Aurora distress metrics per county with a 15-minute cache.",
+            "Fulfillment is the platform's hardest feature. A monthly cycle runs through five stages — list builder, rotation, consolidation, QA, finalization — and emits two channel-ready lists every month: 20K records for direct mail, 115K records for cold calling, both delivered as downloadable Excel files. Door knocking, a beta module, generates traveling-salesman-optimized field routes for in-person canvassing. Everything sits behind Firebase auth, FastAPI dependency-injected role checks, and database-level county isolation."
+          ],
+          highlights: [
+            "5-stage async fulfillment pipeline emitting ~20K direct-mail and ~115K cold-call records per cycle",
+            "Real-Aurora dashboard with 15-minute cached distress metrics across each client's assigned counties",
+            "Beta door-knocking module with TSP route optimization, segment maps, and field-ready Excel exports"
+          ]
+        },
+        {
+          label: "Act 05",
+          title: "Two pilot clients, the Excel handoff retired",
+          paragraphs: [
+            "The platform shipped with two clients live in production. One reported 100% satisfaction. The Excel-based delivery process — the same workflow 8020REI had used before its first vertical platform existed — was retired for the roofing vertical inside six weeks of active development.",
+            "Beyond the customer outcome, the project proved an internal hypothesis: a three-person, mostly non-technical product team could ship a robust data SaaS — 100M-row scale, async pipelines, multi-tenant role hierarchy, full design system, dark mode platform-wide — by treating AI as a teammate. The playbook for the next vertical was written along the way."
+          ],
+          highlights: [
+            "Two pilot clients in production; one at 100% satisfaction",
+            "Spreadsheet-based monthly list delivery retired and replaced with self-serve fulfillment",
+            "Internal proof point: a non-technical core team can ship production SaaS in weeks, not quarters"
+          ]
+        }
+      ]
+    },
+    images: [
+      { src: roof001, alt: "8020 ROOF — screen 01" },
+      { src: roof002, alt: "8020 ROOF — screen 02" },
+      { src: roof003, alt: "8020 ROOF — screen 03" },
+      { src: roof004, alt: "8020 ROOF — screen 04" },
+      { src: roof005, alt: "8020 ROOF — screen 05" },
+      { src: roof006, alt: "8020 ROOF — screen 06" },
+      { src: roof007, alt: "8020 ROOF — screen 07" }
+    ]
+  },
   {
     id: "8020-dm-campaign",
     title: "DM campaign",

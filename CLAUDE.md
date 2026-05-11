@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm install       # install dependencies
-npm run dev       # start dev server at localhost:3000
+npm run dev       # start dev server at localhost:4242 (pinned, strict port)
 npm run build     # production build → dist/
 npm run preview   # serve the dist/ build locally
 ```

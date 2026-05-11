@@ -1428,19 +1428,24 @@ export const InterestsRibbon: React.FC = () => {
   return (
     <>
       <div>
-        <div className="flex flex-col gap-3 md:flex-row md:flex-wrap">
+        <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.22em] mb-5">
+          Interests
+        </p>
+        <div className="flex flex-col gap-2.5 md:flex-row md:flex-wrap">
           {INTERESTS.map((interest) => (
             <button
               key={interest.id}
               type="button"
               onClick={() => handleOpen(interest)}
-              className="glow-reactive glow-button interest-tag flex w-full items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/40 px-4 py-2 text-sm text-zinc-200 transition-colors hover:border-zinc-600 md:w-auto"
+              className="glow-reactive glow-button interest-tag inline-flex w-full items-center gap-2 rounded-full border border-white/10 bg-zinc-900/55 backdrop-blur-md px-3 py-2 text-[11px] font-mono tracking-[0.04em] text-zinc-400 transition-colors hover:border-zinc-600 hover:text-zinc-200 md:w-auto"
               aria-label={`Open ${interest.label} feature`}
             >
-              <span className="text-zinc-500">{interest.icon}</span>
-              <span className="font-mono tracking-[0.02em] whitespace-nowrap">
+              <span className="text-zinc-500 opacity-85 [&_svg]:h-3.5 [&_svg]:w-3.5">
+                {interest.icon}
+              </span>
+              <span className="whitespace-nowrap">
                 <span className="text-zinc-200">#{interest.tag ?? toHashTag(interest.action)}</span>
-                <span className="ml-2 text-zinc-400">{getPrefix(interest)} {interest.label}</span>
+                <span className="ml-2 text-zinc-500">{getPrefix(interest)} {interest.label}</span>
               </span>
             </button>
           ))}

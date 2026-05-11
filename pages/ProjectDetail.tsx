@@ -272,6 +272,40 @@ export const ProjectDetail: React.FC = () => {
                   ))}
                 </div>
 
+                {/* Team — only when project credits collaborators */}
+                {project.team && (
+                  <div className="pt-2 space-y-4">
+                    <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+                      Team
+                    </p>
+                    {project.team.note ? (
+                      <p className="text-sm text-zinc-400 leading-relaxed">
+                        {project.team.note}
+                      </p>
+                    ) : null}
+                    <div className="flex flex-col gap-2">
+                      {project.team.members.map((member) => (
+                        <div
+                          key={member.name}
+                          className="rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-3.5"
+                        >
+                          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                            <p className="text-sm text-zinc-200 font-semibold">
+                              {member.name}
+                            </p>
+                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                              {member.role}
+                            </p>
+                          </div>
+                          <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
+                            {member.contribution}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Duration + Tools stacked below */}
                 <div className="space-y-6 pt-2">
                   <div>

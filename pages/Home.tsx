@@ -203,7 +203,8 @@ const AI_PHASES: AIPhase[] = [
 
 // ─── Project card (carousel) ──────────────────────────────────────────────────
 const WorkCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
-  const previewImage = project.images[project.previewImageIndex ?? 0] ?? project.images[0];
+  const previewImage =
+    project.coverImage ?? project.images[project.previewImageIndex ?? 0] ?? project.images[0];
 
   // Always dark translucent — bypasses light-mode CSS overrides
   const badgeStyle: React.CSSProperties = {
@@ -321,7 +322,7 @@ const ProjectCarousel: React.FC<{ projects: Project[] }> = ({ projects }) => {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export const Home: React.FC = () => {
 
-  const reiOrder = ["Metrics Hub", "BuyBox editor redesign", "Properties view redesign", "DM campaign"];
+  const reiOrder = ["8020 ROOF", "Metrics Hub", "BuyBox editor redesign", "Properties view redesign", "DM campaign"];
 
   const reiProjects = PROJECTS.filter(p => p.category === '8020REI').sort(
     (a, b) => reiOrder.indexOf(a.title) - reiOrder.indexOf(b.title)
@@ -555,6 +556,20 @@ export const Home: React.FC = () => {
           </section>
         </div>
 
+        {/* ── CARD 4: SELECTED WORK ─────────────────────────────────────────── */}
+        <div id="work" className={`${CARD} scroll-mt-4`}>
+          <ScrollReveal>
+            <div className="px-10 md:px-20 pt-10 pb-2">
+              <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-2">Selected Work</h2>
+              <p className="text-zinc-500 text-sm font-light md:hidden">Swipe to browse · tap to open</p>
+              <p className="text-zinc-500 text-sm font-light hidden md:block">Use arrows to browse · click to open</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal>
+            <ProjectCarousel projects={orderedProjects} />
+          </ScrollReveal>
+        </div>
+
         {/* ── CARD: AI WORKFLOW ─────────────────────────────────────────────── */}
         <div id="ai" className={`${CARD} scroll-mt-4`}>
           <section className="px-10 md:px-20 py-14 md:py-20">
@@ -583,20 +598,6 @@ export const Home: React.FC = () => {
               </div>
             </ScrollReveal>
           </section>
-        </div>
-
-        {/* ── CARD 4: SELECTED WORK ─────────────────────────────────────────── */}
-        <div id="work" className={`${CARD} scroll-mt-4`}>
-          <ScrollReveal>
-            <div className="px-10 md:px-20 pt-10 pb-2">
-              <h2 className="text-sm font-mono text-zinc-500 uppercase tracking-widest mb-2">Selected Work</h2>
-              <p className="text-zinc-500 text-sm font-light md:hidden">Swipe to browse · tap to open</p>
-              <p className="text-zinc-500 text-sm font-light hidden md:block">Use arrows to browse · click to open</p>
-            </div>
-          </ScrollReveal>
-          <ScrollReveal>
-            <ProjectCarousel projects={orderedProjects} />
-          </ScrollReveal>
         </div>
 
         {/* ── CARD 5: CTA + FOOTER ──────────────────────────────────────────── */}
