@@ -36,7 +36,7 @@
     body {
       max-width: 210mm;
       margin: 0 auto;
-      padding: 1.3cm 1.5cm;
+      padding: 0.6cm 1cm;
       background: #ffffff;
     }
 
@@ -44,7 +44,7 @@
 
     @media print {
       body { padding: 0; }
-      @page { size: A4; margin: 1.3cm 1.5cm; }
+      @page { size: A4; margin: 0.6cm 1cm; }
       .no-break { page-break-inside: avoid; }
     }
 
@@ -53,9 +53,9 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      padding-bottom: 12px;
+      padding-bottom: 10px;
       border-bottom: 2px solid var(--black);
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     header h1 {
@@ -99,11 +99,12 @@
       letter-spacing: 0.22em;
       color: var(--black);
       border-bottom: 1px solid var(--gray-200);
-      padding-bottom: 5px;
-      margin-bottom: 10px;
+      padding-bottom: 3px;
+      margin-bottom: 7px;
     }
 
-    section { margin-bottom: 16px; }
+    section { margin-bottom: 10px; }
+    section:last-child { margin-bottom: 0; }
 
     /* ─── Summary ─────────────────────────────────────────────────────── */
     .summary p {
@@ -114,7 +115,7 @@
     }
 
     /* ─── Experience ──────────────────────────────────────────────────── */
-    .job { margin-bottom: 13px; }
+    .job { margin-bottom: 8px; }
 
     .job-header {
       display: flex;
@@ -147,8 +148,15 @@
     .job-meta {
       font-size: 7.5pt;
       color: var(--gray-500);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       letter-spacing: 0.01em;
+    }
+
+    .job-scope {
+      font-size: 8.5pt;
+      color: var(--gray-700);
+      line-height: 1.5;
+      margin-bottom: 5px;
     }
 
     .job ul {
@@ -159,8 +167,8 @@
     .job li {
       font-size: 8.5pt;
       color: var(--gray-700);
-      line-height: 1.55;
-      margin-bottom: 3px;
+      line-height: 1.45;
+      margin-bottom: 2px;
       padding-left: 2px;
     }
 
@@ -209,7 +217,7 @@
 
     /* ─── Right column ────────────────────────────────────────────────── */
     .right section {
-      margin-bottom: 14px;
+      margin-bottom: 7px;
       break-inside: avoid;
       page-break-inside: avoid;
     }
@@ -232,7 +240,7 @@
     }
 
     /* Skills groups */
-    .skill-group { margin-bottom: 9px; }
+    .skill-group { margin-bottom: 5px; }
 
     .skill-label {
       font-size: 7pt;
@@ -260,7 +268,7 @@
     }
 
     /* Education */
-    .edu { margin-bottom: 8px; }
+    .edu { margin-bottom: 5px; }
 
     .edu-degree {
       font-size: 8pt;
@@ -319,12 +327,11 @@
       <section class="summary no-break">
         <h2>Professional Summary</h2>
         <p>
-          Lead Product Designer and Design Engineer with 7+ years building complex B2B SaaS and
-          PropTech products. Owns end-to-end execution: UX research and strategy, interaction
-          design, design systems, and production-grade implementation in React/Next.js and
-          Vue/Nuxt. Acts as a business stakeholder beyond design — leading 0→1 product work on
-          new verticals, shipping production code, and partnering with executive leadership.
-          Drives measurable outcomes through data-validated decisions and AI-augmented workflows.
+          Lead Product Designer and Design Engineer with 7+ years in B2B SaaS and PropTech.
+          Owns product design strategy, UX research, interaction design, design systems, and
+          production-grade implementation in React/Next.js and Vue/Nuxt — partnering closely
+          with engineering, product, and leadership teams. Specializes in 0→1 product design,
+          complex data-driven interfaces, and AI-augmented design and delivery workflows.
         </p>
       </section>
 
@@ -339,28 +346,35 @@
           </div>
           <p class="job-role">Lead Product Designer &amp; Design Engineer</p>
           <p class="job-meta">Remote &nbsp;·&nbsp; PropTech SaaS &nbsp;·&nbsp; B2B &nbsp;·&nbsp; U.S.-based</p>
+          <p class="job-scope">
+            Own end-to-end product design for a B2B PropTech SaaS used by U.S. real estate investors —
+            strategy, discovery, UX research, interaction design, design systems, and full-stack
+            implementation. Partner closely with Product, Engineering, Customer Success, and executive
+            leadership; use AI-augmented design and delivery workflows.
+          </p>
           <ul>
-            <li>Own product design strategy, discovery, and end-to-end execution across all platform initiatives — partnering with Product, Engineering, Customer Success, and executive leadership</li>
-            <li>Designed and shipped <b>Metrics Hub</b> from zero to production with AI-augmented workflows (Claude Code, multi-source LLM verification): unified analytics across 6 data sources, <b>recovered blocked revenue through automated alert detection</b>, tripled Properties API adoption, zero additional software spend. Built end-to-end in Next.js, TypeScript, Tailwind, Fastify, BigQuery, AWS Aurora</li>
-            <li>Co-led <b>0→1 design and build of 8020 ROOF</b>, a multi-tenant B2B SaaS turning a 100M+ row property database into a self-serve roofing marketing pipeline — three-person team, ~1.5 months active build using AI as a teammate. <b>2 pilot clients live in production (one at 100% satisfaction)</b>, retiring Excel-based monthly list delivery. Built in Nuxt 4, Vue 3, TypeScript, FastAPI, PostgreSQL (Aurora), Firebase, Cloud Run</li>
-            <li>Led <b>Properties View redesign</b> (<b>50% platform usage increase</b>, 70%+ CSAT, ~80% bug reduction) and <b>BuyBox Editor redesign</b> (<b>80% fewer configuration errors</b>, 50% fewer support tickets) — both shipped on a Kairo design system migration</li>
-            <li>Scaled the <b>Axis design system</b> into a production component library of 31 components with full dark mode and 45+ in-platform documentation pages; also develop and maintain the legacy Kairo system</li>
-            <li>Led 0→1 design of <b>DM Campaign</b> (automated direct mail system) — adopted by 12 active clients, validating the platform's data-event automation pattern</li>
+            <li>Lead platform-wide redesigns of core data-management and configuration interfaces — driving <b>up to 50% usage lift, 80% fewer configuration errors, ~80% bug reduction, and 70%+ CSAT</b></li>
+            <li>Designed and shipped 0→1 a full-stack analytics platform giving non-technical teams self-serve access to data across 6 internal systems — <b>recovered blocked revenue through automated alerts and tripled API adoption</b> (Next.js, TypeScript, Fastify, BigQuery)</li>
+            <li>Design, build, and scale multiple production design systems — coding components alongside frontend engineering and aligning cross-functional teams around shared component libraries that ship across multiple platforms</li>
           </ul>
         </div>
 
         <div class="job no-break">
           <div class="job-header">
-            <span class="job-company">TuHabi (Habi)</span>
+            <span class="job-company">Habi</span>
             <span class="job-period">Aug 2022 – Jun 2024</span>
           </div>
           <p class="job-role">Product Designer &nbsp;·&nbsp; Creative Designer</p>
           <p class="job-meta">Hybrid &nbsp;·&nbsp; Bogotá, Colombia &nbsp;·&nbsp; PropTech</p>
+          <p class="job-scope">
+            Designed mobile-first user experiences and internal operations tools for a Latin American
+            PropTech platform across Colombia and Mexico — owning discovery, UX research, interaction
+            design, and prototyping alongside engineering, product, and growth teams.
+          </p>
           <ul>
-            <li>Redesigned mobile-first acquisition funnel for Mexico: <b>30% increase in qualified lead conversion</b>, higher mobile completion rates, improved downstream lead quality for sales</li>
-            <li>Reduced registration flow from 11 to 7 screens using AI-assisted prefill, progressive disclosure, and A/B tested variants — validated through behavioral analytics</li>
-            <li>Designed internal operations platform for commercial and zone leaders managing teams and territories across cities, replacing spreadsheet-dependent workflows</li>
-            <li>Conducted UX research, built AI-driven customer service prompts, contributed to brand systems and multi-channel marketing campaigns</li>
+            <li>Led mobile acquisition-funnel optimization through behavioral analytics, progressive disclosure, and A/B-tested variants validated with quantitative data — <b>+30% qualified lead conversion</b></li>
+            <li>Designed an internal operations platform for commercial and zone leaders managing teams and territories across multiple cities, replacing spreadsheet-dependent workflows</li>
+            <li>Conducted UX research, built AI-driven customer service prompts, and contributed to brand systems and multi-channel marketing campaigns</li>
           </ul>
         </div>
 
@@ -371,10 +385,11 @@
           </div>
           <p class="job-role">Creative Designer</p>
           <p class="job-meta">On-site &nbsp;·&nbsp; Bogotá, Colombia &nbsp;·&nbsp; Public Infrastructure</p>
-          <ul>
-            <li>Designed large-scale public communication campaigns for one of Colombia's flagship infrastructure projects</li>
-            <li>Built and maintained internal communication systems: intranet design, editorial newsletters, advertising campaigns, and event materials</li>
-          </ul>
+          <p class="job-scope">
+            Led visual design and internal communications for one of Colombia's flagship public
+            infrastructure projects — advertising campaigns, intranet design, editorial newsletters,
+            and event materials.
+          </p>
         </div>
 
         <div class="job no-break">
@@ -384,39 +399,9 @@
           </div>
           <p class="job-role">Industrial Designer</p>
           <p class="job-meta">Bogotá, Colombia</p>
-          <ul>
-            <li>3D modeling and product prototyping for industrial design projects</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Selected Projects -->
-      <section>
-        <h2>Selected Impact — Signature Projects</h2>
-
-        <div class="project no-break">
-          <p class="project-title">Metrics Hub — Unified Internal Analytics Platform</p>
-          <p class="project-meta">8020REI &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Lead Designer &amp; Full-Stack Builder</p>
-          <p>
-            Built end-to-end with AI-augmented workflows (UX architecture → full-stack implementation → cloud deployment).
-            Unified 6 heterogeneous data sources into a single operational dashboard for non-technical teams. 91 reusable
-            widgets across 11 business domains. Axis design system with automated quality gates. Stack: Next.js, React,
-            TypeScript, Tailwind, Fastify, BigQuery, AWS Aurora, Firebase, Google Cloud Run, GitHub Actions.
+          <p class="job-scope">
+            3D modeling, technical drafting, and product prototyping for industrial design projects.
           </p>
-          <p class="outcome">→ Blocked revenue recovered &nbsp;·&nbsp; 3× API adoption &nbsp;·&nbsp; Company-wide self-serve analytics at zero additional cost</p>
-        </div>
-
-        <div class="project no-break">
-          <p class="project-title">8020 ROOF — Multi-Tenant Roofing Marketing SaaS (0→1)</p>
-          <p class="project-meta">8020REI &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; Lead Product Designer &amp; Builder</p>
-          <p>
-            Multi-client SaaS turning a 100M+ row property database into ready-to-execute roofing marketing lists.
-            Operators define buyboxes, search properties, and run a 5-stage fulfillment pipeline emitting direct-mail
-            and cold-calling lists every month. Built end-to-end in Nuxt 4, Vue 3, TypeScript, FastAPI, PostgreSQL
-            (Aurora), Firebase, and Cloud Run, with AI as a teammate across design, frontend, backend, and QA. Scaled
-            Axis into 31 production components with 45+ in-platform documentation pages.
-          </p>
-          <p class="outcome">→ 2 pilot clients live, one at 100% satisfaction &nbsp;·&nbsp; Excel delivery retired in 6 weeks &nbsp;·&nbsp; ~20K direct-mail + ~115K cold-call records per cycle</p>
         </div>
       </section>
 
@@ -432,17 +417,20 @@
         <h2>Core Competencies</h2>
         <div class="tags">
           <span class="tag">Product Design</span>
-          <span class="tag">UX Strategy</span>
+          <span class="tag">Product Strategy</span>
           <span class="tag">UX Research</span>
           <span class="tag">Interaction Design</span>
+          <span class="tag">UI Design</span>
           <span class="tag">Design Systems</span>
+          <span class="tag">Design Engineering</span>
+          <span class="tag">0→1 Product Design</span>
+          <span class="tag">Prototyping</span>
+          <span class="tag">Usability Testing</span>
+          <span class="tag">Data Visualization</span>
           <span class="tag">B2B SaaS</span>
           <span class="tag">PropTech</span>
-          <span class="tag">Data Visualization</span>
-          <span class="tag">0→1 Product Design</span>
           <span class="tag">Full-stack Development</span>
           <span class="tag">AI-augmented Workflows</span>
-          <span class="tag">Cross-functional Leadership</span>
         </div>
       </section>
 
@@ -465,10 +453,12 @@
           <div class="skill-tags">
             <span class="skill-tag">React</span>
             <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">Vue</span>
+            <span class="skill-tag">Nuxt</span>
             <span class="skill-tag">TypeScript</span>
             <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">Nuxt</span>
             <span class="skill-tag">Fastify</span>
+            <span class="skill-tag">FastAPI</span>
             <span class="skill-tag">Git / GitHub</span>
             <span class="skill-tag">GitHub Actions</span>
           </div>
