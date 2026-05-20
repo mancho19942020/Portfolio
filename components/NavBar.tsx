@@ -73,7 +73,7 @@ export const NavBar: React.FC = () => {
             <span className="hidden md:inline">CV</span>
           </a>
           <a
-            href="mailto:mancho19942010@hotmail.com"
+            href="mailto:germanproduct94@gmail.com"
             className="glow-reactive glow-button btn-outline flex items-center gap-1.5 px-2.5 md:px-3.5 py-1.5 rounded-full border border-zinc-800 text-[11px] font-semibold text-zinc-400 transition-colors"
             aria-label="Contact via email"
           >
