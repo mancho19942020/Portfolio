@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, Gamepad2, Film, Dumbbell, Dog } from 'lucide-react';
+import { X, Gamepad2, Film, Dumbbell, Dog, Apple, Heart } from 'lucide-react';
+import { SectionLabel } from './SectionLabel';
 
 type InterestId = 'pong' | 'movies' | 'fitness' | 'pet';
 
@@ -250,7 +251,7 @@ const MoodTracker: React.FC = () => {
   return (
     <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-2">
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Mood
           <select
             value={mood}
@@ -263,7 +264,7 @@ const MoodTracker: React.FC = () => {
             <option value="tired">Tired</option>
           </select>
         </label>
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Session
           <select
             value={session}
@@ -276,7 +277,7 @@ const MoodTracker: React.FC = () => {
             <option value="weekend">{SESSION_LABELS.weekend}</option>
           </select>
         </label>
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Vibe
           <select
             value={vibe}
@@ -292,7 +293,7 @@ const MoodTracker: React.FC = () => {
             <option value="horror">{VIBE_LABELS.horror}</option>
           </select>
         </label>
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Format
           <select
             value={format}
@@ -317,21 +318,21 @@ const MoodTracker: React.FC = () => {
 
       {result ? (
         <div className="rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 text-sm text-zinc-300">
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono uppercase tracking-widest text-zinc-500">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-zinc-500">
             <span>{result.format}</span>
             <span>{SESSION_LABELS[result.session]}</span>
           </div>
           <div className="mt-4 space-y-3">
             <div>
               <div className="text-lg font-semibold text-zinc-100">{result.title}</div>
-              <div className="mt-1 text-xs font-mono uppercase tracking-widest text-zinc-500">
+              <div className="mt-1 text-xs font-medium text-zinc-500">
                 {result.format === 'movie'
                   ? `${result.runtimeMinutes} min | ${result.year}`
                   : `${result.seasons} seasons | ${result.episodes} eps | ${result.year}`}
               </div>
             </div>
             <p className="text-sm text-zinc-400">{result.summary}</p>
-            <div className="flex flex-wrap items-center gap-2 text-xs font-mono uppercase tracking-widest text-zinc-500">
+            <div className="flex flex-wrap items-center gap-2 text-xs font-medium text-zinc-500">
               <span>{result.genres.join(' | ')}</span>
             </div>
             <p className="text-sm text-zinc-400">
@@ -429,7 +430,7 @@ const FitnessPlan: React.FC = () => {
   return (
     <div className="space-y-6">
       <div className="grid gap-4 md:grid-cols-3">
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Goal
           <select
             value={goal}
@@ -441,7 +442,7 @@ const FitnessPlan: React.FC = () => {
             <option value="hybrid">Hybrid</option>
           </select>
         </label>
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Intent
           <select
             value={intent}
@@ -454,7 +455,7 @@ const FitnessPlan: React.FC = () => {
             <option value="bulk">Increase muscle mass</option>
           </select>
         </label>
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Availability
           <select
             value={availability}
@@ -470,7 +471,7 @@ const FitnessPlan: React.FC = () => {
       </div>
 
       <div className="grid gap-4 md:grid-cols-4">
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Experience
           <select
             value={level}
@@ -482,7 +483,7 @@ const FitnessPlan: React.FC = () => {
             <option value="advanced">Advanced</option>
           </select>
         </label>
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Height (cm)
           <input
             type="number"
@@ -493,7 +494,7 @@ const FitnessPlan: React.FC = () => {
             className="mt-2 w-full rounded-md border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm font-sans text-zinc-100"
           />
         </label>
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Weight (kg)
           <input
             type="number"
@@ -504,7 +505,7 @@ const FitnessPlan: React.FC = () => {
             className="mt-2 w-full rounded-md border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm font-sans text-zinc-100"
           />
         </label>
-        <label className="space-y-2 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Sex
           <select
             value={sex}
@@ -529,14 +530,14 @@ const FitnessPlan: React.FC = () => {
 
       {plan ? (
         <div className="space-y-4 rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 text-sm text-zinc-300">
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono uppercase tracking-widest text-zinc-500">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-medium text-zinc-500">
             <span>{plan.summary}</span>
             <span>Calories/day: {plan.calories}</span>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {plan.days.map((day) => (
               <div key={day.day} className="rounded-lg border border-zinc-800/70 bg-zinc-950/40 px-4 py-3">
-                <div className="text-xs font-mono uppercase tracking-widest text-zinc-500">{day.day}</div>
+                <div className="text-xs font-medium text-zinc-400">{day.day}</div>
                 <div className="mt-2 text-sm text-zinc-200">{day.focus}</div>
               </div>
             ))}
@@ -571,7 +572,7 @@ interface TamagotchiState {
 }
 
 const clampStat = (value: number) => Math.max(0, Math.min(100, value));
-const PET_TICK_MS = 1200;
+const PET_TICK_MS = 500; // refresh stats twice per second so numbers visibly move
 const PET_AGE_ACCELERATION = 12; // 1 real minute ~= 12 in-game minutes
 const ACTION_VISUAL_DURATION_MS = 900;
 
@@ -614,20 +615,21 @@ const applyTimeDecay = (state: TamagotchiState, now: number): TamagotchiState =>
     return state;
   }
 
-  // Fast-session balancing: noticeable change in 3-5 seconds, high engagement in ~1 minute.
-  const hungerIncrease = 0.72 * elapsedSeconds;
-  const energyDecrease = 0.56 * elapsedSeconds;
-  const baseHappinessDecrease = 0.34 * elapsedSeconds;
+  // High-engagement balancing: stats move clearly during a ~20s session.
+  // Roughly 2x previous rates so the game feels active and requires real input.
+  const hungerIncrease = 1.7 * elapsedSeconds;
+  const energyDecrease = 1.3 * elapsedSeconds;
+  const baseHappinessDecrease = 0.9 * elapsedSeconds;
 
   let hunger = clampStat(state.hunger + hungerIncrease);
   let energy = clampStat(state.energy - energyDecrease);
   let happiness = clampStat(state.happiness - baseHappinessDecrease);
 
   if (hunger >= 65) {
-    happiness = clampStat(happiness - 0.52 * elapsedSeconds);
+    happiness = clampStat(happiness - 1.1 * elapsedSeconds);
   }
   if (energy <= 35) {
-    happiness = clampStat(happiness - 0.46 * elapsedSeconds);
+    happiness = clampStat(happiness - 0.95 * elapsedSeconds);
   }
 
   const inCritical = hunger >= 96 || energy <= 4;
@@ -705,99 +707,106 @@ const formatAge = (createdAt: number) => {
   return `${hours}h ${remainder}m`;
 };
 
+// 8x8 dog sprites. Top row encodes ears (perked / droopy / down), middle
+// rows the eyes (open dots / closed line / wide), bottom rows the
+// muzzle/mouth/tongue. Each mood reuses the dog silhouette but varies
+// these three regions so the expression reads at a glance.
 const PET_SPRITES: Record<
   PetMood,
   { idle: string[]; blink: string[]; action: string[] }
 > = {
   Happy: {
+    // Ears up, eyes wide-open, tongue sticking out
     idle: [
-      '00111100',
-      '01111110',
-      '11011011',
+      '00100100', // pointy ears
+      '01111110', // head crown
+      '11011011', // eyes (open)
       '11111111',
-      '11100111',
       '01111110',
-      '00111100',
+      '00111100', // chin
+      '00011000', // tongue out
       '00000000'
     ],
     blink: [
-      '00111100',
+      '00100100',
       '01111110',
-      '11000011',
+      '11111111', // eyes closed (blink)
       '11111111',
-      '11100111',
       '01111110',
       '00111100',
+      '00011000',
       '00000000'
     ],
     action: [
-      '00111100',
+      '00100100',
       '01111110',
       '11011011',
       '11111111',
-      '11000011',
+      '11000011', // open-mouth smile
       '01111110',
-      '00111100',
+      '00011000', // tongue
       '00000000'
     ]
   },
   Calm: {
+    // Ears up, eyes open, neutral mouth, no tongue
     idle: [
-      '00111100',
+      '00100100',
       '01111110',
       '11011011',
       '11111111',
       '11111111',
-      '01100110',
+      '01111110',
       '00111100',
       '00000000'
     ],
     blink: [
-      '00111100',
+      '00100100',
       '01111110',
-      '11000011',
       '11111111',
       '11111111',
-      '01100110',
+      '11111111',
+      '01111110',
       '00111100',
       '00000000'
     ],
     action: [
-      '00111100',
+      '00100100',
       '01111110',
       '11011011',
       '11111111',
       '11100111',
-      '01100110',
+      '01111110',
       '00111100',
       '00000000'
     ]
   },
   Tired: {
+    // No ears poking up (drooped), eyes closed (sleepy)
     idle: [
-      '00111100',
-      '01111110',
-      '11000011',
+      '00000000',
+      '11000011', // ears flopped to corners
       '11111111',
+      '11111111', // eyes closed
       '11111111',
       '01111110',
       '00111100',
       '00000000'
     ],
     blink: [
-      '00111100',
-      '01111110',
+      '00000000',
       '11000011',
       '11111111',
-      '11100111',
+      '11011011', // briefly opens one tired peek
+      '11111111',
       '01111110',
       '00111100',
       '00000000'
     ],
     action: [
-      '00111100',
+      '00100100', // ears perk briefly
       '01111110',
-      '11011011',
+      '11011011', // eyes open
       '11111111',
       '11111111',
       '01111110',
@@ -806,67 +815,69 @@ const PET_SPRITES: Record<
     ]
   },
   Hungry: {
+    // Ears alert, eyes WIDE (bigger gaps), mouth open, tongue drooling
     idle: [
-      '00111100',
-      '01111110',
-      '11011011',
-      '11111111',
-      '11111111',
-      '01100110',
       '00100100',
-      '00000000'
+      '01111110',
+      '10011001', // wide-open eyes
+      '11111111',
+      '01111110',
+      '00100100', // open mouth
+      '00111100',
+      '00011000'  // tongue / drool
     ],
     blink: [
-      '00111100',
-      '01111110',
-      '11000011',
-      '11111111',
-      '11111111',
-      '01100110',
       '00100100',
-      '00000000'
+      '01111110',
+      '11111111',
+      '11111111',
+      '01111110',
+      '00100100',
+      '00111100',
+      '00011000'
     ],
     action: [
-      '00111100',
-      '01111110',
-      '11011011',
-      '11111111',
-      '11100111',
-      '01111110',
       '00100100',
-      '00000000'
+      '01111110',
+      '10011001',
+      '11111111',
+      '11000011', // mouth opens wider for food
+      '01000010',
+      '00111100',
+      '00011000'
     ]
   },
   Sad: {
+    // Ears flopped DOWN, small eyes, downturned-corner mouth
     idle: [
-      '00111100',
-      '01111110',
+      '00000000',
+      '01100110', // ears hanging down at sides
       '11011011',
       '11111111',
       '11111111',
-      '01100110',
+      '01000010', // downturned mouth corners
       '00111100',
-      '00011000'
+      '00000000'
     ],
     blink: [
-      '00111100',
-      '01111110',
-      '11000011',
-      '11111111',
-      '11111111',
+      '00000000',
       '01100110',
+      '11111111',
+      '11111111',
+      '11111111',
+      '01000010',
       '00111100',
-      '00011000'
+      '00000000'
     ],
     action: [
-      '00111100',
+      '00100100', // ears slightly perk on interaction
       '01111110',
       '11011011',
       '11111111',
-      '11100111',
-      '01100110',
+      '11111111',
+      '01100110', // mouth softens
       '00111100',
-      '00011000'
+      '00000000'
     ]
   }
 };
@@ -956,29 +967,31 @@ const TamagotchiPet: React.FC = () => {
   const actionLabel = activeAction?.type ? activeAction.type.toUpperCase() : null;
 
   return (
-    <div className="space-y-6">
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6">
-        <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-mono uppercase tracking-widest text-zinc-500">
-          <span>Mood</span>
-          <span>Age</span>
-        </div>
-        <div className="mt-2 flex flex-wrap items-center justify-between gap-4 text-lg font-semibold text-zinc-100">
-          <span>{pet.mood}</span>
+    <div className="space-y-5">
+      {/* Compact Tamagotchi console — egg-shaped device with an LCD,
+          stats inside the screen, and three small action buttons below. */}
+      <div className="mx-auto w-full max-w-[300px] rounded-[2.25rem] border border-zinc-700 bg-zinc-900 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
+        {/* Top strip: indicator dots + age/mood as small mono labels */}
+        <div className="flex items-center justify-between px-1 text-[9px] font-mono uppercase tracking-[0.2em] text-zinc-500">
+          <span className="flex items-center gap-1" aria-hidden>
+            <span className="h-1.5 w-1.5 rounded-full bg-zinc-700" />
+            <span className="h-1.5 w-1.5 rounded-full bg-zinc-700" />
+            <span className="h-1.5 w-1.5 rounded-full bg-zinc-700" />
+          </span>
           <span>{formatAge(pet.createdAt)}</span>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-zinc-800 bg-zinc-950/60 p-4 shadow-[inset_0_0_0_1px_rgba(148,163,127,0.08)]">
-          <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.3em] text-zinc-500">
-            <span className="flex items-center gap-1">
-              <span className="h-2 w-2 rounded-full border border-zinc-700" />
-              <span className="h-2 w-2 rounded-full border border-zinc-700" />
-              <span className="h-2 w-2 rounded-full border border-zinc-700" />
-            </span>
-            <span>Pet</span>
+        {/* LCD screen — everything happens in here. */}
+        <div className="mt-3 rounded-2xl border border-[#2d3526] bg-gradient-to-br from-[#1a2218] via-[#0f1410] to-[#0b0f0b] p-3 shadow-[inset_0_0_20px_rgba(148,163,127,0.12)]">
+          {/* Top status row inside the LCD */}
+          <div className="flex items-center justify-between text-[8px] font-mono uppercase tracking-[0.25em] text-[#688a4a]">
+            <span>{pet.mood}</span>
+            <span>{isActionActive && actionLabel ? actionLabel : 'IDLE'}</span>
           </div>
-          <div className="mt-4 flex items-center justify-center">
+
+          {/* Sprite */}
+          <div className="mt-2 flex min-h-[96px] items-center justify-center">
             <motion.div
-              className="rounded-xl border border-[#2d3526] bg-gradient-to-br from-[#1a2218] via-[#0f1410] to-[#0b0f0b] p-5 shadow-[inset_0_0_20px_rgba(148,163,127,0.12)]"
               animate={
                 isActionActive
                   ? { scale: [1, 1.09, 1], y: [0, -2, 0], rotate: [0, -1.3, 1.3, 0] }
@@ -995,7 +1008,7 @@ const TamagotchiPet: React.FC = () => {
                   row.split('').map((pixel, colIndex) => (
                     <span
                       key={`${rowIndex}-${colIndex}`}
-                      className="h-2.5 w-2.5 md:h-3 md:w-3"
+                      className="h-2 w-2"
                       style={{
                         backgroundColor: pixel === '1' ? pixelColor : 'transparent'
                       }}
@@ -1005,78 +1018,64 @@ const TamagotchiPet: React.FC = () => {
               </div>
             </motion.div>
           </div>
-          <div className="mt-4 flex items-center justify-between text-xs font-mono uppercase tracking-widest text-zinc-500">
-            <span>Hunger {Math.round(pet.hunger)}%</span>
-            <span>Energy {Math.round(pet.energy)}%</span>
-          </div>
-          <div className="mt-2 h-5 text-center text-[10px] font-mono uppercase tracking-[0.25em] text-zinc-500">
-            {isActionActive && actionLabel ? `${actionLabel} action` : 'Idle'}
+
+          {/* Bottom stats row inside the LCD — replaces the big progress bars */}
+          <div className="mt-2 grid grid-cols-3 gap-1 text-center text-[8px] font-mono uppercase tracking-[0.18em] text-[#688a4a]">
+            <span>H {Math.round(pet.hunger)}%</span>
+            <span>♥ {Math.round(pet.happiness)}%</span>
+            <span>E {Math.round(pet.energy)}%</span>
           </div>
         </div>
 
-        <div className="mt-6 space-y-3">
-          <div>
-            <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-zinc-500">
-              <span>Hunger</span>
-              <span>{Math.round(pet.hunger)}%</span>
-            </div>
-            <div className="mt-2 h-2 rounded-full bg-zinc-800">
-              <div className="h-full rounded-full bg-zinc-500" style={{ width: `${pet.hunger}%` }} />
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-zinc-500">
-              <span>Happiness</span>
-              <span>{Math.round(pet.happiness)}%</span>
-            </div>
-            <div className="mt-2 h-2 rounded-full bg-zinc-800">
-              <div className="h-full rounded-full bg-zinc-400" style={{ width: `${pet.happiness}%` }} />
-            </div>
-          </div>
-          <div>
-            <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-widest text-zinc-500">
-              <span>Energy</span>
-              <span>{Math.round(pet.energy)}%</span>
-            </div>
-            <div className="mt-2 h-2 rounded-full bg-zinc-800">
-              <div className="h-full rounded-full bg-zinc-300" style={{ width: `${pet.energy}%` }} />
-            </div>
-          </div>
+        {/* Action buttons — three small circular buttons, like the
+            physical A/B/C buttons on a real Tamagotchi. */}
+        <div className="mt-4 flex items-center justify-center gap-4">
+          <button
+            type="button"
+            onClick={() => handleAction('feed')}
+            disabled={!pet.alive}
+            aria-label="Feed"
+            title="Feed"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-700 bg-zinc-800 text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <Apple className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => handleAction('play')}
+            disabled={!pet.alive}
+            aria-label="Play"
+            title="Play"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-700 bg-zinc-800 text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <Gamepad2 className="h-4 w-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => handleAction('pet')}
+            disabled={!pet.alive}
+            aria-label="Pet"
+            title="Pet"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-zinc-700 bg-zinc-800 text-zinc-300 transition-colors hover:bg-zinc-700 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-strong)] disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            <Heart className="h-4 w-4" />
+          </button>
+        </div>
+
+        {/* Tiny button labels below — read at a glance, stays out of the way */}
+        <div className="mt-1.5 flex items-center justify-center gap-4 text-[9px] font-mono uppercase tracking-[0.18em] text-zinc-500">
+          <span className="w-11 text-center">Feed</span>
+          <span className="w-11 text-center">Play</span>
+          <span className="w-11 text-center">Pet</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-3 gap-3">
-        <button
-          type="button"
-          onClick={() => handleAction('feed')}
-          className="glow-reactive glow-button btn-primary w-full rounded-full px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
-          disabled={!pet.alive}
-        >
-          Feed
-        </button>
-        <button
-          type="button"
-          onClick={() => handleAction('play')}
-          className="glow-reactive glow-button btn-primary w-full rounded-full px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
-          disabled={!pet.alive}
-        >
-          Play
-        </button>
-        <button
-          type="button"
-          onClick={() => handleAction('pet')}
-          className="glow-reactive glow-button btn-primary w-full rounded-full px-3 py-3 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40"
-          disabled={!pet.alive}
-        >
-          Pet
-        </button>
-      </div>
-
-      <div className="flex items-center justify-start">
+      {/* Help link below the console */}
+      <div className="flex items-center justify-center">
         <button
           type="button"
           onClick={() => setShowHelp((value) => !value)}
-          className="text-xs font-mono uppercase tracking-widest text-zinc-500 transition-colors hover:text-zinc-200"
+          className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 transition-colors hover:text-zinc-200"
         >
           {showHelp ? 'Hide tips' : 'How to play'}
         </button>
@@ -1327,7 +1326,7 @@ const PongGame: React.FC = () => {
 
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between text-xs font-mono uppercase tracking-widest text-zinc-500">
+      <div className="flex items-center justify-between text-xs font-medium text-zinc-400">
         <span>Player {score.player}</span>
         <span>AI {score.ai}</span>
       </div>
@@ -1376,14 +1375,12 @@ const InterestModal: React.FC<{
         className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-2xl border border-zinc-800 bg-zinc-950/90 p-6 text-zinc-100 shadow-2xl md:max-h-[90vh]"
       >
         <div className="flex items-start justify-between gap-4">
-          <div className="space-y-2">
-            <div className="flex items-center gap-3 text-xs font-mono uppercase tracking-widest text-zinc-500">
-              {interest.icon}
-              <span>{interest.label}</span>
-            </div>
-            <h3 className="text-2xl font-bold tracking-tight">
-              <span className="font-mono text-zinc-300">#{tag}</span>{' '}
-              <span className="text-zinc-100">{prefix} {interest.label}</span>
+          <div className="space-y-3">
+            <SectionLabel>{interest.label}</SectionLabel>
+            <h3 className="text-2xl font-bold tracking-tight text-zinc-100">
+              <span style={{ color: 'var(--accent-strong)' }}>#</span>
+              <span>{tag}</span>{' '}
+              <span className="text-zinc-400 font-medium">{prefix} {interest.label}</span>
             </h3>
             <p className="text-sm text-zinc-400">{interest.helper}</p>
           </div>
@@ -1429,23 +1426,26 @@ export const InterestsRibbon: React.FC = () => {
   return (
     <>
       <div>
-        <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.22em] mb-5">
-          Interests
-        </p>
+        <div className="mb-5">
+          <SectionLabel>Interests</SectionLabel>
+        </div>
         <div className="flex flex-col gap-2.5 md:flex-row md:flex-wrap">
           {INTERESTS.map((interest) => (
             <button
               key={interest.id}
               type="button"
               onClick={() => handleOpen(interest)}
-              className="glow-reactive glow-button interest-tag inline-flex w-full items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/40 backdrop-blur-md px-3 py-2 text-[11px] font-mono tracking-[0.04em] text-zinc-400 transition-colors hover:border-zinc-600 hover:text-zinc-200 md:w-auto"
+              className="glow-reactive glow-button interest-tag inline-flex w-full items-center gap-2 rounded-full border border-zinc-800 bg-zinc-900/40 backdrop-blur-md px-3.5 py-2 text-sm text-zinc-400 transition-colors hover:border-zinc-600 hover:text-zinc-200 md:w-auto"
               aria-label={`Open ${interest.label} feature`}
             >
               <span className="text-zinc-500 opacity-85 [&_svg]:h-3.5 [&_svg]:w-3.5">
                 {interest.icon}
               </span>
               <span className="whitespace-nowrap">
-                <span className="text-zinc-200">#{interest.tag ?? toHashTag(interest.action)}</span>
+                <span className="font-semibold text-zinc-200">
+                  <span style={{ color: 'var(--accent-strong)' }}>#</span>
+                  {interest.tag ?? toHashTag(interest.action)}
+                </span>
                 <span className="ml-2 text-zinc-500">{getPrefix(interest)} {interest.label}</span>
               </span>
             </button>

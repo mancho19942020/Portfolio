@@ -206,14 +206,15 @@ export const Home: React.FC = () => {
           </section>
         </div>
 
-        {/* ── CARD 2: TOOLS + INTERESTS ─────────────────────────────────────── */}
-        <div className={CARD}>
+        {/* ── TOOLS + INTERESTS ─────────────────────────────────────────────── */}
+        {/* No card container — sits directly on the page background, matching
+            the Capabilities section. */}
+        <div className="scroll-mt-4">
           <section id="tools" className="px-6 sm:px-10 md:px-20 py-10">
             <ScrollReveal>
               <ToolsCarousel />
             </ScrollReveal>
           </section>
-          <div className="border-t border-zinc-800" />
           <section id="interests" className="px-6 sm:px-10 md:px-20 py-10">
             <ScrollReveal>
               <InterestsRibbon />
@@ -332,8 +333,9 @@ export const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* ── CARD: CAPABILITIES (What I do) ────────────────────────────────── */}
-        <div id="capabilities" className={`${CARD} scroll-mt-4`}>
+        {/* ── CAPABILITIES (What I do) ──────────────────────────────────────── */}
+        {/* No card container — sits directly on the page background. */}
+        <div id="capabilities" className="scroll-mt-4">
           <section className="px-6 sm:px-10 md:px-20 py-14 md:py-20">
             <ScrollReveal>
               <div className="flex flex-col gap-4 mb-10 md:mb-14">
