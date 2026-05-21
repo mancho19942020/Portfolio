@@ -393,7 +393,7 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "8020-buybox",
-    title: "BuyBox editor redesign",
+    title: "BuyBox editor",
     subtitle: "From rules engine to guided decisions",
     category: "8020REI",
     type: "Complex Interaction Design",
@@ -540,33 +540,33 @@ export const PROJECTS: Project[] = [
     images: [
       {
         src: buybox01,
-        alt: "BuyBox editor redesign screen 01"
+        alt: "BuyBox editor screen 01"
       },
       {
         src: buybox02,
-        alt: "BuyBox editor redesign screen 02"
+        alt: "BuyBox editor screen 02"
       },
       {
         src: buybox03,
-        alt: "BuyBox editor redesign screen 03"
+        alt: "BuyBox editor screen 03"
       },
       {
         src: buybox04,
-        alt: "BuyBox editor redesign screen 04"
+        alt: "BuyBox editor screen 04"
       },
       {
         src: buybox05,
-        alt: "BuyBox editor redesign screen 05"
+        alt: "BuyBox editor screen 05"
       },
       {
         src: buybox06,
-        alt: "BuyBox editor redesign screen 06"
+        alt: "BuyBox editor screen 06"
       }
     ]
   },
   {
     id: "8020-property-list",
-    title: "Properties view redesign",
+    title: "Property view",
     subtitle: "From data exporter to decision environment",
     category: "8020REI",
     type: "Workflow Optimization",
@@ -580,7 +580,7 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "Redesigned the property list and property view to improve how investors explore, evaluate, and understand properties within their markets. The goal was to keep investors inside the platform instead of relying on external tools."
+        summary: "Turned the property list and property view from a data exporter into a decision environment — investors now explore, evaluate, and understand properties in their markets without bouncing out to external tools."
       },
       role: {
         title: "Lead Product Designer",
@@ -714,27 +714,27 @@ export const PROJECTS: Project[] = [
     images: [
       {
         src: propertyList01,
-        alt: "Properties view redesign screen 01"
+        alt: "Property view screen 01"
       },
       {
         src: propertyList02,
-        alt: "Properties view redesign screen 02"
+        alt: "Property view screen 02"
       },
       {
         src: propertyList03,
-        alt: "Properties view redesign screen 03"
+        alt: "Property view screen 03"
       },
       {
         src: propertyList04,
-        alt: "Properties view redesign screen 04"
+        alt: "Property view screen 04"
       },
       {
         src: propertyList05,
-        alt: "Properties view redesign screen 05"
+        alt: "Property view screen 05"
       },
       {
         src: propertyList06,
-        alt: "Properties view redesign screen 06"
+        alt: "Property view screen 06"
       }
     ]
   },
@@ -934,7 +934,7 @@ export const PROJECTS: Project[] = [
         company: "TuHabi",
         industry: "PropTech",
         year: "2024",
-        summary: "Redesigned a mobile-first acquisition funnel to increase qualified lead conversion for the Mexico product. Execution was led remotely from Colombia, with the product operated in Mexico."
+        summary: "Rebuilt the mobile-first acquisition funnel to lift qualified lead conversion for the Mexico product. Execution was led remotely from Colombia, with the product operated in Mexico."
       },
       role: {
         title: "Product Designer",

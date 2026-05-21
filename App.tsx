@@ -4,6 +4,7 @@ import { Home } from './pages/Home';
 import { ProjectDetail } from './pages/ProjectDetail';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CursorGlow } from './components/CursorGlow';
+import { SmoothScroll, instantScrollTo } from './components/SmoothScroll';
 
 // Restores scroll position on back/forward navigation
 const ScrollManager = () => {
@@ -29,7 +30,7 @@ const ScrollManager = () => {
       if (stored !== null) {
         const y = Number(stored);
         sessionStorage.removeItem('scroll-home');
-        window.scrollTo(0, Number.isNaN(y) ? 0 : y);
+        instantScrollTo(Number.isNaN(y) ? 0 : y);
         return;
       }
     }
@@ -37,11 +38,11 @@ const ScrollManager = () => {
     if (navigationType === 'POP') {
       const savedPosition = positions.current.get(locationKey);
       if (savedPosition !== undefined) {
-        window.scrollTo(0, savedPosition);
+        instantScrollTo(savedPosition);
         return;
       }
     }
-    window.scrollTo(0, 0);
+    instantScrollTo(0);
   }, [locationKey, navigationType]);
 
   return null;
@@ -79,6 +80,7 @@ const AppContent = () => {
 const App: React.FC = () => {
   return (
     <HashRouter>
+      <SmoothScroll />
       <GlobalBackground />
       <CursorGlow />
       <AppContent />

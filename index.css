@@ -8,6 +8,28 @@ body,
   background-color: var(--app-bg);
 }
 
+/* ── Lenis smooth-scroll reset ─────────────────────────────────────────── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 :root {
   --app-bg: #f4f5f7;
   --app-bg-gradient: radial-gradient(circle at 50% -20%, #ffffff 0%, #f4f5f7 70%),
@@ -27,6 +49,11 @@ body,
   --btn-outline-bg: #ecedf0;
   --cursor-dot: #374151;
   --cursor-dot-shadow: rgba(55, 65, 81, 0.35);
+  --accent: #ff5a26;
+  --accent-soft: rgba(255, 90, 38, 0.12);
+  --accent-strong: #ff5a26;
+  --reveal-dim: rgba(17, 24, 39, 0.18);
+  --reveal-bright: #101828;
 }
 
 html[data-theme='dark'] {
@@ -48,6 +75,11 @@ html[data-theme='dark'] {
   --btn-outline-bg: transparent;
   --cursor-dot: #ffffff;
   --cursor-dot-shadow: rgba(255, 255, 255, 0.55);
+  --accent: #ff7a4d;
+  --accent-soft: rgba(255, 122, 77, 0.16);
+  --accent-strong: #ff7a4d;
+  --reveal-dim: rgba(255, 255, 255, 0.14);
+  --reveal-bright: #f4f4f5;
 }
 
 /* Body background includes gradient + grid pattern */
@@ -305,7 +337,6 @@ html[data-theme='light'] .to-zinc-950 {
 .glow-card:hover,
 .glow-card:focus-visible {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 
 .glow-button:hover,
@@ -437,8 +468,379 @@ html[data-theme='light'] .tool-logo-image {
   display: none;
 }
 
-/* Section cards — light mode gets a soft lift shadow */
-html[data-theme='light'] .section-card {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 4px 20px rgba(0, 0, 0, 0.04);
+/* Section cards — no shadows in either theme (flat aesthetic). */
+
+/* ── Section label `// Label` ───────────────────────────────────────────── */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+
+.section-label::before {
+  content: "//";
+  color: var(--accent-strong);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* ── Display marquee (name / "reach out") ──────────────────────────────── */
+.display-marquee-viewport {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+  width: 100%;
+}
+
+.display-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: clamp(2rem, 6vw, 5rem);
+  animation: display-marquee var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
+}
+
+.display-marquee-item {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(3.5rem, 14vw, 11rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: var(--app-text);
+}
+
+.display-marquee-glyph {
+  color: var(--accent-strong);
+  display: inline-block;
+  transform: translateY(-0.05em);
+}
+
+@keyframes display-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Reveal text (scroll-linked word color) ────────────────────────────── */
+.reveal-text {
+  color: var(--reveal-dim);
+  transition: color 320ms ease;
+}
+
+.reveal-text .reveal-word {
+  color: var(--reveal-dim);
+  transition: color 280ms ease-out;
+}
+
+.reveal-text .reveal-word.is-on {
+  color: var(--reveal-bright);
+}
+
+.reveal-text .reveal-word.reveal-word-accent.is-on {
+  color: var(--accent-strong);
+}
+
+/* Display sizing for the pinned intro reveal.
+   Cap by both width (vw) AND height (vh) so the paragraph always fits
+   inside the user's viewport — never overflows even on short screens. */
+.reveal-text-display {
+  font-size: clamp(1.25rem, min(3.8vw, 5vh), 3.5rem);
+  line-height: 1.14;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  max-width: 70rem;
+}
+
+/* ── Pinned reveal (sticky scroll-linked text) ─────────────────────────── */
+.pinned-reveal-outer {
+  position: relative;
+}
+
+.pinned-reveal-inner {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(0.75rem, 2vh, 1.5rem);
+  padding: clamp(1rem, 3vh, 2.5rem) clamp(1.5rem, 6vw, 5rem);
+}
+
+.pinned-reveal-label {
+  display: flex;
+}
+
+/* ── Project stack (sticky stacked-card scroll) ────────────────────────── */
+.project-stack {
+  position: relative;
+}
+
+.project-stack-slot {
+  position: sticky;
+  width: 100%;
+  /* Mobile: shorter card so the next one previews at the bottom of the viewport. */
+  height: 75svh;
+  /* `top` and `z-index` are set inline based on the card's index so each
+     card lands a few rem lower than the one before — the stair-step pile. */
+}
+
+/* Mobile: tight margin between slots so the next card is visible peeking
+   from under the current one, matching the user's "preview" intent. */
+.project-stack-slot + .project-stack-slot {
+  margin-top: 4vh;
+}
+
+/* Inside a sticky slot, the card and its inner layers fill the slot. */
+.project-stack-slot .showcase-card > a > div {
+  height: 100%;
+}
+
+/* Drop the aspect-ratio so the image side stretches to the card's full
+   height in stack mode (image is `object-fit: cover`, no distortion).
+   Do NOT force `flex: ...` here — Tailwind utility classes on the image
+   element control the basis/grow/shrink, and we want them to win. */
+.project-stack-slot .showcase-media {
+  aspect-ratio: auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+/* Desktop overrides — full-viewport cards with extended dwell time. */
+@media (min-width: 1024px) {
+  .project-stack-slot {
+    height: calc(100svh - 8rem);
+  }
+
+  .project-stack-slot + .project-stack-slot {
+    margin-top: 70vh;
+  }
+}
+
+/* ── Showcase card (project) ───────────────────────────────────────────── */
+.showcase-card {
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  /* Opaque so stacked cards don't show the underlying card's image through
+     the text panel. Matches the parent shell color. */
+  background: #18181b;
+}
+
+html[data-theme='light'] .showcase-card {
+  border-color: rgba(17, 24, 39, 0.08);
+  background: #ffffff;
+}
+
+.showcase-media {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(24, 24, 27, 0.6), rgba(0, 0, 0, 0.85));
+  aspect-ratio: 16 / 11;
+}
+
+.showcase-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.showcase-card:hover .showcase-media img,
+.showcase-card:focus-visible .showcase-media img {
+  transform: scale(1.04);
+}
+
+.showcase-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+  pointer-events: none;
+}
+
+.showcase-overline {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--accent-strong);
+  text-transform: uppercase;
+}
+
+.showcase-meta {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: #a1a1aa;
+  text-transform: uppercase;
+}
+
+html[data-theme='light'] .showcase-meta {
+  color: #6b7280;
+}
+
+.showcase-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: #d4d4d8;
+  text-transform: uppercase;
+}
+
+html[data-theme='light'] .showcase-pill {
+  border-color: rgba(17, 24, 39, 0.1);
+  background: rgba(17, 24, 39, 0.03);
+  color: #374151;
+}
+
+/* Orange pill CTA — reads as a clear button in both themes.
+   Black text on the warm orange has solid contrast either way. */
+.showcase-cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  background: var(--accent-strong);
+  color: #0a0a0a;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.005em;
+  white-space: nowrap;
+  transition: gap 220ms ease, transform 180ms ease, filter 180ms ease;
+}
+
+.showcase-card:hover .showcase-cta,
+.showcase-card:focus-visible .showcase-cta {
+  gap: 0.75rem;
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+/* ── Capabilities list (What I do) ─────────────────────────────────────── */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .capabilities-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(5, minmax(0, auto));
+    grid-auto-flow: column;
+    column-gap: 0;
+  }
+}
+
+.capability-row {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  padding: clamp(0.9rem, 2vh, 1.4rem) clamp(1rem, 2vw, 1.75rem);
+  font-size: clamp(1rem, 1.4vw, 1.25rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--app-text);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: default;
+  transition: color 220ms ease;
+}
+
+html[data-theme='light'] .capability-row {
+  border-bottom-color: rgba(17, 24, 39, 0.08);
+}
+
+/* Vertical divider between the two desktop columns */
+@media (min-width: 768px) {
+  .capability-row:nth-child(-n+5) {
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
+
+html[data-theme='light'] .capability-row:nth-child(-n+5) {
+  border-right-color: rgba(17, 24, 39, 0.08);
+}
+
+.capability-row::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent-strong);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 360ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: -1;
+}
+
+.capability-row:hover {
+  color: #ffffff;
+}
+
+.capability-row:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Capability tag — accent fill on hover ─────────────────────────────── */
+.skill-pill {
+  position: relative;
+  overflow: hidden;
+  transition: color 220ms ease, border-color 220ms ease, background-color 220ms ease;
+}
+
+.skill-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent-strong);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 260ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+.skill-pill > * {
+  position: relative;
+  z-index: 1;
+}
+
+.skill-pill:hover {
+  border-color: var(--accent-strong);
+  color: #ffffff;
+}
+
+.skill-pill:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Hero name treatment (subtle ticker behind subtitle) ───────────────── */
+.hero-accent-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-strong), transparent);
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .display-marquee-track {
+    animation: none;
+  }
+  .showcase-media img {
+    transition: none;
+  }
 }
 

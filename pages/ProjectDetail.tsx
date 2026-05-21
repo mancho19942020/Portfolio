@@ -380,7 +380,13 @@ export const ProjectDetail: React.FC = () => {
 
           {/* ── RIGHT COLUMN — sticky image panel ───────────────────────── */}
           <aside className="hidden lg:block">
-            <div className="lg:sticky lg:top-24 space-y-3 lg:max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar">
+            {/* data-lenis-prevent: opt this container out of global Lenis
+                smooth-scroll so its internal overflow-y-auto can receive
+                wheel events directly (Lenis steals them otherwise). */}
+            <div
+              data-lenis-prevent
+              className="lg:sticky lg:top-24 space-y-3 lg:max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar"
+            >
               {project.images.map((image, i) => (
                 <button
                   key={image.src}
