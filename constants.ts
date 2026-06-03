@@ -32,14 +32,14 @@ import nowApp03 from './assets/projects/now-app/03.jpg';
 import nowApp04 from './assets/projects/now-app/04.jpg';
 import nowApp05 from './assets/projects/now-app/05.jpg';
 import nowApp06 from './assets/projects/now-app/06.jpg';
-import roof000 from './assets/projects/8020roof/000.jpg';
-import roof001 from './assets/projects/8020roof/001.jpg';
-import roof002 from './assets/projects/8020roof/002.jpg';
-import roof003 from './assets/projects/8020roof/003.jpg';
-import roof004 from './assets/projects/8020roof/004.jpg';
-import roof005 from './assets/projects/8020roof/005.jpg';
-import roof006 from './assets/projects/8020roof/006.jpg';
-import roof007 from './assets/projects/8020roof/007.jpg';
+import roof000 from './assets/projects/8020roof/000.webp';
+import roof001 from './assets/projects/8020roof/001.webp';
+import roof002 from './assets/projects/8020roof/002.webp';
+import roof003 from './assets/projects/8020roof/003.webp';
+import roof004 from './assets/projects/8020roof/004.webp';
+import roof005 from './assets/projects/8020roof/005.webp';
+import roof006 from './assets/projects/8020roof/006.webp';
+import roof007 from './assets/projects/8020roof/007.webp';
 
 export const PROJECTS: Project[] = [
   // 8020REI (Priority 1)

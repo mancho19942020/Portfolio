@@ -610,10 +610,23 @@ html[data-theme='light'] .tool-logo-image {
   min-width: 0;
 }
 
-/* Desktop overrides — full-viewport cards with extended dwell time. */
+/* Desktop overrides — fixed-proportion cards (width is capped by max-w-6xl,
+   so a fixed aspect ratio looks identical on a laptop and a large monitor
+   instead of stretching taller with viewport height). The slot still fills
+   the viewport so the card can be vertically centered within it; max-height
+   keeps the whole card visible while pinned on shorter screens. */
 @media (min-width: 1024px) {
   .project-stack-slot {
     height: calc(100svh - 8rem);
+    display: flex;
+    align-items: center;
+  }
+
+  .project-stack-slot .showcase-card {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: 100%;
   }
 
   .project-stack-slot + .project-stack-slot {

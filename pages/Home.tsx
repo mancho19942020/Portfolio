@@ -100,14 +100,20 @@ const CAPABILITIES = [
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export const Home: React.FC = () => {
 
-  const reiOrder = ["8020 ROOF", "Metrics Hub", "BuyBox editor", "Property view", "DM campaign"];
+  // Explicit cross-category showcase order. Titles not listed (e.g. "DM
+  // campaign") are excluded from the home stack.
+  const projectOrder = [
+    "8020 ROOF",
+    "Smart funnel",
+    "BuyBox editor",
+    "Metrics Hub",
+    "Property view",
+    "Now App",
+  ];
 
-  const reiProjects = PROJECTS.filter(p => p.category === '8020REI' && p.title !== 'DM campaign').sort(
-    (a, b) => reiOrder.indexOf(a.title) - reiOrder.indexOf(b.title)
-  );
-  const habiProjects = PROJECTS.filter(p => p.category === 'Habi');
-  const freelanceProjects = PROJECTS.filter(p => p.category === 'Freelance');
-  const orderedProjects = [...reiProjects, ...habiProjects, ...freelanceProjects];
+  const orderedProjects = PROJECTS
+    .filter(p => projectOrder.includes(p.title))
+    .sort((a, b) => projectOrder.indexOf(a.title) - projectOrder.indexOf(b.title));
 
   // Restore scroll position on return from project detail
   useEffect(() => {
