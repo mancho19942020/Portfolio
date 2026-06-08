@@ -161,7 +161,7 @@ export const Home: React.FC = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="px-6 sm:px-10 md:px-20"
             >
-              <SectionLabel>Lead Product Designer · Bogotá</SectionLabel>
+              <SectionLabel>Senior Product Designer & Design Engineer · Bogotá</SectionLabel>
             </motion.div>
 
             <motion.div
@@ -263,9 +263,9 @@ export const Home: React.FC = () => {
                   <SectionLabel>About</SectionLabel>
                 </div>
                 <p className="text-zinc-300 leading-relaxed text-lg md:text-xl font-light">
-                  Lead Product Designer and Design Engineer with 7+ years building complex B2B SaaS products.
-                  I bridge the gap between business decisions, complex data, and intuitive interfaces —
-                  grounded in research, validated by data, and accelerated by AI workflows.
+                  Senior Product Designer and Design Engineer — 7+ years in design, the last ~4 building
+                  complex B2B SaaS products. I bridge the gap between business decisions, complex data, and
+                  intuitive interfaces — grounded in research, validated by data, and shipped in production code.
                 </p>
                 <div className="mt-10 space-y-4">
                   <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</h3>

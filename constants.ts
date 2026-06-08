@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
     subtitle: "Property intelligence and a marketing pipeline for the roofing vertical",
     category: "8020REI",
     type: "Multi-tenant B2B SaaS · 0→1 build",
-    role: "Lead Product Designer & Builder",
+    role: "Senior Product Designer & Builder",
     duration: "~1.5 months active build",
     tools: [
       "Figma",
@@ -89,7 +89,7 @@ export const PROJECTS: Project[] = [
         },
         {
           name: "Germán Alvarez",
-          role: "Lead Product Designer",
+          role: "Senior Product Designer",
           contribution: "Builder and product UX / UI owner"
         }
       ]
@@ -102,7 +102,7 @@ export const PROJECTS: Project[] = [
         summary: "Built a multi-client SaaS that turns a 100M+ row property database into ready-to-execute roofing marketing lists. Operators search and target properties, define a buybox, and run a five-stage fulfillment pipeline that emits direct-mail and cold-calling lists every month — replacing weeks of manual spreadsheet assembly with a self-serve platform."
       },
       role: {
-        title: "Lead Product Designer & Builder",
+        title: "Senior Product Designer & Builder",
         responsibilities: [
           "Scaled the Axis design system into a production component library of 31 components with full dark mode and 45+ in-platform documentation pages",
           "Led product design end-to-end across property intelligence, buybox configuration, fulfillment, and the door-knocking beta",
@@ -232,7 +232,7 @@ export const PROJECTS: Project[] = [
     subtitle: "Automated direct mail, integrated into the platform",
     category: "8020REI",
     type: "SaaS Feature • 0 to 1 + ongoing PM ownership",
-    role: "Lead Product Designer + Acting PM",
+    role: "Senior Product Designer + Acting PM",
     duration: "3 months design · ongoing PM ownership",
     tools: ["Figma", "Figma Make", "Google Analytics", "Heap", "Clarity", "ChatGPT"],
     tags: ["Product Strategy", "Automation Flow", "Complex Logic", "PM Ownership"],
@@ -245,7 +245,7 @@ export const PROJECTS: Project[] = [
         summary: "DM campaign is an automated direct mail system that builds on RapidResponse. It eliminates manual workflows, reduces time-to-contact, and turns direct mail into a data-driven, automated channel integrated into the platform. Beyond initial design, I'm currently acting as PM for the feature — coordinating team initiatives, managing provider relationships, and tracking profitability — and partnering with the CCO on extending it into a new Direct DM business vertical."
       },
       role: {
-        title: "Lead Product Designer + Acting PM",
+        title: "Senior Product Designer + Acting PM",
         responsibilities: [
           "Owned end-to-end product design for the automation system",
           "Partnered with Product, Engineering, and Customer Success on scope and feasibility",
@@ -570,7 +570,7 @@ export const PROJECTS: Project[] = [
     subtitle: "From data exporter to decision environment",
     category: "8020REI",
     type: "Workflow Optimization",
-    role: "Lead Product Designer",
+    role: "Senior Product Designer",
     duration: "2 Months",
     tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics", "ChatGPT", "GPT"],
     tags: ["Information Density", "Efficiency", "Data Tables"],
@@ -583,7 +583,7 @@ export const PROJECTS: Project[] = [
         summary: "Turned the property list and property view from a data exporter into a decision environment — investors now explore, evaluate, and understand properties in their markets without bouncing out to external tools."
       },
       role: {
-        title: "Lead Product Designer",
+        title: "Senior Product Designer",
         responsibilities: [
           "Research planning and execution",
           "Stakeholder alignment across Product, Data, CS, and Engineering",
@@ -744,7 +744,7 @@ export const PROJECTS: Project[] = [
     subtitle: "Six data sources, one decision layer",
     category: "8020REI",
     type: "Unified Analytics Platform",
-    role: "Lead Product Designer & Builder",
+    role: "Senior Product Designer & Builder",
     duration: "2 months (ongoing)",
     tools: [
       "Figma",
@@ -775,7 +775,7 @@ export const PROJECTS: Project[] = [
         summary: "Built an internal analytics platform that unified fragmented data from Google Analytics, BigQuery, AWS Aurora, Google Drive, Asana, and Grafana into one operational dashboard for non-technical teams."
       },
       role: {
-        title: "Lead Product Designer & Builder",
+        title: "Senior Product Designer & Builder",
         responsibilities: [
           "Identified the organizational need and led the initiative from concept to production",
           "Mapped data ownership, access constraints, and business questions across teams",
@@ -816,8 +816,8 @@ export const PROJECTS: Project[] = [
         "Enabled exports and operational views for cross-functional decision loops"
       ],
       outcome: [
-        "Recovered blocked revenue by detecting and unblocking stuck mailings through automated alert detection",
-        "Tripled Properties API user adoption after surfacing and fixing 5 critical blockers",
+        "Surfaced a status conflict with our mail provider — visible only once Metrics Hub unified the data — that was silently stopping client letters from being sent; resolving it restored mail volume and recovered revenue for the feature",
+        "Tripled Properties API adoption after surfacing and fixing 5 critical blockers — a client-requested capability validated through research",
         "Enabled company-wide self-serve access to analytics without new tooling subscriptions",
         "Established a shared decision layer across Product, Customer Success, and Operations",
         "Reduced dependency on ad hoc data pulls for day-to-day product and business decisions"
@@ -879,11 +879,11 @@ export const PROJECTS: Project[] = [
           label: "Act 05",
           title: "Operational visibility translated into business impact",
           paragraphs: [
-            "Within the first month, alerting and monitoring workflows uncovered blocked campaign operations and API issues that directly impacted revenue and customer experience.",
+            "Within the first month, unifying the data exposed a status conflict with our mail provider that was silently stopping client letters — a problem invisible until Metrics Hub connected the sources. Resolving it realigned us with the provider, restored mail volume, and recovered revenue for the feature.",
             "Beyond metrics, the platform shifted team behavior: decisions moved from opinion-driven discussions to shared, evidence-based alignment."
           ],
           highlights: [
-            "Blocked mailings detected and recovered through automated monitoring",
+            "Provider status conflict surfaced and fixed — restored stopped client mailings and recovered revenue",
             "3x API adoption after resolving critical blockers",
             "Zero additional software spend for a company-wide intelligence layer"
           ]
@@ -1232,7 +1232,7 @@ export const PROJECTS: Project[] = [
 export const EXPERIENCE: ExperienceItem[] = [
   {
     company: "8020REI",
-    role: "Lead Product Designer",
+    role: "Senior Product Designer",
     period: "Jun 2024 – Present",
     location: "Remote · U.S.-based SaaS",
     description: [
