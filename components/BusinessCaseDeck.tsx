@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   ArrowLeft,
   ArrowRight,
+  ExternalLink,
   ChevronLeft,
   ChevronRight,
   X,
@@ -35,6 +36,7 @@ import imgFulfillment from '../assets/projects/8020roof/fulfillment.webp';
 import imgDataCoverage from '../assets/projects/8020roof/data-coverage.webp';
 import imgClientManagement from '../assets/projects/8020roof/client-management.webp';
 import imgAsana from '../assets/projects/8020roof/asana-board.webp';
+import imgResearchCover from '../assets/projects/8020roof/research-cover.webp';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // 8020 ROOF — Business Case deck
@@ -775,22 +777,31 @@ const SLIDES: SlideDef[] = [
           </div>
 
           <In delay={0.22}>
-            <div className="relative rounded-2xl border border-zinc-800 bg-zinc-900/40 overflow-hidden aspect-[4/3] w-full">
-              <iframe
-                src="https://roofing-knowledge-base.netlify.app/"
-                title="8020 Roof UX research knowledge base"
+            <a
+              href="https://roofing-knowledge-base.netlify.app/"
+              target="_blank"
+              rel="noreferrer"
+              className="glow-reactive group relative block rounded-2xl border border-zinc-800 bg-zinc-900/40 overflow-hidden aspect-[4/3] w-full"
+            >
+              <img
+                src={imgResearchCover}
+                alt="8020 Roof UX research knowledge base, a 16-slide readout"
                 loading="lazy"
-                className="w-full h-full"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
-              <a
-                href="https://roofing-knowledge-base.netlify.app/"
-                target="_blank"
-                rel="noreferrer"
-                className="absolute top-2 right-2 inline-flex items-center gap-1.5 rounded-full bg-black/55 backdrop-blur-sm border border-white/10 px-3 py-1.5 text-[11px] font-mono text-white/85 hover:text-white transition-colors"
-              >
-                Open <ArrowRight className="w-3 h-3" />
-              </a>
-            </div>
+              <span
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"
+              />
+              <span className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-2">
+                <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-300">
+                  16-slide research readout
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-black/55 backdrop-blur-sm border border-white/10 px-3 py-1.5 text-[11px] font-mono text-white/90 group-hover:text-white transition-colors">
+                  Open the research <ExternalLink className="w-3 h-3" />
+                </span>
+              </span>
+            </a>
           </In>
         </div>
       </Slide>
