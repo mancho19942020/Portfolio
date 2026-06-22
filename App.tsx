@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { HashRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { ProjectDetail } from './pages/ProjectDetail';
+import { BusinessCaseDeck } from './components/BusinessCaseDeck';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CursorGlow } from './components/CursorGlow';
 import { SmoothScroll, instantScrollTo } from './components/SmoothScroll';
@@ -71,6 +72,7 @@ const AppContent = () => {
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
+          <Route path="/project/:id/case" element={<BusinessCaseDeck />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

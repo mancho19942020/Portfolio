@@ -11,12 +11,15 @@ import propertyList03 from './assets/projects/property-list/03.jpg';
 import propertyList04 from './assets/projects/property-list/04.jpg';
 import propertyList05 from './assets/projects/property-list/05.jpg';
 import propertyList06 from './assets/projects/property-list/06.jpg';
-import metricsHub01 from './assets/projects/metrics-hub/01.jpg';
-import metricsHub02 from './assets/projects/metrics-hub/02.jpg';
-import metricsHub03 from './assets/projects/metrics-hub/03.jpg';
-import metricsHub04 from './assets/projects/metrics-hub/04.jpg';
-import metricsHub05 from './assets/projects/metrics-hub/05.jpg';
-import metricsHub06 from './assets/projects/metrics-hub/06.jpg';
+import metricsHubMockup from './assets/projects/metrics-hub/mockup.webp';
+import metricsHub02 from './assets/projects/metrics-hub/metrics-02.webp';
+import metricsHub03 from './assets/projects/metrics-hub/metrics-03.webp';
+import metricsHub04 from './assets/projects/metrics-hub/metrics-04.webp';
+import metricsHub05 from './assets/projects/metrics-hub/metrics-05.webp';
+import metricsHub06 from './assets/projects/metrics-hub/metrics-06.webp';
+import metricsHub07 from './assets/projects/metrics-hub/metrics-07.webp';
+import metricsHub08 from './assets/projects/metrics-hub/metrics-08.webp';
+import metricsHub09 from './assets/projects/metrics-hub/metrics-09.webp';
 import dmAutomation01 from './assets/projects/dm-automation/01.jpg';
 import dmAutomation02 from './assets/projects/dm-automation/02.jpg';
 import dmAutomation03 from './assets/projects/dm-automation/03.jpg';
@@ -33,13 +36,13 @@ import nowApp04 from './assets/projects/now-app/04.jpg';
 import nowApp05 from './assets/projects/now-app/05.jpg';
 import nowApp06 from './assets/projects/now-app/06.jpg';
 import roof000 from './assets/projects/8020roof/000.webp';
-import roof001 from './assets/projects/8020roof/001.webp';
-import roof002 from './assets/projects/8020roof/002.webp';
-import roof003 from './assets/projects/8020roof/003.webp';
-import roof004 from './assets/projects/8020roof/004.webp';
-import roof005 from './assets/projects/8020roof/005.webp';
-import roof006 from './assets/projects/8020roof/006.webp';
-import roof007 from './assets/projects/8020roof/007.webp';
+import roofDashboard from './assets/projects/8020roof/dashboard.webp';
+import roofPropertyList from './assets/projects/8020roof/property-list.webp';
+import roofBuybox from './assets/projects/8020roof/buybox.webp';
+import roofBuyboxEdit from './assets/projects/8020roof/buybox-edit.webp';
+import roofFulfillment from './assets/projects/8020roof/fulfillment.webp';
+import roofDataCoverage from './assets/projects/8020roof/data-coverage.webp';
+import roofClientManagement from './assets/projects/8020roof/client-management.webp';
 
 export const PROJECTS: Project[] = [
   // 8020REI (Priority 1)
@@ -58,14 +61,13 @@ export const PROJECTS: Project[] = [
       "Vue 3",
       "TypeScript",
       "Tailwind CSS",
+      "shadcn-vue",
+      "TanStack Query",
+      "Pinia",
       "FastAPI",
-      "SQLAlchemy 2.0",
       "PostgreSQL (AWS Aurora)",
-      "Firebase Auth",
-      "AG Grid",
-      "Docker",
-      "Google Cloud Run",
-      "Firebase Hosting",
+      "AWS Cognito",
+      "AWS Amplify",
       "GitHub Actions"
     ],
     tags: ["Design System", "Multi-tenant SaaS", "Vibecoding", "0→1"],
@@ -75,7 +77,7 @@ export const PROJECTS: Project[] = [
       alt: "8020 ROOF cover"
     },
     team: {
-      note: "Three builders, no rigid lanes. Each of us led the area where we were strongest, but the three of us shipped frontend, backend, data, and QA together — equal effort, shared ownership of every aspect of the platform.",
+      note: "Three builders, no rigid lanes. Each led where they were strongest, but all three shipped frontend, backend, data and QA together, with shared ownership of the platform.",
       members: [
         {
           name: "Camilo Rico",
@@ -99,16 +101,15 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2026",
-        summary: "Built a multi-client SaaS that turns a 100M+ row property database into ready-to-execute roofing marketing lists. Operators search and target properties, define a buybox, and run a five-stage fulfillment pipeline that emits direct-mail and cold-calling lists every month — replacing weeks of manual spreadsheet assembly with a self-serve platform."
+        summary: "A multi-client SaaS that turns a 100M+ row property database into ready-to-execute roofing marketing lists. Operators target properties, define a Buy Box, and run a five-stage pipeline that emits direct-mail, cold-calling and SMS lists every month, replacing weeks of manual spreadsheet work with a self-serve platform."
       },
       role: {
         title: "Senior Product Designer & Builder",
         responsibilities: [
-          "Scaled the Axis design system into a production component library of 31 components with full dark mode and 45+ in-platform documentation pages",
-          "Led product design end-to-end across property intelligence, buybox configuration, fulfillment, and the door-knocking beta",
-          "Contributed to the codebase across the frontend with Claude Code as a development partner — UI flows, admin tooling, and reusable components",
-          "Audited every feature alongside the team, enforcing design system compliance and UX consistency before release",
-          "Helped validate the platform with two pilot clients, retiring spreadsheet-based marketing list delivery"
+          "Led product design end to end: property intelligence, the Buy Box, fulfillment, and the door-knocking beta.",
+          "Adopted shadcn and customized it into the platform's component library, aligned to the brand and the roofing experience.",
+          "Built UI directly in code with Claude Code, moving to Claude or Figma when a screen needed precision.",
+          "Audited every feature with the team for design and UX consistency, and validated it with two pilot clients."
         ]
       },
       challenge: {
@@ -134,7 +135,7 @@ export const PROJECTS: Project[] = [
       },
       approach: [
         "Mapped the operator workflow into three jobs: find candidate properties, package them as a list, deliver them to a channel",
-        "Scaled Axis into 31 production components with semantic tokens, full dark mode, and a hard rule against raw HTML form elements",
+        "Scaled Kairo into 31 production components with semantic tokens, full dark mode, and a hard rule against raw HTML form elements",
         "Shipped 45+ in-platform documentation pages so every screen built after week one stayed coherent",
         "Built property intelligence first — virtualized table over the 100M-row dataset with saved views, multi-filter search, county scoping, and async exports",
         "Layered the buybox builder, dashboard with real Aurora distress metrics, and the five-stage fulfillment pipeline",
@@ -151,79 +152,74 @@ export const PROJECTS: Project[] = [
       chapters: [
         {
           label: "Act 01",
-          title: "Roofing operators were buying lists from spreadsheets",
+          title: "Roofing was served by hand",
           paragraphs: [
-            "8020REI had built a working data business around real estate investor list generation, but the roofing vertical was being served by hand. Two pilot clients received their monthly marketing lists as Excel files — manually assembled, manually scored, manually split between direct mail and cold-calling channels.",
-            "The business needed to prove a second vertical could ship without expanding the engineering team. The bet was that the existing three-person product group, without dedicated frontend or backend engineers, could deliver a production SaaS by treating AI as a teammate."
+            "8020REI had a working data business for real-estate investors, but roofing was served by hand. Two pilot clients got their monthly lists as Excel files, assembled, scored and split by a person. The mandate was to prove a small team could ship a real product, not a service."
           ],
           highlights: [
-            "Two pilot clients still receiving marketing lists as manual Excel exports",
-            "No platform path for scaling the roofing vertical without new hires",
-            "Internal mandate to ship a real product, not a service-delivery workflow"
+            "Two pilot clients on manual Excel exports",
+            "No path to scale roofing without new hires",
+            "Ship a product, not a service workflow"
           ]
         },
         {
           label: "Act 02",
-          title: "Three people, one hundred million rows, no rigid lanes",
+          title: "Leverage the engine we already had",
           paragraphs: [
-            "Camilo Rico (product director), Nicolas Hernandez (QA lead), and I (lead product designer) split the work without dividing it. Camilo owned the data layer and the fulfillment pipeline. Nicolas built the buybox logic and the security testing suite. I drove the design system and product design, and contributed code through Claude Code.",
-            "Before any feature was built, we mapped what we had against what the user actually needed: a 100M+ row Aurora property dataset, county-level access expressed as FIPS codes, propensity scoring from external partners, and an operator workflow that was really three jobs in a trench coat — find candidate properties, package them as a list, deliver them to a channel."
+            "8020REI already owned a 100M+ row property database and a scoring algorithm. The work was to point that asset at a new customer, roofers looking for roofs that need replacing, and to sell it by county instead of per lead."
           ],
           highlights: [
-            "100M+ property records scoped by 5-digit county FIPS codes for multi-tenant isolation",
-            "Five user roles defined before the first screen was designed",
-            "AI treated as a teammate across design, frontend, backend, and QA"
+            "100M+ records, scoped by county FIPS",
+            "A new pricing wedge: per county, not per lead",
+            "Three personas defined before the first screen"
           ]
         },
         {
           label: "Act 03",
-          title: "The design system shipped before the features did",
+          title: "One design system, not built from scratch",
           paragraphs: [
-            "We started from Axis — 8020REI's existing design system — and scaled it into a production-ready component library before any product feature was built. Thirty-one components, full light and dark mode, semantic tokens for color, typography, motion, and spacing, and a hard rule against raw HTML form elements anywhere in the platform.",
-            "That decision turned every later feature into composition rather than design work. Buttons, inputs, selects, tables, toasts, callouts, steppers, and skeleton loaders were already vetted. Engineering decisions about layout and feedback patterns were already documented as 45+ design system pages inside the platform itself, so every screen built after week one stayed visually and behaviorally coherent."
+            "Rather than build a design system from zero, we adopted shadcn and customized it for the brand, bringing the table and Buy Box patterns proven in 8020REI's Kairo system. That turned every later screen into composition, not design work."
           ],
           highlights: [
-            "31 production Axis components shipped with full dark mode and WCAG AA contrast",
-            "45+ in-platform documentation pages governing colors, typography, motion, components, and patterns",
-            "Component coherence enforced as a hard rule and audited platform-wide before each release"
+            "Adopted shadcn, customized for Roof",
+            "Reused the Kairo table and Buy Box patterns",
+            "One system for every vertical"
           ]
         },
         {
           label: "Act 04",
-          title: "From property search to a five-stage marketing pipeline",
+          title: "From property search to a marketing pipeline",
           paragraphs: [
-            "The feature stack landed in roughly the order an operator uses it. Property intelligence first — a virtualized table over the 100M-row dataset with saved views, multi-filter search, county scoping, bulk tagging, and async CSV/Excel exports. Then the buybox builder, a rule editor for defining a target audience that becomes the input to the rest of the platform. Then the dashboard, surfacing real Aurora distress metrics per county with a 15-minute cache.",
-            "Fulfillment is the platform's hardest feature. A monthly cycle runs through five stages — list builder, rotation, consolidation, QA, finalization — and emits two channel-ready lists every month: 20K records for direct mail, 115K records for cold calling, both delivered as downloadable Excel files. Door knocking, a beta module, generates traveling-salesman-optimized field routes for in-person canvassing. Everything sits behind Firebase auth, FastAPI dependency-injected role checks, and database-level county isolation."
+            "Property intelligence came first, a fast table over the 100M-row dataset with saved views and exports. Then the Buy Box, simplified to its smallest set of rules. Then a five-stage monthly pipeline that emits direct-mail, cold-call and SMS lists, plus a door-knocking beta with optimized field routes."
           ],
           highlights: [
-            "5-stage async fulfillment pipeline emitting ~20K direct-mail and ~115K cold-call records per cycle",
-            "Real-Aurora dashboard with 15-minute cached distress metrics across each client's assigned counties",
-            "Beta door-knocking module with TSP route optimization, segment maps, and field-ready Excel exports"
+            "Virtualized property table with saved views and exports",
+            "Buy Box builder with per-channel targets",
+            "Five-stage fulfillment, multi-channel output"
           ]
         },
         {
           label: "Act 05",
-          title: "Two pilot clients, the Excel handoff retired",
+          title: "Two clients live, the Excel handoff retired",
           paragraphs: [
-            "The platform shipped with two clients live in production. One reported 100% satisfaction. The Excel-based delivery process — the same workflow 8020REI had used before its first vertical platform existed — was retired for the roofing vertical inside six weeks of active development.",
-            "Beyond the customer outcome, the project proved an internal hypothesis: a three-person, mostly non-technical product team could ship a robust data SaaS — 100M-row scale, async pipelines, multi-tenant role hierarchy, full design system, dark mode platform-wide — by treating AI as a teammate. The playbook for the next vertical was written along the way."
+            "The platform shipped with two clients live in production, and the manual spreadsheet process retired. It proved a three-person, mostly non-technical team could ship production data SaaS by treating AI as a teammate, and wrote the playbook for the next vertical along the way."
           ],
           highlights: [
-            "Two pilot clients in production; one at 100% satisfaction",
-            "Spreadsheet-based monthly list delivery retired and replaced with self-serve fulfillment",
-            "Internal proof point: a non-technical core team can ship production SaaS in weeks, not quarters"
+            "Two pilot clients in production",
+            "Spreadsheet handoff replaced by self-serve fulfillment",
+            "Proof: a small team can ship production SaaS"
           ]
         }
       ]
     },
     images: [
-      { src: roof001, alt: "8020 ROOF — screen 01" },
-      { src: roof002, alt: "8020 ROOF — screen 02" },
-      { src: roof003, alt: "8020 ROOF — screen 03" },
-      { src: roof004, alt: "8020 ROOF — screen 04" },
-      { src: roof005, alt: "8020 ROOF — screen 05" },
-      { src: roof006, alt: "8020 ROOF — screen 06" },
-      { src: roof007, alt: "8020 ROOF — screen 07" }
+      { src: roofDashboard, alt: "8020 Roof — dashboard" },
+      { src: roofPropertyList, alt: "8020 Roof — property list" },
+      { src: roofBuybox, alt: "8020 Roof — Buy Box" },
+      { src: roofBuyboxEdit, alt: "8020 Roof — Buy Box editor" },
+      { src: roofFulfillment, alt: "8020 Roof — fulfillment" },
+      { src: roofDataCoverage, alt: "8020 Roof — data coverage" },
+      { src: roofClientManagement, alt: "8020 Roof — client management" }
     ]
   },
   {
@@ -781,7 +777,7 @@ export const PROJECTS: Project[] = [
           "Mapped data ownership, access constraints, and business questions across teams",
           "Designed the full information architecture, navigation, and widget workspace",
           "Built frontend and backend layers for multi-source data exploration and monitoring",
-          "Defined the Axis design system and contribution workflows with automated quality gates"
+          "Defined the Kairo design system and contribution workflows with automated quality gates"
         ]
       },
       challenge: {
@@ -810,7 +806,7 @@ export const PROJECTS: Project[] = [
         "Designed a three-level IA model for sections, sub-sections, and detail tabs",
         "Built a widget-based workspace with reusable chart, table, and scorecard patterns",
         "Connected six data sources into a single product surface with role-aware access",
-        "Created Axis design system foundations with reusable components and tokens",
+        "Created Kairo design system foundations with reusable components and tokens",
         "Implemented automated quality checks to enforce design and implementation consistency",
         "Added monitoring views and alert flows for campaign and API health",
         "Enabled exports and operational views for cross-functional decision loops"
@@ -859,7 +855,7 @@ export const PROJECTS: Project[] = [
           highlights: [
             "Three-level IA for depth without disorientation",
             "Reusable widgets across analytics, operations, and product domains",
-            "Axis design system foundations for speed and consistency"
+            "Kairo design system foundations for speed and consistency"
           ]
         },
         {
@@ -891,30 +887,15 @@ export const PROJECTS: Project[] = [
       ]
     },
     images: [
-      {
-        src: metricsHub01,
-        alt: "Metrics Hub dashboard overview in dark mode"
-      },
-      {
-        src: metricsHub02,
-        alt: "Metrics Hub overview in light mode"
-      },
-      {
-        src: metricsHub03,
-        alt: "Business alerts and conversion funnel in Metrics Hub"
-      },
-      {
-        src: metricsHub04,
-        alt: "Properties API monitoring dashboard in Metrics Hub"
-      },
-      {
-        src: metricsHub05,
-        alt: "Product tasks operational board in Metrics Hub"
-      },
-      {
-        src: metricsHub06,
-        alt: "Engagement call detail view in Metrics Hub"
-      }
+      { src: metricsHubMockup, alt: "Metrics Hub dashboard overview" },
+      { src: metricsHub02, alt: "Metrics Hub — screen 02" },
+      { src: metricsHub03, alt: "Metrics Hub — screen 03" },
+      { src: metricsHub04, alt: "Metrics Hub — screen 04" },
+      { src: metricsHub05, alt: "Metrics Hub — screen 05" },
+      { src: metricsHub06, alt: "Metrics Hub — screen 06" },
+      { src: metricsHub07, alt: "Metrics Hub — screen 07" },
+      { src: metricsHub08, alt: "Metrics Hub — screen 08" },
+      { src: metricsHub09, alt: "Metrics Hub — screen 09" }
     ]
   },
   // Habi (Priority 2)

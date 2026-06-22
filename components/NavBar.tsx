@@ -34,7 +34,7 @@ export const NavBar: React.FC = () => {
             </span>
           ) : (
             <button
-              onClick={() => navigate(-1)}
+              onClick={() => navigate('/')}
               className="glow-reactive glow-button flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />

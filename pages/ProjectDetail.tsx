@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { ProjectNarrativeChapter } from '../types';
 import { NavBar } from '../components/NavBar';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown } from 'lucide-react';
+import { Search, ChevronDown, Presentation, ArrowRight } from 'lucide-react';
 import nowAppResearchPdf from '../assets/docs/nowapp-research.pdf';
 
 // Shared card shell — matches home page section cards
@@ -156,6 +156,7 @@ export const ProjectDetail: React.FC = () => {
   const isCaseStudy = project.category === 'Freelance';
   const categoryLabel = isCaseStudy ? 'UX/UI case study' : project.category;
   const showNowAppResearch = project.id === 'freelance-1';
+  const showBusinessCase = project.id === '8020-roof';
   const chapters = project.narrative.chapters ?? buildFallbackChapters(project);
 
   const sectionMotion = {
@@ -227,6 +228,16 @@ export const ProjectDetail: React.FC = () => {
                     Review research document
                     <Search className="w-4 h-4" aria-hidden="true" />
                   </a>
+                )}
+
+                {showBusinessCase && (
+                  <div className="pt-1">
+                    <Link to={`/project/${project.id}/case`} className="showcase-cta">
+                      <Presentation className="w-4 h-4" aria-hidden="true" />
+                      View business case
+                      <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </Link>
+                  </div>
                 )}
               </div>
             </motion.div>
