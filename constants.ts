@@ -41,7 +41,7 @@ import roofPropertyList from './assets/projects/8020roof/property-list.webp';
 import roofBuybox from './assets/projects/8020roof/buybox.webp';
 import roofBuyboxEdit from './assets/projects/8020roof/buybox-edit.webp';
 import roofFulfillment from './assets/projects/8020roof/fulfillment.webp';
-import roofDataCoverage from './assets/projects/8020roof/data-coverage.webp';
+import roofPropertyView from './assets/projects/8020roof/property-view.webp';
 import roofClientManagement from './assets/projects/8020roof/client-management.webp';
 
 export const PROJECTS: Project[] = [
@@ -218,7 +218,7 @@ export const PROJECTS: Project[] = [
       { src: roofBuybox, alt: "8020 Roof — Buy Box" },
       { src: roofBuyboxEdit, alt: "8020 Roof — Buy Box editor" },
       { src: roofFulfillment, alt: "8020 Roof — fulfillment" },
-      { src: roofDataCoverage, alt: "8020 Roof — data coverage" },
+      { src: roofPropertyView, alt: "8020 Roof — property view" },
       { src: roofClientManagement, alt: "8020 Roof — client management" }
     ]
   },

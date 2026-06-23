@@ -33,7 +33,6 @@ import imgPropertyList from '../assets/projects/8020roof/property-list.webp';
 import imgBuybox from '../assets/projects/8020roof/buybox.webp';
 import imgBuyboxEdit from '../assets/projects/8020roof/buybox-edit.webp';
 import imgFulfillment from '../assets/projects/8020roof/fulfillment.webp';
-import imgDataCoverage from '../assets/projects/8020roof/data-coverage.webp';
 import imgClientManagement from '../assets/projects/8020roof/client-management.webp';
 import imgAsana from '../assets/projects/8020roof/asana-board.webp';
 import imgResearchCover from '../assets/projects/8020roof/research-cover.webp';
