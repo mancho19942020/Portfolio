@@ -238,16 +238,16 @@ export const Home: React.FC = () => {
             segments={[
               {
                 text:
-                  "I'm a product designer who turns complex data and ambiguous business problems into experiences that work — for the humans using them, and increasingly for the AI agents working alongside them. I work across ",
+                  "I'm a product designer who turns complex data and vague business problems into practical products for the people using them and, increasingly, the AI agents that support them. I work across ",
               },
               {
                 text:
-                  'real-estate intelligence, marketing-pipeline tooling, and AI-augmented product workflows',
+                  'real-estate intelligence, marketing-pipeline tools, and AI-assisted product workflows',
                 accent: true,
               },
               {
                 text:
-                  '. Methodical by default — I turn rooms full of ambiguous ideas into milestones, owners, and a plan the team can actually ship.',
+                  '. I like working methodically: turning conversations full of ambiguous ideas into milestones, owners, and a plan the team can actually ship.',
               },
             ]}
           />
@@ -263,9 +263,9 @@ export const Home: React.FC = () => {
                   <SectionLabel>About</SectionLabel>
                 </div>
                 <p className="text-zinc-300 leading-relaxed text-lg md:text-xl font-light">
-                  Senior Product Designer and Design Engineer — 7+ years in design, the last ~4 building
-                  complex B2B SaaS products. I bridge the gap between business decisions, complex data, and
-                  intuitive interfaces — grounded in research, validated by data, and shipped in production code.
+                  Senior Product Designer and Design Engineer with 7+ years in design and nearly four years
+                  building complex B2B SaaS products. I connect business decisions, complex data, and intuitive
+                  interfaces. My work is grounded in research, checked against data, and shipped in production code.
                 </p>
                 <div className="mt-10 space-y-4">
                   <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</h3>

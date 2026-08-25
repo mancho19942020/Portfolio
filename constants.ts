@@ -36,13 +36,13 @@ import nowApp04 from './assets/projects/now-app/04.jpg';
 import nowApp05 from './assets/projects/now-app/05.jpg';
 import nowApp06 from './assets/projects/now-app/06.jpg';
 import roof000 from './assets/projects/8020roof/000.webp';
-import roofDashboard from './assets/projects/8020roof/dashboard.webp';
-import roofPropertyList from './assets/projects/8020roof/property-list.webp';
-import roofBuybox from './assets/projects/8020roof/buybox.webp';
-import roofBuyboxEdit from './assets/projects/8020roof/buybox-edit.webp';
-import roofFulfillment from './assets/projects/8020roof/fulfillment.webp';
-import roofPropertyView from './assets/projects/8020roof/property-view.webp';
-import roofClientManagement from './assets/projects/8020roof/client-management.webp';
+import roofDashboard from './assets/projects/8020roof/new images/001.jpg';
+import roofPropertyList from './assets/projects/8020roof/new images/002.jpg';
+import roofPropertyView from './assets/projects/8020roof/new images/003.jpg';
+import roofBuybox from './assets/projects/8020roof/new images/004.jpg';
+import roofBuyboxEdit from './assets/projects/8020roof/new images/005.jpg';
+import roofFulfillment from './assets/projects/8020roof/new images/006.jpg';
+import roofDataHealth from './assets/projects/8020roof/new images/007.jpg';
 
 export const PROJECTS: Project[] = [
   // 8020REI (Priority 1)
@@ -77,7 +77,7 @@ export const PROJECTS: Project[] = [
       alt: "8020 ROOF cover"
     },
     team: {
-      note: "Three builders, no rigid lanes. Each led where they were strongest, but all three shipped frontend, backend, data and QA together, with shared ownership of the platform.",
+      note: "We were three builders without rigid lanes. Each person led where they were strongest, and all three contributed across frontend, backend, data, and QA with shared ownership of the platform.",
       members: [
         {
           name: "Camilo Rico",
@@ -101,7 +101,7 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2026",
-        summary: "A multi-client SaaS that turns a 100M+ row property database into ready-to-execute roofing marketing lists. Operators target properties, define a Buy Box, and run a five-stage pipeline that emits direct-mail, cold-calling and SMS lists every month, replacing weeks of manual spreadsheet work with a self-serve platform."
+        summary: "A multi-client SaaS that turns a 100M+ row property database into ready-to-use roofing marketing lists. Operators can target properties, create a Buy Box, and run a five-stage pipeline for direct mail, cold calls, and SMS. It replaces weeks of spreadsheet work with a self-serve platform."
       },
       role: {
         title: "Senior Product Designer & Builder",
@@ -113,7 +113,7 @@ export const PROJECTS: Project[] = [
         ]
       },
       challenge: {
-        summary: "8020REI had built a working data business around investor list generation, but the roofing vertical was being served by hand — manually assembled, manually scored, manually split Excel files. The business needed to prove a second vertical could ship without expanding the engineering team.",
+        summary: "8020REI had a working data business for investor list generation, but the roofing vertical still ran by hand. One person assembled, scored, and split Excel files for each client. The business needed to prove it could launch a second vertical without expanding the engineering team.",
         painPoints: [
           "Two pilot clients still receiving marketing lists as manual Excel exports",
           "Manual scoring and channel splitting on every monthly cycle",
@@ -127,7 +127,7 @@ export const PROJECTS: Project[] = [
           "Production-grade design system before any feature work began"
         ],
         insights: [
-          "AI treated as a teammate across design, frontend, backend, and QA — not as autocomplete",
+          "We treated AI as a teammate across design, frontend, backend, and QA, not just as autocomplete",
           "Five user roles defined before the first screen was designed",
           "Component coherence enforced platform-wide and audited each release",
           "The platform's value came from removing manual steps, not adding features"
@@ -137,7 +137,7 @@ export const PROJECTS: Project[] = [
         "Mapped the operator workflow into three jobs: find candidate properties, package them as a list, deliver them to a channel",
         "Scaled Kairo into 31 production components with semantic tokens, full dark mode, and a hard rule against raw HTML form elements",
         "Shipped 45+ in-platform documentation pages so every screen built after week one stayed coherent",
-        "Built property intelligence first — virtualized table over the 100M-row dataset with saved views, multi-filter search, county scoping, and async exports",
+        "Built property intelligence first: a virtualized table over the 100M-row dataset with saved views, multi-filter search, county scoping, and async exports",
         "Layered the buybox builder, dashboard with real Aurora distress metrics, and the five-stage fulfillment pipeline",
         "Added a beta door-knocking module with traveling-salesman-optimized field routes",
         "Used Claude Code as a development teammate to ship UI flows, admin tooling, and reusable components"
@@ -154,7 +154,7 @@ export const PROJECTS: Project[] = [
           label: "Act 01",
           title: "Roofing was served by hand",
           paragraphs: [
-            "8020REI had a working data business for real-estate investors, but roofing was served by hand. Two pilot clients got their monthly lists as Excel files, assembled, scored and split by a person. The mandate was to prove a small team could ship a real product, not a service."
+            "8020REI had a working data business for real-estate investors, but roofing was still a manual process. Two pilot clients received a monthly Excel export that someone assembled, scored, and split by hand. The goal was to prove a small team could build a real product, not a service."
           ],
           highlights: [
             "Two pilot clients on manual Excel exports",
@@ -178,7 +178,7 @@ export const PROJECTS: Project[] = [
           label: "Act 03",
           title: "One design system, not built from scratch",
           paragraphs: [
-            "Rather than build a design system from zero, we adopted shadcn and customized it for the brand, bringing the table and Buy Box patterns proven in 8020REI's Kairo system. That turned every later screen into composition, not design work."
+            "We started with shadcn and customized it for the brand. We also brought over the table and Buy Box patterns proven in 8020REI's Kairo system, so later screens could be composed from familiar parts rather than designed from scratch."
           ],
           highlights: [
             "Adopted shadcn, customized for Roof",
@@ -190,7 +190,7 @@ export const PROJECTS: Project[] = [
           label: "Act 04",
           title: "From property search to a marketing pipeline",
           paragraphs: [
-            "Property intelligence came first, a fast table over the 100M-row dataset with saved views and exports. Then the Buy Box, simplified to its smallest set of rules. Then a five-stage monthly pipeline that emits direct-mail, cold-call and SMS lists, plus a door-knocking beta with optimized field routes."
+            "We started with property intelligence: a fast table over the 100M-row dataset with saved views and exports. Next came the Buy Box, reduced to the rules that mattered. Then we built a five-stage monthly pipeline for direct mail, cold calls, and SMS, plus a door-knocking beta with optimized field routes."
           ],
           highlights: [
             "Virtualized property table with saved views and exports",
@@ -202,7 +202,7 @@ export const PROJECTS: Project[] = [
           label: "Act 05",
           title: "Two clients live, the Excel handoff retired",
           paragraphs: [
-            "The platform shipped with two clients live in production, and the manual spreadsheet process retired. It proved a three-person, mostly non-technical team could ship production data SaaS by treating AI as a teammate, and wrote the playbook for the next vertical along the way."
+            "The platform launched with two clients already using it, and the manual spreadsheet process was retired. It showed that a three-person, mostly non-technical team could build production data SaaS with AI as a practical part of the team, while documenting a playbook for the next vertical."
           ],
           highlights: [
             "Two pilot clients in production",
@@ -213,13 +213,13 @@ export const PROJECTS: Project[] = [
       ]
     },
     images: [
-      { src: roofDashboard, alt: "8020 Roof — dashboard" },
-      { src: roofPropertyList, alt: "8020 Roof — property list" },
-      { src: roofBuybox, alt: "8020 Roof — Buy Box" },
-      { src: roofBuyboxEdit, alt: "8020 Roof — Buy Box editor" },
-      { src: roofFulfillment, alt: "8020 Roof — fulfillment" },
-      { src: roofPropertyView, alt: "8020 Roof — property view" },
-      { src: roofClientManagement, alt: "8020 Roof — client management" }
+      { src: roofDashboard, alt: "8020 Roof dashboard" },
+      { src: roofPropertyList, alt: "8020 Roof property list" },
+      { src: roofPropertyView, alt: "8020 Roof property details" },
+      { src: roofBuybox, alt: "8020 Roof Buy Box" },
+      { src: roofBuyboxEdit, alt: "8020 Roof Buy Box numeric filters" },
+      { src: roofFulfillment, alt: "8020 Roof door-knocking routes" },
+      { src: roofDataHealth, alt: "8020 Roof data health" }
     ]
   },
   {
@@ -238,7 +238,7 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "DM campaign is an automated direct mail system that builds on RapidResponse. It eliminates manual workflows, reduces time-to-contact, and turns direct mail into a data-driven, automated channel integrated into the platform. Beyond initial design, I'm currently acting as PM for the feature — coordinating team initiatives, managing provider relationships, and tracking profitability — and partnering with the CCO on extending it into a new Direct DM business vertical."
+        summary: "DM Campaign brings direct mail into RapidResponse, turning manual outreach into an automated, data-driven part of the platform. Alongside the original product design, I now act as PM for the feature: I coordinate the team, manage provider relationships, track profitability, and work with the CCO to expand it into a new Direct DM vertical."
       },
       role: {
         title: "Senior Product Designer + Acting PM",
@@ -440,7 +440,7 @@ export const PROJECTS: Project[] = [
           "Defaults and guardrails outperform open-ended configuration",
           "Marketing capacity must shape acquisition criteria",
           "Errors should be explicit, actionable, and impossible to miss",
-          "Accessibility is a correctness requirement, not a finishing pass — color alone cannot carry meaning"
+          "Accessibility is a correctness requirement, not a finishing pass. Color alone cannot carry meaning."
         ]
       },
       approach: [
@@ -576,7 +576,7 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "Turned the property list and property view from a data exporter into a decision environment — investors now explore, evaluate, and understand properties in their markets without bouncing out to external tools."
+        summary: "Reworked the property list and property view so investors could evaluate opportunities without switching to external tools. The new experience turns a data exporter into a decision-making workspace."
       },
       role: {
         title: "Senior Product Designer",
@@ -768,7 +768,7 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2026",
-        summary: "Built an internal analytics platform that unified fragmented data from Google Analytics, BigQuery, AWS Aurora, Google Drive, Asana, and Grafana into one operational dashboard for non-technical teams."
+        summary: "Built an internal analytics platform that brings data from Google Analytics, BigQuery, AWS Aurora, Google Drive, Asana, and Grafana into one operational dashboard for non-technical teams."
       },
       role: {
         title: "Senior Product Designer & Builder",
@@ -812,8 +812,8 @@ export const PROJECTS: Project[] = [
         "Enabled exports and operational views for cross-functional decision loops"
       ],
       outcome: [
-        "Surfaced a status conflict with our mail provider — visible only once Metrics Hub unified the data — that was silently stopping client letters from being sent; resolving it restored mail volume and recovered revenue for the feature",
-        "Tripled Properties API adoption after surfacing and fixing 5 critical blockers — a client-requested capability validated through research",
+        "Brought a mail-provider status conflict into view; it had quietly stopped client letters. Fixing it restored mail volume and recovered revenue for the feature.",
+        "Tripled Properties API adoption after surfacing and fixing 5 critical blockers. The capability came from a client request validated through research.",
         "Enabled company-wide self-serve access to analytics without new tooling subscriptions",
         "Established a shared decision layer across Product, Customer Success, and Operations",
         "Reduced dependency on ad hoc data pulls for day-to-day product and business decisions"
@@ -875,11 +875,11 @@ export const PROJECTS: Project[] = [
           label: "Act 05",
           title: "Operational visibility translated into business impact",
           paragraphs: [
-            "Within the first month, unifying the data exposed a status conflict with our mail provider that was silently stopping client letters — a problem invisible until Metrics Hub connected the sources. Resolving it realigned us with the provider, restored mail volume, and recovered revenue for the feature.",
+            "Within the first month, Metrics Hub exposed a mail-provider status conflict that had quietly stopped client letters. The problem was invisible until the data was connected. Resolving it realigned us with the provider, restored mail volume, and recovered revenue for the feature.",
             "Beyond metrics, the platform shifted team behavior: decisions moved from opinion-driven discussions to shared, evidence-based alignment."
           ],
           highlights: [
-            "Provider status conflict surfaced and fixed — restored stopped client mailings and recovered revenue",
+            "Provider status conflict fixed, restoring client mailings and recovering revenue",
             "3x API adoption after resolving critical blockers",
             "Zero additional software spend for a company-wide intelligence layer"
           ]
@@ -915,7 +915,7 @@ export const PROJECTS: Project[] = [
         company: "TuHabi",
         industry: "PropTech",
         year: "2024",
-        summary: "Rebuilt the mobile-first acquisition funnel to lift qualified lead conversion for the Mexico product. Execution was led remotely from Colombia, with the product operated in Mexico."
+        summary: "Rebuilt the mobile acquisition funnel for the Mexico product to increase qualified lead conversion. I led the work remotely from Colombia for a product operated in Mexico."
       },
       role: {
         title: "Product Designer",
@@ -1065,7 +1065,7 @@ export const PROJECTS: Project[] = [
         company: "Personal project",
         industry: "Streaming concept",
         year: "2024",
-        summary: "Now App is a conceptual UX/UI case study designed to help users decide what to watch in under one minute. The work focuses on reducing decision fatigue through research-led, minimal decision steps and was never built or launched."
+        summary: "Now App is a UX/UI concept for helping people choose what to watch in under one minute. It uses research and a few clear decision steps to reduce decision fatigue. The project was not built or launched."
       },
       role: {
         title: "UX/UI Designer",
@@ -1170,8 +1170,8 @@ export const PROJECTS: Project[] = [
           label: "Act 05",
           title: "Outcome as process maturity",
           paragraphs: [
-            "The strongest result was a repeatable approach: research depth first, concept clarity second, interface expression last.",
-            "Now App remains a strategic case study that demonstrates structured product thinking rather than shipping output."
+            "The project gave me a repeatable way to work: research first, concept clarity next, and interface expression last.",
+            "Now App remains a concept case study that shows how I approach product thinking before a product is built."
           ],
           highlights: [
             "Clear decision-confidence problem statement",
