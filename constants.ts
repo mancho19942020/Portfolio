@@ -35,7 +35,7 @@ import nowApp03 from './assets/projects/now-app/03.jpg';
 import nowApp04 from './assets/projects/now-app/04.jpg';
 import nowApp05 from './assets/projects/now-app/05.jpg';
 import nowApp06 from './assets/projects/now-app/06.jpg';
-import roof000 from './assets/projects/8020roof/000.webp';
+import roof000 from './assets/projects/8020roof/new images/000-cover.jpg';
 import roofDashboard from './assets/projects/8020roof/new images/001.jpg';
 import roofPropertyList from './assets/projects/8020roof/new images/002.jpg';
 import roofPropertyView from './assets/projects/8020roof/new images/003.jpg';
