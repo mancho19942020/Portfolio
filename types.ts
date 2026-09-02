@@ -52,6 +52,13 @@ export interface ProjectNarrative {
   chapters?: ProjectNarrativeChapter[];
 }
 
+export interface CaseStudySnapshot {
+  businessProblem: string;
+  discoveryAndConstraints: string;
+  keyDesignDecision: string;
+  observedImpact: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -67,6 +74,7 @@ export interface Project {
   previewImagePosition?: string;
   coverImage?: ProjectImage;
   team?: ProjectTeam;
+  caseStudySnapshot?: CaseStudySnapshot;
   narrative: ProjectNarrative;
   images: ProjectImage[];
 }

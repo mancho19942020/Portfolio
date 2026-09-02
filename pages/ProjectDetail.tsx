@@ -157,6 +157,7 @@ export const ProjectDetail: React.FC = () => {
   const categoryLabel = isCaseStudy ? 'UX/UI case study' : project.category;
   const showNowAppResearch = project.id === 'freelance-1';
   const chapters = project.narrative.chapters ?? buildFallbackChapters(project);
+  const snapshot = project.caseStudySnapshot;
 
   const sectionMotion = {
     initial: { opacity: 0, y: 24 },
@@ -231,6 +232,42 @@ export const ProjectDetail: React.FC = () => {
 
               </div>
             </motion.div>
+
+            {snapshot && (
+              <motion.section {...sectionMotion} className={CARD} aria-labelledby="case-snapshot-heading">
+                <div className="px-6 md:px-10 py-10">
+                  <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
+                    <h2
+                      id="case-snapshot-heading"
+                      className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]"
+                    >
+                      Case study at a glance
+                    </h2>
+                    <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+                      Evidence before output
+                    </p>
+                  </div>
+                  <dl className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {[
+                      ['Business problem', snapshot.businessProblem],
+                      ['Discovery and constraints', snapshot.discoveryAndConstraints],
+                      ['Key design decision', snapshot.keyDesignDecision],
+                      ['Observed impact', snapshot.observedImpact],
+                    ].map(([label, value]) => (
+                      <div
+                        key={label}
+                        className="rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-4"
+                      >
+                        <dt className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+                          {label}
+                        </dt>
+                        <dd className="mt-2 text-sm text-zinc-300 leading-relaxed">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </motion.section>
+            )}
 
             {/* Mobile images — first 2 */}
             {primaryImages.length > 0 && (

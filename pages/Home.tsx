@@ -99,7 +99,6 @@ const CAPABILITIES = [
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export const Home: React.FC = () => {
-
   // Explicit cross-category showcase order. Titles not listed (e.g. "DM
   // campaign") are excluded from the home stack.
   const projectOrder = [
@@ -161,7 +160,7 @@ export const Home: React.FC = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="px-6 sm:px-10 md:px-20"
             >
-              <SectionLabel>Senior Product Designer & Design Engineer · Bogotá</SectionLabel>
+              <SectionLabel>Senior Product Designer · Bogotá</SectionLabel>
             </motion.div>
 
             <motion.div
@@ -180,7 +179,7 @@ export const Home: React.FC = () => {
               className="px-6 sm:px-10 md:px-20 flex flex-col gap-5 md:gap-6"
             >
               <p className="text-base md:text-lg text-zinc-400 max-w-xl leading-relaxed font-light">
-                I design and simplify complex desktop and mobile products through scalable design systems and vibecoding-driven workflows.
+                I design complex B2B web platforms and mobile-first acquisition journeys through scalable design systems and code-based prototyping.
               </p>
 
               <div className="flex items-center gap-4">
@@ -263,9 +262,10 @@ export const Home: React.FC = () => {
                   <SectionLabel>About</SectionLabel>
                 </div>
                 <p className="text-zinc-300 leading-relaxed text-lg md:text-xl font-light">
-                  Senior Product Designer and Design Engineer with 7+ years in design and nearly four years
-                  building complex B2B SaaS products. I connect business decisions, complex data, and intuitive
-                  interfaces. My work is grounded in research, checked against data, and shipped in production code.
+                  Senior Product Designer who turns ambiguous business and data problems into research-informed,
+                  scalable B2B SaaS products. I connect business decisions, complex data, and intuitive interfaces
+                  across acquisition journeys, internal operations, and data-heavy workflows. My work is grounded in
+                  research, checked against data, and carried through to production.
                 </p>
                 <div className="mt-10 space-y-4">
                   <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</h3>

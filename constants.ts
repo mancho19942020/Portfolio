@@ -737,7 +737,7 @@ export const PROJECTS: Project[] = [
   {
     id: "8020-metrics-hub",
     title: "Metrics Hub",
-    subtitle: "Six data sources, one decision layer",
+    subtitle: "Turning fragmented operational data into trusted decisions",
     category: "8020REI",
     type: "Unified Analytics Platform",
     role: "Senior Product Designer & Builder",
@@ -763,12 +763,18 @@ export const PROJECTS: Project[] = [
     thumbnailGradient: "from-cyan-950 to-zinc-950",
     previewImageIndex: 0,
     previewImagePosition: "left center",
+    caseStudySnapshot: {
+      businessProblem: "Business-critical data was distributed across six systems, leaving Product, Customer Success, and Operations to make decisions with partial evidence.",
+      discoveryAndConstraints: "I mapped source ownership, access risks, costs, and the business questions behind each metric before defining the information architecture. The platform had to use existing infrastructure and work for non-technical teams.",
+      keyDesignDecision: "Create a role-aware, widget-based workspace with a three-level navigation model and reusable metric patterns, so analytical depth did not come at the cost of comprehension.",
+      observedImpact: "Within the first month, the connected view revealed a mail-provider status conflict that was blocking client letters. Resolving it restored mail volume and recovered revenue; a client-requested API built on the platform reached 3x adoption."
+    },
     narrative: {
       introduction: {
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2026",
-        summary: "Built an internal analytics platform that brings data from Google Analytics, BigQuery, AWS Aurora, Google Drive, Asana, and Grafana into one operational dashboard for non-technical teams."
+        summary: "I led the 0-to-1 creation of an internal analytics platform that turns data from six disconnected sources into a shared operational workspace for non-technical teams."
       },
       role: {
         title: "Senior Product Designer & Builder",
