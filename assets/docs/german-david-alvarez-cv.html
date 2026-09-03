@@ -1,525 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Germán David Alvarez is a Senior Product Designer who takes B2B SaaS products from research and strategy to production. He designs real-estate intelligence, marketing-pipeline tools, and AI-assisted product workflows.">
-  <title>Germán David Alvarez — Senior Product Designer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="CV for German David Alvarez, Senior Product Designer.">
+  <title>German David Alvarez CV</title>
   <style>
-    :root {
-      --black: #0a0a0a;
-      --gray-900: #18181b;
-      --gray-700: #3f3f46;
-      --gray-500: #71717a;
-      --gray-400: #a1a1aa;
-      --gray-200: #e4e4e7;
-      --gray-100: #f4f4f5;
-      --gray-50: #fafafa;
-      --accent: #0f4c81;
-      --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    @page {
+      size: A4;
+      margin: 0.55in 0.62in;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    html {
-      font-family: var(--font);
-      font-size: 10pt;
-      line-height: 1.5;
-      color: var(--black);
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      max-width: 210mm;
-      margin: 0 auto;
-      padding: 0.6cm 1cm;
-      background: #ffffff;
+      color: #171717;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10.2pt;
+      line-height: 1.36;
+      margin: 0;
     }
 
-    a { color: inherit; text-decoration: none; }
+    header { margin-bottom: 16pt; }
 
-    @media print {
-      body { padding: 0; }
-      @page { size: A4; margin: 0.6cm 1cm; }
-      .no-break { page-break-inside: avoid; }
-    }
-
-    /* ─── Header ──────────────────────────────────────────────────────── */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding-bottom: 10px;
-      border-bottom: 2px solid var(--black);
-      margin-bottom: 12px;
-    }
-
-    header h1 {
+    h1 {
       font-size: 23pt;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin: 0 0 3pt;
+    }
+
+    .headline {
+      font-size: 12pt;
       font-weight: 700;
-      letter-spacing: -0.018em;
-      line-height: 1;
-      margin-bottom: 6px;
+      margin: 0 0 6pt;
     }
 
-    header .subtitle {
-      font-size: 9pt;
-      font-weight: 400;
-      color: var(--gray-700);
-      letter-spacing: 0.02em;
-    }
-
-    header .contact {
-      text-align: right;
-      font-size: 8pt;
-      color: var(--gray-500);
-      line-height: 1.85;
-    }
-
-    header .contact a {
-      color: var(--gray-700);
-    }
-
-    /* ─── Grid layout ─────────────────────────────────────────────────── */
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 205px;
-      gap: 28px;
-    }
-
-    /* ─── Section headings ────────────────────────────────────────────── */
-    h2 {
-      font-size: 7pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--black);
-      border-bottom: 1px solid var(--gray-200);
-      padding-bottom: 3px;
-      margin-bottom: 7px;
-    }
-
-    section { margin-bottom: 10px; }
-    section:last-child { margin-bottom: 0; }
-
-    /* ─── Summary ─────────────────────────────────────────────────────── */
-    .summary p {
-      font-size: 9pt;
-      font-weight: 400;
-      color: var(--gray-700);
-      line-height: 1.6;
-    }
-
-    /* ─── Experience ──────────────────────────────────────────────────── */
-    .job { margin-bottom: 8px; }
-
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1px;
-    }
-
-    .job-company {
-      font-size: 10.5pt;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .job-period {
-      font-size: 7.5pt;
-      color: var(--gray-500);
-      font-weight: 500;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-    }
-
-    .job-role {
-      font-size: 8.5pt;
-      font-weight: 600;
-      color: var(--gray-700);
-      margin-bottom: 2px;
-    }
-
-    .job-role-period {
-      color: var(--gray-500);
-      font-size: 7.5pt;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-
-    .job-meta {
-      font-size: 7.5pt;
-      color: var(--gray-500);
-      margin-bottom: 5px;
-      letter-spacing: 0.01em;
-    }
-
-    .job-scope {
-      font-size: 8.5pt;
-      color: var(--gray-700);
-      line-height: 1.5;
-      margin-bottom: 5px;
-    }
-
-    .job ul {
-      padding-left: 13px;
-      list-style-type: "›  ";
-    }
-
-    .job li {
-      font-size: 8.5pt;
-      color: var(--gray-700);
+    .contact {
+      color: #404040;
+      font-size: 9.3pt;
       line-height: 1.45;
-      margin-bottom: 2px;
-      padding-left: 2px;
+      margin: 0;
     }
 
-    .job li::marker {
-      color: var(--gray-400);
-      font-weight: 500;
-    }
+    .contact a { color: inherit; text-decoration: none; }
 
-    .job li b {
-      font-weight: 600;
-      color: var(--black);
-    }
+    section { margin: 0 0 13pt; }
 
-    /* ─── Projects (Selected Impact) ──────────────────────────────────── */
-    .project { margin-bottom: 11px; }
-
-    .project-title {
-      font-size: 9pt;
-      font-weight: 700;
-      margin-bottom: 1px;
-      letter-spacing: -0.005em;
-    }
-
-    .project-meta {
-      font-size: 7.5pt;
-      color: var(--gray-500);
-      margin-bottom: 4px;
-      letter-spacing: 0.01em;
-    }
-
-    .project p {
-      font-size: 8pt;
-      color: var(--gray-700);
-      line-height: 1.55;
-      margin-bottom: 4px;
-    }
-
-    .project .outcome {
-      font-size: 8pt;
-      font-weight: 600;
-      color: var(--black);
-      border-left: 2px solid var(--accent);
-      padding: 1px 0 1px 8px;
-      margin-top: 4px;
-    }
-
-    /* ─── Right column ────────────────────────────────────────────────── */
-    .right section {
-      margin-bottom: 7px;
-      break-inside: avoid;
-      page-break-inside: avoid;
-    }
-
-    /* Competencies */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 4px;
-    }
-
-    .tag {
-      font-size: 7pt;
-      color: var(--gray-700);
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      padding: 3px 7px;
-      border-radius: 4px;
-      letter-spacing: 0.01em;
-    }
-
-    /* Skills groups */
-    .skill-group { margin-bottom: 5px; }
-
-    .skill-label {
-      font-size: 7pt;
-      font-weight: 700;
+    h2 {
+      border-bottom: 1px solid #737373;
+      font-size: 10pt;
+      letter-spacing: 0.08em;
+      margin: 0 0 7pt;
+      padding-bottom: 3pt;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--black);
-      margin-bottom: 4px;
     }
 
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 3px;
+    p { margin: 0; }
+
+    .summary { line-height: 1.43; }
+
+    .job { break-inside: avoid; margin: 0 0 12pt; page-break-inside: avoid; }
+
+    .job-heading {
+      font-size: 10.7pt;
+      font-weight: 700;
+      line-height: 1.25;
+      margin: 0;
     }
 
-    .skill-tag {
-      font-size: 7pt;
-      color: var(--gray-700);
-      background: var(--gray-50);
-      border: 1px solid var(--gray-200);
-      padding: 3px 7px;
-      border-radius: 4px;
-      letter-spacing: 0.01em;
-    }
-
-    /* Education */
-    .edu { margin-bottom: 5px; }
-
-    .edu-degree {
-      font-size: 8pt;
-      font-weight: 600;
+    .job-details {
+      color: #404040;
+      font-size: 9.4pt;
       line-height: 1.35;
-      margin-bottom: 1px;
+      margin: 2pt 0 5pt;
     }
 
-    .edu-school {
-      font-size: 7.5pt;
-      color: var(--gray-700);
-      margin-bottom: 1px;
+    ul {
+      margin: 4pt 0 0 15pt;
+      padding: 0;
     }
 
-    .edu-year {
-      font-size: 7.5pt;
-      color: var(--gray-500);
-      letter-spacing: 0.02em;
-    }
+    li { margin: 0 0 3pt; padding-left: 1pt; }
 
-    /* Small text blocks */
-    .detail {
-      font-size: 8pt;
-      color: var(--gray-700);
-      line-height: 1.85;
-    }
+    .skills { line-height: 1.45; }
+    .skills + .skills { margin-top: 3pt; }
+    .skills strong { font-weight: 700; }
+
+    .education-item + .education-item { margin-top: 5pt; }
+    .education-item strong { font-weight: 700; }
+
+    .note { color: #525252; font-size: 8.8pt; }
   </style>
 </head>
-
 <body>
-
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!-- HEADER                                                              -->
-  <!-- ═══════════════════════════════════════════════════════════════════ -->
   <header>
-    <div>
-      <h1>Germán David Alvarez</h1>
-      <p class="subtitle">Senior Product Designer</p>
-    </div>
-    <div class="contact">
-      <a href="https://productalvarez.vercel.app" style="color: var(--accent); font-weight: 600;">productalvarez.vercel.app</a><br>
-      <a href="mailto:germanproduct94@gmail.com">germanproduct94@gmail.com</a><br>
-      <a href="https://linkedin.com/in/germanalvarezg">linkedin.com/in/germanalvarezg</a><br>
-      <a href="https://wa.me/573015247033">+57 301 524 7033</a><br>
-      Bogotá, Colombia &nbsp;·&nbsp; Open to remote
-    </div>
+    <h1>German David Alvarez</h1>
+    <p class="headline">Senior Product Designer</p>
+    <p class="contact">
+      Bogota, Colombia | Open to remote roles | +57 301 524 7033 | germanproduct94@gmail.com<br>
+      productalvarez.vercel.app | linkedin.com/in/germanalvarezg
+    </p>
   </header>
 
-  <div class="layout">
+  <section>
+    <h2>Professional Summary</h2>
+    <p class="summary">
+      Senior Product Designer who turns ambiguous business and data problems into research-informed, scalable B2B SaaS
+      workflows. I work across discovery, UX research, interaction design, design systems, analytics, and code-based
+      prototyping to connect business decisions, complex data, and practical experiences that teams can ship.
+    </p>
+  </section>
 
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <!-- LEFT COLUMN                                                        -->
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <div class="left">
+  <section>
+    <h2>Core Skills</h2>
+    <p class="skills"><strong>Product design:</strong> Product strategy, end-to-end product design, UX research, usability testing, interaction design, UI design, prototyping, information architecture, design systems</p>
+    <p class="skills"><strong>Product domains:</strong> B2B SaaS, PropTech, mobile-first acquisition, internal operations tools, data visualization, analytics platforms, 0-to-1 product design, AI-assisted workflows</p>
+    <p class="skills"><strong>Tools and technologies:</strong> Figma, Figma Make, Pencil, Adobe Creative Suite, Google Analytics, Heap, Hotjar, Clarity, React, Next.js, Vue, Nuxt, TypeScript, Tailwind CSS, Fastify, FastAPI, BigQuery, AWS Aurora, Firebase, Google Cloud Run, Git, GitHub</p>
+  </section>
 
-      <!-- Summary -->
-      <section class="summary no-break">
-        <h2>Professional Summary</h2>
-        <p>
-          Senior Product Designer who turns ambiguous business and data problems into research-informed, scalable B2B
-          SaaS workflows. I work from discovery and interaction design through design systems, analytics, and
-          code-based prototypes—connecting business decisions, complex data, and practical experiences that teams can
-          ship.
-        </p>
-      </section>
+  <section>
+    <h2>Professional Experience</h2>
 
-      <!-- Experience -->
-      <section class="experience">
-        <h2>Professional Experience</h2>
+    <article class="job">
+      <p class="job-heading">Senior Product Designer | 8020REI</p>
+      <p class="job-details">Jun 2024 - Present | Remote | U.S.-based B2B PropTech SaaS</p>
+      <ul>
+        <li>Lead end-to-end product design for a B2B PropTech SaaS used by U.S. real estate investors, partnering with Product, Engineering, Customer Success, and leadership on strategy, discovery, research, interaction design, and delivery.</li>
+        <li>Led redesigns of core data and configuration interfaces, delivering up to 50% higher daily active usage, roughly 80% fewer reported bugs and issues, and 70%+ in-product CSAT.</li>
+        <li>Designed and built a 0-to-1 analytics platform that brought together six internal data sources for non-technical teams; it surfaced a provider-status conflict blocking client mailings, and resolving it restored mail volume and recovered revenue.</li>
+        <li>Created and scaled production design systems, implementing components alongside frontend engineers and enabling shared libraries across products. A client-requested API on the analytics platform reached 3x adoption.</li>
+      </ul>
+    </article>
 
-        <div class="job no-break">
-          <div class="job-header">
-            <span class="job-company">8020REI</span>
-            <span class="job-period">Jun 2024 – Present</span>
-          </div>
-          <p class="job-role">Senior Product Designer</p>
-          <p class="job-meta">Remote &nbsp;·&nbsp; PropTech SaaS &nbsp;·&nbsp; B2B &nbsp;·&nbsp; U.S.-based</p>
-          <p class="job-scope">
-            Lead end-to-end product design for a B2B PropTech SaaS used by U.S. real estate investors.
-            My work covers strategy, discovery, UX research, interaction design, design systems, and
-            full-stack implementation. I partner with Product, Engineering, Customer Success, and
-            leadership, using AI to make design and delivery faster.
-          </p>
-          <ul>
-            <li>Led redesigns of core data and configuration interfaces, delivering <b>up to 50% higher active usage (DAU), roughly 80% fewer reported bugs and issues, and 70%+ in-product CSAT</b></li>
-            <li>Built a 0→1 analytics platform that brought together 6 internal data sources for non-technical teams. <b>It uncovered a provider-status conflict that had been quietly blocking client mailings; resolving it restored mail volume and recovered revenue.</b> A client-requested API built on the platform reached 3× adoption (Next.js, TypeScript, Fastify, BigQuery)</li>
-            <li>Built and scaled production design systems, coding components alongside frontend engineers and helping cross-functional teams use shared libraries across products</li>
-          </ul>
-        </div>
+    <article class="job">
+      <p class="job-heading">Product Designer | Habi</p>
+      <p class="job-details">Aug 2023 - Jun 2024 | Hybrid | Bogota, Colombia | PropTech</p>
+      <ul>
+        <li>Owned discovery, interaction design, prototyping, and iteration with Product, Engineering, and Growth for acquisition, internal operations, and customer-service workflows.</li>
+        <li>Improved a mobile-first acquisition funnel through behavioral analytics, progressive disclosure, and A/B testing, increasing qualified lead conversion by 30%.</li>
+        <li>Designed an operations platform for commercial and zone leaders managing teams and territories in multiple cities, replacing spreadsheet-heavy workflows.</li>
+      </ul>
+    </article>
 
-        <div class="job no-break">
-          <div class="job-header">
-            <span class="job-company">Habi</span>
-            <span class="job-period">Aug 2022 – Jun 2024</span>
-          </div>
-          <p class="job-role">Product Designer <span class="job-role-period">· Aug 2023 – Jun 2024</span></p>
-          <p class="job-role">Creative Designer <span class="job-role-period">· Aug 2022 – Aug 2023</span></p>
-          <p class="job-meta">Hybrid &nbsp;·&nbsp; Bogotá, Colombia &nbsp;·&nbsp; PropTech</p>
-          <p class="job-scope">
-            Joined as a Creative Designer, contributing to product work across acquisition, internal operations,
-            customer service, and research. Transitioned into a formal Product Designer role in August 2023,
-            owning discovery, interaction design, prototyping, and iteration with Product, Engineering, and Growth.
-          </p>
-          <ul>
-            <li>Improved the mobile acquisition funnel through behavioral analytics, progressive disclosure, and A/B testing, increasing <b>qualified lead conversion by 30%</b></li>
-            <li>Designed an operations platform for commercial and zone leaders managing teams and territories in multiple cities, replacing spreadsheet-heavy workflows</li>
-            <li>Conducted UX research, created AI-supported customer service prompts, and contributed to brand systems and multi-channel marketing campaigns</li>
-          </ul>
-        </div>
+    <article class="job">
+      <p class="job-heading">Creative Designer | Habi</p>
+      <p class="job-details">Aug 2022 - Aug 2023 | Hybrid | Bogota, Colombia | PropTech</p>
+      <ul>
+        <li>Contributed product-design work across acquisition, internal operations, customer service, and research while supporting brand systems and multi-channel marketing campaigns.</li>
+        <li>Conducted UX research with cross-functional teams and created AI-supported customer-service prompts to improve service workflows.</li>
+      </ul>
+    </article>
 
-        <div class="job no-break">
-          <div class="job-header">
-            <span class="job-company">Metro de Bogotá</span>
-            <span class="job-period">2018 – 2022</span>
-          </div>
-          <p class="job-role">Creative Designer</p>
-          <p class="job-meta">On-site &nbsp;·&nbsp; Bogotá, Colombia &nbsp;·&nbsp; Public Infrastructure</p>
-          <p class="job-scope">
-            Led visual design and internal communications for a major Colombian public infrastructure
-            project. Work included advertising campaigns, intranet design, editorial newsletters, and
-            event materials.
-          </p>
-        </div>
+    <article class="job">
+      <p class="job-heading">Creative Designer | Metro de Bogota</p>
+      <p class="job-details">2018 - 2022 | On-site | Bogota, Colombia | Public Infrastructure</p>
+      <ul>
+        <li>Led visual design and internal communications for a major Colombian public infrastructure project, including website and intranet design, advertising campaigns, editorial newsletters, and event materials.</li>
+      </ul>
+    </article>
+  </section>
 
-      </section>
+  <section>
+    <h2>Education</h2>
+    <p class="education-item"><strong>Master's in Branding, Brand Strategy and Visual Communication</strong> | OBS Business School | 2020 - 2021</p>
+    <p class="education-item"><strong>Bachelor in Industrial Design</strong> | Pontificia Universidad Javeriana | 2011 - 2016</p>
+  </section>
 
-    </div><!-- /left -->
+  <section>
+    <h2>Languages</h2>
+    <p>Spanish: Native | English: Full professional proficiency</p>
+  </section>
 
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <!-- RIGHT COLUMN                                                       -->
-    <!-- ══════════════════════════════════════════════════════════════════ -->
-    <div class="right">
-
-      <!-- Core Competencies (ATS keyword block) -->
-      <section>
-        <h2>Core Competencies</h2>
-        <div class="tags">
-          <span class="tag">Product Design</span>
-          <span class="tag">Product Strategy</span>
-          <span class="tag">UX Research</span>
-          <span class="tag">Interaction Design</span>
-          <span class="tag">UI Design</span>
-          <span class="tag">Design Systems</span>
-          <span class="tag">0→1 Product Design</span>
-          <span class="tag">Prototyping</span>
-          <span class="tag">Usability Testing</span>
-          <span class="tag">Data Visualization</span>
-          <span class="tag">B2B SaaS</span>
-          <span class="tag">PropTech</span>
-          <span class="tag">Code-based Prototyping</span>
-          <span class="tag">AI-assisted Workflows</span>
-        </div>
-      </section>
-
-      <!-- Tools & Tech -->
-      <section>
-        <h2>Tools &amp; Technologies</h2>
-
-        <div class="skill-group">
-          <p class="skill-label">Design</p>
-          <div class="skill-tags">
-            <span class="skill-tag">Figma</span>
-            <span class="skill-tag">Figma Make</span>
-            <span class="skill-tag">Pencil</span>
-            <span class="skill-tag">Adobe Suite</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <p class="skill-label">Development</p>
-          <div class="skill-tags">
-            <span class="skill-tag">React</span>
-            <span class="skill-tag">Next.js</span>
-            <span class="skill-tag">Vue</span>
-            <span class="skill-tag">Nuxt</span>
-            <span class="skill-tag">TypeScript</span>
-            <span class="skill-tag">Tailwind CSS</span>
-            <span class="skill-tag">Fastify</span>
-            <span class="skill-tag">FastAPI</span>
-            <span class="skill-tag">Git / GitHub</span>
-            <span class="skill-tag">GitHub Actions</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <p class="skill-label">Data &amp; Cloud</p>
-          <div class="skill-tags">
-            <span class="skill-tag">BigQuery</span>
-            <span class="skill-tag">AWS Aurora</span>
-            <span class="skill-tag">Firebase</span>
-            <span class="skill-tag">Google Cloud Run</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <p class="skill-label">Analytics &amp; Research</p>
-          <div class="skill-tags">
-            <span class="skill-tag">Google Analytics</span>
-            <span class="skill-tag">Heap</span>
-            <span class="skill-tag">Hotjar</span>
-            <span class="skill-tag">Clarity</span>
-          </div>
-        </div>
-
-        <div class="skill-group">
-          <p class="skill-label">AI &amp; Productivity</p>
-          <div class="skill-tags">
-            <span class="skill-tag">Claude Code</span>
-            <span class="skill-tag">Claude Desktop</span>
-            <span class="skill-tag">Cursor</span>
-            <span class="skill-tag">ChatGPT / Codex</span>
-            <span class="skill-tag">Gemini</span>
-            <span class="skill-tag">Perplexity</span>
-            <span class="skill-tag">NotebookLM</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Education -->
-      <section>
-        <h2>Education</h2>
-        <div class="edu">
-          <p class="edu-degree">Master's in Branding, Brand Strategy &amp; Visual Communication</p>
-          <p class="edu-school">OBS Business School</p>
-          <p class="edu-year">2020 – 2021</p>
-        </div>
-        <div class="edu">
-          <p class="edu-degree">Bachelor in Industrial Design</p>
-          <p class="edu-school">Pontificia Universidad Javeriana</p>
-          <p class="edu-year">2011 – 2016</p>
-        </div>
-      </section>
-
-      <!-- Languages -->
-      <section>
-        <h2>Languages</h2>
-        <p class="detail">
-          Spanish: Native<br>
-          English: Full professional proficiency
-        </p>
-      </section>
-
-    </div><!-- /right -->
-  </div><!-- /layout -->
-
+  <p class="note">Portfolio available at productalvarez.vercel.app</p>
 </body>
 </html>

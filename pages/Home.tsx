@@ -384,7 +384,7 @@ export const Home: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href={cvPdf}
-                  download
+                  download="German David Alvarez CV.pdf"
                   className="glow-reactive glow-button btn-outline inline-flex items-center justify-center gap-2 px-10 py-4 border border-zinc-800 font-semibold rounded-full transition-colors text-base w-full sm:w-auto whitespace-nowrap"
                   aria-label="Download CV"
                 >
