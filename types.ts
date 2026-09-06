@@ -62,8 +62,11 @@ export interface CaseStudySnapshot {
 export interface Project {
   id: string;
   title: string;
+  /** Curiosity-led copy used only in the Selected Work card. */
+  showcaseTitle?: string;
+  showcasePreview?: string;
   subtitle: string;
-  category: '8020REI' | 'Habi' | 'Freelance';
+  category: '8020REI' | '8020IQ' | 'Habi' | 'Freelance';
   type: string;
   role: string;
   duration: string;

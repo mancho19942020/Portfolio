@@ -2,7 +2,7 @@ import React, { useLayoutEffect, useRef } from 'react';
 import { HashRouter, Routes, Route, useLocation, useNavigationType } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { ProjectDetail } from './pages/ProjectDetail';
-import { BusinessCaseDeck } from './components/BusinessCaseDeck';
+import { ProjectPresentation } from './components/ProjectPresentation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CursorGlow } from './components/CursorGlow';
 import { SmoothScroll, instantScrollTo } from './components/SmoothScroll';
@@ -59,20 +59,21 @@ const GlobalBackground = () => (
 const AppContent = () => {
   const location = useLocation();
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="sync" initial={false}>
       <motion.div
         key={location.pathname}
         className="relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
+        transition={{ duration: 0.18, ease: "easeInOut" }}
       >
         <ScrollManager />
         <Routes location={location}>
           <Route path="/" element={<Home />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
-          <Route path="/project/:id/case" element={<BusinessCaseDeck />} />
+          <Route path="/project/:id/case" element={<ProjectPresentation />} />
+          <Route path="/project/:id/presentation" element={<ProjectPresentation />} />
         </Routes>
       </motion.div>
     </AnimatePresence>

@@ -80,7 +80,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
     };
   }, [isOpen]);
 
-  // Wheel zoom — attached as non-passive so we can preventDefault
+  // Wheel zoom, attached as non-passive so we can preventDefault
   useEffect(() => {
     if (!isOpen) return;
     const node = backdropRef.current;
@@ -110,7 +110,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="fixed inset-0 z-50 bg-black/92 backdrop-blur-sm flex items-center justify-center"
+        className="lightbox-backdrop fixed inset-0 z-50 backdrop-blur-sm flex items-center justify-center"
         onClick={onClose}
         role="dialog"
         aria-modal="true"
@@ -123,7 +123,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             e.stopPropagation();
             onClose();
           }}
-          className="absolute top-4 right-4 md:top-6 md:right-6 z-10 w-11 h-11 rounded-full border border-zinc-700 bg-zinc-900/70 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors flex items-center justify-center"
+          className="lightbox-control absolute top-4 right-4 md:top-6 md:right-6 z-10 w-11 h-11 rounded-full transition-colors flex items-center justify-center"
           aria-label="Close"
         >
           <X className="w-5 h-5" />
@@ -137,7 +137,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                 e.stopPropagation();
                 handleNavigate((index - 1 + images.length) % images.length);
               }}
-              className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full border border-zinc-700 bg-zinc-900/70 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors flex items-center justify-center"
+              className="lightbox-control absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full transition-colors flex items-center justify-center"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -149,7 +149,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                 e.stopPropagation();
                 handleNavigate((index + 1) % images.length);
               }}
-              className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full border border-zinc-700 bg-zinc-900/70 text-zinc-300 hover:bg-zinc-800 hover:text-white transition-colors flex items-center justify-center"
+              className="lightbox-control absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full transition-colors flex items-center justify-center"
               aria-label="Next image"
             >
               <ChevronRight className="w-5 h-5" />
@@ -205,17 +205,17 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
           </AnimatePresence>
         </div>
 
-        {/* Bottom controls — zoom pill + counter pill */}
+        {/* Bottom controls, zoom pill + counter pill */}
         <div
           className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 z-10 flex items-center gap-2"
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex items-center rounded-full border border-zinc-700 bg-zinc-900/70 overflow-hidden">
+          <div className="lightbox-utility flex items-center rounded-full overflow-hidden">
             <button
               type="button"
               onClick={() => zoomBy(-ZOOM_STEP)}
               disabled={scale <= MIN_SCALE}
-              className="w-10 h-10 flex items-center justify-center text-zinc-300 hover:bg-zinc-800 hover:text-white disabled:text-zinc-700 disabled:hover:bg-transparent transition-colors"
+              className="lightbox-control w-10 h-10 flex items-center justify-center transition-colors"
               aria-label="Zoom out"
             >
               <ZoomOut className="w-4 h-4" />
@@ -223,7 +223,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             <button
               type="button"
               onClick={resetView}
-              className="px-3 h-10 min-w-[64px] text-[11px] font-mono text-zinc-400 hover:text-white tracking-widest border-x border-zinc-800"
+              className="lightbox-reset px-3 h-10 min-w-[64px] text-[11px] font-mono tracking-widest"
               aria-label="Reset zoom"
             >
               {Math.round(scale * 100)}%
@@ -232,7 +232,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
               type="button"
               onClick={() => zoomBy(ZOOM_STEP)}
               disabled={scale >= MAX_SCALE}
-              className="w-10 h-10 flex items-center justify-center text-zinc-300 hover:bg-zinc-800 hover:text-white disabled:text-zinc-700 disabled:hover:bg-transparent transition-colors"
+              className="lightbox-control w-10 h-10 flex items-center justify-center transition-colors"
               aria-label="Zoom in"
             >
               <ZoomIn className="w-4 h-4" />
@@ -240,7 +240,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
           </div>
 
           {images.length > 1 && (
-            <div className="px-4 h-10 flex items-center rounded-full border border-zinc-700 bg-zinc-900/70 text-[11px] font-mono text-zinc-400 tracking-widest">
+            <div className="lightbox-counter px-4 h-10 flex items-center rounded-full text-[11px] font-mono tracking-widest">
               {index + 1} / {images.length}
             </div>
           )}

@@ -99,20 +99,21 @@ const CAPABILITIES = [
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export const Home: React.FC = () => {
-  // Explicit cross-category showcase order. Titles not listed (e.g. "DM
-  // campaign") are excluded from the home stack.
+  // Explicit cross-category showcase order. Projects not listed (e.g. DM
+  // campaign) are excluded from the home stack.
   const projectOrder = [
-    "8020 ROOF",
-    "Smart funnel",
-    "BuyBox editor",
-    "Metrics Hub",
-    "Property view",
-    "Now App",
+    "phoenix",
+    "8020-roof",
+    "habi-funnels",
+    "8020-buybox",
+    "8020-metrics-hub",
+    "8020-property-list",
+    "freelance-1",
   ];
 
   const orderedProjects = PROJECTS
-    .filter(p => projectOrder.includes(p.title))
-    .sort((a, b) => projectOrder.indexOf(a.title) - projectOrder.indexOf(b.title));
+    .filter(p => projectOrder.includes(p.id))
+    .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
 
   // Restore scroll position on return from project detail
   useEffect(() => {
@@ -212,7 +213,7 @@ export const Home: React.FC = () => {
         </div>
 
         {/* ── TOOLS + INTERESTS ─────────────────────────────────────────────── */}
-        {/* No card container — sits directly on the page background, matching
+          {/* No card container, sits directly on the page background, matching
             the Capabilities section. */}
         <div className="scroll-mt-4">
           <section id="tools" className="px-6 sm:px-10 md:px-20 py-10">
@@ -340,7 +341,7 @@ export const Home: React.FC = () => {
         </div>
 
         {/* ── CAPABILITIES (What I do) ──────────────────────────────────────── */}
-        {/* No card container — sits directly on the page background. */}
+        {/* No card container, sits directly on the page background. */}
         <div id="capabilities" className="scroll-mt-4">
           <section className="px-6 sm:px-10 md:px-20 py-14 md:py-20">
             <ScrollReveal>
@@ -367,7 +368,7 @@ export const Home: React.FC = () => {
 
         {/* ── CARD 5: CTA + FOOTER ──────────────────────────────────────────── */}
         <div id="cta" className={`${CARD} scroll-mt-4`}>
-          {/* Closing marquee — the headline itself */}
+          {/* Closing marquee, the headline itself */}
           <div className="py-10 md:py-14 border-b border-zinc-800">
             <DisplayMarquee
               text="Let's build something scalable"

@@ -21,6 +21,8 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index
   const reverse = index % 2 === 1;
   const number = String(index + 1).padStart(2, '0');
   const { year, company, industry, summary } = project.narrative.introduction;
+  const showcaseTitle = project.showcaseTitle ?? project.title;
+  const showcasePreview = project.showcasePreview ?? summary;
 
   return (
     <motion.article
@@ -40,7 +42,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index
         className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-strong)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
       >
         <div className={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-0 h-full`}>
-          {/* Media — 30% of card height on mobile (less visual hierarchy);
+          {/* Media, 30% of card height on mobile (less visual hierarchy);
               60% of card width on desktop (lg:flex-row layout). */}
           <div className="showcase-media shrink-0 grow-0 basis-[30%] lg:shrink lg:grow lg:basis-3/5">
             {previewImage && (
@@ -76,7 +78,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index
                 letterSpacing: '-0.02em',
               }}
             >
-              {project.title}
+              {showcaseTitle}
             </h3>
 
             <p
@@ -86,7 +88,7 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index
                 lineHeight: 1.5,
               }}
             >
-              {summary}
+              {showcasePreview}
             </p>
 
             <div className="flex flex-wrap gap-1.5">
@@ -117,7 +119,7 @@ interface ProjectShowcaseStackProps {
 /**
  * Sticky stacked-card scroll. Each project pins to the top of the viewport at
  * a progressively larger offset (stair-step), so later cards land on top of
- * earlier ones with the previous cards peeking out behind — like a pile of
+ * earlier ones with the previous cards peeking out behind, like a pile of
  * paper. The whole section runs ~N viewports tall to give each card scroll
  * runway to enter; after the last card finishes piling, the next section
  * (What I do) takes over.

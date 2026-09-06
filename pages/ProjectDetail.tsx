@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 import { ProjectNarrativeChapter } from '../types';
 import { NavBar } from '../components/NavBar';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown } from 'lucide-react';
+import { Search, ChevronDown, Presentation } from 'lucide-react';
 import nowAppResearchPdf from '../assets/docs/nowapp-research.pdf';
 
-// Shared card shell — matches home page section cards
+// Shared card shell, matches home page section cards
 const CARD = 'section-card rounded-3xl border border-zinc-800 bg-zinc-900 overflow-hidden';
 
 // ─── Collapsible act card ─────────────────────────────────────────────────────
@@ -176,7 +176,7 @@ export const ProjectDetail: React.FC = () => {
           {/* ── LEFT COLUMN ─────────────────────────────────────────────── */}
           <div className="space-y-3 md:space-y-4">
 
-            {/* Card 1: Header — tag, title, subtitle, meta, summary */}
+            {/* Card 1: Header, tag, title, subtitle, meta, summary */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -200,9 +200,19 @@ export const ProjectDetail: React.FC = () => {
                   )}
                 </div>
 
-                <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-[1.1]">
-                  {project.title}
-                </h1>
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <h1 className="text-3xl md:text-4xl font-bold tracking-tight text-white leading-[1.1]">
+                    {project.title}
+                  </h1>
+                  <Link
+                    to={`/project/${project.id}/presentation`}
+                    className="glow-reactive glow-button btn-outline inline-flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 shrink-0"
+                    aria-label={`Open ${project.title} in presentation mode`}
+                    title="Presentation mode"
+                  >
+                    <Presentation className="w-[18px] h-[18px]" aria-hidden="true" />
+                  </Link>
+                </div>
 
                 <p className="text-xl text-zinc-400 leading-relaxed">{project.subtitle}</p>
 
@@ -269,7 +279,7 @@ export const ProjectDetail: React.FC = () => {
               </motion.section>
             )}
 
-            {/* Mobile images — first 2 */}
+            {/* Mobile images, first 2 */}
             {primaryImages.length > 0 && (
               <div className="lg:hidden space-y-3">
                 {primaryImages.map((image, i) => (
@@ -291,7 +301,7 @@ export const ProjectDetail: React.FC = () => {
               </div>
             )}
 
-            {/* Card 2: Role — title, responsibility cards, duration, tools */}
+            {/* Card 2: Role, title, responsibility cards, duration, tools */}
             <motion.div {...sectionMotion} className={CARD}>
               <div className="px-6 md:px-10 py-10 space-y-6">
                 <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">Role</h2>
@@ -310,7 +320,7 @@ export const ProjectDetail: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Team — only when project credits collaborators */}
+                {/* Team, only when project credits collaborators */}
                 {project.team && (
                   <div className="pt-2 space-y-4">
                     <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
@@ -371,7 +381,7 @@ export const ProjectDetail: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Card 3: Case narrative — collapsible act cards */}
+            {/* Card 3: Case narrative, collapsible act cards */}
             <motion.div {...sectionMotion} className={CARD}>
               <div className="px-6 md:px-10 pt-10 pb-4">
                 <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">
@@ -390,7 +400,7 @@ export const ProjectDetail: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Mobile images — rest */}
+            {/* Mobile images, rest */}
             {secondaryImages.length > 0 && (
               <div className="lg:hidden space-y-3">
                 {secondaryImages.map((image, i) => {
@@ -416,7 +426,7 @@ export const ProjectDetail: React.FC = () => {
             )}
           </div>
 
-          {/* ── RIGHT COLUMN — sticky image panel ───────────────────────── */}
+          {/* RIGHT COLUMN, sticky image panel */}
           <aside className="hidden lg:block">
             {/* data-lenis-prevent: opt this container out of global Lenis
                 smooth-scroll so its internal overflow-y-auto can receive
@@ -447,7 +457,7 @@ export const ProjectDetail: React.FC = () => {
 
         <footer className="mt-16 pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-600 font-mono text-[10px] uppercase tracking-widest">
           <span>
-            {project.title} — {project.category}
+            {project.title}, {project.category}
           </span>
           <span>© 2025 Germán David Alvarez</span>
         </footer>

@@ -43,15 +43,87 @@ import roofBuybox from './assets/projects/8020roof/new images/004.jpg';
 import roofBuyboxEdit from './assets/projects/8020roof/new images/005.jpg';
 import roofFulfillment from './assets/projects/8020roof/new images/006.jpg';
 import roofDataHealth from './assets/projects/8020roof/new images/007.jpg';
+import phoenixCover from './assets/projects/phoenix/cover.jpg';
+import phoenixBrands from './assets/projects/phoenix/01-tokens-brands-panels.png';
+import phoenixSwitcher from './assets/projects/phoenix/05-brand-switcher-iq-dark.png';
+import phoenixDataTable from './assets/projects/phoenix/06-component-data-table-dm-light.png';
+import phoenixRules from './assets/projects/phoenix/07-golden-rules-roof-dark.png';
+import phoenixButton from './assets/projects/phoenix/10-button-iq-light.png';
 
 export const PROJECTS: Project[] = [
+  {
+    id: "phoenix",
+    title: "Phoenix",
+    showcaseTitle: "One design system to rule them all.",
+    showcasePreview: "8020IQ is growing quickly, and each new brand needs to feel connected without slowing down the team. Phoenix gives us one shared foundation for design and code, so a new brand takes nine token changes instead of a new interface.",
+    subtitle: "One design system for every 8020 brand",
+    category: "8020IQ",
+    type: "Multi-brand design system · platform",
+    role: "Design System Steward & Builder",
+    duration: "~4 months",
+    tools: ["Figma", "Claude Code", "Nuxt 4", "Vue 3", "TypeScript", "Tailwind CSS v4", "shadcn-vue", "Playwright", "Vitest", "GitHub Actions"],
+    tags: ["Design System", "Multi-brand", "Vibecoding", "Platform", "Accessibility"],
+    thumbnailGradient: "from-emerald-950 to-zinc-900",
+    coverImage: { src: phoenixCover, alt: "Phoenix design system catalog on a laptop" },
+    previewImagePosition: "62% center",
+    team: {
+      note: "Phoenix began as a joint initiative between design and frontend. Jhon and I met regularly, spoke with clients, and worked through the business needs behind each new brand. We used those conversations to build one system that design and frontend could shape together in code.",
+      members: [
+        { name: "Germán Alvarez", role: "Senior Product Designer · Design System Steward", contribution: "Design-system structure, token model, component experience, and quality rules" },
+        { name: "Camilo Rico", role: "Product Director", contribution: "Product direction and the multi-brand business need" },
+        { name: "Jhon Fredy Berrio", role: "Lead Front-end Developer", contribution: "Co-builder of the shared components, catalog, and frontend foundation" }
+      ]
+    },
+    narrative: {
+      introduction: {
+        company: "8020IQ",
+        industry: "PropTech SaaS",
+        year: "2026",
+        summary: "Phoenix is the design system behind 8020IQ, 8020REI, 8020ROOF, and 8020 Direct Mail. One component library, token canon, and living catalog serve every product. A brand is nine CSS declarations on a shared foundation."
+      },
+      role: {
+        title: "Design System Steward & Builder",
+        responsibilities: [
+          "Co-led the initiative with Jhon Fredy Berrio, our Lead Frontend Developer. We worked from client and business needs to build one shared system in code.",
+          "Set a multi-brand architecture: one shared canon and one nine-token accent layer per brand.",
+          "Built the catalog in code so designers and frontend teams could work from the same components, tokens, and live specimens.",
+          "Wrote accessibility and quality gates so unfiled, forked, or stale components cannot ship.",
+          "Drove adoption by promoting proven app components into the catalog and retiring copies."
+        ]
+      },
+      challenge: {
+        summary: "The company had become a family of products, but each app had inherited copies of the same UI. Components drifted, dark mode varied by product, and brand colors were hardcoded per app.",
+        painPoints: ["Four app-local component sets", "Brand accents hardcoded per app", "Inconsistent dark-mode coverage", "Fixes landing in one copy but not another"],
+        constraints: ["Five apps already in production or staging", "Adoption needed to be incremental", "AI-assisted changes needed machine-checkable rules"],
+        insights: ["A brand is nine declarations once everything else is shared", "A catalog should measure its own adoption", "Accessibility should be checked in source, not copied from a guide", "Promotion beats decree: prove it in an app, then share it"]
+      },
+      approach: ["Defined 124 shared tokens with paired light and dark values", "Isolated each brand to nine accent tokens in one manifest", "Rendered 82 components and shells live from the same package the apps import", "Added automated gates for registry, component, motion, and accessibility claims", "Generated AI-facing documentation so agents extend the system instead of forking it"],
+      outcome: ["Four brands, two themes, and one shared component library", "64 duplicate component files retired from app trees", "1,001 component import sites measured by the catalog", "82 of 82 components and shells rendered live", "A new brand can be declared with nine tokens and one manifest entry"],
+      chapters: [
+        { label: "Act 01", title: "Growth was creating the same work four times", paragraphs: ["8020IQ was growing from one product into a family of brands. Each new product needed its own identity, but teams were rebuilding common interface parts separately. That made design and development slower, and every fix risked working differently from one product to another."], highlights: ["Four brands growing on separate foundations", "Common components maintained in several places", "Every new brand increased the cost of keeping products aligned"] },
+        { label: "Act 02", title: "We first mapped what the products already shared", paragraphs: ["Before deciding what Phoenix should contain, we mapped the components, tokens, and patterns already used across the products. The inventory showed where teams were solving the same problem repeatedly and gave us a measurable starting point."], highlights: ["1,001 component imports mapped", "Remaining duplicates identified by name", "Color contrast measured from the real token files"] },
+        { label: "Act 03", title: "One shared system, nine visual changes per brand", paragraphs: ["We kept common behavior, layout, states, and accessibility rules in one shared system. Each brand only changes nine accent values, so it can look distinct without creating another component library."], highlights: ["124 shared tokens", "Four brands and two themes", "Nine accent values define each brand"] },
+        { label: "Act 04", title: "Design and frontend worked with the real components", paragraphs: ["Phoenix works as a live catalog. Designers and frontend developers can inspect, combine, and review the same coded components used by the products. Automated checks make missing components and accessibility problems visible before release."], highlights: ["82 live component examples", "Automated quality checks", "Documentation generated from the code"] },
+        { label: "Act 05", title: "One change could now improve every product", paragraphs: ["Phoenix now supports four brands and two themes from one component source. The team retired 64 duplicate files, rendered all 82 catalog entries, and created a faster starting point for the next brand."], highlights: ["Nine values plus one manifest entry per brand", "Accessibility checked in both themes", "Shared fixes reach every connected product"] }
+      ]
+    },
+    images: [
+      { src: phoenixBrands, alt: "Four brands rendered from one canon" },
+      { src: phoenixSwitcher, alt: "Phoenix brand switcher" },
+      { src: phoenixDataTable, alt: "Phoenix live component page" },
+      { src: phoenixRules, alt: "Phoenix design system rules" },
+      { src: phoenixButton, alt: "Phoenix button component" }
+    ]
+  },
   // 8020REI (Priority 1)
   {
     id: "8020-roof",
-    title: "8020 ROOF",
+    title: "8020ROOF",
+    showcaseTitle: "New Vertical, New Methodology, New Technology",
+    showcasePreview: "We turned a manual roofing-list operation into a self-serve platform, retiring the Excel handoff in six weeks. The work combined product design, shared components, and a practical AI-assisted build process.",
     subtitle: "Property intelligence and a marketing pipeline for the roofing vertical",
     category: "8020REI",
-    type: "Multi-tenant B2B SaaS · 0→1 build",
+    type: "Multi-tenant B2B SaaS, zero-to-one build",
     role: "Senior Product Designer & Builder",
     duration: "~1.5 months active build",
     tools: [
@@ -70,7 +142,7 @@ export const PROJECTS: Project[] = [
       "AWS Amplify",
       "GitHub Actions"
     ],
-    tags: ["Design System", "Multi-tenant SaaS", "Vibecoding", "0→1"],
+    tags: ["Design System", "Multi-tenant SaaS", "Vibecoding", "Zero-to-one"],
     thumbnailGradient: "from-orange-950 to-zinc-900",
     coverImage: {
       src: roof000,
@@ -119,7 +191,7 @@ export const PROJECTS: Project[] = [
           "Manual scoring and channel splitting on every monthly cycle",
           "No platform path for scaling the roofing vertical without new hires",
           "100M+ property records to expose without exposing the underlying complexity",
-          "Internal mandate to ship a real product, not a service-delivery workflow"
+          "The team had to replace a service-delivery workflow with a real product"
         ],
         constraints: [
           "Three-person team with no dedicated frontend or backend engineer",
@@ -128,9 +200,9 @@ export const PROJECTS: Project[] = [
         ],
         insights: [
           "We treated AI as a teammate across design, frontend, backend, and QA, not just as autocomplete",
-          "Five user roles defined before the first screen was designed",
+          "Roles and permissions mapped before the first screen was designed",
           "Component coherence enforced platform-wide and audited each release",
-          "The platform's value came from removing manual steps, not adding features"
+          "Removing manual steps created more value than adding features"
         ]
       },
       approach: [
@@ -143,10 +215,10 @@ export const PROJECTS: Project[] = [
         "Used Claude Code as a development teammate to ship UI flows, admin tooling, and reusable components"
       ],
       outcome: [
-        "Two pilot clients live in production; one reported 100% satisfaction",
+        "Two pilot clients live in production",
         "Excel-based monthly list delivery retired for the roofing vertical inside six weeks of active development",
-        "5-stage async fulfillment pipeline emitting ~20K direct-mail and ~115K cold-call records every cycle",
-        "Proved a three-person, mostly non-technical product team could ship production data SaaS",
+        "Five-stage monthly fulfillment pipeline averaging about 10K direct-mail, 5K cold-call, and 2K SMS records",
+        "Proved a three-person cross-functional team could ship production data software",
         "Playbook for the next vertical written along the way"
       ],
       chapters: [
@@ -154,29 +226,29 @@ export const PROJECTS: Project[] = [
           label: "Act 01",
           title: "Roofing was served by hand",
           paragraphs: [
-            "8020REI had a working data business for real-estate investors, but roofing was still a manual process. Two pilot clients received a monthly Excel export that someone assembled, scored, and split by hand. The goal was to prove a small team could build a real product, not a service."
+            "8020REI had a working data business for real-estate investors, but roofing was still a manual process. Two pilot clients received a monthly Excel export that someone assembled, scored, and split by hand. The goal was a product clients could use directly."
           ],
           highlights: [
             "Two pilot clients on manual Excel exports",
             "No path to scale roofing without new hires",
-            "Ship a product, not a service workflow"
+            "Replace the service workflow with a self-service product"
           ]
         },
         {
           label: "Act 02",
-          title: "Leverage the engine we already had",
+          title: "The company already had the data and scoring engine",
           paragraphs: [
             "8020REI already owned a 100M+ row property database and a scoring algorithm. The work was to point that asset at a new customer, roofers looking for roofs that need replacing, and to sell it by county instead of per lead."
           ],
           highlights: [
             "100M+ records, scoped by county FIPS",
             "A new pricing wedge: per county, not per lead",
-            "Three personas defined before the first screen"
+            "Roles and permissions mapped before the first screen"
           ]
         },
         {
           label: "Act 03",
-          title: "One design system, not built from scratch",
+          title: "We adapted an existing design system",
           paragraphs: [
             "We started with shadcn and customized it for the brand. We also brought over the table and Buy Box patterns proven in 8020REI's Kairo system, so later screens could be composed from familiar parts rather than designed from scratch."
           ],
@@ -188,7 +260,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 04",
-          title: "From property search to a marketing pipeline",
+          title: "One flow connected property search to marketing",
           paragraphs: [
             "We started with property intelligence: a fast table over the 100M-row dataset with saved views and exports. Next came the Buy Box, reduced to the rules that mattered. Then we built a five-stage monthly pipeline for direct mail, cold calls, and SMS, plus a door-knocking beta with optimized field routes."
           ],
@@ -202,7 +274,7 @@ export const PROJECTS: Project[] = [
           label: "Act 05",
           title: "Two clients live, the Excel handoff retired",
           paragraphs: [
-            "The platform launched with two clients already using it, and the manual spreadsheet process was retired. It showed that a three-person, mostly non-technical team could build production data SaaS with AI as a practical part of the team, while documenting a playbook for the next vertical."
+            "The platform launched with two clients already using it, and the manual spreadsheet process was retired. It showed that a three-person cross-functional team could build production data software while documenting a playbook for the next vertical."
           ],
           highlights: [
             "Two pilot clients in production",
@@ -227,7 +299,7 @@ export const PROJECTS: Project[] = [
     title: "DM campaign",
     subtitle: "Automated direct mail, integrated into the platform",
     category: "8020REI",
-    type: "SaaS Feature • 0 to 1 + ongoing PM ownership",
+    type: "SaaS feature, zero-to-one and ongoing PM ownership",
     role: "Senior Product Designer + Acting PM",
     duration: "3 months design · ongoing PM ownership",
     tools: ["Figma", "Figma Make", "Google Analytics", "Heap", "Clarity", "ChatGPT"],
@@ -287,19 +359,15 @@ export const PROJECTS: Project[] = [
         "Established a foundation for A/B testing and optimization in progress"
       ],
       outcome: [
-        "12 active clients adopted the system in early usage",
-        "Faster outreach and reduced operational friction",
-        "Higher platform stickiness among active users",
-        "Stronger confidence in data-driven timing and execution",
-        "Support for churn reduction by improving deal velocity",
-        "Targets include a 50% increase in active usage",
-        "Targets include positive CSAT feedback among active users",
-        "Targets include expanded testing, optimization, and automation capabilities"
+        "12 clients adopted the product in the early release",
+        "Teams reported faster outreach and less operational friction",
+        "RapidResponse and SmartDrop were supported in one campaign experience",
+        "The next phase was defined around active usage, customer satisfaction, and campaign optimization"
       ],
       chapters: [
         {
           label: "Act 01",
-          title: "From manual execution to product opportunity",
+          title: "Direct mail still happened outside the product",
           paragraphs: [
             "Direct mail was already part of investor workflows, but execution happened outside the platform through fragmented vendors and manual coordination.",
             "The product opportunity was to turn direct mail into a native capability that could react to data events in real time, not hours or days later."
@@ -312,9 +380,9 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 02",
-          title: "Discovery aligned trust, control, and automation",
+          title: "Research showed users needed control before automation",
           paragraphs: [
-            "Research across leadership, stakeholders, and active investors showed that automation alone was not enough. Users needed to understand what would happen, why it would happen, and what it would cost.",
+            "Research across leadership, stakeholders, and active investors showed that users wanted automation with clear control. They needed to understand what would happen, why it would happen, and what it would cost.",
             "That shifted the scope from a simple trigger engine to a guided system with explicit rules, visibility, and auditability."
           ],
           highlights: [
@@ -325,10 +393,10 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 03",
-          title: "A two-track automation model",
+          title: "Two campaign paths, one setup",
           paragraphs: [
             "I defined two core trigger models: one based on live data updates (RapidResponse) and one based on list delivery events (SmartDrop).",
-            "This created a flexible structure that matched different investor operating models without forcing one rigid campaign type."
+            "This structure matched different investor workflows while keeping one campaign experience."
           ],
           highlights: [
             "Real-time trigger path for rapid reactions",
@@ -338,7 +406,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 04",
-          title: "Designing confidence into execution",
+          title: "Making campaign execution easier to understand",
           paragraphs: [
             "The interaction layer focused on reducing uncertainty: clear configuration states, campaign progress, and delivery feedback at each step.",
             "I also introduced onboarding and system language that translated complex automation rules into investor-facing decisions."
@@ -351,15 +419,15 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 05",
-          title: "Early adoption and measurable direction",
+          title: "Twelve clients adopted the first release",
           paragraphs: [
-            "Early usage validated the need: 12 clients adopted the product and teams reported faster outreach with less operational friction.",
-            "Post-launch, we defined expansion metrics around active usage, satisfaction, and optimization capabilities to guide the next phase."
+            "Twelve clients adopted the early release, and teams reported faster outreach with less operational friction.",
+            "The next phase will test whether the product reaches its active-usage and satisfaction targets while expanding campaign optimization."
           ],
           highlights: [
-            "12 active clients in early adoption",
-            "Higher confidence in automated campaign execution",
-            "Clear roadmap for testing and optimization"
+            "Observed: 12 clients in the early release",
+            "Observed: faster outreach reported by teams",
+            "Next measure: active usage, satisfaction, and retention"
           ]
         }
       ]
@@ -390,6 +458,8 @@ export const PROJECTS: Project[] = [
   {
     id: "8020-buybox",
     title: "BuyBox editor",
+    showcaseTitle: "Improving the secret sauce of the business.",
+    showcasePreview: "I treated a dense rules engine as a decision workflow, bringing marketing needs, live feedback, and guardrails into the same place. The redesign targeted fewer configuration errors and less support work.",
     subtitle: "From rules engine to guided decisions",
     category: "8020REI",
     type: "Complex Interaction Design",
@@ -403,7 +473,7 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "Redesigned the BuyBox editor to reduce churn caused by misconfigured acquisition rules and misaligned marketing output. The goal was to turn a dense rules engine into a guided decision system aligned with marketing capacity, market opportunity, and investor goals."
+        summary: "Redesigned the BuyBox editor after churn feedback and Customer Success escalations linked configuration problems to poor list quality and misaligned marketing output. The goal was to turn a dense rules engine into a guided decision system aligned with marketing capacity, market opportunity, and investor goals."
       },
       role: {
         title: "Product Designer",
@@ -440,7 +510,7 @@ export const PROJECTS: Project[] = [
           "Defaults and guardrails outperform open-ended configuration",
           "Marketing capacity must shape acquisition criteria",
           "Errors should be explicit, actionable, and impossible to miss",
-          "Accessibility is a correctness requirement, not a finishing pass. Color alone cannot carry meaning."
+          "Accessibility determined whether the interaction was correct. Color alone could not carry meaning."
         ]
       },
       approach: [
@@ -456,20 +526,17 @@ export const PROJECTS: Project[] = [
         "Aligned the UI with the Kairo design system for consistency and scalability"
       ],
       outcome: [
-        "Designed to reduce customer churn by improving list quality",
-        "Targeted a 20% reduction in time required to build a valid BuyBox",
-        "Targeted an 80% reduction in BuyBox configuration errors",
-        "Expected a 50% reduction in BuyBox-related support tickets",
-        "Improved transparency and trust between investors and Customer Success",
-        "Higher confidence in decision-making through clearer feedback loops",
-        "Post-release metrics were defined to validate outcomes once fully deployed"
+        "A complete redesign and measurable release criteria were defined",
+        "The new direction preserved existing BuyBox configurations",
+        "Targets were set for 20% faster setup, 80% fewer configuration errors, and 50% fewer support tickets",
+        "Post-release results are still needed to validate those targets"
       ],
       chapters: [
         {
           label: "Act 01",
-          title: "A critical feature was driving churn",
+          title: "Configuration problems were creating churn risk",
           paragraphs: [
-            "The BuyBox editor was one of the most important decision surfaces in the platform, but it behaved like an expert-only rules engine.",
+            "The BuyBox editor was where investors defined their acquisition strategy, but it behaved like an expert-only rules engine.",
             "When investors configured it incorrectly, list quality dropped, marketing output misaligned, and Customer Success had to intervene."
           ],
           highlights: [
@@ -480,7 +547,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 02",
-          title: "Evidence from escalations and discovery",
+          title: "Churn feedback showed where users got lost",
           paragraphs: [
             "Churn feedback and CS escalations showed a repeating pattern: users were asked to manage complexity without enough guidance.",
             "Discovery clarified that investors needed interpretable outcomes, not more raw flexibility."
@@ -493,7 +560,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 03",
-          title: "Reframing the editor as guided decision making",
+          title: "We reorganized the rules around the investor's decision",
           paragraphs: [
             "I reframed the product from a configuration table into a guided decision system that balances market opportunity, marketing capacity, and investor goals.",
             "This meant structuring the experience around comprehension first, then control."
@@ -506,7 +573,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 04",
-          title: "Interaction design focused on preventable mistakes",
+          title: "Warnings appeared before expensive mistakes",
           paragraphs: [
             "The final interface made risky conditions visible through alerts, warnings, and clearer system language mapped to investor mental models.",
             "I also used a focused, non-scroll layout to reduce misclicks and maintain context while editing complex criteria."
@@ -520,10 +587,10 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 05",
-          title: "Outcome targets tied to retention",
+          title: "We defined the release targets",
           paragraphs: [
             "The redesign was planned around measurable retention outcomes: faster valid setup, fewer errors, and less support burden.",
-            "Beyond metrics, the core gain was decision confidence for investors and clearer communication across Product and CS."
+            "The intended benefit is clearer decision-making for investors and fewer explanations from Customer Success. Post-release measurement is still required."
           ],
           highlights: [
             "Target: 20% faster valid BuyBox setup",
@@ -563,6 +630,8 @@ export const PROJECTS: Project[] = [
   {
     id: "8020-property-list",
     title: "Property view",
+    showcaseTitle: "Investors were leaving the product to make a decision.",
+    showcasePreview: "Investors were leaving the platform to validate opportunities. I reorganized the list and detail view around the signals they needed, increasing property-related usage by 50%.",
     subtitle: "From data exporter to decision environment",
     category: "8020REI",
     type: "Workflow Optimization",
@@ -607,13 +676,13 @@ export const PROJECTS: Project[] = [
           "Investors need to quickly assess whether a property is an opportunity or not",
           "Scores and distresses are among the strongest decision drivers",
           "Historical trends build confidence",
-          "Data must be presented as a narrative, not a dump",
+          "Property data needed a clear sequence that supported the decision",
           "Editing property attributes should be fast and low-friction",
           "Filters and views are central to daily workflows"
         ]
       },
       approach: [
-        "Treated the property view as a guided story",
+        "Used the property view to explain the opportunity in a clear sequence",
         "Treated the property list as a flexible exploration surface",
         "Surfaced core property signals first",
         "Visualized historical health through score and value trends",
@@ -634,15 +703,14 @@ export const PROJECTS: Project[] = [
         "Increased platform usage related to properties by 50%",
         "Achieved over 70% positive feedback in post-interaction CSAT surveys",
         "Reduced bugs, claims, and reported issues by approximately 80%",
-        "Reduced missed clicks and navigation friction through layout optimization",
         "Increased engagement with views and filters in nearly 60% of sessions",
-        "Improved overall perception of the platform as a reliable source of property intelligence",
-        "Reduced cognitive load while increasing trust and confidence"
+        "The new information hierarchy kept score, distress, history, and BuyBox fit close to the decision",
+        "Further research is needed to understand whether deeper product use improved investment decisions"
       ],
       chapters: [
         {
           label: "Act 01",
-          title: "The core workflow was leaking value",
+          title: "Investors left the product to evaluate properties",
           paragraphs: [
             "The property list and property view were high-traffic surfaces, but investors were leaving the platform to validate opportunities in external tools.",
             "That behavior made it clear the product was acting as a data exporter instead of a decision environment."
@@ -655,10 +723,10 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 02",
-          title: "Discovery clarified what investors optimize for",
+          title: "Research defined the information that mattered",
           paragraphs: [
             "Research showed investors needed fast confidence signals: score, distress context, historical direction, and relevance to active buying criteria.",
-            "The challenge was not missing data volume, but missing narrative structure in how data was presented."
+            "The data was available, but the interface did not explain how it mattered to the decision."
           ],
           highlights: [
             "Opportunity assessment had to happen in seconds",
@@ -668,7 +736,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 03",
-          title: "Designing list and detail as connected stories",
+          title: "The list and detail view had different jobs",
           paragraphs: [
             "I treated the property view as a guided narrative and the list as an exploration surface, ensuring each served a distinct decision phase.",
             "This split reduced context switching and gave users a clearer progression from scanning to evaluation to action."
@@ -681,7 +749,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 04",
-          title: "Execution focused on configurability without chaos",
+          title: "Views and filters became easier to manage",
           paragraphs: [
             "The redesign replaced rigid view controls with tab-based views, configurable columns, and a card view for lower per-item cognitive load.",
             "I also expanded filters, improved search, and streamlined bulk actions to support higher-throughput workflows."
@@ -694,10 +762,10 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 05",
-          title: "Usage and trust improved together",
+          title: "Property usage increased by 50%",
           paragraphs: [
-            "Post-release signals showed both behavioral and sentiment gains, with stronger usage and positive feedback across high-frequency workflows.",
-            "The outcome was not only higher interaction volume, but better decision quality and platform trust."
+            "Usage increased by 50%, post-interaction feedback was more than 70% positive, and reported issues fell by about 80%.",
+            "The next question is whether this deeper use also improves investment decisions."
           ],
           highlights: [
             "50% increase in property-related usage",
@@ -737,6 +805,8 @@ export const PROJECTS: Project[] = [
   {
     id: "8020-metrics-hub",
     title: "Metrics Hub",
+    showcaseTitle: "I connected six data sources. It found lost revenue.",
+    showcasePreview: "I connected six disconnected sources into one shared workspace. It exposed a mail-provider conflict that had stopped client letters, making the fix visible to everyone and helping recover revenue.",
     subtitle: "Turning fragmented operational data into trusted decisions",
     category: "8020REI",
     type: "Unified Analytics Platform",
@@ -767,7 +837,7 @@ export const PROJECTS: Project[] = [
       businessProblem: "Business-critical data was distributed across six systems, leaving Product, Customer Success, and Operations to make decisions with partial evidence.",
       discoveryAndConstraints: "I mapped source ownership, access risks, costs, and the business questions behind each metric before defining the information architecture. The platform had to use existing infrastructure and work for non-technical teams.",
       keyDesignDecision: "Create a role-aware, widget-based workspace with a three-level navigation model and reusable metric patterns, so analytical depth did not come at the cost of comprehension.",
-      observedImpact: "Within the first month, the connected view revealed a mail-provider status conflict that was blocking client letters. Resolving it restored mail volume and recovered revenue; a client-requested API built on the platform reached 3x adoption."
+      observedImpact: "Within the first month, the connected view revealed a mail-provider status conflict that was blocking client letters. Resolving it restored mail volume and recovered revenue. A client-requested API built on the platform reached 3x adoption."
     },
     narrative: {
       introduction: {
@@ -818,29 +888,29 @@ export const PROJECTS: Project[] = [
         "Enabled exports and operational views for cross-functional decision loops"
       ],
       outcome: [
-        "Brought a mail-provider status conflict into view; it had quietly stopped client letters. Fixing it restored mail volume and recovered revenue for the feature.",
-        "Tripled Properties API adoption after surfacing and fixing 5 critical blockers. The capability came from a client request validated through research.",
-        "Enabled company-wide self-serve access to analytics without new tooling subscriptions",
-        "Established a shared decision layer across Product, Customer Success, and Operations",
-        "Reduced dependency on ad hoc data pulls for day-to-day product and business decisions"
+        "Connected six systems in one workspace using existing infrastructure",
+        "Created 91 widgets across 11 business areas",
+        "Exposed a mail-provider conflict that had stopped client letters. Fixing it restored mail volume and recovered revenue",
+        "Helped identify five Properties API blockers. After they were fixed, API activity increased 3x",
+        "Adoption by nontechnical teams and reduction in ad hoc requests still need long-term measurement"
       ],
       chapters: [
         {
           label: "Act 01",
-          title: "Critical decisions were disconnected from data",
+          title: "Six systems separated the business story",
           paragraphs: [
             "At 8020REI, data existed everywhere but understanding existed nowhere. Analytics, product metrics, campaign data, qualitative notes, and task execution all lived in separate systems.",
-            "That fragmentation forced teams to depend on assumptions and ad hoc support instead of a shared evidence layer for everyday decisions."
+            "That fragmentation forced teams to depend on assumptions and ad hoc support instead of one place where they could review the evidence."
           ],
           highlights: [
-            "No unified decision surface across teams",
+            "No single place to review evidence across teams",
             "Heavy dependency on technical support for basic insights",
             "Feature and campaign priorities were hard to validate"
           ]
         },
         {
           label: "Act 02",
-          title: "Discovery mapped ownership, risk, and business logic",
+          title: "We mapped each question to its source and owner",
           paragraphs: [
             "I mapped every data source, who owned it, what it answered, and where access or cost constraints could break reliability.",
             "This technical mapping was paired with business discovery so each metric screen reflected real investor and operator workflows, not raw data dumps."
@@ -853,7 +923,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 03",
-          title: "Designing one coherent language for 91 widgets",
+          title: "Consistent patterns made 91 widgets easier to read",
           paragraphs: [
             "I designed a three-level navigation model and a widget workspace that makes complex analytics scannable for non-technical users in seconds.",
             "Across 11 business areas, the interface uses one consistent visual and interaction system so teams can move between domains without relearning patterns."
@@ -866,7 +936,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 04",
-          title: "From design ownership to full-stack execution",
+          title: "I moved from design into the full build",
           paragraphs: [
             "The initiative required hands-on execution across frontend, backend, integrations, deployment, and quality automation.",
             "I built the platform to be extensible, with contribution workflows and automated checks so future collaborators can ship confidently within the same product standards."
@@ -879,10 +949,10 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 05",
-          title: "Operational visibility translated into business impact",
+          title: "Connected data exposed hidden problems",
           paragraphs: [
             "Within the first month, Metrics Hub exposed a mail-provider status conflict that had quietly stopped client letters. The problem was invisible until the data was connected. Resolving it realigned us with the provider, restored mail volume, and recovered revenue for the feature.",
-            "Beyond metrics, the platform shifted team behavior: decisions moved from opinion-driven discussions to shared, evidence-based alignment."
+            "The first results showed the value of connecting the data. Longer-term measurement is still needed to understand adoption, response time, and the reduction in manual data requests."
           ],
           highlights: [
             "Provider status conflict fixed, restoring client mailings and recovering revenue",
@@ -894,20 +964,22 @@ export const PROJECTS: Project[] = [
     },
     images: [
       { src: metricsHubMockup, alt: "Metrics Hub dashboard overview" },
-      { src: metricsHub02, alt: "Metrics Hub — screen 02" },
-      { src: metricsHub03, alt: "Metrics Hub — screen 03" },
-      { src: metricsHub04, alt: "Metrics Hub — screen 04" },
-      { src: metricsHub05, alt: "Metrics Hub — screen 05" },
-      { src: metricsHub06, alt: "Metrics Hub — screen 06" },
-      { src: metricsHub07, alt: "Metrics Hub — screen 07" },
-      { src: metricsHub08, alt: "Metrics Hub — screen 08" },
-      { src: metricsHub09, alt: "Metrics Hub — screen 09" }
+      { src: metricsHub02, alt: "Metrics Hub screen 02" },
+      { src: metricsHub03, alt: "Metrics Hub screen 03" },
+      { src: metricsHub04, alt: "Metrics Hub screen 04" },
+      { src: metricsHub05, alt: "Metrics Hub screen 05" },
+      { src: metricsHub06, alt: "Metrics Hub screen 06" },
+      { src: metricsHub07, alt: "Metrics Hub screen 07" },
+      { src: metricsHub08, alt: "Metrics Hub screen 08" },
+      { src: metricsHub09, alt: "Metrics Hub screen 09" }
     ]
   },
   // Habi (Priority 2)
   {
     id: "habi-funnels",
     title: "Smart funnel",
+    showcaseTitle: "Optimizing the funnel experience.",
+    showcasePreview: "I used behavior data to find where people lost momentum, then simplified the mobile journey from 11 screens to 7. Qualified lead conversion increased by 30%.",
     subtitle: "Mobile-first acquisition funnel",
     category: "Habi",
     type: "Growth Design",
@@ -961,16 +1033,14 @@ export const PROJECTS: Project[] = [
         "Added location-based recommendations and internal property suggestions"
       ],
       outcome: [
-        "30% increase in qualified lead conversion rate",
-        "Reduced interaction time per registration",
-        "Higher completion rates on mobile devices",
-        "Improved lead quality for downstream sales teams",
-        "Stronger alignment between marketing goals and product execution"
+        "Reduced the flow from 11 screens to 7",
+        "Qualified conversion increased by 30%",
+        "Completion time, mobile completion, and long-term lead quality still require documented follow-up"
       ],
       chapters: [
         {
           label: "Act 01",
-          title: "Conversion was blocked by friction-heavy onboarding",
+          title: "Eleven screens asked for too much too early",
           paragraphs: [
             "The Mexico acquisition flow asked users to complete an 11-screen process with high effort before they understood the value of finishing.",
             "On mobile, this translated into drop-offs, lower trust, and lower qualified conversion."
@@ -983,7 +1053,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 02",
-          title: "Analytics exposed where intent was lost",
+          title: "Analytics showed where people left",
           paragraphs: [
             "Behavioral analysis showed concentrated abandonment in long form segments and moments where users felt asked for too much too soon.",
             "This gave us a clear objective: preserve lead quality while reducing unnecessary effort."
@@ -996,7 +1066,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 03",
-          title: "Re-sequencing the funnel around momentum",
+          title: "Seven screens created a clearer sequence",
           paragraphs: [
             "I redesigned the flow from 11 screens to 7, using progressive disclosure and earlier value signals to maintain user momentum.",
             "AI-assisted inference reduced redundant inputs while keeping qualification quality intact."
@@ -1009,7 +1079,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 04",
-          title: "Iteration through controlled experiments",
+          title: "We tested the new order",
           paragraphs: [
             "Multiple variants were tested through A/B experiments to validate ordering, phrasing, and perceived effort.",
             "Design decisions were tied to conversion and completion behavior rather than subjective preference."
@@ -1022,15 +1092,15 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 05",
-          title: "Measured growth with stronger downstream quality",
+          title: "Qualified conversion increased by 30%",
           paragraphs: [
-            "The redesign delivered a 30% increase in qualified conversion while shortening interaction time.",
-            "It also improved alignment between marketing acquisition goals and product execution quality."
+            "The tested flow reduced the journey from 11 screens to 7 and increased qualified conversion by 30%.",
+            "The available record does not include the test window, sample size, or long-term lead-quality result, so those remain important interview follow-ups."
           ],
           highlights: [
             "30% lift in qualified lead conversion",
-            "Higher mobile completion rates",
-            "Better lead quality for sales teams"
+            "11 screens reduced to 7",
+            "Next measure: completion time and long-term lead quality"
           ]
         }
       ]
@@ -1058,6 +1128,8 @@ export const PROJECTS: Project[] = [
   {
     id: "freelance-1",
     title: "Now App",
+    showcaseTitle: "Pick a movie in 30 seconds.",
+    showcasePreview: "A research-led concept that turns streaming choice overload into a short, guided decision. The goal was to make choosing feel lighter, before browsing becomes the whole night.",
     subtitle: "Concept case study",
     category: "Freelance",
     type: "UX/UI case study",
@@ -1071,7 +1143,7 @@ export const PROJECTS: Project[] = [
         company: "Personal project",
         industry: "Streaming concept",
         year: "2024",
-        summary: "Now App is a UX/UI concept for helping people choose what to watch in under one minute. It uses research and a few clear decision steps to reduce decision fatigue. The project was not built or launched."
+        summary: "Now App is a one-week UX/UI concept exploring whether a short guided flow could help people choose a movie in about 30 seconds. It remains unbuilt and unlaunched."
       },
       role: {
         title: "UX/UI Designer",
@@ -1113,19 +1185,17 @@ export const PROJECTS: Project[] = [
         "Outlined conceptual validation metrics for time to decision and satisfaction"
       ],
       outcome: [
-        "Framed a clear problem statement around decision confidence",
-        "Showed how fewer, curated options can increase confidence",
-        "Reinforced the value of research depth before ideation",
-        "Documented a repeatable process for future product work",
-        "Positioned the case study as a learning exercise, not a production product"
+        "Completed a focused concept and interactive direction in one week",
+        "Defined a validation plan around time to decision, recommendation confidence, and satisfaction",
+        "No launch or product-performance result is available yet"
       ],
       chapters: [
         {
           label: "Act 01",
-          title: "A concept born from decision fatigue",
+          title: "People were spending too long choosing a movie",
           paragraphs: [
             "Now App started from a familiar streaming behavior: users spend more time choosing than watching.",
-            "The goal of the case study was to design a focused path that helps people decide in under one minute."
+            "The goal was to explore whether a focused path could help people decide in about 30 seconds."
           ],
           highlights: [
             "High choice overload in streaming experiences",
@@ -1135,7 +1205,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 02",
-          title: "Research before interface",
+          title: "Research came before the interface",
           paragraphs: [
             "In a one-week timeline, I prioritized qualitative research and synthesis to avoid jumping into UI without behavioral evidence.",
             "Interviews and competitor analysis were used to map where users lose confidence and where guided decisions could help."
@@ -1148,7 +1218,7 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 03",
-          title: "Designing a narrow, guided decision path",
+          title: "The concept asked fewer questions",
           paragraphs: [
             "The concept uses minimal branching and progressive disclosure so users process fewer decisions at each step.",
             "Information architecture was structured to favor focus and reduce the perceived effort of choosing."
@@ -1161,9 +1231,9 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 04",
-          title: "Turning insights into a testable concept",
+          title: "The prototype created a testable hypothesis",
           paragraphs: [
-            "Because this was not a launched product, the work emphasized hypothesis clarity and validation criteria for a future build phase.",
+            "Since the project had no launch, the work focused on a clear hypothesis and validation criteria for a future build phase.",
             "I documented how to evaluate time to decision, user confidence, and satisfaction if the concept moved to implementation."
           ],
           highlights: [
@@ -1174,9 +1244,9 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 05",
-          title: "Outcome as process maturity",
+          title: "A concept ready to test",
           paragraphs: [
-            "The project gave me a repeatable way to work: research first, concept clarity next, and interface expression last.",
+            "The result was a focused hypothesis, an interaction direction, and a clear plan for testing whether the experience helps people decide faster and with more confidence.",
             "Now App remains a concept case study that shows how I approach product thinking before a product is built."
           ],
           highlights: [

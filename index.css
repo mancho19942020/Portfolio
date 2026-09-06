@@ -51,7 +51,8 @@ html.lenis body {
   --cursor-dot-shadow: rgba(55, 65, 81, 0.35);
   --accent: #ff5a26;
   --accent-soft: rgba(255, 90, 38, 0.12);
-  --accent-strong: #ff5a26;
+  /* Darker than the display accent so small labels remain readable on light surfaces. */
+  --accent-strong: #c2410c;
   --reveal-dim: rgba(17, 24, 39, 0.18);
   --reveal-bright: #101828;
 }
@@ -80,6 +81,813 @@ html[data-theme='dark'] {
   --accent-strong: #ff7a4d;
   --reveal-dim: rgba(255, 255, 255, 0.14);
   --reveal-bright: #f4f4f5;
+}
+
+/* Presentation mode uses its own semantic palette. This keeps contrast stable
+   when the portfolio switches themes and avoids coupling slide copy to global
+   utility remaps. */
+:root {
+  --deck-bg: #eef0f3;
+  --deck-panel: #ffffff;
+  --deck-panel-soft: #f5f6f8;
+  --deck-text: #111827;
+  --deck-muted: #4b5563;
+  --deck-border: #d7dce2;
+  --deck-line: #c4cbd4;
+  --deck-control: rgba(255, 255, 255, 0.92);
+}
+
+html[data-theme='dark'] {
+  --deck-bg: #09090b;
+  --deck-panel: #111113;
+  --deck-panel-soft: #19191c;
+  --deck-text: #f7f7f8;
+  --deck-muted: #b6b6bf;
+  --deck-border: #303036;
+  --deck-line: #414149;
+  --deck-control: rgba(24, 24, 27, 0.94);
+}
+
+.presentation-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  overflow: hidden;
+  color: var(--deck-text);
+  background-color: var(--deck-bg);
+  background-image: var(--app-bg-gradient), var(--grid-bg);
+  background-size: auto, 56px 56px;
+  outline: none;
+}
+
+.presentation-controls {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  align-items: center;
+  padding-inline: clamp(14px, 2.4vw, 36px);
+}
+
+.presentation-controls-top {
+  top: 0;
+  height: 64px;
+}
+
+.presentation-controls-bottom {
+  bottom: 0;
+  height: 72px;
+}
+
+.presentation-icon-button {
+  position: relative;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid var(--deck-border);
+  border-radius: 999px;
+  color: var(--deck-text);
+  background: var(--deck-control);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  transition: border-color 160ms ease, transform 160ms ease, opacity 160ms ease;
+}
+
+.presentation-icon-button:hover:not(:disabled) {
+  border-color: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+.presentation-icon-button:focus-visible,
+.presentation-image:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 3px;
+}
+
+.presentation-icon-button:disabled {
+  opacity: 0.32;
+}
+
+.presentation-icon-button svg {
+  width: 19px;
+  height: 19px;
+}
+
+.presentation-icon-button[data-tooltip]::after {
+  position: absolute;
+  top: calc(100% + 7px);
+  left: 50%;
+  padding: 5px 8px;
+  border-radius: 7px;
+  color: #ffffff;
+  background: #18181b;
+  content: attr(data-tooltip);
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -3px);
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.presentation-icon-button[data-tooltip]:hover::after,
+.presentation-icon-button[data-tooltip]:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.presentation-counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: var(--deck-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+}
+
+.presentation-counter svg {
+  width: 16px;
+  height: 16px;
+  color: var(--accent-strong);
+}
+
+.presentation-progress {
+  width: min(360px, 42vw);
+  height: 3px;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--deck-line);
+}
+
+.presentation-progress span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent-strong);
+  transition: width 200ms ease;
+}
+
+.presentation-viewport {
+  position: absolute;
+  inset: 64px 0 72px;
+  overflow: hidden;
+  padding: 0 clamp(12px, 3vw, 44px);
+}
+
+.presentation-motion-layer {
+  position: absolute;
+  inset: 0 clamp(12px, 3vw, 44px);
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.presentation-motion-layer::-webkit-scrollbar {
+  display: none;
+}
+
+.presentation-slide,
+.presentation-cover {
+  width: min(1240px, 100%);
+  min-height: calc(100% - 8px);
+  margin: 4px auto;
+  overflow: hidden;
+  border: 1px solid var(--deck-border);
+  border-radius: clamp(20px, 2.2vw, 32px);
+  background: var(--deck-panel);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
+}
+
+.presentation-slide {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 3.8vw, 56px);
+}
+
+.presentation-slide-header {
+  max-width: 880px;
+}
+
+.presentation-eyebrow,
+.presentation-label {
+  color: var(--accent-strong);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.presentation-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.presentation-eyebrow svg {
+  width: 16px;
+  height: 16px;
+}
+
+.presentation-title {
+  margin-top: 14px;
+  color: var(--deck-text);
+  font-size: clamp(34px, 4.4vw, 64px);
+  font-weight: 750;
+  letter-spacing: -0.045em;
+  line-height: 0.98;
+  outline: none;
+}
+
+.presentation-lead {
+  max-width: 820px;
+  margin-top: 17px;
+  color: var(--deck-muted);
+  font-size: clamp(16px, 1.55vw, 21px);
+  line-height: 1.5;
+}
+
+.presentation-slide-body {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  min-height: 0;
+  padding-top: clamp(24px, 3.4vw, 48px);
+}
+
+.presentation-cover {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  background: #09090b;
+}
+
+.presentation-cover-image,
+.presentation-cover-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.presentation-cover-image {
+  object-fit: cover;
+  opacity: 0.72;
+}
+
+.presentation-cover-shade {
+  background: linear-gradient(90deg, rgba(5, 5, 7, 0.96) 0%, rgba(5, 5, 7, 0.76) 48%, rgba(5, 5, 7, 0.2) 100%),
+    linear-gradient(0deg, rgba(5, 5, 7, 0.74) 0%, transparent 64%);
+}
+
+.presentation-cover-copy {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 76%);
+  padding: clamp(28px, 5vw, 72px);
+  color: #ffffff;
+}
+
+.presentation-cover-meta {
+  color: #ff9b79;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.presentation-cover-copy h1 {
+  max-width: 720px;
+  margin-top: 18px;
+  color: #ffffff;
+  font-size: clamp(42px, 6vw, 82px);
+  font-weight: 780;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  outline: none;
+}
+
+.presentation-cover-copy h1 > span {
+  display: block;
+}
+
+.presentation-cover-thesis {
+  max-width: 650px;
+  margin-top: 22px;
+  color: #f4f4f5;
+  font-size: clamp(17px, 1.8vw, 24px);
+  line-height: 1.45;
+}
+
+.presentation-cover-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-top: 27px;
+  color: #d4d4d8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.presentation-two-column {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(24px, 5vw, 72px);
+  align-items: start;
+}
+
+.presentation-callout,
+.presentation-insight {
+  border-left: 3px solid var(--accent-strong);
+  padding: 6px 0 6px clamp(18px, 2.2vw, 30px);
+}
+
+.presentation-callout-copy {
+  max-width: 570px;
+  margin-top: 14px;
+  color: var(--deck-text);
+  font-size: clamp(20px, 2.15vw, 30px);
+  font-weight: 620;
+  letter-spacing: -0.025em;
+  line-height: 1.27;
+}
+
+.presentation-point-list,
+.presentation-results-column ul {
+  display: grid;
+  gap: 15px;
+  margin-top: 16px;
+}
+
+.presentation-point {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  color: var(--deck-muted);
+  font-size: clamp(14px, 1.3vw, 18px);
+  line-height: 1.45;
+}
+
+.presentation-point-mark {
+  display: grid;
+  width: 23px;
+  height: 23px;
+  flex: 0 0 23px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--accent-strong) 45%, var(--deck-border));
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: var(--accent-soft);
+}
+
+.presentation-point-mark svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.4;
+}
+
+.presentation-evidence-layout {
+  align-items: center;
+}
+
+.presentation-numbered-list {
+  display: grid;
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.presentation-numbered-list li,
+.presentation-decisions article {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 15px;
+  color: var(--deck-muted);
+}
+
+.presentation-numbered-list li > span,
+.presentation-decisions article > span {
+  padding-top: 3px;
+  color: var(--accent-strong);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.presentation-numbered-list p {
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.48;
+}
+
+.presentation-insight {
+  padding-top: 2px;
+}
+
+.presentation-insight > svg {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 18px;
+  color: var(--accent-strong);
+}
+
+.presentation-insight blockquote {
+  max-width: 520px;
+  margin-top: 15px;
+  color: var(--deck-text);
+  font-size: clamp(23px, 2.6vw, 38px);
+  font-weight: 650;
+  letter-spacing: -0.035em;
+  line-height: 1.17;
+}
+
+.presentation-process {
+  position: relative;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.presentation-process::before {
+  position: absolute;
+  top: 23px;
+  right: 6%;
+  left: 6%;
+  height: 1px;
+  background: var(--deck-line);
+  content: '';
+}
+
+.presentation-process li {
+  position: relative;
+  z-index: 1;
+  padding-right: clamp(4px, 1vw, 14px);
+}
+
+.presentation-process-number {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid var(--accent-strong);
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: var(--deck-panel);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.presentation-process h2 {
+  margin-top: 18px;
+  color: var(--deck-text);
+  font-size: clamp(15px, 1.35vw, 18px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.presentation-process p {
+  margin-top: 8px;
+  color: var(--deck-muted);
+  font-size: clamp(12px, 1.08vw, 15px);
+  line-height: 1.45;
+}
+
+.presentation-decision-layout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: stretch;
+}
+
+.presentation-decisions {
+  display: grid;
+  align-content: center;
+  gap: clamp(18px, 2.3vw, 28px);
+}
+
+.presentation-decisions article {
+  padding-bottom: clamp(14px, 1.8vw, 22px);
+  border-bottom: 1px solid var(--deck-border);
+}
+
+.presentation-decisions article:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.presentation-decisions h2 {
+  color: var(--deck-text);
+  font-size: clamp(16px, 1.35vw, 19px);
+  font-weight: 700;
+}
+
+.presentation-decisions p,
+.presentation-decisions small {
+  display: block;
+  margin-top: 6px;
+  color: var(--deck-muted);
+  font-size: clamp(12px, 1.05vw, 15px);
+  line-height: 1.45;
+}
+
+.presentation-decisions small {
+  color: color-mix(in srgb, var(--deck-muted) 88%, var(--accent-strong));
+}
+
+.presentation-image {
+  position: relative;
+  min-height: 110px;
+  overflow: hidden;
+  border: 1px solid var(--deck-border);
+  border-radius: 18px;
+  background: var(--deck-panel-soft);
+  text-align: left;
+}
+
+.presentation-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 260ms ease;
+}
+
+.presentation-image:hover img {
+  transform: scale(1.018);
+}
+
+.presentation-image span {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  color: #ffffff;
+  background: rgba(9, 9, 11, 0.76);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.presentation-image-tall {
+  min-height: clamp(260px, 35vh, 390px);
+}
+
+.presentation-build-layout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(28px, 6vw, 80px);
+  align-items: center;
+}
+
+.presentation-handoff {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto 1fr auto;
+  align-items: center;
+}
+
+.presentation-handoff > div {
+  display: grid;
+  width: 76px;
+  gap: 9px;
+  justify-items: center;
+  color: var(--deck-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.presentation-handoff > div svg {
+  width: 44px;
+  height: 44px;
+  padding: 11px;
+  border: 1px solid var(--deck-border);
+  border-radius: 14px;
+  color: var(--accent-strong);
+  background: var(--deck-panel-soft);
+}
+
+.presentation-handoff-line {
+  height: 1px;
+  background: var(--deck-line);
+}
+
+.presentation-results-layout {
+  display: grid;
+  width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(220px, 0.7fr);
+  gap: clamp(18px, 2.8vw, 36px);
+  align-items: stretch;
+}
+
+.presentation-results-column {
+  padding: clamp(18px, 2vw, 26px);
+  border: 1px solid var(--deck-border);
+  border-radius: 18px;
+  background: var(--deck-panel-soft);
+}
+
+.presentation-results-observed {
+  border-color: color-mix(in srgb, var(--accent-strong) 40%, var(--deck-border));
+}
+
+.presentation-results-column .presentation-point {
+  font-size: clamp(13px, 1.05vw, 15px);
+}
+
+.presentation-results-column ul {
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.presentation-result-images {
+  display: grid;
+  min-height: 220px;
+  gap: 12px;
+  grid-template-rows: 1fr 1fr;
+}
+
+@media (max-width: 900px) {
+  .presentation-slide-body {
+    align-items: flex-start;
+  }
+
+  .presentation-two-column,
+  .presentation-decision-layout,
+  .presentation-build-layout,
+  .presentation-results-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .presentation-process {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+
+  .presentation-process::before {
+    display: none;
+  }
+
+  .presentation-process li {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 12px;
+  }
+
+  .presentation-process-number {
+    width: 42px;
+    height: 42px;
+  }
+
+  .presentation-process h2 {
+    margin-top: 0;
+  }
+
+  .presentation-image-tall {
+    min-height: 260px;
+  }
+
+  .presentation-results-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .presentation-result-images {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .presentation-controls {
+    grid-template-columns: 44px 1fr 44px;
+    padding-inline: 10px;
+  }
+
+  .presentation-controls-top {
+    height: 58px;
+  }
+
+  .presentation-controls-bottom {
+    height: 64px;
+  }
+
+  .presentation-icon-button {
+    width: 42px;
+    height: 42px;
+  }
+
+  .presentation-viewport {
+    inset: 58px 0 64px;
+    padding-inline: 8px;
+  }
+
+  .presentation-motion-layer {
+    inset-inline: 8px;
+  }
+
+  .presentation-slide,
+  .presentation-cover {
+    min-height: calc(100% - 4px);
+    margin-block: 2px;
+    border-radius: 20px;
+  }
+
+  .presentation-slide {
+    padding: 24px 20px 30px;
+  }
+
+  .presentation-title {
+    font-size: 34px;
+    line-height: 1;
+  }
+
+  .presentation-lead {
+    margin-top: 13px;
+    font-size: 15px;
+  }
+
+  .presentation-slide-body {
+    padding-top: 25px;
+  }
+
+  .presentation-cover-shade {
+    background: linear-gradient(0deg, rgba(5, 5, 7, 0.98) 0%, rgba(5, 5, 7, 0.75) 68%, rgba(5, 5, 7, 0.3) 100%);
+  }
+
+  .presentation-cover-copy {
+    width: 100%;
+    padding: 28px 23px;
+  }
+
+  .presentation-cover-copy h1 {
+    font-size: 43px;
+  }
+
+  .presentation-cover-thesis {
+    font-size: 16px;
+  }
+
+  .presentation-two-column,
+  .presentation-results-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .presentation-callout-copy,
+  .presentation-insight blockquote {
+    font-size: 22px;
+  }
+
+  .presentation-process {
+    grid-template-columns: 1fr;
+  }
+
+  .presentation-image-tall {
+    min-height: 220px;
+  }
+
+  .presentation-handoff {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .presentation-handoff-line {
+    display: none;
+  }
+
+  .presentation-handoff > div {
+    width: auto;
+    font-size: 10px;
+  }
+
+  .presentation-handoff > div svg {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Muted copy is used at small sizes throughout the interface. Keep every
+   semantic text step above WCAG AA against its surface in both themes. */
+html[data-theme='dark'] .text-zinc-500 {
+  color: #a1a1aa;
+}
+
+html[data-theme='dark'] .text-zinc-600 {
+  color: #d4d4d8;
+}
+
+html[data-theme='dark'] .text-zinc-700 {
+  color: #e4e4e7;
 }
 
 /* Body background includes gradient + grid pattern */
@@ -193,15 +1001,15 @@ html[data-theme='light'] .text-zinc-400 {
 }
 
 html[data-theme='light'] .text-zinc-500 {
-  color: #6b7280;
+  color: #596272;
 }
 
 html[data-theme='light'] .text-zinc-600 {
-  color: #9ca3af;
+  color: #4b5563;
 }
 
 html[data-theme='light'] .text-zinc-700 {
-  color: #9ca3af;
+  color: #374151;
 }
 
 html[data-theme='light'] .bg-zinc-900 {
@@ -468,7 +1276,7 @@ html[data-theme='light'] .tool-logo-image {
   display: none;
 }
 
-/* Section cards — no shadows in either theme (flat aesthetic). */
+/* Section cards, no shadows in either theme (flat aesthetic). */
 
 /* ── Section label `// Label` ───────────────────────────────────────────── */
 .section-label {
@@ -548,7 +1356,7 @@ html[data-theme='light'] .tool-logo-image {
 
 /* Display sizing for the pinned intro reveal.
    Cap by both width (vw) AND height (vh) so the paragraph always fits
-   inside the user's viewport — never overflows even on short screens. */
+   inside the user's viewport, never overflows even on short screens. */
 .reveal-text-display {
   font-size: clamp(1.25rem, min(3.8vw, 5vh), 3.5rem);
   line-height: 1.14;
@@ -586,7 +1394,7 @@ html[data-theme='light'] .tool-logo-image {
   /* Mobile: shorter card so the next one previews at the bottom of the viewport. */
   height: 75svh;
   /* `top` and `z-index` are set inline based on the card's index so each
-     card lands a few rem lower than the one before — the stair-step pile. */
+     card lands a few rem lower than the one before, the stair-step pile. */
 }
 
 /* Mobile: tight margin between slots so the next card is visible peeking
@@ -602,7 +1410,7 @@ html[data-theme='light'] .tool-logo-image {
 
 /* Drop the aspect-ratio so the image side stretches to the card's full
    height in stack mode (image is `object-fit: cover`, no distortion).
-   Do NOT force `flex: ...` here — Tailwind utility classes on the image
+   Do NOT force `flex: ...` here, Tailwind utility classes on the image
    element control the basis/grow/shrink, and we want them to win. */
 .project-stack-slot .showcase-media {
   aspect-ratio: auto;
@@ -610,7 +1418,7 @@ html[data-theme='light'] .tool-logo-image {
   min-width: 0;
 }
 
-/* Desktop overrides — fixed-proportion cards (width is capped by max-w-6xl,
+/* Desktop overrides, fixed-proportion cards (width is capped by max-w-6xl,
    so a fixed aspect ratio looks identical on a laptop and a large monitor
    instead of stretching taller with viewport height). The slot still fills
    the viewport so the card can be vertically centered within it; max-height
@@ -719,8 +1527,7 @@ html[data-theme='light'] .showcase-pill {
   color: #374151;
 }
 
-/* Orange pill CTA — reads as a clear button in both themes.
-   Black text on the warm orange has solid contrast either way. */
+/* Orange pill CTA, reads as a clear button in both themes. */
 .showcase-cta {
   display: inline-flex;
   align-items: center;
@@ -729,12 +1536,57 @@ html[data-theme='light'] .showcase-pill {
   padding: 0.55rem 1.1rem;
   border-radius: 9999px;
   background: var(--accent-strong);
-  color: #0a0a0a;
+  color: #ffffff;
   font-weight: 600;
   font-size: 0.85rem;
   letter-spacing: 0.005em;
   white-space: nowrap;
   transition: gap 220ms ease, transform 180ms ease, filter 180ms ease;
+}
+
+/* The image viewer keeps one deliberately dark stage in both themes. Its
+   controls therefore never inherit the page theme or become mid-grey on a
+   light page. The foreground/background pairs exceed WCAG AA for text and
+   the 3:1 requirement for control boundaries. */
+.lightbox-backdrop {
+  background-color: rgba(9, 9, 11, 0.94);
+}
+
+.lightbox-control,
+.lightbox-utility,
+.lightbox-counter {
+  border: 1px solid #71717a;
+  background-color: rgba(39, 39, 42, 0.98);
+  color: #fafafa;
+}
+
+.lightbox-control:hover:not(:disabled),
+.lightbox-control:focus-visible,
+.lightbox-reset:hover,
+.lightbox-reset:focus-visible {
+  background-color: #3f3f46;
+  color: #ffffff;
+}
+
+.lightbox-control:disabled {
+  color: #a1a1aa;
+  cursor: not-allowed;
+}
+
+.lightbox-reset {
+  border-inline: 1px solid #71717a;
+  background-color: transparent;
+  color: #fafafa;
+}
+
+.lightbox-counter {
+  color: #fafafa;
+}
+
+.lightbox-control:focus-visible,
+.lightbox-reset:focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: 3px;
 }
 
 .showcase-card:hover .showcase-cta,
@@ -809,7 +1661,7 @@ html[data-theme='light'] .capability-row:nth-child(-n+5) {
   transform: scaleX(1);
 }
 
-/* ── Capability tag — accent fill on hover ─────────────────────────────── */
+/* Capability tag, accent fill on hover */
 .skill-pill {
   position: relative;
   overflow: hidden;
@@ -856,4 +1708,3 @@ html[data-theme='light'] .capability-row:nth-child(-n+5) {
     transition: none;
   }
 }
-
