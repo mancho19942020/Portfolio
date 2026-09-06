@@ -24,6 +24,15 @@ export const NavBar: React.FC = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
+  const goBack = () => {
+    const routerHistoryIndex = window.history.state?.idx;
+    if (typeof routerHistoryIndex === 'number' && routerHistoryIndex > 0) {
+      navigate(-1);
+      return;
+    }
+    navigate('/');
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/50 bg-zinc-950/90 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-3 md:px-5 h-16 flex items-center justify-between">
@@ -34,7 +43,7 @@ export const NavBar: React.FC = () => {
             </span>
           ) : (
             <button
-              onClick={() => navigate('/')}
+              onClick={goBack}
               className="glow-reactive glow-button flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />

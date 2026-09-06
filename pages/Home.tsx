@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { NavBar } from '../components/NavBar';
 import { ScrollReveal } from '../components/ScrollReveal';
 import { ToolsCarousel } from '../components/ToolsCarousel';
@@ -114,32 +114,6 @@ export const Home: React.FC = () => {
   const orderedProjects = PROJECTS
     .filter(p => projectOrder.includes(p.id))
     .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
-
-  // Restore scroll position on return from project detail
-  useEffect(() => {
-    const targetId = sessionStorage.getItem('scroll-target');
-    if (!targetId) return;
-
-    const tryScroll = () => {
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ block: 'start' });
-        sessionStorage.removeItem('scroll-target');
-        sessionStorage.removeItem('scroll-home');
-        return true;
-      }
-      return false;
-    };
-
-    if (tryScroll()) return;
-    const retry = setTimeout(() => {
-      if (!tryScroll()) {
-        sessionStorage.removeItem('scroll-target');
-        sessionStorage.removeItem('scroll-home');
-      }
-    }, 200);
-    return () => clearTimeout(retry);
-  }, []);
 
   const scrollToSection = (id: string) => {
     smoothScrollToElement(id);

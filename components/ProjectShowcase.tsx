@@ -1,8 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Project } from '../types';
+import { saveScrollPosition, scrollEntryKey } from './SmoothScroll';
 
 interface ProjectShowcaseProps {
   project: Project;
@@ -15,6 +16,7 @@ interface ProjectShowcaseProps {
  * on mobile.
  */
 export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index }) => {
+  const location = useLocation();
   const previewImage =
     project.coverImage ?? project.images[project.previewImageIndex ?? 0] ?? project.images[0];
 
@@ -35,8 +37,10 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index
       <Link
         to={`/project/${project.id}`}
         onClick={() => {
-          sessionStorage.setItem('scroll-home', String(window.scrollY));
-          sessionStorage.setItem('scroll-target', `project-${project.id}`);
+          saveScrollPosition(
+            scrollEntryKey(location.key, location.pathname, location.search),
+            window.scrollY,
+          );
         }}
         id={`project-${project.id}`}
         className="block h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-strong)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"

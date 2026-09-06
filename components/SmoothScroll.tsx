@@ -8,6 +8,24 @@ import Lenis from 'lenis';
  */
 let lenisInstance: Lenis | null = null;
 
+const SCROLL_POSITION_PREFIX = 'portfolio-scroll-position:';
+
+export function scrollEntryKey(locationKey: string, pathname: string, search = '') {
+  return `${locationKey}:${pathname}${search}`;
+}
+
+export function saveScrollPosition(entryKey: string, y = window.scrollY) {
+  sessionStorage.setItem(`${SCROLL_POSITION_PREFIX}${entryKey}`, String(y));
+}
+
+export function getScrollPosition(entryKey: string) {
+  const stored = sessionStorage.getItem(`${SCROLL_POSITION_PREFIX}${entryKey}`);
+  if (stored === null) return null;
+
+  const y = Number(stored);
+  return Number.isFinite(y) ? y : null;
+}
+
 /**
  * Smooth-scroll to a DOM element by id, accounting for the fixed nav.
  * Falls back to native `scrollIntoView` if Lenis hasn't initialized yet
@@ -40,7 +58,7 @@ export function instantScrollTo(y: number) {
 /**
  * Mount once near the root. Initializes Lenis (lerp-interpolated smooth
  * scrolling) on the document, drives the rAF loop, and tears down on
- * unmount. `syncTouch: false` keeps mobile touch scrolling native — Lenis
+ * unmount. `syncTouch: false` keeps mobile touch scrolling native, Lenis
  * smoothing on touch usually feels worse than the platform's own inertia.
  */
 export const SmoothScroll: React.FC = () => {
@@ -48,7 +66,7 @@ export const SmoothScroll: React.FC = () => {
     const reduced =
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return; // honor user preference — no smoothing
+    if (reduced) return; // honor user preference, no smoothing
 
     const lenis = new Lenis({
       duration: 1.2,
