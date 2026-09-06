@@ -9,21 +9,43 @@ import Lenis from 'lenis';
 let lenisInstance: Lenis | null = null;
 
 const SCROLL_POSITION_PREFIX = 'portfolio-scroll-position:';
+const lockedScrollEntries = new Set<string>();
+
+export type ScrollSnapshot = {
+  y: number;
+  anchorId?: string;
+  anchorOffset?: number;
+};
 
 export function scrollEntryKey(locationKey: string, pathname: string, search = '') {
   return `${locationKey}:${pathname}${search}`;
 }
 
 export function saveScrollPosition(entryKey: string, y = window.scrollY) {
-  sessionStorage.setItem(`${SCROLL_POSITION_PREFIX}${entryKey}`, String(y));
+  if (lockedScrollEntries.has(entryKey)) return;
+  sessionStorage.setItem(`${SCROLL_POSITION_PREFIX}${entryKey}`, JSON.stringify({ y }));
+}
+
+export function lockScrollPosition(entryKey: string, snapshot: ScrollSnapshot) {
+  sessionStorage.setItem(`${SCROLL_POSITION_PREFIX}${entryKey}`, JSON.stringify(snapshot));
+  lockedScrollEntries.add(entryKey);
+}
+
+export function unlockScrollPosition(entryKey: string) {
+  lockedScrollEntries.delete(entryKey);
 }
 
 export function getScrollPosition(entryKey: string) {
   const stored = sessionStorage.getItem(`${SCROLL_POSITION_PREFIX}${entryKey}`);
   if (stored === null) return null;
 
-  const y = Number(stored);
-  return Number.isFinite(y) ? y : null;
+  try {
+    const parsed = JSON.parse(stored) as ScrollSnapshot;
+    return Number.isFinite(parsed.y) ? parsed : null;
+  } catch {
+    const legacyY = Number(stored);
+    return Number.isFinite(legacyY) ? { y: legacyY } : null;
+  }
 }
 
 /**

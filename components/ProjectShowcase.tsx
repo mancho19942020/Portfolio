@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import type { Project } from '../types';
-import { saveScrollPosition, scrollEntryKey } from './SmoothScroll';
+import { lockScrollPosition, scrollEntryKey } from './SmoothScroll';
 
 interface ProjectShowcaseProps {
   project: Project;
@@ -36,10 +36,14 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index
     >
       <Link
         to={`/project/${project.id}`}
-        onClick={() => {
-          saveScrollPosition(
+        onClick={(event) => {
+          lockScrollPosition(
             scrollEntryKey(location.key, location.pathname, location.search),
-            window.scrollY,
+            {
+              y: window.scrollY,
+              anchorId: `project-${project.id}`,
+              anchorOffset: event.currentTarget.getBoundingClientRect().top,
+            },
           );
         }}
         id={`project-${project.id}`}

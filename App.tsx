@@ -10,6 +10,7 @@ import {
   instantScrollTo,
   saveScrollPosition,
   scrollEntryKey,
+  unlockScrollPosition,
 } from './components/SmoothScroll';
 
 // Each browser-history entry keeps its own exact position. POP navigation
@@ -43,9 +44,51 @@ const ScrollManager = () => {
   }, []);
 
   useLayoutEffect(() => {
+    const isRouteChange = activeEntryKey.current !== entryKey;
     activeEntryKey.current = entryKey;
-    const savedPosition = navigationType === 'POP' ? getScrollPosition(entryKey) : null;
-    instantScrollTo(savedPosition ?? 0);
+    const snapshot =
+      isRouteChange && navigationType === 'POP' ? getScrollPosition(entryKey) : null;
+    const stabilizationTimers: number[] = [];
+    let targetY = snapshot?.y ?? 0;
+
+    const restore = () => {
+      instantScrollTo(targetY);
+    };
+
+    if (snapshot) {
+      restore();
+
+      const settle = (resolveAnchor: boolean, isFinal: boolean) => {
+        if (resolveAnchor && snapshot.anchorId && Number.isFinite(snapshot.anchorOffset)) {
+          const anchor = document.getElementById(snapshot.anchorId);
+          if (anchor) {
+            targetY = window.scrollY + anchor.getBoundingClientRect().top - snapshot.anchorOffset!;
+          }
+        }
+
+        restore();
+        if (isFinal) unlockScrollPosition(entryKey);
+      };
+
+      // Hash history and Lenis can both emit late position updates after the
+      // route commits. Reapply the same instant frame while they settle.
+      [0, 50, 150, 350, 700].forEach((delay, index, delays) => {
+        stabilizationTimers.push(
+          window.setTimeout(
+            () => settle(index === 1, index === delays.length - 1),
+            delay,
+          ),
+        );
+      });
+    } else {
+      restore();
+      unlockScrollPosition(entryKey);
+    }
+
+    return () => {
+      stabilizationTimers.forEach((timer) => window.clearTimeout(timer));
+      unlockScrollPosition(entryKey);
+    };
   }, [entryKey, navigationType]);
 
   return null;
