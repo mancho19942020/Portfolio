@@ -631,7 +631,7 @@ export const PROJECTS: Project[] = [
     id: "8020-property-list",
     title: "Property view",
     showcaseTitle: "Investors were leaving the product to make a decision.",
-    showcasePreview: "Investors were leaving the platform to validate opportunities. I reorganized the list and detail view around the signals they needed, increasing property-related usage by 50%.",
+    showcasePreview: "Investors were leaving the platform to validate opportunities. I reorganized the list and detail view around the signals they needed, increasing daily active users (DAU) by 50%.",
     subtitle: "From data exporter to decision environment",
     category: "8020REI",
     type: "Workflow Optimization",
@@ -700,7 +700,7 @@ export const PROJECTS: Project[] = [
         "Improved bulk actions and data export flows"
       ],
       outcome: [
-        "Increased platform usage related to properties by 50%",
+        "Increased daily active users (DAU) by 50%",
         "Achieved over 70% positive feedback in post-interaction CSAT surveys",
         "Reduced bugs, claims, and reported issues by approximately 80%",
         "Increased engagement with views and filters in nearly 60% of sessions",
@@ -762,13 +762,13 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 05",
-          title: "Property usage increased by 50%",
+          title: "Daily active users increased by 50%",
           paragraphs: [
-            "Usage increased by 50%, post-interaction feedback was more than 70% positive, and reported issues fell by about 80%.",
+            "Daily active users increased by 50%, post-interaction feedback was more than 70% positive, and reported issues fell by about 80%.",
             "The next question is whether this deeper use also improves investment decisions."
           ],
           highlights: [
-            "50% increase in property-related usage",
+            "50% increase in daily active users (DAU)",
             "70%+ positive CSAT on post-interaction surveys",
             "Around 80% reduction in bugs and reported issues"
           ]
@@ -1295,7 +1295,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     description: [
       "Lead product strategy, research, interaction design, delivery, and measurement for data-heavy B2B SaaS",
       "Design and build production interfaces with React, Next.js, Vue, Nuxt, and TypeScript",
-      "Increased property-related usage by 50%, reached 70%+ positive in-product CSAT, and reduced reported issues by about 80%",
+      "Increased daily active users (DAU) by 50%, reached 70%+ positive in-product CSAT, and reduced reported issues by about 80%",
       "Built Metrics Hub from zero to one, connecting six data sources into 91 widgets across 11 business areas",
       "Co-built multi-brand design systems and helped ship a self-serve SaaS vertical to production in six weeks"
     ]
@@ -1306,7 +1306,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: "Aug 2022 – Jun 2024",
     location: "Hybrid · Colombia",
     description: [
-      "Worked across product, growth, and brand, with scope that expanded into a formal Product Designer role in Aug 2023",
+      "Led product design across acquisition, internal operations, customer service, and research for Colombia and Mexico",
       "Led discovery, behavioral analysis, IA, interaction design, prototyping, and experimentation for acquisition and internal tools",
       "Reduced a mobile-first funnel from 11 screens to 7 and increased qualified lead conversion by 30% through A/B testing",
       "Designed a role-based operations platform for commercial and zone leaders managing teams and territories",

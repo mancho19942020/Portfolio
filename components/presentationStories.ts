@@ -219,7 +219,7 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       'The release was evaluated through product usage, satisfaction, and issue volume.',
     ],
     observed: [
-      '50% increase in property usage',
+      '50% increase in daily active users (DAU)',
       'More than 70% positive post-interaction satisfaction',
       'About 80% fewer bugs, claims, and related issues',
       'Views and filters used in nearly 60% of sessions',

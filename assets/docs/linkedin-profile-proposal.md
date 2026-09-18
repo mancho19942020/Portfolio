@@ -24,7 +24,7 @@ Recently, I've helped ship a self-serve SaaS platform in six weeks, built an int
 
 I lead end-to-end product design across product strategy, discovery, UX research, interaction design, design systems, product analytics, and hands-on implementation. I work with Product, Engineering, Data, Customer Success, and leadership to take complex, data-heavy products from an ambiguous problem to production and measurable iteration.
 
-- Redesigned core property-data experiences, increasing property-related usage by 50%, reaching 70%+ positive in-product CSAT, and reducing reported bugs and issues by approximately 80%.
+- Redesigned core property-data experiences, increasing daily active users (DAU) by 50%, reaching 70%+ positive in-product CSAT, and reducing reported bugs and issues by approximately 80%.
 - Designed and built Metrics Hub from zero to one, connecting six data sources into 91 widgets across 11 business areas. It exposed a provider-status conflict blocking client mailings; resolving it restored mail volume and recovered revenue. After five API blockers were fixed, API activity increased 3x.
 - Helped take 8020ROOF from a manual spreadsheet operation to a production self-serve SaaS platform in six weeks. In a three-person team, I led product UX/UI, built interfaces directly in code, created reusable components, and validated the product with two pilot clients.
 - Co-built Phoenix, a production multi-brand design system for four products: 124 shared tokens, 82 live catalog components and shells, automated accessibility and quality gates, and 64 duplicate component files retired.
@@ -38,7 +38,7 @@ I lead end-to-end product design across product strategy, discovery, UX research
 
 **Location:** Hybrid | Bogota, Colombia
 
-Worked across product, growth, and brand, taking on product-design scope from the start and moving into a formal Product Designer role in August 2023. Partnered with Product, Engineering, Growth, Marketing, and Operations on acquisition, internal tools, customer-service workflows, and research for Colombia and Mexico.
+Led product design across acquisition, internal operations, customer-service workflows, and research for Habi's PropTech products in Colombia and Mexico. Partnered with Product, Engineering, Growth, Marketing, and Operations to turn user behavior and business requirements into testable product decisions.
 
 - Led discovery, behavioral analysis, information architecture, interaction design, prototyping, and experimentation across acquisition and internal-operations workflows.
 - Redesigned a mobile-first acquisition journey for the Mexico market, reducing the flow from 11 screens to 7 through progressive disclosure and A/B testing; qualified lead conversion increased by 30%.
@@ -61,11 +61,11 @@ Secondary skills: Mobile Design, A/B Testing, Design Systems, Data Visualization
 - Confirm the Habi 30% metric's test window, baseline, sample size, and long-term lead-quality result before using those details in interviews.
 - Confirm whether the AI-assisted prefill in the Habi funnel shipped or remained a design proposal. It is intentionally omitted here.
 - Confirm whether the Habi operations platform shipped and whether there is an observed outcome. This copy says "designed," not "shipped."
-- Keep the 8020REI metric labeled "property-related usage," not DAU, until the exact definition is confirmed.
+- Use "daily active users (DAU) increased by 50%" consistently when describing the Property View result.
 - Keep the Metrics Hub result labeled "API activity increased 3x," not adoption, until the denominator and period are confirmed.
 - Do not state a recovered-revenue amount unless there is a verified, shareable source.
 - Confirm that the Phoenix count should be presented as four products/brands in public material.
 
 ## Source-of-truth rule
 
-Use the same metric wording everywhere. A target is not an outcome, activity is not adoption, and property-related usage is not necessarily DAU. The portfolio and CV now use the conservative wording above.
+Use the same metric wording everywhere. A target is not an outcome, activity is not adoption, and every percentage should retain its metric name, baseline, and measurement window. The portfolio and CV now use DAU, CSAT, and reported-issue reduction consistently.
