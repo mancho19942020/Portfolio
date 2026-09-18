@@ -463,7 +463,7 @@ export const PROJECTS: Project[] = [
     subtitle: "From rules engine to guided decisions",
     category: "8020REI",
     type: "Complex Interaction Design",
-    role: "Product Designer",
+    role: "Senior Product Designer",
     duration: "2 months",
     tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics", "ChatGPT", "Zoom"],
     tags: ["Data Visualization", "Filtering Logic", "Legacy Redesign"],
@@ -476,7 +476,7 @@ export const PROJECTS: Project[] = [
         summary: "Redesigned the BuyBox editor after churn feedback and Customer Success escalations linked configuration problems to poor list quality and misaligned marketing output. The goal was to turn a dense rules engine into a guided decision system aligned with marketing capacity, market opportunity, and investor goals."
       },
       role: {
-        title: "Product Designer",
+        title: "Senior Product Designer",
         responsibilities: [
           "Research and stakeholder alignment",
           "Experience strategy and information architecture",
@@ -837,7 +837,7 @@ export const PROJECTS: Project[] = [
       businessProblem: "Business-critical data was distributed across six systems, leaving Product, Customer Success, and Operations to make decisions with partial evidence.",
       discoveryAndConstraints: "I mapped source ownership, access risks, costs, and the business questions behind each metric before defining the information architecture. The platform had to use existing infrastructure and work for non-technical teams.",
       keyDesignDecision: "Create a role-aware, widget-based workspace with a three-level navigation model and reusable metric patterns, so analytical depth did not come at the cost of comprehension.",
-      observedImpact: "Within the first month, the connected view revealed a mail-provider status conflict that was blocking client letters. Resolving it restored mail volume and recovered revenue. A client-requested API built on the platform reached 3x adoption."
+      observedImpact: "Within the first month, the connected view revealed a mail-provider status conflict that was blocking client letters. Resolving it restored mail volume and recovered revenue. After five blockers were fixed, activity in a client-requested API increased 3x."
     },
     narrative: {
       introduction: {
@@ -978,7 +978,7 @@ export const PROJECTS: Project[] = [
   {
     id: "habi-funnels",
     title: "Smart funnel",
-    showcaseTitle: "Optimizing the funnel experience.",
+    showcaseTitle: "Fewer screens, more qualified leads.",
     showcasePreview: "I used behavior data to find where people lost momentum, then simplified the mobile journey from 11 screens to 7. Qualified lead conversion increased by 30%.",
     subtitle: "Mobile-first acquisition funnel",
     category: "Habi",
@@ -1293,28 +1293,24 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: "Jun 2024 – Present",
     location: "Remote · U.S.-based SaaS",
     description: [
-      "Leading end-to-end product design for a B2B real estate data platform",
-      "Owns strategy, discovery, execution, and delivery across initiatives",
-      "Designs complex, data-heavy workflows for investor operations",
-      "Develops and maintains the Kairo design system",
-      "Leads cross-functional work with Product, Engineering, CS, and Execs"
+      "Lead product strategy, research, interaction design, delivery, and measurement for data-heavy B2B SaaS",
+      "Design and build production interfaces with React, Next.js, Vue, Nuxt, and TypeScript",
+      "Increased property-related usage by 50%, reached 70%+ positive in-product CSAT, and reduced reported issues by about 80%",
+      "Built Metrics Hub from zero to one, connecting six data sources into 91 widgets across 11 business areas",
+      "Co-built multi-brand design systems and helped ship a self-serve SaaS vertical to production in six weeks"
     ]
   },
   {
     company: "Habi",
     role: "Product Designer",
-    period: "Aug 2023 – Jun 2024",
+    period: "Aug 2022 – Jun 2024",
     location: "Hybrid · Colombia",
-    secondaryRole: "Creative Designer",
-    secondaryPeriod: "Aug 2022 – Aug 2023",
-    secondaryLocation: "",
     description: [
-      "Design and audit the acquisition funnel experience",
-      "Design internal operations tools",
-      "Build and iterate AI customer service prompts",
-      "UX research with cross-functional teams",
-      "Brand and marketing systems",
-      "Campaign and visual communication across channels"
+      "Worked across product, growth, and brand, with scope that expanded into a formal Product Designer role in Aug 2023",
+      "Led discovery, behavioral analysis, IA, interaction design, prototyping, and experimentation for acquisition and internal tools",
+      "Reduced a mobile-first funnel from 11 screens to 7 and increased qualified lead conversion by 30% through A/B testing",
+      "Designed a role-based operations platform for commercial and zone leaders managing teams and territories",
+      "Conducted cross-functional UX research and built and iterated AI-assisted customer-service prompts"
     ]
   },
   {
@@ -1342,15 +1338,15 @@ export const EXPERIENCE: ExperienceItem[] = [
 
 export const SKILLS: SkillGroup[] = [
   {
-    category: "Core Strategy",
-    items: ["UX Strategy", "UX Research", "Vibecoding", "Collaboration"]
+    category: "Product Design",
+    items: ["Product Strategy", "UX Research", "Interaction Design", "Mobile Product Design", "0-to-1 Products", "Design Systems"]
   },
   {
-    category: "AI & Tools",
-    items: ["Figma", "Figma Make", "ChatGPT Codex", "Claude Code", "Gemini", "Cursor", "Adobe Suite"]
+    category: "Data & Delivery",
+    items: ["Product Analytics", "A/B Testing", "Data Visualization", "Code-based Prototyping", "Production Delivery", "Cross-functional Leadership"]
   },
   {
-    category: "Technical",
-    items: ["React", "Tailwind CSS", "Next.js", "Nuxt", "Google Cloud BigQuery", "AWS", "Terminal (Warp)", "Git", "GitHub"]
+    category: "Technology",
+    items: ["Figma", "React", "Next.js", "Vue", "Nuxt", "TypeScript", "Tailwind CSS", "BigQuery", "AWS", "Git & GitHub", "AI-assisted Development"]
   }
 ];

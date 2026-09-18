@@ -99,16 +99,16 @@ const CAPABILITIES = [
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export const Home: React.FC = () => {
-  // Explicit cross-category showcase order. Projects not listed (e.g. DM
-  // campaign) are excluded from the home stack.
+  // Lead with shipped products and observed outcomes. Concept-only work is
+  // intentionally excluded from the home stack.
   const projectOrder = [
-    "phoenix",
     "8020-roof",
-    "habi-funnels",
-    "8020-buybox",
     "8020-metrics-hub",
+    "habi-funnels",
     "8020-property-list",
-    "freelance-1",
+    "phoenix",
+    "8020-dm-campaign",
+    "8020-buybox",
   ];
 
   const orderedProjects = PROJECTS
@@ -154,7 +154,7 @@ export const Home: React.FC = () => {
               className="px-6 sm:px-10 md:px-20 flex flex-col gap-5 md:gap-6"
             >
               <p className="text-base md:text-lg text-zinc-400 max-w-xl leading-relaxed font-light">
-                I design complex B2B web platforms and mobile-first acquisition journeys through scalable design systems and code-based prototyping.
+                I design and build data-heavy B2B SaaS and mobile-first products, from research and metrics to production code.
               </p>
 
               <div className="flex items-center gap-4">
@@ -212,16 +212,16 @@ export const Home: React.FC = () => {
             segments={[
               {
                 text:
-                  "I'm a product designer who turns complex data and vague business problems into practical products for the people using them and, increasingly, the AI agents that support them. I work across ",
+                  "I'm a product designer and builder who turns complex data and ambiguous business problems into products teams can ship, measure, and improve. I work across ",
               },
               {
                 text:
-                  'real-estate intelligence, marketing-pipeline tools, and AI-assisted product workflows',
+                  'research, product analytics, mobile journeys, design systems, and frontend implementation',
                 accent: true,
               },
               {
                 text:
-                  '. I like working methodically: turning conversations full of ambiguous ideas into milestones, owners, and a plan the team can actually ship.',
+                  '. I stay close from discovery through production, using evidence and technical constraints to turn ideas into practical products.',
               },
             ]}
           />
@@ -237,10 +237,10 @@ export const Home: React.FC = () => {
                   <SectionLabel>About</SectionLabel>
                 </div>
                 <p className="text-zinc-300 leading-relaxed text-lg md:text-xl font-light">
-                  Senior Product Designer who turns ambiguous business and data problems into research-informed,
-                  scalable B2B SaaS products. I connect business decisions, complex data, and intuitive interfaces
-                  across acquisition journeys, internal operations, and data-heavy workflows. My work is grounded in
-                  research, checked against data, and carried through to production.
+                  Senior Product Designer and product builder working across research, product analytics, interaction
+                  design, mobile-first journeys, design systems, and hands-on frontend implementation. I connect user
+                  needs, business decisions, and technical constraints, then stay involved through production and
+                  measurable iteration.
                 </p>
                 <div className="mt-10 space-y-4">
                   <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</h3>

@@ -137,7 +137,7 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       'Early client conversations shaped the workflow before broader expansion.',
     ],
     observed: [
-      '12 active clients in the early release',
+      '12 clients adopted the early release',
       'Teams reported faster outreach and less operational friction',
       'Two trigger models supported in one campaign experience',
     ],
