@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Moon, Sun, Linkedin, Download, Mail } from 'lucide-react';
-import cvPdf from '../assets/docs/german-david-alvarez-cv.pdf';
+
+const CV_PDF_PATH = '/German-David-Alvarez-CV.pdf';
 
 export const NavBar: React.FC = () => {
   const location = useLocation();
@@ -73,8 +74,8 @@ export const NavBar: React.FC = () => {
             <span className="hidden md:inline">LinkedIn</span>
           </a>
           <a
-            href={cvPdf}
-            download
+            href={CV_PDF_PATH}
+            download="German-David-Alvarez-CV.pdf"
             className="glow-reactive glow-button btn-outline flex items-center gap-1.5 px-2.5 md:px-3.5 py-1.5 rounded-full border border-zinc-800 text-[11px] font-semibold text-zinc-400 transition-colors"
             aria-label="Download CV"
           >

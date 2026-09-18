@@ -6,7 +6,7 @@ import { dirname, resolve } from 'node:path';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = resolve(__dirname, '..');
 const htmlPath = resolve(root, 'assets/docs/german-david-alvarez-cv.html');
-const pdfPath = resolve(root, 'assets/docs/german-david-alvarez-cv.pdf');
+const pdfPath = resolve(root, 'public/German-David-Alvarez-CV.pdf');
 
 const chromeCandidates = [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',

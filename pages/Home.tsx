@@ -11,7 +11,8 @@ import { smoothScrollToElement } from '../components/SmoothScroll';
 import { PROJECTS, EXPERIENCE, SKILLS } from '../constants';
 import { ArrowDown, ChevronDown, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import cvPdf from '../assets/docs/german-david-alvarez-cv.pdf';
+
+const CV_PDF_PATH = '/German-David-Alvarez-CV.pdf';
 
 type ExperienceItem = (typeof EXPERIENCE)[number];
 type ExperienceItemWithSecondary = ExperienceItem & {
@@ -357,8 +358,8 @@ export const Home: React.FC = () => {
               </div>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
-                  href={cvPdf}
-                  download="German David Alvarez CV.pdf"
+                  href={CV_PDF_PATH}
+                  download="German-David-Alvarez-CV.pdf"
                   className="glow-reactive glow-button btn-outline inline-flex items-center justify-center gap-2 px-10 py-4 border border-zinc-800 font-semibold rounded-full transition-colors text-base w-full sm:w-auto whitespace-nowrap"
                   aria-label="Download CV"
                 >
