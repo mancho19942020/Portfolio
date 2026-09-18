@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 
 import { ImageLightbox } from './ImageLightbox';
+import { LoadingImage } from './LoadingImage';
 import logoDark from '../assets/logos/8020roof/8020roof-dark.svg';
 import logoLight from '../assets/logos/8020roof/8020roof-light.svg';
 import imgDashboard from '../assets/projects/8020roof/dashboard.webp';
@@ -175,7 +176,13 @@ const Frame: React.FC<{
         onClick={onClick}
         className={`group relative rounded-2xl border border-zinc-800 bg-zinc-900/40 overflow-hidden text-left ${onClick ? 'cursor-zoom-in' : ''} ${className}`}
       >
-        <img src={src} alt={alt ?? ''} className="w-full h-full object-cover" loading="lazy" />
+        <LoadingImage
+          src={src}
+          alt={alt ?? ''}
+          wrapperClassName="h-full w-full"
+          className="h-full w-full object-cover"
+          loading="lazy"
+        />
         {onClick ? (
           <span className="absolute top-2 right-2 w-7 h-7 rounded-full bg-black/55 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">
             <Maximize2 className="w-3.5 h-3.5" />
@@ -782,11 +789,12 @@ const SLIDES: SlideDef[] = [
               rel="noreferrer"
               className="glow-reactive group relative block rounded-2xl border border-zinc-800 bg-zinc-900/40 overflow-hidden aspect-[4/3] w-full"
             >
-              <img
+              <LoadingImage
                 src={imgResearchCover}
                 alt="8020ROOF UX research knowledge base, a 16-slide readout"
                 loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                wrapperClassName="h-full w-full"
+                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />
               <span
                 aria-hidden

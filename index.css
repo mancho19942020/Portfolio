@@ -30,6 +30,35 @@ html.lenis body {
   pointer-events: none;
 }
 
+/* Image placeholders preserve visual feedback while large case-study assets load. */
+.image-skeleton {
+  overflow: hidden;
+  background: linear-gradient(135deg, #18181b 0%, #27272a 50%, #18181b 100%);
+}
+
+.image-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.09), transparent);
+  animation: image-skeleton-shimmer 1.35s ease-in-out infinite;
+}
+
+html[data-theme='light'] .image-skeleton {
+  background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 50%, #e5e7eb 100%);
+}
+
+html[data-theme='light'] .image-skeleton::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.68), transparent);
+}
+
+@keyframes image-skeleton-shimmer {
+  to {
+    transform: translateX(100%);
+  }
+}
+
 :root {
   --app-bg: #f4f5f7;
   --app-bg-gradient: radial-gradient(circle at 50% -20%, #ffffff 0%, #f4f5f7 70%),
@@ -627,7 +656,7 @@ html[data-theme='dark'] {
   transform: scale(1.018);
 }
 
-.presentation-image span {
+.presentation-image-caption {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -1701,6 +1730,10 @@ html[data-theme='light'] .capability-row:nth-child(-n+5) {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .image-skeleton::after {
+    animation: none;
+  }
+
   .display-marquee-track {
     animation: none;
   }

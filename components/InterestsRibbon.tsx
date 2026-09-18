@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, Gamepad2, Film, Dumbbell, Dog, Apple, Heart } from 'lucide-react';
+import { X, Gamepad2, Film, Dumbbell, Dog, Apple, Heart, Copy, Check } from 'lucide-react';
 import { SectionLabel } from './SectionLabel';
+import { lockPageScroll, unlockPageScroll } from './SmoothScroll';
 
 type InterestId = 'pong' | 'movies' | 'fitness' | 'pet';
 
@@ -75,6 +76,7 @@ interface Recommendation {
   vibe: Vibe;
   format: Format;
   title: string;
+  creator: string;
   year: number;
   runtimeMinutes?: number;
   seasons?: number;
@@ -109,6 +111,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'light',
     format: 'movie',
     title: 'The Grand Budapest Hotel',
+    creator: 'Wes Anderson',
     year: 2014,
     runtimeMinutes: 100,
     summary: 'A whimsical concierge and his protege are swept into a theft, a family fortune, and a rapidly changing Europe.',
@@ -122,6 +125,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'thoughtful',
     format: 'movie',
     title: 'Her',
+    creator: 'Spike Jonze',
     year: 2013,
     runtimeMinutes: 126,
     summary: 'In a near-future Los Angeles, a lonely writer falls in love with a sophisticated AI operating system.',
@@ -135,6 +139,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'animated',
     format: 'movie',
     title: 'Spider-Man: Into the Spider-Verse',
+    creator: 'Bob Persichetti, Peter Ramsey & Rodney Rothman',
     year: 2018,
     runtimeMinutes: 117,
     summary: 'Teenager Miles Morales becomes Spider-Man and joins other Spider-heroes to stop a multiverse threat.',
@@ -148,6 +153,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'action',
     format: 'movie',
     title: 'Mad Max: Fury Road',
+    creator: 'George Miller',
     year: 2015,
     runtimeMinutes: 120,
     summary: 'In a post-apocalyptic wasteland, Max and Furiosa flee a tyrant across the desert.',
@@ -161,6 +167,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'horror',
     format: 'movie',
     title: 'Get Out',
+    creator: 'Jordan Peele',
     year: 2017,
     runtimeMinutes: 104,
     summary: 'A Black man visiting his girlfriend\'s family uncovers a disturbing secret beneath their hospitality.',
@@ -174,6 +181,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'comfort',
     format: 'series',
     title: 'Ted Lasso',
+    creator: 'Bill Lawrence, Jason Sudeikis, Joe Kelly & Brendan Hunt',
     year: 2020,
     seasons: 3,
     episodes: 34,
@@ -188,6 +196,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'thoughtful',
     format: 'series',
     title: 'The Queen\'s Gambit',
+    creator: 'Scott Frank & Allan Scott',
     year: 2020,
     seasons: 1,
     episodes: 7,
@@ -202,6 +211,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'intense',
     format: 'series',
     title: 'Chernobyl',
+    creator: 'Craig Mazin',
     year: 2019,
     seasons: 1,
     episodes: 5,
@@ -216,6 +226,7 @@ const RECOMMENDATIONS: Recommendation[] = [
     vibe: 'animated',
     format: 'series',
     title: 'Avatar: The Last Airbender',
+    creator: 'Michael Dante DiMartino & Bryan Konietzko',
     year: 2005,
     seasons: 3,
     episodes: 61,
@@ -232,6 +243,7 @@ const MoodTracker: React.FC = () => {
   const [vibe, setVibe] = useState<Vibe>('light');
   const [format, setFormat] = useState<Format>('movie');
   const [result, setResult] = useState<Recommendation | null>(null);
+  const [copied, setCopied] = useState(false);
 
   const buildRecommendation = () => {
     const match = RECOMMENDATIONS.find(
@@ -246,6 +258,29 @@ const MoodTracker: React.FC = () => {
     ?? RECOMMENDATIONS[0];
 
     setResult(match);
+    setCopied(false);
+  };
+
+  const copyRecommendation = async () => {
+    if (!result) return;
+    const creatorLabel = result.format === 'movie' ? 'Directed by' : 'Created by';
+    const copyValue = `${result.title} (${result.year}) — ${creatorLabel} ${result.creator}`;
+
+    try {
+      await navigator.clipboard.writeText(copyValue);
+    } catch {
+      const textArea = document.createElement('textarea');
+      textArea.value = copyValue;
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      textArea.remove();
+    }
+
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1800);
   };
 
   return (
@@ -323,8 +358,24 @@ const MoodTracker: React.FC = () => {
             <span>{SESSION_LABELS[result.session]}</span>
           </div>
           <div className="mt-4 space-y-3">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <div className="text-lg font-semibold text-zinc-100">{result.title}</div>
+                <div className="mt-1 text-xs text-zinc-400">
+                  {result.format === 'movie' ? 'Directed by' : 'Created by'} {result.creator}
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={copyRecommendation}
+                className="glow-reactive glow-button btn-outline inline-flex items-center gap-2 rounded-full border border-zinc-800 px-3 py-2 text-xs font-semibold text-zinc-300 transition-colors"
+                aria-label={`Copy ${result.title} and creator`}
+              >
+                {copied ? <Check className="h-3.5 w-3.5" aria-hidden="true" /> : <Copy className="h-3.5 w-3.5" aria-hidden="true" />}
+                {copied ? 'Copied' : 'Copy title'}
+              </button>
+            </div>
             <div>
-              <div className="text-lg font-semibold text-zinc-100">{result.title}</div>
               <div className="mt-1 text-xs font-medium text-zinc-500">
                 {result.format === 'movie'
                   ? `${result.runtimeMinutes} min | ${result.year}`
@@ -429,7 +480,7 @@ const FitnessPlan: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-x-4 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
         <label className="space-y-2 text-sm font-medium text-zinc-300">
           Goal
           <select
@@ -456,6 +507,18 @@ const FitnessPlan: React.FC = () => {
           </select>
         </label>
         <label className="space-y-2 text-sm font-medium text-zinc-300">
+          Experience
+          <select
+            value={level}
+            onChange={(event) => setLevel(event.target.value)}
+            className="mt-2 w-full rounded-md border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm font-sans text-zinc-100 select-field"
+          >
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+        </label>
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Availability
           <select
             value={availability}
@@ -466,21 +529,6 @@ const FitnessPlan: React.FC = () => {
             <option value="3">3 days / week</option>
             <option value="4">4 days / week</option>
             <option value="5">5 days / week</option>
-          </select>
-        </label>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-4">
-        <label className="space-y-2 text-sm font-medium text-zinc-300">
-          Experience
-          <select
-            value={level}
-            onChange={(event) => setLevel(event.target.value)}
-            className="mt-2 w-full rounded-md border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm font-sans text-zinc-100 select-field"
-          >
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
           </select>
         </label>
         <label className="space-y-2 text-sm font-medium text-zinc-300">
@@ -516,16 +564,15 @@ const FitnessPlan: React.FC = () => {
             <option value="female">Female</option>
           </select>
         </label>
-      </div>
-
-      <div className="flex w-full justify-stretch md:justify-end">
-        <button
-          type="button"
-          onClick={() => setPlan(buildPlan)}
-          className="glow-reactive glow-button btn-primary inline-flex w-full items-center justify-center rounded-full px-6 py-3 font-semibold transition-colors md:w-auto"
-        >
-          Generate plan
-        </button>
+        <div className="flex items-end">
+          <button
+            type="button"
+            onClick={() => setPlan(buildPlan)}
+            className="glow-reactive glow-button btn-primary inline-flex min-h-[42px] w-full items-center justify-center rounded-full px-6 py-3 font-semibold transition-colors"
+          >
+            Generate plan
+          </button>
+        </div>
       </div>
 
       {plan ? (
@@ -1141,6 +1188,14 @@ const PongGame: React.FC = () => {
     resize();
     window.addEventListener('resize', resize);
 
+    const handleWheel = (event: WheelEvent) => {
+      event.preventDefault();
+      const deltaModeScale = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? canvas.height : 1;
+      const nextY = player.current.y + event.deltaY * deltaModeScale * 0.45;
+      player.current.y = Math.max(0, Math.min(canvas.height - player.current.h, nextY));
+    };
+    container.addEventListener('wheel', handleWheel, { passive: false });
+
     const resetBall = (direction: number) => {
       ball.current.x = canvas.width / 2;
       ball.current.y = canvas.height / 2;
@@ -1251,6 +1306,7 @@ const PongGame: React.FC = () => {
 
     return () => {
       window.removeEventListener('resize', resize);
+      container.removeEventListener('wheel', handleWheel);
       window.cancelAnimationFrame(rafId);
     };
   }, []);
@@ -1258,9 +1314,11 @@ const PongGame: React.FC = () => {
   useEffect(() => {
     const handleKey = (event: KeyboardEvent, isDown: boolean) => {
       if (event.key === 'ArrowUp' || event.key === 'w') {
+        event.preventDefault();
         keys.current.up = isDown;
       }
       if (event.key === 'ArrowDown' || event.key === 's') {
+        event.preventDefault();
         keys.current.down = isDown;
       }
     };
@@ -1343,7 +1401,7 @@ const PongGame: React.FC = () => {
         <canvas ref={canvasRef} className="block w-full rounded-lg" />
       </div>
       <p className="text-xs text-zinc-500">
-        Use Arrow Up/Down or W/S. Touch and drag to move the paddle on mobile.
+        Use the mouse wheel, Arrow Up/Down, or W/S. Touch and drag on mobile.
       </p>
     </div>
   );
@@ -1357,7 +1415,7 @@ const InterestModal: React.FC<{
   const tag = interest.tag ?? toHashTag(interest.action);
   return (
     <motion.div
-      className="fixed inset-0 z-[60] flex items-center justify-center px-4 py-8"
+      className="fixed inset-0 z-[60] flex items-center justify-center overscroll-none px-4 py-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -1368,11 +1426,15 @@ const InterestModal: React.FC<{
         aria-hidden="true"
       />
       <motion.div
+        data-lenis-prevent
         initial={{ opacity: 0, y: 20, scale: 0.98 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         exit={{ opacity: 0, y: 10, scale: 0.98 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-2xl border border-zinc-800 bg-zinc-950/90 p-6 text-zinc-100 shadow-2xl md:max-h-[90vh]"
+        className="relative z-10 w-full max-w-3xl max-h-[85vh] overflow-y-auto overscroll-contain rounded-2xl border border-zinc-800 bg-zinc-950/90 p-5 text-zinc-100 shadow-2xl sm:p-6 md:max-h-[90vh]"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`${interest.label} interactive tool`}
       >
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-3">
@@ -1410,13 +1472,9 @@ export const InterestsRibbon: React.FC = () => {
   const getPrefix = (item: InterestItem) => item.prefix ?? 'I like';
 
   useEffect(() => {
-    if (active) {
-      document.body.style.overflow = 'hidden';
-      return () => {
-        document.body.style.overflow = '';
-      };
-    }
-    return undefined;
+    if (!active) return undefined;
+    lockPageScroll();
+    return unlockPageScroll;
   }, [active]);
 
   const handleOpen = (interest: InterestItem) => {

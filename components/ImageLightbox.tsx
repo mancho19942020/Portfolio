@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, X, ZoomIn, ZoomOut } from 'lucide-react';
+import { lockPageScroll, unlockPageScroll } from './SmoothScroll';
 
 type LightboxImage = { src: string; alt: string };
 
@@ -26,6 +27,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
   const isOpen = index !== null;
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [imageLoaded, setImageLoaded] = useState(false);
   const backdropRef = useRef<HTMLDivElement>(null);
   const isZoomed = scale > MIN_SCALE;
 
@@ -52,7 +54,10 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
 
   // Reset zoom whenever the active image changes or the lightbox opens
   useEffect(() => {
-    if (isOpen) resetView();
+    if (isOpen) {
+      resetView();
+      setImageLoaded(false);
+    }
   }, [index, isOpen, resetView]);
 
   // Keyboard controls
@@ -70,14 +75,11 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
     return () => window.removeEventListener('keydown', handleKey);
   }, [isOpen, index, images.length, onClose, handleNavigate, zoomBy, resetView]);
 
-  // Lock body scroll while open
+  // Lock document + Lenis scroll while open.
   useEffect(() => {
     if (!isOpen) return;
-    const original = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = original;
-    };
+    lockPageScroll();
+    return unlockPageScroll;
   }, [isOpen]);
 
   // Wheel zoom, attached as non-passive so we can preventDefault
@@ -106,6 +108,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
       <motion.div
         key="lightbox"
         ref={backdropRef}
+        data-lenis-prevent
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -159,16 +162,17 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
 
         {/* Image stage */}
         <div
-          className="relative max-w-[92vw] max-h-[88vh] flex items-center justify-center"
+          className="relative min-h-[220px] w-[min(92vw,1100px)] max-h-[88vh] flex items-center justify-center overflow-hidden rounded-2xl"
           onClick={(e) => e.stopPropagation()}
         >
+          {!imageLoaded ? <div className="image-skeleton absolute inset-0" aria-hidden="true" /> : null}
           <AnimatePresence mode="wait">
             <motion.img
               key={index}
               src={current.src}
               alt={current.alt}
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1, scale, x: position.x, y: position.y }}
+              animate={{ opacity: imageLoaded ? 1 : 0, scale, x: position.x, y: position.y }}
               exit={{ opacity: 0 }}
               transition={{
                 opacity: { duration: 0.18 },
@@ -200,6 +204,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
               }}
               whileDrag={{ cursor: 'grabbing' }}
               draggable={false}
+              onLoad={() => setImageLoaded(true)}
               className="max-w-[92vw] max-h-[88vh] object-contain rounded-2xl shadow-2xl select-none"
             />
           </AnimatePresence>

@@ -4,6 +4,7 @@ import { PROJECTS } from '../constants';
 import { ProjectNarrativeChapter } from '../types';
 import { NavBar } from '../components/NavBar';
 import { ImageLightbox } from '../components/ImageLightbox';
+import { LoadingImage } from '../components/LoadingImage';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, ChevronDown, Presentation } from 'lucide-react';
 import nowAppResearchPdf from '../assets/docs/nowapp-research.pdf';
@@ -290,11 +291,13 @@ export const ProjectDetail: React.FC = () => {
                     className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
                     aria-label={`Open image ${i + 1} of ${project.images.length}`}
                   >
-                    <img
+                    <LoadingImage
                       src={image.src}
                       alt={image.alt}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
+                      wrapperClassName="w-full min-h-[180px] sm:min-h-[240px]"
+                      className="block h-auto w-full object-cover"
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      fetchPriority={i === 0 ? 'high' : 'auto'}
                     />
                   </button>
                 ))}
@@ -413,10 +416,11 @@ export const ProjectDetail: React.FC = () => {
                       className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
                       aria-label={`Open image ${globalIndex + 1} of ${project.images.length}`}
                     >
-                      <img
+                      <LoadingImage
                         src={image.src}
                         alt={image.alt}
-                        className="w-full h-full object-cover"
+                        wrapperClassName="w-full min-h-[180px] sm:min-h-[240px]"
+                        className="block h-auto w-full object-cover"
                         loading="lazy"
                       />
                     </button>
@@ -443,11 +447,13 @@ export const ProjectDetail: React.FC = () => {
                   className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
                   aria-label={`Open image ${i + 1} of ${project.images.length}`}
                 >
-                  <img
+                  <LoadingImage
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
+                    wrapperClassName="w-full min-h-[220px]"
+                    className="block h-auto w-full object-cover"
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={i === 0 ? 'high' : 'auto'}
                   />
                 </button>
               ))}

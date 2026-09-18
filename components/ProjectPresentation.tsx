@@ -16,6 +16,7 @@ import {
 import { PROJECTS } from '../constants';
 import type { Project } from '../types';
 import { ImageLightbox } from './ImageLightbox';
+import { LoadingImage } from './LoadingImage';
 import { PRESENTATION_STORIES, type PresentationStory } from './presentationStories';
 
 type SlideContext = { openImage: (index: number) => void };
@@ -62,8 +63,14 @@ const ImageButton: React.FC<{
       onClick={() => onOpen(index)}
       aria-label={`Open image: ${image.alt}`}
     >
-      <img src={image.src} alt={image.alt} />
-      {image.caption ? <span>{image.caption}</span> : null}
+      <LoadingImage
+        src={image.src}
+        alt={image.alt}
+        wrapperClassName="h-full w-full"
+        className="h-full w-full object-cover"
+        loading="lazy"
+      />
+      {image.caption ? <span className="presentation-image-caption">{image.caption}</span> : null}
     </button>
   );
 };
@@ -81,7 +88,16 @@ const buildSlides = (project: Project, story: PresentationStory): Slide[] => {
       title: coverTitle,
       render: () => (
         <section className="presentation-cover">
-          {coverImage ? <img className="presentation-cover-image" src={coverImage.src} alt="" /> : null}
+          {coverImage ? (
+            <LoadingImage
+              src={coverImage.src}
+              alt=""
+              wrapperClassName="presentation-cover-image"
+              className="h-full w-full object-cover"
+              loading="eager"
+              fetchPriority="high"
+            />
+          ) : null}
           <div className="presentation-cover-shade" />
           <div className="presentation-cover-copy">
             <p className="presentation-cover-meta">{project.narrative.introduction.company} · {project.narrative.introduction.year}</p>

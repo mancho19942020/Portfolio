@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
+import { LoadingImage } from './LoadingImage';
 import { motion } from 'framer-motion';
 import type { Project } from '../types';
 import { lockScrollPosition, scrollEntryKey } from './SmoothScroll';
@@ -54,10 +55,14 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index
               60% of card width on desktop (lg:flex-row layout). */}
           <div className="showcase-media shrink-0 grow-0 basis-[30%] lg:shrink lg:grow lg:basis-3/5">
             {previewImage && (
-              <img
+              <LoadingImage
                 src={previewImage.src}
                 alt={previewImage.alt}
+                wrapperClassName="h-full w-full"
+                className="h-full w-full object-cover"
                 style={{ objectPosition: project.previewImagePosition ?? 'center' }}
+                loading={index < 2 ? 'eager' : 'lazy'}
+                fetchPriority={index === 0 ? 'high' : 'auto'}
               />
             )}
             <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 flex items-start justify-between gap-2">

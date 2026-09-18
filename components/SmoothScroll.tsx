@@ -7,6 +7,14 @@ import Lenis from 'lenis';
  * pattern) without threading the instance through props/context.
  */
 let lenisInstance: Lenis | null = null;
+let pageScrollLockDepth = 0;
+let originalPageStyles: {
+  htmlOverflow: string;
+  htmlOverscrollBehavior: string;
+  bodyOverflow: string;
+  bodyOverscrollBehavior: string;
+  bodyPaddingRight: string;
+} | null = null;
 
 const SCROLL_POSITION_PREFIX = 'portfolio-scroll-position:';
 const lockedScrollEntries = new Set<string>();
@@ -75,6 +83,45 @@ export function instantScrollTo(y: number) {
   } else {
     window.scrollTo(0, y);
   }
+}
+
+export function lockPageScroll() {
+  pageScrollLockDepth += 1;
+  if (pageScrollLockDepth > 1) return;
+
+  const html = document.documentElement;
+  const body = document.body;
+  const scrollbarGap = Math.max(0, window.innerWidth - html.clientWidth);
+
+  originalPageStyles = {
+    htmlOverflow: html.style.overflow,
+    htmlOverscrollBehavior: html.style.overscrollBehavior,
+    bodyOverflow: body.style.overflow,
+    bodyOverscrollBehavior: body.style.overscrollBehavior,
+    bodyPaddingRight: body.style.paddingRight,
+  };
+
+  lenisInstance?.stop();
+  html.style.overflow = 'hidden';
+  html.style.overscrollBehavior = 'none';
+  body.style.overflow = 'hidden';
+  body.style.overscrollBehavior = 'none';
+  if (scrollbarGap > 0) body.style.paddingRight = `${scrollbarGap}px`;
+}
+
+export function unlockPageScroll() {
+  pageScrollLockDepth = Math.max(0, pageScrollLockDepth - 1);
+  if (pageScrollLockDepth > 0 || !originalPageStyles) return;
+
+  const html = document.documentElement;
+  const body = document.body;
+  html.style.overflow = originalPageStyles.htmlOverflow;
+  html.style.overscrollBehavior = originalPageStyles.htmlOverscrollBehavior;
+  body.style.overflow = originalPageStyles.bodyOverflow;
+  body.style.overscrollBehavior = originalPageStyles.bodyOverscrollBehavior;
+  body.style.paddingRight = originalPageStyles.bodyPaddingRight;
+  originalPageStyles = null;
+  lenisInstance?.start();
 }
 
 /**
