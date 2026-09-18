@@ -480,7 +480,7 @@ const FitnessPlan: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-x-4 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-x-4 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
         <label className="space-y-2 text-sm font-medium text-zinc-300">
           Goal
           <select
@@ -507,18 +507,6 @@ const FitnessPlan: React.FC = () => {
           </select>
         </label>
         <label className="space-y-2 text-sm font-medium text-zinc-300">
-          Experience
-          <select
-            value={level}
-            onChange={(event) => setLevel(event.target.value)}
-            className="mt-2 w-full rounded-md border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm font-sans text-zinc-100 select-field"
-          >
-            <option value="beginner">Beginner</option>
-            <option value="intermediate">Intermediate</option>
-            <option value="advanced">Advanced</option>
-          </select>
-        </label>
-        <label className="space-y-2 text-sm font-medium text-zinc-300">
           Availability
           <select
             value={availability}
@@ -529,6 +517,21 @@ const FitnessPlan: React.FC = () => {
             <option value="3">3 days / week</option>
             <option value="4">4 days / week</option>
             <option value="5">5 days / week</option>
+          </select>
+        </label>
+      </div>
+
+      <div className="grid gap-x-4 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+        <label className="space-y-2 text-sm font-medium text-zinc-300">
+          Experience
+          <select
+            value={level}
+            onChange={(event) => setLevel(event.target.value)}
+            className="mt-2 w-full rounded-md border border-zinc-800 bg-zinc-950/40 px-3 py-2 text-sm font-sans text-zinc-100 select-field"
+          >
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
           </select>
         </label>
         <label className="space-y-2 text-sm font-medium text-zinc-300">
@@ -564,15 +567,16 @@ const FitnessPlan: React.FC = () => {
             <option value="female">Female</option>
           </select>
         </label>
-        <div className="flex items-end">
-          <button
-            type="button"
-            onClick={() => setPlan(buildPlan)}
-            className="glow-reactive glow-button btn-primary inline-flex min-h-[42px] w-full items-center justify-center rounded-full px-6 py-3 font-semibold transition-colors"
-          >
-            Generate plan
-          </button>
-        </div>
+      </div>
+
+      <div className="flex justify-end">
+        <button
+          type="button"
+          onClick={() => setPlan(buildPlan)}
+          className="glow-reactive glow-button btn-primary inline-flex min-h-[42px] w-full items-center justify-center rounded-full px-6 py-3 font-semibold transition-colors sm:w-auto sm:min-w-56"
+        >
+          Generate plan
+        </button>
       </div>
 
       {plan ? (
