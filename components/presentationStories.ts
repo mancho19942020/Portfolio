@@ -107,12 +107,12 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
     ],
   },
   '8020-dm-campaign': {
-    stakes: 'Real-estate teams could launch outreach, but fragmented configuration made campaign performance and profitability hard to understand.',
+    stakes: 'Real-estate teams could launch outreach, but fragmented configuration made campaign setup and performance hard to understand.',
     successDefinition: 'Create one campaign flow that shows users what will happen, what it will cost, and how the campaign is performing.',
     intendedMetrics: [
       'Increase active usage by 50%',
       'Earn positive customer satisfaction',
-      'Make campaign performance and profitability visible',
+      'Make campaign performance visible',
     ],
     evidence: [
       'The workflow served two distinct trigger models, live seller signals and scheduled list delivery.',
@@ -124,22 +124,21 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'Map the models', detail: 'Separate RapidResponse from SmartDrop without creating two products.' },
       { title: 'Order the decisions', detail: 'Sequence targeting, timing, creative, and delivery.' },
       { title: 'Make it auditable', detail: 'Give users a clear summary before launch.' },
-      { title: 'Connect the economics', detail: 'Show performance and provider cost in the same operating view.' },
+      { title: 'Connect performance', detail: 'Show campaign status and results in the same operating view.' },
     ],
     decisions: [
       { title: 'One guided structure', detail: 'Both trigger models share the same sequence of decisions.', tradeoff: 'Model-specific choices appear only when they matter.' },
       { title: 'Review before launch', detail: 'A clear summary reduces uncertainty and catches configuration mistakes.', tradeoff: 'The flow adds a deliberate checkpoint before execution.' },
-      { title: 'Profitability in the product', detail: 'Campaign health includes provider costs and performance.', tradeoff: 'The team needed reliable operational data, not only interface changes.' },
+      { title: 'Performance in the product', detail: 'Campaign health includes execution status and results.', tradeoff: 'The team needed reliable operational data, not only interface changes.' },
     ],
     collaboration: [
-      'I moved from design into acting product management for the campaign experience.',
-      'The work connected users, engineering, campaign providers, and profitability constraints.',
+      'I owned the end-to-end product design for the campaign experience.',
+      'The work connected user needs, engineering constraints, and campaign operations.',
       'Early client conversations shaped the workflow before broader expansion.',
     ],
     observed: [
-      '12 clients adopted the early release',
-      'Teams reported faster outreach and less operational friction',
       'Two trigger models supported in one campaign experience',
+      'A measurement plan defined active usage, satisfaction, and campaign performance',
     ],
     stillToValidate: [
       'The 50% active-usage target',

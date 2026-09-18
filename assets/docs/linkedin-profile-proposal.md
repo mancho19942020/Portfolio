@@ -28,7 +28,6 @@ I lead end-to-end product design across product strategy, discovery, UX research
 - Designed and built Metrics Hub from zero to one, connecting six data sources into 91 widgets across 11 business areas. It exposed a provider-status conflict blocking client mailings; resolving it restored mail volume and recovered revenue. After five API blockers were fixed, API activity increased 3x.
 - Helped take 8020ROOF from a manual spreadsheet operation to a production self-serve SaaS platform in six weeks. In a three-person team, I led product UX/UI, built interfaces directly in code, created reusable components, and validated the product with two pilot clients.
 - Co-built Phoenix, a production multi-brand design system for four products: 124 shared tokens, 82 live catalog components and shells, automated accessibility and quality gates, and 64 duplicate component files retired.
-- Designed the Direct Mail campaign product and now support ongoing PM ownership across team coordination, provider relationships, profitability, and performance; 12 clients adopted the early release.
 
 ## Experience: Habi
 

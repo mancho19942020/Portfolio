@@ -107,7 +107,6 @@ export const Home: React.FC = () => {
     "habi-funnels",
     "8020-property-list",
     "phoenix",
-    "8020-dm-campaign",
     "8020-buybox",
   ];
 

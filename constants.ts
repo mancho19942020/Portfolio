@@ -299,28 +299,26 @@ export const PROJECTS: Project[] = [
     title: "DM campaign",
     subtitle: "Automated direct mail, integrated into the platform",
     category: "8020REI",
-    type: "SaaS feature, zero-to-one and ongoing PM ownership",
-    role: "Senior Product Designer + Acting PM",
-    duration: "3 months design · ongoing PM ownership",
+    type: "SaaS feature, zero-to-one",
+    role: "Senior Product Designer",
+    duration: "3 months",
     tools: ["Figma", "Figma Make", "Google Analytics", "Heap", "Clarity", "ChatGPT"],
-    tags: ["Product Strategy", "Automation Flow", "Complex Logic", "PM Ownership"],
+    tags: ["Product Strategy", "Automation Flow", "Complex Logic", "Experimentation"],
     thumbnailGradient: "from-emerald-900 to-zinc-900",
     narrative: {
       introduction: {
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "DM Campaign brings direct mail into RapidResponse, turning manual outreach into an automated, data-driven part of the platform. Alongside the original product design, I now act as PM for the feature: I coordinate the team, manage provider relationships, track profitability, and work with the CCO to expand it into a new Direct DM vertical."
+        summary: "DM Campaign brings direct mail into RapidResponse, turning manual outreach into an automated, data-driven part of the platform."
       },
       role: {
-        title: "Senior Product Designer + Acting PM",
+        title: "Senior Product Designer",
         responsibilities: [
           "Owned end-to-end product design for the automation system",
           "Partnered with Product, Engineering, and Customer Success on scope and feasibility",
           "Defined interaction flows, guardrails, and system feedback states",
-          "Shaped onboarding, configuration, and performance visibility",
-          "Currently acting as PM: coordinating team initiatives, managing provider relationships, tracking feature profitability and performance",
-          "Partnering with the CCO on a new Direct DM business vertical"
+          "Shaped onboarding, configuration, and performance visibility"
         ]
       },
       challenge: {
@@ -359,10 +357,9 @@ export const PROJECTS: Project[] = [
         "Established a foundation for A/B testing and optimization in progress"
       ],
       outcome: [
-        "12 clients adopted the product in the early release",
-        "Teams reported faster outreach and less operational friction",
         "RapidResponse and SmartDrop were supported in one campaign experience",
-        "The next phase was defined around active usage, customer satisfaction, and campaign optimization"
+        "A measurement plan was defined around active usage, customer satisfaction, and campaign performance",
+        "No verified adoption outcome is included"
       ],
       chapters: [
         {
@@ -419,15 +416,15 @@ export const PROJECTS: Project[] = [
         },
         {
           label: "Act 05",
-          title: "Twelve clients adopted the first release",
+          title: "A foundation for measurable iteration",
           paragraphs: [
-            "Twelve clients adopted the early release, and teams reported faster outreach with less operational friction.",
-            "The next phase will test whether the product reaches its active-usage and satisfaction targets while expanding campaign optimization."
+            "The design brought RapidResponse and SmartDrop into one campaign experience with a shared setup, status model, and performance view.",
+            "Adoption and business impact still require verified post-release measurement."
           ],
           highlights: [
-            "Observed: 12 clients in the early release",
-            "Observed: faster outreach reported by teams",
-            "Next measure: active usage, satisfaction, and retention"
+            "Two trigger models in one experience",
+            "Measurement plan for usage and satisfaction",
+            "No verified adoption result included"
           ]
         }
       ]
