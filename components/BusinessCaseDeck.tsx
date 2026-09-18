@@ -38,7 +38,7 @@ import imgAsana from '../assets/projects/8020roof/asana-board.webp';
 import imgResearchCover from '../assets/projects/8020roof/research-cover.webp';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// 8020 ROOF — Business Case deck
+// 8020ROOF — Business Case deck
 //
 // Full-screen, one-slide-at-a-time presentation for a product-design audience.
 // SPINE FILE: all slide copy + chrome live here. House style:
@@ -73,7 +73,7 @@ const useTheme = (): 'light' | 'dark' => {
 
 const RoofLogo: React.FC<{ className?: string }> = ({ className }) => {
   const theme = useTheme();
-  return <img src={theme === 'light' ? logoLight : logoDark} alt="8020 Roof" className={className} />;
+  return <img src={theme === 'light' ? logoLight : logoDark} alt="8020ROOF" className={className} />;
 };
 
 /** Small roof glyph (lucide has no roof icon). */
@@ -397,7 +397,7 @@ const JourneyMap: React.FC = () => {
   );
 };
 
-// ─── Transformation loop (8020REI → 8020 Roof) ───────────────────────────────
+// ─── Transformation loop (8020REI → 8020ROOF) ───────────────────────────────
 const REI_FEATURES = ['Dashboard', 'Property list', 'Buy Box', 'Fulfillment', 'Rapid Response', 'Buyers list', 'Edit deals'];
 const ROOF_FEATURES = [
   { name: 'Dashboard', isNew: false },
@@ -456,7 +456,7 @@ const TransformLoop: React.FC = () => {
           <ArrowRight className="md:hidden w-5 h-5 rotate-90" style={{ color: ACCENT }} />
         </div>
 
-        <FeaturePanel label="8020 Roof" badge="The new vertical">
+        <FeaturePanel label="8020ROOF" badge="The new vertical">
           {ROOF_FEATURES.map((f) =>
             f.isNew ? (
               <motion.span
@@ -495,10 +495,10 @@ interface SlideDef {
 
 // The four headline tools, shown as feature cards.
 const FEATURES = [
-  { src: imgDashboard, alt: '8020 Roof dashboard', name: 'Dashboard', body: 'Built around roofing distress signals, not investor equity.' },
-  { src: imgPropertyList, alt: '8020 Roof property list', name: 'Property list', body: 'The same surface as 8020REI, ranked for a roofer.' },
-  { src: imgBuybox, alt: '8020 Roof Buy Box', name: 'Buy Box', body: 'The target audience, simplified to its smallest set of rules.' },
-  { src: imgFulfillment, alt: '8020 Roof fulfillment', name: 'Fulfillment', body: 'The internal pipeline that emits the monthly channel lists.' },
+  { src: imgDashboard, alt: '8020ROOF dashboard', name: 'Dashboard', body: 'Built around roofing distress signals, not investor equity.' },
+  { src: imgPropertyList, alt: '8020ROOF property list', name: 'Property list', body: 'The same surface as 8020REI, ranked for a roofer.' },
+  { src: imgBuybox, alt: '8020ROOF Buy Box', name: 'Buy Box', body: 'The target audience, simplified to its smallest set of rules.' },
+  { src: imgFulfillment, alt: '8020ROOF fulfillment', name: 'Fulfillment', body: 'The internal pipeline that emits the monthly channel lists.' },
 ];
 
 const SLIDES: SlideDef[] = [
@@ -622,7 +622,7 @@ const SLIDES: SlideDef[] = [
                 <span className="w-9 h-9 rounded-lg border border-zinc-800 bg-zinc-950/40 flex items-center justify-center" style={{ color: ACCENT }}>
                   <RoofGlyph className="w-4 h-4" />
                 </span>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400">8020 Roof</span>
+                <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400">8020ROOF</span>
               </div>
               <p className="text-base font-semibold text-zinc-100">Pointed at roofs</p>
               <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
@@ -784,7 +784,7 @@ const SLIDES: SlideDef[] = [
             >
               <img
                 src={imgResearchCover}
-                alt="8020 Roof UX research knowledge base, a 16-slide readout"
+                alt="8020ROOF UX research knowledge base, a 16-slide readout"
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
               />

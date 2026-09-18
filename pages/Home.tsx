@@ -100,15 +100,16 @@ const CAPABILITIES = [
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export const Home: React.FC = () => {
-  // Lead with shipped products and observed outcomes. Concept-only work is
-  // intentionally excluded from the home stack.
+  // Lead with the highest-priority production case studies, then close with
+  // the NowApp concept as a complementary mobile UX example.
   const projectOrder = [
     "8020-roof",
-    "8020-metrics-hub",
-    "habi-funnels",
-    "8020-property-list",
     "phoenix",
+    "habi-funnels",
+    "8020-metrics-hub",
+    "8020-property-list",
     "8020-buybox",
+    "freelance-1",
   ];
 
   const orderedProjects = PROJECTS

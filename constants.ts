@@ -146,7 +146,7 @@ export const PROJECTS: Project[] = [
     thumbnailGradient: "from-orange-950 to-zinc-900",
     coverImage: {
       src: roof000,
-      alt: "8020 ROOF cover"
+      alt: "8020ROOF cover"
     },
     team: {
       note: "We were three builders without rigid lanes. Each person led where they were strongest, and all three contributed across frontend, backend, data, and QA with shared ownership of the platform.",
@@ -285,13 +285,13 @@ export const PROJECTS: Project[] = [
       ]
     },
     images: [
-      { src: roofDashboard, alt: "8020 Roof dashboard" },
-      { src: roofPropertyList, alt: "8020 Roof property list" },
-      { src: roofPropertyView, alt: "8020 Roof property details" },
-      { src: roofBuybox, alt: "8020 Roof Buy Box" },
-      { src: roofBuyboxEdit, alt: "8020 Roof Buy Box numeric filters" },
-      { src: roofFulfillment, alt: "8020 Roof door-knocking routes" },
-      { src: roofDataHealth, alt: "8020 Roof data health" }
+      { src: roofDashboard, alt: "8020ROOF dashboard" },
+      { src: roofPropertyList, alt: "8020ROOF property list" },
+      { src: roofPropertyView, alt: "8020ROOF property details" },
+      { src: roofBuybox, alt: "8020ROOF Buy Box" },
+      { src: roofBuyboxEdit, alt: "8020ROOF Buy Box numeric filters" },
+      { src: roofFulfillment, alt: "8020ROOF door-knocking routes" },
+      { src: roofDataHealth, alt: "8020ROOF data health" }
     ]
   },
   {
