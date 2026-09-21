@@ -140,7 +140,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                 e.stopPropagation();
                 handleNavigate((index - 1 + images.length) % images.length);
               }}
-              className="lightbox-control absolute left-2 md:left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full transition-colors flex items-center justify-center"
+              className="lightbox-control absolute left-2 bottom-4 md:left-6 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full transition-colors flex items-center justify-center"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -152,7 +152,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
                 e.stopPropagation();
                 handleNavigate((index + 1) % images.length);
               }}
-              className="lightbox-control absolute right-2 md:right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full transition-colors flex items-center justify-center"
+              className="lightbox-control absolute right-2 bottom-4 md:right-6 md:bottom-auto md:top-1/2 md:-translate-y-1/2 z-10 w-11 h-11 md:w-12 md:h-12 rounded-full transition-colors flex items-center justify-center"
               aria-label="Next image"
             >
               <ChevronRight className="w-5 h-5" />
@@ -162,7 +162,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
 
         {/* Image stage */}
         <div
-          className="relative min-h-[220px] w-[min(92vw,1100px)] max-h-[88vh] flex items-center justify-center overflow-hidden rounded-2xl"
+          className="relative min-h-[220px] w-[min(92vw,1600px)] max-h-[88vh] flex items-center justify-center overflow-hidden rounded-2xl"
           onClick={(e) => e.stopPropagation()}
         >
           {!imageLoaded ? <div className="image-skeleton absolute inset-0" aria-hidden="true" /> : null}
@@ -205,7 +205,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
               whileDrag={{ cursor: 'grabbing' }}
               draggable={false}
               onLoad={() => setImageLoaded(true)}
-              className="max-w-[92vw] max-h-[88vh] object-contain rounded-2xl shadow-2xl select-none"
+              className="block min-w-0 max-w-full max-h-[88vh] object-contain rounded-2xl shadow-2xl select-none"
             />
           </AnimatePresence>
         </div>

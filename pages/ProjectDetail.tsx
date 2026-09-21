@@ -26,7 +26,7 @@ const ActCard: React.FC<{
     <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 overflow-hidden">
       {/* Always-visible header: label + title + first paragraph */}
       <div className="px-5 pt-5 pb-4">
-        <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-1.5">
+        <p className="project-accent-label text-[10px] font-mono uppercase tracking-widest mb-1.5">
           {chapter.label}
         </p>
         <h3 className="text-base font-semibold text-zinc-100 leading-snug">
@@ -195,7 +195,7 @@ export const ProjectDetail: React.FC = () => {
                     {categoryLabel}
                   </span>
                   {!isCaseStudy && (
-                    <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.2em]">
+                    <span className="project-accent-label text-[10px] font-mono uppercase tracking-[0.2em]">
                       {project.type}
                     </span>
                   )}
@@ -207,7 +207,7 @@ export const ProjectDetail: React.FC = () => {
                   </h1>
                   <Link
                     to={`/project/${project.id}/presentation`}
-                    className="glow-reactive glow-button btn-outline inline-flex h-11 w-11 items-center justify-center rounded-full border border-zinc-800 shrink-0"
+                    className="glow-reactive glow-button btn-outline project-presentation-link inline-flex h-11 w-11 items-center justify-center rounded-full border shrink-0"
                     aria-label={`Open ${project.title} in presentation mode`}
                     title="Presentation mode"
                   >
@@ -250,7 +250,7 @@ export const ProjectDetail: React.FC = () => {
                   <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
                     <h2
                       id="case-snapshot-heading"
-                      className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]"
+                      className="project-accent-label text-xs font-bold uppercase tracking-[0.3em]"
                     >
                       Case study at a glance
                     </h2>
@@ -307,7 +307,7 @@ export const ProjectDetail: React.FC = () => {
             {/* Card 2: Role, title, responsibility cards, duration, tools */}
             <motion.div {...sectionMotion} className={CARD}>
               <div className="px-6 md:px-10 py-10 space-y-6">
-                <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">Role</h2>
+                <h2 className="project-accent-label text-xs font-bold uppercase tracking-[0.3em]">Role</h2>
 
                 <p className="text-lg text-zinc-200">{project.narrative.role.title}</p>
 
@@ -387,7 +387,7 @@ export const ProjectDetail: React.FC = () => {
             {/* Card 3: Case narrative, collapsible act cards */}
             <motion.div {...sectionMotion} className={CARD}>
               <div className="px-6 md:px-10 pt-10 pb-4">
-                <h2 className="text-xs font-bold text-zinc-500 uppercase tracking-[0.3em]">
+                <h2 className="project-accent-label text-xs font-bold uppercase tracking-[0.3em]">
                   Case narrative
                 </h2>
               </div>

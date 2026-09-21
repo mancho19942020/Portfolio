@@ -67,7 +67,7 @@ const ImageButton: React.FC<{
         src={image.src}
         alt={image.alt}
         wrapperClassName="h-full w-full"
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
         loading="lazy"
       />
       {image.caption ? <span className="presentation-image-caption">{image.caption}</span> : null}
@@ -93,12 +93,11 @@ const buildSlides = (project: Project, story: PresentationStory): Slide[] => {
               src={coverImage.src}
               alt=""
               wrapperClassName="presentation-cover-image"
-              className="h-full w-full object-cover"
+              className="presentation-cover-photo"
               loading="eager"
               fetchPriority="high"
             />
           ) : null}
-          <div className="presentation-cover-shade" />
           <div className="presentation-cover-copy">
             <p className="presentation-cover-meta">{project.narrative.introduction.company} · {project.narrative.introduction.year}</p>
             <h1 data-presentation-title="true" tabIndex={-1}>
@@ -269,7 +268,7 @@ const PresentationDeck: React.FC<{ project: Project; story: PresentationStory }>
     setSlide((current) => current[0] === bounded ? current : [bounded, nextDirection]);
   }, [slides.length]);
   const paginate = useCallback((amount: number) => goTo(index + amount, amount), [goTo, index]);
-  const exit = useCallback(() => navigate(`/project/${project.id}`), [navigate, project.id]);
+  const exit = useCallback(() => navigate(`/project/${project.id}`, { replace: true }), [navigate, project.id]);
 
   useEffect(() => stageRef.current?.focus(), []);
 

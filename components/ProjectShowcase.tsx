@@ -66,8 +66,8 @@ export const ProjectShowcase: React.FC<ProjectShowcaseProps> = ({ project, index
               />
             )}
             <div className="absolute top-3 left-3 right-3 sm:top-4 sm:left-4 sm:right-4 flex items-start justify-between gap-2">
-              <span className="showcase-overline text-white/90 drop-shadow">{number}</span>
-              <span className="showcase-overline text-white/90 drop-shadow text-right">
+              <span className="showcase-overline">{number}</span>
+              <span className="showcase-overline text-right">
                 {project.category}
               </span>
             </div>
