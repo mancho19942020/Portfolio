@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/check-career-dates.mjs",
     "build": "vite build",
     "preview": "vite preview",
+    "prebuild-cv": "node scripts/check-career-dates.mjs",
     "build-cv": "node scripts/build-cv.mjs"
   },
   "dependencies": {

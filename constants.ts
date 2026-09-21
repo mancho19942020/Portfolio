@@ -1313,7 +1313,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   {
     company: "Metro de Bogotá",
     role: "Creative Designer",
-    period: "Nov 2018 – Aug 2023",
+    period: "Nov 2017 – Aug 2022",
     location: "On-site · Bogotá",
     description: [
       "Graphic design for large-scale public communication",

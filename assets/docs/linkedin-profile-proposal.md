@@ -56,7 +56,7 @@ Secondary skills: Mobile Design, A/B Testing, Design Systems, Data Visualization
 
 ## Validation before publishing
 
-- Confirm whether Metro de Bogota ended in Aug 2022 or Aug 2023. The current sources conflict, and Aug 2023 creates a one-year overlap with Habi.
+- Metro de Bogota: Nov 2017 - Aug 2022, followed immediately by Habi starting Aug 2022. Keep these dates aligned with the portfolio and downloadable CV.
 - Confirm the Habi 30% metric's test window, baseline, sample size, and long-term lead-quality result before using those details in interviews.
 - Confirm whether the AI-assisted prefill in the Habi funnel shipped or remained a design proposal. It is intentionally omitted here.
 - Confirm whether the Habi operations platform shipped and whether there is an observed outcome. This copy says "designed," not "shipped."
