@@ -35,14 +35,16 @@ import nowApp03 from './assets/projects/now-app/03.jpg';
 import nowApp04 from './assets/projects/now-app/04.jpg';
 import nowApp05 from './assets/projects/now-app/05.jpg';
 import nowApp06 from './assets/projects/now-app/06.jpg';
-import roof000 from './assets/projects/8020roof/new images/000-cover.jpg';
-import roofDashboard from './assets/projects/8020roof/new images/001.jpg';
-import roofPropertyList from './assets/projects/8020roof/new images/002.jpg';
-import roofPropertyView from './assets/projects/8020roof/new images/003.jpg';
-import roofBuybox from './assets/projects/8020roof/new images/004.jpg';
-import roofBuyboxEdit from './assets/projects/8020roof/new images/005.jpg';
-import roofFulfillment from './assets/projects/8020roof/new images/006.jpg';
-import roofDataHealth from './assets/projects/8020roof/new images/007.jpg';
+import roof000 from './assets/projects/8020roof/new images/000-cover.webp';
+import roofDashboard from './assets/projects/8020roof/new images/001.webp';
+import roofPropertyList from './assets/projects/8020roof/new images/002.webp';
+import roofPropertyView from './assets/projects/8020roof/new images/003.webp';
+import roofBuybox from './assets/projects/8020roof/new images/004.webp';
+import roofBuyboxEdit from './assets/projects/8020roof/new images/005.webp';
+import roofFulfillment from './assets/projects/8020roof/new images/006.webp';
+import roofDoorKnocking from './assets/projects/8020roof/new images/007.webp';
+import roofDataHealthOverview from './assets/projects/8020roof/new images/008.webp';
+import roofDataHealthDetails from './assets/projects/8020roof/new images/009.webp';
 import phoenixCover from './assets/projects/phoenix/cover.jpg';
 import phoenixBrands from './assets/projects/phoenix/01-tokens-brands-panels.png';
 import phoenixSwitcher from './assets/projects/phoenix/05-brand-switcher-iq-dark.png';
@@ -290,8 +292,10 @@ export const PROJECTS: Project[] = [
       { src: roofPropertyView, alt: "8020ROOF property details" },
       { src: roofBuybox, alt: "8020ROOF Buy Box" },
       { src: roofBuyboxEdit, alt: "8020ROOF Buy Box numeric filters" },
-      { src: roofFulfillment, alt: "8020ROOF door-knocking routes" },
-      { src: roofDataHealth, alt: "8020ROOF data health" }
+      { src: roofFulfillment, alt: "8020ROOF monthly fulfillment pipeline and channel output" },
+      { src: roofDoorKnocking, alt: "8020ROOF door knocking routes and QR codes" },
+      { src: roofDataHealthOverview, alt: "8020ROOF data health overview" },
+      { src: roofDataHealthDetails, alt: "8020ROOF data health field coverage details" }
     ]
   },
   {

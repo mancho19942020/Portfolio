@@ -87,7 +87,7 @@ const buildSlides = (project: Project, story: PresentationStory): Slide[] => {
     {
       title: coverTitle,
       render: () => (
-        <section className="presentation-cover">
+        <section className={`presentation-cover${project.id === '8020-roof' ? ' presentation-cover--roof' : ''}`}>
           {coverImage ? (
             <LoadingImage
               src={coverImage.src}
