@@ -406,7 +406,11 @@ html[data-theme='light'] .presentation-cover--roof .presentation-cover-image {
 }
 
 .presentation-cover--roof .presentation-cover-copy h1 {
-  font-size: clamp(36px, 3.6vw, 54px);
+  font-size: clamp(36px, 3.6vw, 50px);
+}
+
+.presentation-cover--roof .presentation-cover-copy h1 > span {
+  white-space: nowrap;
 }
 
 .presentation-cover-copy {
@@ -903,6 +907,10 @@ html[data-theme='light'] .presentation-cover--roof .presentation-cover-image {
 
   .presentation-cover--roof .presentation-cover-copy {
     padding: 28px 23px;
+  }
+
+  .presentation-cover--roof .presentation-cover-copy h1 {
+    font-size: clamp(27px, 8vw, 43px);
   }
 
   .presentation-cover-copy {

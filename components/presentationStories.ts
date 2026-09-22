@@ -63,7 +63,7 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
     ],
   },
   '8020-roof': {
-    coverLines: ['New Vertical', 'New Methodology', 'New Technology'],
+    coverLines: ['New vertical', 'New methodology', 'New technology'],
     stakes: '8020REI was launching a roofing business, but property selection and campaign delivery still depended on spreadsheets and manual work.',
     successDefinition: 'Turn that manual service into a self-service platform that could support more roofing clients without adding a new person for every account.',
     intendedMetrics: [
