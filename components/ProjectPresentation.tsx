@@ -109,7 +109,6 @@ const buildSlides = (project: Project, story: PresentationStory): Slide[] => {
             <div className="presentation-cover-details">
               <span>{project.narrative.role.title}</span>
               <span>{project.duration}</span>
-              <span>{project.type}</span>
             </div>
           </div>
         </section>

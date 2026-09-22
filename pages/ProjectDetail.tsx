@@ -185,7 +185,7 @@ export const ProjectDetail: React.FC = () => {
               className={CARD}
             >
               <div className="px-6 md:px-10 py-10 space-y-5">
-                {/* Company tag + project type */}
+                {/* Company tag */}
                 <div className="flex items-center gap-3 flex-wrap">
                   <span
                     className={`px-3 py-1 bg-zinc-800 border border-zinc-700 rounded-full text-[10px] font-mono text-zinc-300${
@@ -194,11 +194,6 @@ export const ProjectDetail: React.FC = () => {
                   >
                     {categoryLabel}
                   </span>
-                  {!isCaseStudy && (
-                    <span className="project-accent-label text-[10px] font-mono uppercase tracking-[0.2em]">
-                      {project.type}
-                    </span>
-                  )}
                 </div>
 
                 <div className="flex flex-wrap items-start justify-between gap-4">

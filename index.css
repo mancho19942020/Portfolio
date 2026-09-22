@@ -1282,9 +1282,26 @@ html[data-theme='light'] .btn-outline:focus-visible {
 
 .btn-outline.project-presentation-link,
 html[data-theme='light'] .btn-outline.project-presentation-link {
-  border-color: color-mix(in srgb, var(--accent-strong) 55%, var(--deck-border));
-  color: var(--accent-strong);
-  background-color: var(--accent-soft);
+  border-color: #cbd0d8;
+  color: #667085;
+  background-color: transparent;
+}
+
+html[data-theme='dark'] .btn-outline.project-presentation-link {
+  border-color: #52525b;
+  color: #a1a1aa;
+}
+
+.btn-outline.project-presentation-link:hover,
+.btn-outline.project-presentation-link:focus-visible,
+html[data-theme='light'] .btn-outline.project-presentation-link:hover,
+html[data-theme='light'] .btn-outline.project-presentation-link:focus-visible {
+  background-color: #f3f4f6;
+}
+
+html[data-theme='dark'] .btn-outline.project-presentation-link:hover,
+html[data-theme='dark'] .btn-outline.project-presentation-link:focus-visible {
+  background-color: #27272a;
 }
 
 .tools-marquee-shell {
