@@ -1015,7 +1015,9 @@ const TamagotchiPet: React.FC = () => {
             : pet.mood === 'Happy'
               ? 'rgba(134, 239, 172, 0.95)'
               : 'rgba(148, 163, 127, 0.9)';
-  const actionLabel = activeAction?.type ? activeAction.type.toUpperCase() : null;
+  const actionLabel = activeAction?.type
+    ? activeAction.type.charAt(0).toUpperCase() + activeAction.type.slice(1)
+    : null;
 
   return (
     <div className="space-y-5">
@@ -1023,7 +1025,7 @@ const TamagotchiPet: React.FC = () => {
           stats inside the screen, and three small action buttons below. */}
       <div className="mx-auto w-full max-w-[300px] rounded-[2.25rem] border border-zinc-700 bg-zinc-900 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]">
         {/* Top strip: indicator dots + age/mood as small mono labels */}
-        <div className="flex items-center justify-between px-1 text-[9px] font-mono uppercase tracking-[0.2em] text-zinc-500">
+        <div className="flex items-center justify-between px-1 text-[9px] tracking-[0.03em] text-zinc-500">
           <span className="flex items-center gap-1" aria-hidden>
             <span className="h-1.5 w-1.5 rounded-full bg-zinc-700" />
             <span className="h-1.5 w-1.5 rounded-full bg-zinc-700" />
@@ -1035,9 +1037,9 @@ const TamagotchiPet: React.FC = () => {
         {/* LCD screen — everything happens in here. */}
         <div className="mt-3 rounded-2xl border border-[#2d3526] bg-gradient-to-br from-[#1a2218] via-[#0f1410] to-[#0b0f0b] p-3 shadow-[inset_0_0_20px_rgba(148,163,127,0.12)]">
           {/* Top status row inside the LCD */}
-          <div className="flex items-center justify-between text-[8px] font-mono uppercase tracking-[0.25em] text-[#688a4a]">
+          <div className="flex items-center justify-between text-[8px] tracking-[0.03em] text-[#688a4a]">
             <span>{pet.mood}</span>
-            <span>{isActionActive && actionLabel ? actionLabel : 'IDLE'}</span>
+            <span>{isActionActive && actionLabel ? actionLabel : 'Idle'}</span>
           </div>
 
           {/* Sprite */}
@@ -1071,7 +1073,7 @@ const TamagotchiPet: React.FC = () => {
           </div>
 
           {/* Bottom stats row inside the LCD — replaces the big progress bars */}
-          <div className="mt-2 grid grid-cols-3 gap-1 text-center text-[8px] font-mono uppercase tracking-[0.18em] text-[#688a4a]">
+          <div className="mt-2 grid grid-cols-3 gap-1 text-center text-[8px] tracking-[0.03em] text-[#688a4a]">
             <span>H {Math.round(pet.hunger)}%</span>
             <span>♥ {Math.round(pet.happiness)}%</span>
             <span>E {Math.round(pet.energy)}%</span>
@@ -1114,7 +1116,7 @@ const TamagotchiPet: React.FC = () => {
         </div>
 
         {/* Tiny button labels below — read at a glance, stays out of the way */}
-        <div className="mt-1.5 flex items-center justify-center gap-4 text-[9px] font-mono uppercase tracking-[0.18em] text-zinc-500">
+        <div className="mt-1.5 flex items-center justify-center gap-4 text-[9px] tracking-[0.03em] text-zinc-500">
           <span className="w-11 text-center">Feed</span>
           <span className="w-11 text-center">Play</span>
           <span className="w-11 text-center">Pet</span>
@@ -1126,7 +1128,7 @@ const TamagotchiPet: React.FC = () => {
         <button
           type="button"
           onClick={() => setShowHelp((value) => !value)}
-          className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 transition-colors hover:text-zinc-200"
+          className="text-[10px] tracking-[0.02em] text-zinc-500 transition-colors hover:text-zinc-200"
         >
           {showHelp ? 'Hide tips' : 'How to play'}
         </button>
@@ -1443,10 +1445,10 @@ const InterestModal: React.FC<{
         <div className="flex items-start justify-between gap-4">
           <div className="space-y-3">
             <SectionLabel>{interest.label}</SectionLabel>
-            <h3 className="text-2xl font-bold tracking-tight text-zinc-100">
+            <h3 className="text-2xl font-bold tracking-tight text-zinc-100" aria-label={`#${tag} ${prefix} ${interest.label}`}>
               <span style={{ color: 'var(--accent-strong)' }}>#</span>
-              <span>{tag}</span>{' '}
-              <span className="text-zinc-400 font-medium">{prefix} {interest.label}</span>
+              <span>{tag}</span>
+              <span className="ml-2 text-zinc-400 font-medium">{prefix} {interest.label}</span>
             </h3>
             <p className="text-sm text-zinc-400">{interest.helper}</p>
           </div>

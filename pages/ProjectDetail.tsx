@@ -26,7 +26,7 @@ const ActCard: React.FC<{
     <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 overflow-hidden">
       {/* Always-visible header: label + title + first paragraph */}
       <div className="px-5 pt-5 pb-4">
-        <p className="project-accent-label text-[10px] font-mono uppercase tracking-widest mb-1.5">
+        <p className="project-accent-label text-[10px] tracking-[0.02em] mb-1.5">
           {chapter.label}
         </p>
         <h3 className="text-base font-semibold text-zinc-100 leading-snug">
@@ -82,7 +82,7 @@ const ActCard: React.FC<{
             aria-controls={contentId}
             className="w-full px-5 py-3.5 border-t border-zinc-800 flex items-center justify-between gap-3 text-left hover:bg-zinc-800/20 transition-colors"
           >
-            <span className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+            <span className="text-[10px] text-zinc-600 tracking-[0.02em]">
               {isOpen ? 'Collapse' : 'See details'}
             </span>
             <ChevronDown
@@ -188,9 +188,7 @@ export const ProjectDetail: React.FC = () => {
                 {/* Company tag */}
                 <div className="flex items-center gap-3 flex-wrap">
                   <span
-                    className={`px-3 py-1 bg-zinc-800 border border-zinc-700 rounded-full text-[10px] font-mono text-zinc-300${
-                      isCaseStudy ? '' : ' uppercase'
-                    }`}
+                    className="px-3 py-1 bg-zinc-800 border border-zinc-700 rounded-full text-[10px] text-zinc-300"
                   >
                     {categoryLabel}
                   </span>
@@ -212,7 +210,7 @@ export const ProjectDetail: React.FC = () => {
 
                 <p className="text-xl text-zinc-400 leading-relaxed">{project.subtitle}</p>
 
-                <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-[0.3em]">
+                <p className="text-[10px] text-zinc-500 tracking-[0.03em]">
                   {project.narrative.introduction.company}
                   {' · '}
                   {project.narrative.introduction.industry}
@@ -245,11 +243,11 @@ export const ProjectDetail: React.FC = () => {
                   <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
                     <h2
                       id="case-snapshot-heading"
-                      className="project-accent-label text-xs font-bold uppercase tracking-[0.3em]"
+                      className="project-accent-label text-xs font-bold tracking-[0.03em]"
                     >
                       Case study at a glance
                     </h2>
-                    <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+                    <p className="text-[10px] text-zinc-600 tracking-[0.02em]">
                       Evidence before output
                     </p>
                   </div>
@@ -264,7 +262,7 @@ export const ProjectDetail: React.FC = () => {
                         key={label}
                         className="rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-4"
                       >
-                        <dt className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+                        <dt className="text-[10px] text-zinc-600 tracking-[0.02em]">
                           {label}
                         </dt>
                         <dd className="mt-2 text-sm text-zinc-300 leading-relaxed">{value}</dd>
@@ -302,7 +300,7 @@ export const ProjectDetail: React.FC = () => {
             {/* Card 2: Role, title, responsibility cards, duration, tools */}
             <motion.div {...sectionMotion} className={CARD}>
               <div className="px-6 md:px-10 py-10 space-y-6">
-                <h2 className="project-accent-label text-xs font-bold uppercase tracking-[0.3em]">Role</h2>
+                <h2 className="project-accent-label text-xs font-bold tracking-[0.03em]">Role</h2>
 
                 <p className="text-lg text-zinc-200">{project.narrative.role.title}</p>
 
@@ -321,7 +319,7 @@ export const ProjectDetail: React.FC = () => {
                 {/* Team, only when project credits collaborators */}
                 {project.team && (
                   <div className="pt-2 space-y-4">
-                    <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest">
+                    <p className="text-[10px] text-zinc-600 tracking-[0.02em]">
                       Team
                     </p>
                     {project.team.note ? (
@@ -339,7 +337,7 @@ export const ProjectDetail: React.FC = () => {
                             <p className="text-sm text-zinc-200 font-semibold">
                               {member.name}
                             </p>
-                            <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                            <p className="text-[10px] text-zinc-500 tracking-[0.02em]">
                               {member.role}
                             </p>
                           </div>
@@ -355,20 +353,20 @@ export const ProjectDetail: React.FC = () => {
                 {/* Duration + Tools stacked below */}
                 <div className="space-y-6 pt-2">
                   <div>
-                    <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-2">
+                    <p className="text-[10px] text-zinc-600 tracking-[0.02em] mb-2">
                       Duration
                     </p>
                     <p className="text-sm text-zinc-300">{project.duration}</p>
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono text-zinc-600 uppercase tracking-widest mb-3">
-                      Tools &amp; Tech
+                    <p className="text-[10px] text-zinc-600 tracking-[0.02em] mb-3">
+                      Tools and tech
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {project.tools.map((tool) => (
                         <span
                           key={tool}
-                          className="px-3.5 py-1.5 rounded-full bg-zinc-900/40 border border-zinc-800 text-[11px] text-zinc-400 font-mono"
+                          className="px-3.5 py-1.5 rounded-full bg-zinc-900/40 border border-zinc-800 text-[11px] text-zinc-400"
                         >
                           {tool}
                         </span>
@@ -382,7 +380,7 @@ export const ProjectDetail: React.FC = () => {
             {/* Card 3: Case narrative, collapsible act cards */}
             <motion.div {...sectionMotion} className={CARD}>
               <div className="px-6 md:px-10 pt-10 pb-4">
-                <h2 className="project-accent-label text-xs font-bold uppercase tracking-[0.3em]">
+                <h2 className="project-accent-label text-xs font-bold tracking-[0.03em]">
                   Case narrative
                 </h2>
               </div>
@@ -456,7 +454,7 @@ export const ProjectDetail: React.FC = () => {
           </aside>
         </div>
 
-        <footer className="mt-16 pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-600 font-mono text-[10px] uppercase tracking-widest">
+        <footer className="mt-16 pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-6 text-zinc-600 text-[10px] tracking-[0.02em]">
           <span>
             {project.title}, {project.category}
           </span>

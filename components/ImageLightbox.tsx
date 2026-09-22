@@ -228,7 +228,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
             <button
               type="button"
               onClick={resetView}
-              className="lightbox-reset px-3 h-10 min-w-[64px] text-[11px] font-mono tracking-widest"
+              className="lightbox-reset px-3 h-10 min-w-[64px] text-[11px] tracking-[0.02em]"
               aria-label="Reset zoom"
             >
               {Math.round(scale * 100)}%
@@ -245,7 +245,7 @@ export const ImageLightbox: React.FC<ImageLightboxProps> = ({
           </div>
 
           {images.length > 1 && (
-            <div className="lightbox-counter px-4 h-10 flex items-center rounded-full text-[11px] font-mono tracking-widest">
+            <div className="lightbox-counter px-4 h-10 flex items-center rounded-full text-[11px] tracking-[0.02em]">
               {index + 1} / {images.length}
             </div>
           )}

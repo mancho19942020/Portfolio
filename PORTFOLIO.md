@@ -85,7 +85,7 @@ Case study extras:
 - `index.html` contains inline CSS for background and custom scrollbars.
 
 Typography:
-- Google Fonts: Inter (sans) and JetBrains Mono (mono).
+- Google Fonts: Inter throughout the interface.
 
 Theme:
 - `data-theme` on `html` toggles light/dark.

@@ -6,6 +6,7 @@ body,
   min-height: 100%;
   overflow-x: clip;
   background-color: var(--app-bg);
+  font-family: 'Inter', sans-serif;
 }
 
 /* ── Lenis smooth-scroll reset ─────────────────────────────────────────── */
@@ -234,9 +235,8 @@ html[data-theme='dark'] {
   justify-content: center;
   gap: 9px;
   color: var(--deck-muted);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.02em;
 }
 
 .presentation-counter svg {
@@ -308,12 +308,10 @@ html[data-theme='dark'] {
 .presentation-eyebrow,
 .presentation-label {
   color: var(--accent-strong);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.03em;
   line-height: 1.3;
-  text-transform: uppercase;
 }
 
 .presentation-eyebrow {
@@ -420,11 +418,9 @@ html[data-theme='light'] .presentation-cover--roof .presentation-cover-image {
 
 .presentation-cover-meta {
   color: var(--accent-on-dark);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 
 .presentation-cover-copy h1 {
@@ -456,10 +452,8 @@ html[data-theme='light'] .presentation-cover--roof .presentation-cover-image {
   gap: 10px 18px;
   margin-top: 18px;
   color: #d4d4d8;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
 }
 
 .presentation-two-column {
@@ -542,10 +536,9 @@ html[data-theme='light'] .presentation-cover--roof .presentation-cover-image {
 .presentation-decisions article > span {
   padding-top: 3px;
   color: var(--accent-strong);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.02em;
 }
 
 .presentation-numbered-list p {
@@ -607,7 +600,6 @@ html[data-theme='light'] .presentation-cover--roof .presentation-cover-image {
   border-radius: 999px;
   color: var(--accent-strong);
   background: var(--deck-panel);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 11px;
   font-weight: 700;
 }
@@ -1404,10 +1396,9 @@ html[data-theme='light'] .tool-logo-image {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   color: var(--accent-strong);
 }
 
@@ -1609,11 +1600,10 @@ html[data-theme='light'] .showcase-card {
 }
 
 .showcase-overline {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   color: rgba(255, 255, 255, 0.9);
-  text-transform: uppercase;
 }
 
 html[data-theme='light'] .showcase-overline {
@@ -1624,11 +1614,9 @@ html[data-theme='light'] .showcase-overline {
 }
 
 .showcase-meta {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.02em;
   color: #a1a1aa;
-  text-transform: uppercase;
 }
 
 html[data-theme='light'] .showcase-meta {
@@ -1642,11 +1630,9 @@ html[data-theme='light'] .showcase-meta {
   border-radius: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.03);
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 0.65rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.01em;
   color: #d4d4d8;
-  text-transform: uppercase;
 }
 
 html[data-theme='light'] .showcase-pill {

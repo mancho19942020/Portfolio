@@ -65,7 +65,7 @@ const LogoRow: React.FC<{ items: ToolLogoResolved[]; duration: number }> = ({ it
         {loopedItems.map((item, index) => (
           <div key={`${item.label}-${index}`} className="tools-logo-pill">
             <img src={item.src} alt={`${item.label} logo`} className="tool-logo-image" loading="lazy" />
-            <span className="text-[11px] font-mono tracking-[0.08em] uppercase text-zinc-400">{item.label}</span>
+            <span className="text-[11px] tracking-[0.01em] text-zinc-400">{item.label}</span>
           </div>
         ))}
       </div>
@@ -80,7 +80,7 @@ export const ToolsCarousel: React.FC = () => {
 
   return (
     <div className="space-y-5">
-      <p className="text-xs font-mono text-zinc-500 uppercase tracking-[0.22em]">Tool Stack</p>
+      <p className="text-xs text-zinc-500 tracking-[0.03em]">Tool stack</p>
 
       <div className="tools-marquee-shell">
         <LogoRow items={resolvedLogos} duration={90} />

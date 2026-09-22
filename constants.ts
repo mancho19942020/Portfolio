@@ -61,19 +61,19 @@ export const PROJECTS: Project[] = [
     subtitle: "One design system for every 8020 brand",
     category: "8020IQ",
     type: "Multi-brand design system · platform",
-    role: "Design System Steward & Builder",
+    role: "Design system steward & builder",
     duration: "~4 months",
     tools: ["Figma", "Claude Code", "Nuxt 4", "Vue 3", "TypeScript", "Tailwind CSS v4", "shadcn-vue", "Playwright", "Vitest", "GitHub Actions"],
-    tags: ["Design System", "Multi-brand", "Vibecoding", "Platform", "Accessibility"],
+    tags: ["Design system", "Multi-brand", "Vibecoding", "Platform", "Accessibility"],
     thumbnailGradient: "from-emerald-950 to-zinc-900",
     coverImage: { src: phoenixCover, alt: "Phoenix design system catalog on a laptop" },
     previewImagePosition: "62% center",
     team: {
       note: "Phoenix began as a joint initiative between design and frontend. Jhon and I met regularly, spoke with clients, and worked through the business needs behind each new brand. We used those conversations to build one system that design and frontend could shape together in code.",
       members: [
-        { name: "Germán Alvarez", role: "Senior Product Designer · Design System Steward", contribution: "Design-system structure, token model, component experience, and quality rules" },
-        { name: "Camilo Rico", role: "Product Director", contribution: "Product direction and the multi-brand business need" },
-        { name: "Jhon Fredy Berrio", role: "Lead Front-end Developer", contribution: "Co-builder of the shared components, catalog, and frontend foundation" }
+        { name: "Germán Alvarez", role: "Senior product designer · design system steward", contribution: "Design-system structure, token model, component experience, and quality rules" },
+        { name: "Camilo Rico", role: "Product director", contribution: "Product direction and the multi-brand business need" },
+        { name: "Jhon Fredy Berrio", role: "Lead front-end developer", contribution: "Co-builder of the shared components, catalog, and frontend foundation" }
       ]
     },
     narrative: {
@@ -84,7 +84,7 @@ export const PROJECTS: Project[] = [
         summary: "Phoenix is the design system behind 8020IQ, 8020REI, 8020ROOF, and 8020 Direct Mail. One component library, token canon, and living catalog serve every product. A brand is nine CSS declarations on a shared foundation."
       },
       role: {
-        title: "Design System Steward & Builder",
+        title: "Design system steward & builder",
         responsibilities: [
           "Co-led the initiative with Jhon Fredy Berrio, our Lead Frontend Developer. We worked from client and business needs to build one shared system in code.",
           "Set a multi-brand architecture: one shared canon and one nine-token accent layer per brand.",
@@ -126,7 +126,7 @@ export const PROJECTS: Project[] = [
     subtitle: "Property intelligence and a marketing pipeline for the roofing vertical",
     category: "8020REI",
     type: "Multi-tenant B2B SaaS, zero-to-one build",
-    role: "Senior Product Designer & Builder",
+    role: "Senior product designer & builder",
     duration: "~1.5 months active build",
     tools: [
       "Figma",
@@ -144,7 +144,7 @@ export const PROJECTS: Project[] = [
       "AWS Amplify",
       "GitHub Actions"
     ],
-    tags: ["Design System", "Multi-tenant SaaS", "Vibecoding", "Zero-to-one"],
+    tags: ["Design system", "Multi-tenant SaaS", "Vibecoding", "Zero-to-one"],
     thumbnailGradient: "from-orange-950 to-zinc-900",
     coverImage: {
       src: roof000,
@@ -155,7 +155,7 @@ export const PROJECTS: Project[] = [
       members: [
         {
           name: "Camilo Rico",
-          role: "Product Director",
+          role: "Product director",
           contribution: "Builder and data owner"
         },
         {
@@ -165,7 +165,7 @@ export const PROJECTS: Project[] = [
         },
         {
           name: "Germán Alvarez",
-          role: "Senior Product Designer",
+          role: "Senior product designer",
           contribution: "Builder and product UX / UI owner"
         }
       ]
@@ -178,7 +178,7 @@ export const PROJECTS: Project[] = [
         summary: "A multi-client SaaS that turns a 100M+ row property database into ready-to-use roofing marketing lists. Operators can target properties, create a Buy Box, and run a five-stage pipeline for direct mail, cold calls, and SMS. It replaces weeks of spreadsheet work with a self-serve platform."
       },
       role: {
-        title: "Senior Product Designer & Builder",
+        title: "Senior product designer & builder",
         responsibilities: [
           "Led product design end to end: property intelligence, the Buy Box, fulfillment, and the door-knocking beta.",
           "Adopted shadcn and customized it into the platform's component library, aligned to the brand and the roofing experience.",
@@ -304,10 +304,10 @@ export const PROJECTS: Project[] = [
     subtitle: "Automated direct mail, integrated into the platform",
     category: "8020REI",
     type: "SaaS feature, zero-to-one",
-    role: "Senior Product Designer",
+    role: "Senior product designer",
     duration: "3 months",
     tools: ["Figma", "Figma Make", "Google Analytics", "Heap", "Clarity", "ChatGPT"],
-    tags: ["Product Strategy", "Automation Flow", "Complex Logic", "Experimentation"],
+    tags: ["Product strategy", "Automation flow", "Complex logic", "Experimentation"],
     thumbnailGradient: "from-emerald-900 to-zinc-900",
     narrative: {
       introduction: {
@@ -317,7 +317,7 @@ export const PROJECTS: Project[] = [
         summary: "DM Campaign brings direct mail into RapidResponse, turning manual outreach into an automated, data-driven part of the platform."
       },
       role: {
-        title: "Senior Product Designer",
+        title: "Senior product designer",
         responsibilities: [
           "Owned end-to-end product design for the automation system",
           "Partnered with Product, Engineering, and Customer Success on scope and feasibility",
@@ -463,11 +463,11 @@ export const PROJECTS: Project[] = [
     showcasePreview: "I treated a dense rules engine as a decision workflow, bringing marketing needs, live feedback, and guardrails into the same place. The redesign targeted fewer configuration errors and less support work.",
     subtitle: "From rules engine to guided decisions",
     category: "8020REI",
-    type: "Complex Interaction Design",
-    role: "Senior Product Designer",
+    type: "Complex interaction design",
+    role: "Senior product designer",
     duration: "2 months",
     tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics", "ChatGPT", "Zoom"],
-    tags: ["Data Visualization", "Filtering Logic", "Legacy Redesign"],
+    tags: ["Data visualization", "Filtering logic", "Legacy redesign"],
     thumbnailGradient: "from-emerald-950 to-zinc-900",
     narrative: {
       introduction: {
@@ -477,7 +477,7 @@ export const PROJECTS: Project[] = [
         summary: "Redesigned the BuyBox editor after churn feedback and Customer Success escalations linked configuration problems to poor list quality and misaligned marketing output. The goal was to turn a dense rules engine into a guided decision system aligned with marketing capacity, market opportunity, and investor goals."
       },
       role: {
-        title: "Senior Product Designer",
+        title: "Senior product designer",
         responsibilities: [
           "Research and stakeholder alignment",
           "Experience strategy and information architecture",
@@ -635,11 +635,11 @@ export const PROJECTS: Project[] = [
     showcasePreview: "Investors were leaving the platform to validate opportunities. I reorganized the list and detail view around the signals they needed, increasing daily active users (DAU) by 50%.",
     subtitle: "From data exporter to decision environment",
     category: "8020REI",
-    type: "Workflow Optimization",
-    role: "Senior Product Designer",
+    type: "Workflow optimization",
+    role: "Senior product designer",
     duration: "2 Months",
     tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics", "ChatGPT", "GPT"],
-    tags: ["Information Density", "Efficiency", "Data Tables"],
+    tags: ["Information density", "Efficiency", "Data tables"],
     thumbnailGradient: "from-zinc-800 to-zinc-950",
     narrative: {
       introduction: {
@@ -649,7 +649,7 @@ export const PROJECTS: Project[] = [
         summary: "Reworked the property list and property view so investors could evaluate opportunities without switching to external tools. The new experience turns a data exporter into a decision-making workspace."
       },
       role: {
-        title: "Senior Product Designer",
+        title: "Senior product designer",
         responsibilities: [
           "Research planning and execution",
           "Stakeholder alignment across Product, Data, CS, and Engineering",
@@ -810,8 +810,8 @@ export const PROJECTS: Project[] = [
     showcasePreview: "I connected six disconnected sources into one shared workspace. It exposed a mail-provider conflict that had stopped client letters, making the fix visible to everyone and helping recover revenue.",
     subtitle: "Turning fragmented operational data into trusted decisions",
     category: "8020REI",
-    type: "Unified Analytics Platform",
-    role: "Senior Product Designer & Builder",
+    type: "Unified analytics platform",
+    role: "Senior product designer & builder",
     duration: "2 months (ongoing)",
     tools: [
       "Figma",
@@ -830,7 +830,7 @@ export const PROJECTS: Project[] = [
       "Google Cloud Run",
       "GitHub Actions"
     ],
-    tags: ["Data Unification", "Business Decisions", "Accessible Intelligence"],
+    tags: ["Data unification", "Business decisions", "Accessible intelligence"],
     thumbnailGradient: "from-cyan-950 to-zinc-950",
     previewImageIndex: 0,
     previewImagePosition: "left center",
@@ -848,7 +848,7 @@ export const PROJECTS: Project[] = [
         summary: "I led the 0-to-1 creation of an internal analytics platform that turns data from six disconnected sources into a shared operational workspace for non-technical teams."
       },
       role: {
-        title: "Senior Product Designer & Builder",
+        title: "Senior product designer & builder",
         responsibilities: [
           "Identified the organizational need and led the initiative from concept to production",
           "Mapped data ownership, access constraints, and business questions across teams",
@@ -983,11 +983,11 @@ export const PROJECTS: Project[] = [
     showcasePreview: "I used behavior data to find where people lost momentum, then simplified the mobile journey from 11 screens to 7. Qualified lead conversion increased by 30%.",
     subtitle: "Mobile-first acquisition funnel",
     category: "Habi",
-    type: "Growth Design",
-    role: "Product Designer",
+    type: "Growth design",
+    role: "Product designer",
     duration: "2 months",
     tools: ["Figma", "Google Analytics", "ChatGPT", "Hotjar", "Clarity"],
-    tags: ["Conversion Rate", "A/B Testing", "Mobile First"],
+    tags: ["Conversion rate", "A/B testing", "Mobile first"],
     thumbnailGradient: "from-purple-950 to-zinc-900",
     narrative: {
       introduction: {
@@ -997,7 +997,7 @@ export const PROJECTS: Project[] = [
         summary: "Rebuilt the mobile acquisition funnel for the Mexico product to increase qualified lead conversion. I led the work remotely from Colombia for a product operated in Mexico."
       },
       role: {
-        title: "Product Designer",
+        title: "Product designer",
         responsibilities: [
           "Led discovery, IA, and interaction design for the acquisition flow",
           "Partnered with marketing to align lead quality requirements",
@@ -1134,10 +1134,10 @@ export const PROJECTS: Project[] = [
     subtitle: "Concept case study",
     category: "Freelance",
     type: "UX/UI case study",
-    role: "UX/UI Designer",
+    role: "UX/UI designer",
     duration: "1 week",
     tools: ["Figma", "Google Slides", "ChatGPT"],
-    tags: ["Research", "Concept", "Decision Flow"],
+    tags: ["Research", "Concept", "Decision flow"],
     thumbnailGradient: "from-zinc-800 to-zinc-900",
     narrative: {
       introduction: {
@@ -1147,7 +1147,7 @@ export const PROJECTS: Project[] = [
         summary: "Now App is a one-week UX/UI concept exploring whether a short guided flow could help people choose a movie in about 30 seconds. It remains unbuilt and unlaunched."
       },
       role: {
-        title: "UX/UI Designer",
+        title: "UX/UI designer",
         responsibilities: [
           "Planned and led qualitative interviews and synthesis",
           "Built the concept definition, IA, and user flows",
@@ -1290,7 +1290,7 @@ export const PROJECTS: Project[] = [
 export const EXPERIENCE: ExperienceItem[] = [
   {
     company: "8020REI",
-    role: "Senior Product Designer",
+    role: "Senior product designer",
     period: "Jun 2024 – Present",
     location: "Remote · U.S.-based SaaS",
     description: [
@@ -1303,7 +1303,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
   {
     company: "Habi",
-    role: "Product Designer",
+    role: "Product designer",
     period: "Aug 2022 – Jun 2024",
     location: "Hybrid · Colombia",
     description: [
@@ -1316,7 +1316,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
   {
     company: "Metro de Bogotá",
-    role: "Creative Designer",
+    role: "Creative designer",
     period: "Nov 2017 – Aug 2022",
     location: "On-site · Bogotá",
     description: [
@@ -1327,7 +1327,7 @@ export const EXPERIENCE: ExperienceItem[] = [
   },
   {
     company: "Rd Studio",
-    role: "Industrial Designer",
+    role: "Industrial designer",
     period: "Jul 2014 – Nov 2014",
     location: "",
     description: [
@@ -1339,15 +1339,15 @@ export const EXPERIENCE: ExperienceItem[] = [
 
 export const SKILLS: SkillGroup[] = [
   {
-    category: "Product Design",
-    items: ["Product Strategy", "UX Research", "Interaction Design", "Mobile Product Design", "0-to-1 Products", "Design Systems"]
+    category: "Product design",
+    items: ["Product strategy", "UX research", "Interaction design", "Mobile product design", "0-to-1 products", "Design systems"]
   },
   {
-    category: "Data & Delivery",
-    items: ["Product Analytics", "A/B Testing", "Data Visualization", "Code-based Prototyping", "Production Delivery", "Cross-functional Leadership"]
+    category: "Data & delivery",
+    items: ["Product analytics", "A/B testing", "Data visualization", "Code-based prototyping", "Production delivery", "Cross-functional leadership"]
   },
   {
     category: "Technology",
-    items: ["Figma", "React", "Next.js", "Vue", "Nuxt", "TypeScript", "Tailwind CSS", "BigQuery", "AWS", "Git & GitHub", "AI-assisted Development"]
+    items: ["Figma", "React", "Next.js", "Vue", "Nuxt", "TypeScript", "Tailwind CSS", "BigQuery", "AWS", "Git & GitHub", "AI-assisted development"]
   }
 ];

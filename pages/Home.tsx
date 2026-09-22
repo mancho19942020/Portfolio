@@ -36,14 +36,14 @@ const ExperienceCard: React.FC<{ exp: ExperienceItemWithSecondary; index: number
           <h4 className="font-semibold text-zinc-100 text-base mb-1">{exp.company}</h4>
           <div className="flex flex-col gap-1.5">
             <span className="text-sm text-zinc-400">{exp.role}</span>
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-mono text-zinc-600">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-zinc-600">
               <span>{exp.period}</span>
               {exp.location ? <span>• {exp.location}</span> : null}
             </div>
             {exp.secondaryRole ? (
               <div className="mt-1.5">
                 <span className="text-sm text-zinc-400">{exp.secondaryRole}</span>
-                <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] font-mono text-zinc-600">
+                <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-zinc-600">
                   <span>{exp.secondaryPeriod}</span>
                   {exp.secondaryLocation ? <span>• {exp.secondaryLocation}</span> : null}
                 </div>
@@ -86,16 +86,16 @@ const ExperienceCard: React.FC<{ exp: ExperienceItemWithSecondary; index: number
 
 // ─── Capabilities list ───────────────────────────────────────────────────────
 const CAPABILITIES = [
-  'Product Strategy',
-  'UX Research',
-  'UX + UI Design',
-  'Design Systems',
+  'Product strategy',
+  'UX research',
+  'UX + UI design',
+  'Design systems',
   'Prototyping',
-  'AI-Augmented Workflows',
-  'AI / ML Interfaces',
-  'Data Visualization',
-  'Full-stack Implementation',
-  'Cross-functional Leadership',
+  'AI-augmented workflows',
+  'AI / ML interfaces',
+  'Data visualization',
+  'Full-stack implementation',
+  'Cross-functional leadership',
 ];
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -136,7 +136,7 @@ export const Home: React.FC = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="px-6 sm:px-10 md:px-20"
             >
-              <SectionLabel>Senior Product Designer · Bogotá</SectionLabel>
+              <SectionLabel>Senior product designer · Bogotá</SectionLabel>
             </motion.div>
 
             <motion.div
@@ -164,20 +164,20 @@ export const Home: React.FC = () => {
                     onClick={() => scrollToSection('about')}
                     className="glow-reactive glow-button btn-outline px-7 py-3.5 border border-zinc-800 rounded-full font-semibold transition-colors text-sm w-full md:w-auto"
                   >
-                    About Me
+                    About me
                   </button>
                   <button
                     onClick={() => scrollToSection('work')}
                     className="glow-reactive glow-button btn-outline px-7 py-3.5 border border-zinc-800 rounded-full font-semibold transition-colors text-sm w-full md:w-auto"
                   >
-                    View Work
+                    View work
                   </button>
                   <button
                     type="button"
                     onClick={() => scrollToSection('cta')}
                     className="glow-reactive glow-button btn-primary px-7 py-3.5 font-semibold rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] text-sm w-full md:w-auto"
                   >
-                    Let's Talk
+                    Let's talk
                   </button>
                 </div>
                 <ArrowDown className="hidden md:block text-zinc-700 w-5 h-5 animate-bounce flex-none" />
@@ -238,21 +238,21 @@ export const Home: React.FC = () => {
                   <SectionLabel>About</SectionLabel>
                 </div>
                 <p className="text-zinc-300 leading-relaxed text-lg md:text-xl font-light">
-                  Senior Product Designer and product builder working across research, product analytics, interaction
+                  Senior product designer and product builder working across research, product analytics, interaction
                   design, mobile-first journeys, design systems, and hands-on frontend implementation. I connect user
                   needs, business decisions, and technical constraints, then stay involved through production and
                   measurable iteration.
                 </p>
                 <div className="mt-10 space-y-4">
-                  <h3 className="text-xs font-mono text-zinc-500 uppercase tracking-widest">Education</h3>
+                  <h3 className="text-xs text-zinc-500 tracking-[0.02em]">Education</h3>
                   <div className="space-y-4 text-sm text-zinc-400">
                     <div>
-                      <p className="text-zinc-200">Industrial Designer</p>
+                      <p className="text-zinc-200">Industrial designer</p>
                       <p className="text-zinc-500">Pontificia Universidad Javeriana</p>
                       <p className="text-zinc-600">2011 – 2016</p>
                     </div>
                     <div>
-                      <p className="text-zinc-200">Master's in Branding and Brand Strategy, Design and Visual Communication</p>
+                      <p className="text-zinc-200">Master's in branding and brand strategy, design and visual communication</p>
                       <p className="text-zinc-500">OBS Business School</p>
                       <p className="text-zinc-600">2020 – 2021</p>
                     </div>
@@ -287,7 +287,7 @@ export const Home: React.FC = () => {
                         {group.items.map(skill => (
                           <span
                             key={skill}
-                            className="skill-pill px-3.5 py-1.5 rounded-full bg-zinc-900/40 border border-zinc-800 text-[11px] text-zinc-400 font-mono cursor-default"
+                            className="skill-pill px-3.5 py-1.5 rounded-full bg-zinc-900/40 border border-zinc-800 text-[11px] text-zinc-400 cursor-default"
                           >
                             <span>{skill}</span>
                           </span>
@@ -307,7 +307,7 @@ export const Home: React.FC = () => {
         <div id="work" className="section-card rounded-3xl border border-zinc-800 bg-zinc-900 scroll-mt-4">
           <ScrollReveal>
             <div className="px-6 sm:px-10 md:px-20 pt-12 md:pt-16 pb-2">
-              <SectionLabel>Selected Work</SectionLabel>
+              <SectionLabel>Selected work</SectionLabel>
             </div>
           </ScrollReveal>
           <div className="px-6 sm:px-10 md:px-20 pt-10 pb-14 md:pb-20">
@@ -387,7 +387,7 @@ export const Home: React.FC = () => {
               </div>
             </ScrollReveal>
           </section>
-          <footer className="px-6 sm:px-10 md:px-20 pb-12 pt-8 text-center text-zinc-700 text-xs font-mono border-t border-zinc-800">
+          <footer className="px-6 sm:px-10 md:px-20 pb-12 pt-8 text-center text-zinc-700 text-xs border-t border-zinc-800">
               <p>Designed and shipped end-to-end by Germán David Alvarez.</p>
               <p className="mt-2">© 2025 · Vibecoded with Claude Code, Cursor, GPT Codex, and Gemini.</p>
           </footer>

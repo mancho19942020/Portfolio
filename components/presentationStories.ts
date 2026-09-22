@@ -46,7 +46,7 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'A working space for design and frontend', detail: 'The team designs, reviews, and tests the components in code.', tradeoff: 'Coded states and accessibility checks become part of the design process.' },
     ],
     collaboration: [
-      'Jhon Fredy Berrio, Lead Front-end Developer, and I built Phoenix together through regular working sessions.',
+      'Jhon Fredy Berrio, lead front-end developer, and I built Phoenix together through regular working sessions.',
       'We spoke with clients and internal teams to understand the business needs behind the new brands.',
       'We followed the same method. We understood the need, shaped the system together, and tested decisions in working code.',
     ],

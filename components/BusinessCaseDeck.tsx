@@ -138,7 +138,7 @@ const Card: React.FC<{ icon?: LucideIcon; title: string; body: string; badge?: s
       ) : null}
       <h3 className="text-sm font-semibold text-zinc-100 leading-snug">{title}</h3>
       {badge ? (
-        <span className="ml-auto text-[9px] font-mono uppercase tracking-widest text-zinc-500 border border-zinc-800 rounded-full px-2 py-0.5">
+        <span className="ml-auto text-[9px] tracking-[0.02em] text-zinc-500 border border-zinc-800 rounded-full px-2 py-0.5">
           {badge}
         </span>
       ) : null}
@@ -156,7 +156,7 @@ const Stat: React.FC<{ value: string; label: string; compact?: boolean }> = ({
     <p className={`${compact ? 'text-2xl md:text-3xl' : 'text-3xl md:text-4xl'} font-bold tracking-tight text-white leading-none`}>
       {value}
     </p>
-    <p className="mt-2 text-[10px] font-mono uppercase tracking-widest text-zinc-500 leading-relaxed">
+    <p className="mt-2 text-[10px] tracking-[0.02em] text-zinc-500 leading-relaxed">
       {label}
     </p>
   </div>
@@ -195,7 +195,7 @@ const Frame: React.FC<{
     <div
       className={`rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/20 flex items-center justify-center p-6 ${className}`}
     >
-      <p className="text-[10px] font-mono uppercase tracking-widest text-zinc-600 text-center leading-relaxed">
+      <p className="text-[10px] tracking-[0.02em] text-zinc-600 text-center leading-relaxed">
         {placeholder ?? 'Image slot'}
       </p>
     </div>
@@ -307,11 +307,11 @@ const PersonaCard: React.FC<{ p: (typeof PERSONAS)[number] }> = ({ p }) => {
       <div className="grid md:grid-cols-[0.85fr_1.15fr]">
         {/* Profile rail */}
         <div className="p-6 border-b md:border-b-0 md:border-r border-zinc-800 bg-zinc-950/30">
-          <span className="text-[11px] font-mono uppercase tracking-widest" style={{ color: ACCENT }}>
+          <span className="text-[11px] tracking-[0.02em]" style={{ color: ACCENT }}>
             {p.tier}
           </span>
           <h3 className="mt-3 text-2xl font-bold text-white leading-tight">{p.name}</h3>
-          <p className="mt-2 text-[11px] font-mono uppercase tracking-widest text-zinc-500">{p.role}</p>
+          <p className="mt-2 text-[11px] tracking-[0.02em] text-zinc-500">{p.role}</p>
           <p className="mt-4 text-sm text-zinc-300 leading-relaxed">{p.line}</p>
         </div>
         {/* Sections */}
@@ -320,7 +320,7 @@ const PersonaCard: React.FC<{ p: (typeof PERSONAS)[number] }> = ({ p }) => {
             <div key={r.label}>
               <div className="flex items-center gap-2 mb-1.5" style={{ color: ACCENT }}>
                 <r.icon className="w-3.5 h-3.5" />
-                <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500">{r.label}</span>
+                <span className="text-[10px] tracking-[0.02em] text-zinc-500">{r.label}</span>
               </div>
               <p className="text-[13px] text-zinc-300 leading-relaxed">{r.value}</p>
             </div>
@@ -353,24 +353,24 @@ const JourneyMap: React.FC = () => {
         {/* Stage headers */}
         {JOURNEY.map((s, i) => (
           <div key={s.stage} className={`px-4 py-3 border-b border-zinc-800 ${i ? 'border-l' : ''}`}>
-            <span className="text-[10px] font-mono" style={{ color: ACCENT }}>{`0${i + 1}`}</span>
+            <span className="text-[10px]" style={{ color: ACCENT }}>{`0${i + 1}`}</span>
             <p className="mt-1 text-[13px] font-semibold text-zinc-100 leading-snug">{s.stage}</p>
           </div>
         ))}
         {/* Doing */}
         {JOURNEY.map((s, i) => (
           <div key={s.stage} className={`px-4 py-3 border-b border-zinc-800 ${i ? 'border-l' : ''}`}>
-            <p className="text-[10px] font-mono uppercase tracking-widest text-zinc-600 mb-1.5">Doing</p>
+            <p className="text-[10px] tracking-[0.02em] text-zinc-600 mb-1.5">Doing</p>
             <p className="text-[12px] text-zinc-400 leading-relaxed">{s.doing}</p>
           </div>
         ))}
         {/* Touchpoints */}
         {JOURNEY.map((s, i) => (
           <div key={s.stage} className={`px-4 py-3 border-b border-zinc-800 ${i ? 'border-l' : ''}`}>
-            <p className="text-[10px] font-mono uppercase tracking-widest text-zinc-600 mb-1.5">Touchpoint</p>
+            <p className="text-[10px] tracking-[0.02em] text-zinc-600 mb-1.5">Touchpoint</p>
             <div className="flex flex-wrap gap-1">
               {s.touch.map((t) => (
-                <span key={t} className="text-[10px] font-mono text-zinc-300 border border-zinc-800 rounded-full px-2 py-0.5">
+                <span key={t} className="text-[10px] text-zinc-300 border border-zinc-800 rounded-full px-2 py-0.5">
                   {t}
                 </span>
               ))}
@@ -380,7 +380,7 @@ const JourneyMap: React.FC = () => {
       </div>
       {/* Emotion curve */}
       <div className="relative px-0 py-3 border-b border-zinc-800">
-        <p className="absolute left-4 top-3 text-[10px] font-mono uppercase tracking-widest text-zinc-600">Feeling</p>
+        <p className="absolute left-4 top-3 text-[10px] tracking-[0.02em] text-zinc-600">Feeling</p>
         <svg viewBox="0 0 100 30" preserveAspectRatio="none" className="w-full h-16">
           <polyline points={poly} fill="none" stroke={'rgb(82 82 91)'} strokeWidth={0.6} />
           <polyline points={poly} fill="none" stroke={ACCENT} strokeWidth={0.6} opacity={0.9} />
@@ -393,7 +393,7 @@ const JourneyMap: React.FC = () => {
       <div className="grid" style={{ gridTemplateColumns: `repeat(${n}, minmax(0,1fr))` }}>
         {JOURNEY.map((s, i) => (
           <div key={s.stage} className={`px-4 py-3 ${i ? 'border-l border-zinc-800' : ''}`}>
-            <p className="text-[10px] font-mono uppercase tracking-widest mb-1.5" style={{ color: ACCENT }}>
+            <p className="text-[10px] tracking-[0.02em] mb-1.5" style={{ color: ACCENT }}>
               We make it better
             </p>
             <p className="text-[12px] text-zinc-400 leading-relaxed">{s.better}</p>
@@ -421,10 +421,10 @@ const FeaturePanel: React.FC<{ label: string; badge: string; children: React.Rea
 }) => (
   <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 p-5 h-full">
     <div className="flex items-baseline justify-between gap-2 mb-4">
-      <span className="text-[13px] font-mono uppercase tracking-widest" style={{ color: ACCENT }}>
+      <span className="text-[13px] tracking-[0.02em]" style={{ color: ACCENT }}>
         {label}
       </span>
-      <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-600">{badge}</span>
+      <span className="text-[10px] tracking-[0.02em] text-zinc-600">{badge}</span>
     </div>
     <div className="flex flex-wrap gap-2">{children}</div>
   </div>
@@ -446,7 +446,7 @@ const TransformLoop: React.FC = () => {
 
         {/* Connector */}
         <div className="flex md:flex-col items-center justify-center gap-2 md:w-40">
-          <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 md:mb-1">best practices</span>
+          <span className="text-[10px] tracking-[0.02em] text-zinc-500 md:mb-1">best practices</span>
           <div className="hidden md:flex flex-col gap-3 w-full">
             {[0, 0.8, 1.6].map((delay) => (
               <div key={delay} className="relative h-px w-full bg-zinc-800">
@@ -474,7 +474,7 @@ const TransformLoop: React.FC = () => {
                 transition={reduce ? {} : { duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               >
                 {f.name}
-                <span className="text-[9px] font-mono uppercase tracking-widest rounded-full px-1.5 py-0.5" style={{ background: 'var(--accent-strong)', color: '#0a0a0a' }}>
+                <span className="text-[9px] tracking-[0.02em] rounded-full px-1.5 py-0.5" style={{ background: 'var(--accent-strong)', color: '#0a0a0a' }}>
                   new
                 </span>
               </motion.span>
@@ -532,7 +532,7 @@ const SLIDES: SlideDef[] = [
             </div>
           </In>
           <In delay={0.26}>
-            <p className="relative mt-10 text-[11px] font-mono uppercase tracking-widest text-zinc-600">
+            <p className="relative mt-10 text-[11px] tracking-[0.02em] text-zinc-600">
               Use the arrow keys to move, Esc to exit
             </p>
           </In>
@@ -607,7 +607,7 @@ const SLIDES: SlideDef[] = [
                 <span className="w-9 h-9 rounded-lg border border-zinc-800 bg-zinc-950/40 flex items-center justify-center" style={{ color: ACCENT }}>
                   <Home className="w-4 h-4" />
                 </span>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400">8020REI</span>
+                <span className="text-[11px] tracking-[0.02em] text-zinc-400">8020REI</span>
               </div>
               <p className="text-base font-semibold text-zinc-100">A proven engine</p>
               <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
@@ -618,7 +618,7 @@ const SLIDES: SlideDef[] = [
           <In delay={0.26} className="flex items-center justify-center">
             <div className="flex lg:flex-col items-center gap-2 py-2">
               <ArrowRight className="w-6 h-6 lg:rotate-0" style={{ color: ACCENT }} />
-              <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-500 text-center">
+              <span className="text-[10px] tracking-[0.02em] text-zinc-500 text-center">
                 leverage<br className="hidden lg:block" /> &amp; adapt
               </span>
             </div>
@@ -629,7 +629,7 @@ const SLIDES: SlideDef[] = [
                 <span className="w-9 h-9 rounded-lg border border-zinc-800 bg-zinc-950/40 flex items-center justify-center" style={{ color: ACCENT }}>
                   <RoofGlyph className="w-4 h-4" />
                 </span>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-zinc-400">8020ROOF</span>
+                <span className="text-[11px] tracking-[0.02em] text-zinc-400">8020ROOF</span>
               </div>
               <p className="text-base font-semibold text-zinc-100">Pointed at roofs</p>
               <p className="mt-2 text-sm text-zinc-400 leading-relaxed">
@@ -645,7 +645,7 @@ const SLIDES: SlideDef[] = [
             className="mt-3 rounded-2xl border bg-zinc-900/40 px-6 py-4 flex flex-col sm:flex-row sm:items-center gap-x-4 gap-y-2"
             style={{ borderColor: 'color-mix(in srgb, var(--accent-strong) 32%, transparent)' }}
           >
-            <span className="text-[11px] font-mono uppercase tracking-widest shrink-0" style={{ color: ACCENT }}>
+            <span className="text-[11px] tracking-[0.02em] shrink-0" style={{ color: ACCENT }}>
               The wedge
             </span>
             <p className="text-zinc-200 text-[15px] leading-relaxed">
@@ -710,7 +710,7 @@ const SLIDES: SlideDef[] = [
         {/* Operating principle as a 3-step flow */}
         <In delay={0.34}>
           <div className="mt-6">
-            <p className="text-[10px] font-mono uppercase tracking-widest text-zinc-600 mb-2">The operating principle</p>
+            <p className="text-[10px] tracking-[0.02em] text-zinc-600 mb-2">The operating principle</p>
             <div className="grid sm:grid-cols-3 gap-3">
               {[
                 ['Start with the question', 'Name what we actually need to know before touching a screen.'],
@@ -718,7 +718,7 @@ const SLIDES: SlideDef[] = [
                 ['Decide how to visualize it', 'Turn the answer into a product decision you can see and defend.'],
               ].map(([t, d], i) => (
                 <div key={t} className="relative rounded-2xl border border-zinc-800 bg-zinc-900/40 px-5 py-4">
-                  <span className="text-[11px] font-mono" style={{ color: ACCENT }}>{`0${i + 1}`}</span>
+                  <span className="text-[11px]" style={{ color: ACCENT }}>{`0${i + 1}`}</span>
                   <p className="mt-1 text-sm font-semibold text-zinc-100">{t}</p>
                   <p className="mt-1.5 text-[12px] text-zinc-400 leading-relaxed">{d}</p>
                   {i < 2 ? (
@@ -757,7 +757,7 @@ const SLIDES: SlideDef[] = [
                 {['Data', 'Decision', 'In the platform'].map((p, i) => (
                   <React.Fragment key={p}>
                     <span
-                      className="rounded-full border px-3.5 py-1.5 text-[12px] font-mono"
+                      className="rounded-full border px-3.5 py-1.5 text-[12px]"
                       style={{
                         borderColor: 'color-mix(in srgb, var(--accent-strong) 35%, transparent)',
                         color: 'var(--accent-strong)',
@@ -801,10 +801,10 @@ const SLIDES: SlideDef[] = [
                 className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"
               />
               <span className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-2">
-                <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-300">
+                <span className="text-[10px] tracking-[0.02em] text-zinc-300">
                   16-slide research readout
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-black/55 backdrop-blur-sm border border-white/10 px-3 py-1.5 text-[11px] font-mono text-white/90 group-hover:text-white transition-colors">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-black/55 backdrop-blur-sm border border-white/10 px-3 py-1.5 text-[11px] text-white/90 group-hover:text-white transition-colors">
                   Open the research <ExternalLink className="w-3 h-3" />
                 </span>
               </span>
@@ -936,7 +936,7 @@ const SLIDES: SlideDef[] = [
               href="https://www.shadcn-svelte.com/"
               target="_blank"
               rel="noreferrer"
-              className="glow-reactive glow-button btn-outline shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-800 text-[12px] font-mono uppercase tracking-widest text-zinc-300"
+              className="glow-reactive glow-button btn-outline shrink-0 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-800 text-[12px] tracking-[0.02em] text-zinc-300"
             >
               View shadcn <ArrowRight className="w-3.5 h-3.5" />
             </a>
@@ -956,7 +956,7 @@ const SLIDES: SlideDef[] = [
             <Kicker>Designing the tools</Kicker>
           </In>
           <In>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-zinc-600 border border-dashed border-zinc-700 rounded-full px-3 py-1">
+            <span className="text-[10px] tracking-[0.02em] text-zinc-600 border border-dashed border-zinc-700 rounded-full px-3 py-1">
               Screens to be updated
             </span>
           </In>
@@ -1136,7 +1136,7 @@ const SLIDES: SlideDef[] = [
             </p>
           </In>
           <In delay={0.24}>
-            <p className="mt-6 text-[11px] font-mono uppercase tracking-widest text-zinc-600">
+            <p className="mt-6 text-[11px] tracking-[0.02em] text-zinc-600">
               Working quote, final wording to come
             </p>
           </In>
@@ -1229,7 +1229,7 @@ export const BusinessCaseDeck: React.FC = () => {
           <span className="text-sm font-medium hidden sm:inline">Back to case</span>
         </button>
 
-        <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-zinc-500">
+        <div className="flex items-center gap-2 text-[11px] tracking-[0.02em] text-zinc-500">
           <span style={{ color: ACCENT }}>{String(index + 1).padStart(2, '0')}</span>
           <span className="text-zinc-700">/</span>
           <span>{String(total).padStart(2, '0')}</span>
