@@ -201,16 +201,24 @@ const buildSlides = (project: Project, story: PresentationStory): Slide[] => {
       ),
     },
     {
-      title: 'Build and collaboration',
+      title: 'My role and collaboration',
       render: () => (
         <SlideFrame eyebrow="05 · Design to delivery" title="How the work got built" lead={`My role: ${project.narrative.role.title}`} icon={<Users aria-hidden="true" />}>
           <div className="presentation-build-layout">
-            <ul className="presentation-point-list">{story.collaboration.map((item) => <Point key={item}>{item}</Point>)}</ul>
-            <div className="presentation-handoff" aria-label="Collaboration model">
-              <div><Lightbulb aria-hidden="true" /><span>Frame</span></div><span className="presentation-handoff-line" />
-              <div><Presentation aria-hidden="true" /><span>Design</span></div><span className="presentation-handoff-line" />
-              <div><Code2 aria-hidden="true" /><span>Build</span></div><span className="presentation-handoff-line" />
-              <div><Eye aria-hidden="true" /><span>Learn</span></div>
+            <ul className="presentation-point-list">{project.narrative.role.responsibilities.map((item) => <Point key={item}>{item}</Point>)}</ul>
+            <div className="presentation-build-side">
+              <div className="presentation-handoff" aria-label="Design to delivery process">
+                <div><Lightbulb aria-hidden="true" /><span>Frame</span></div><span className="presentation-handoff-line" />
+                <div><Presentation aria-hidden="true" /><span>Design</span></div><span className="presentation-handoff-line" />
+                <div><Code2 aria-hidden="true" /><span>Build</span></div><span className="presentation-handoff-line" />
+                <div><Eye aria-hidden="true" /><span>Learn</span></div>
+              </div>
+              {project.narrative.role.collaborators?.length ? (
+                <div className="presentation-collaborators">
+                  <p className="presentation-label">Worked with</p>
+                  <div>{project.narrative.role.collaborators.map((name) => <span key={name}>{name}</span>)}</div>
+                </div>
+              ) : null}
             </div>
           </div>
         </SlideFrame>

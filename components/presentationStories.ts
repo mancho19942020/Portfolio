@@ -13,26 +13,25 @@ export type PresentationStory = {
   insight: string;
   process: Array<{ title: string; detail: string }>;
   decisions: PresentationDecision[];
-  collaboration: string[];
   observed: string[];
   stillToValidate: string[];
 };
 
 export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
   phoenix: {
-    stakes: '8020IQ was growing from one product into a family of brands. Separate components were making the same design and development work repeat across products.',
-    successDefinition: 'Create one shared design and code system that lets each brand feel distinct without rebuilding common interface parts.',
+    stakes: 'New brands and internal products were growing on separate interfaces. Copying patterns made design and code drift just as AI-assisted development accelerated.',
+    successDefinition: 'Give every product a shared UX language and tested code foundation while preserving each brand identity.',
     intendedMetrics: [
       'Reduce component drift and duplicate files',
-      'Make brand setup a small, repeatable code change',
+      'Make new product and brand setup faster and more consistent',
       'Check adoption and accessibility in code',
     ],
     evidence: [
       'In meetings with clients and internal teams, design and frontend heard the same need. New brands had to launch quickly without losing consistency.',
-      'A code inventory found 1,001 places where products imported components, along with repeated app-specific copies.',
+      'A code inventory found repeated app-specific copies of components used across the products.',
       'Most brand differences could be handled through a small set of visual values instead of separate component libraries.',
     ],
-    insight: 'The products needed one shared core with a small brand layer on top.',
+    insight: 'A shared source of truth lets a design or code improvement reach every connected product.',
     process: [
       { title: 'Understand the need', detail: 'Meet with clients and teams to learn what each brand and product needed.' },
       { title: 'Map the products', detail: 'Find repeated components, visual rules, and local copies.' },
@@ -42,18 +41,13 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
     ],
     decisions: [
       { title: 'One source for shared behavior', detail: 'The catalog and the products use the same component files.', tradeoff: 'Existing local copies had to be reviewed and retired over time.' },
-      { title: 'Nine visual values per brand', detail: 'Brand identity changes through a small token layer instead of a separate library.', tradeoff: 'Each brand stays expressive within a common product structure.' },
+      { title: 'A visual layer for each brand', detail: 'Brand identity changes through themes instead of separate component libraries.', tradeoff: 'Each brand stays expressive within a common product structure.' },
       { title: 'A working space for design and frontend', detail: 'The team designs, reviews, and tests the components in code.', tradeoff: 'Coded states and accessibility checks become part of the design process.' },
-    ],
-    collaboration: [
-      'Jhon Fredy Berrio, lead front-end developer, and I built Phoenix together through regular working sessions.',
-      'We spoke with clients and internal teams to understand the business needs behind the new brands.',
-      'We followed the same method. We understood the need, shaped the system together, and tested decisions in working code.',
     ],
     observed: [
       '4 brands and 2 themes run from one foundation',
-      '124 design tokens',
-      '82 of 82 catalog entries rendered',
+      'One shared language for design and code',
+      'A live, testable component catalog',
       '64 duplicate component files retired',
     ],
     stillToValidate: [
@@ -72,12 +66,14 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       'Keep every client account isolated and auditable',
     ],
     evidence: [
+      'Industry research and interviews with prospective roofing clients exposed the limits of the manual workflow.',
       'Two pilot clients were receiving monthly property lists through manual Excel exports.',
       'One person assembled, scored, and divided each file by campaign channel.',
       'The company already had more than 100 million property records, but roofing clients did not have a product they could use directly.',
     ],
     insight: 'The product needed to turn roofing criteria into a repeatable marketing campaign instead of copying the spreadsheet into a screen.',
     process: [
+      { title: 'Research the vertical', detail: 'Study roofing operations and interview prospective clients.' },
       { title: 'Find candidates', detail: 'Start from the property universe and narrow the market.' },
       { title: 'Define the Buy Box', detail: 'Translate an investor thesis into reusable rules.' },
       { title: 'Package the list', detail: 'Make the selected opportunity clear and reviewable.' },
@@ -88,11 +84,6 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'Pipeline over feature collection', detail: 'Every screen supports the same journey from criteria to outreach.', tradeoff: 'Lower-priority tools waited until the core path was dependable.' },
       { title: 'Reusable Buy Boxes', detail: 'Teams can save an investment model and apply it repeatedly.', tradeoff: 'The interface had to make complex rules understandable.' },
       { title: 'Tenant isolation from day one', detail: 'Each client sees its own data, settings, and campaign activity.', tradeoff: 'Foundational access work came before visible polish.' },
-    ],
-    collaboration: [
-      'A three-person builder team combined product design, engineering, and business operations.',
-      'I turned the operating method into a product model, designed the workflow, and worked close to implementation.',
-      'Pilot feedback connected product decisions to the reality of campaign delivery.',
     ],
     observed: [
       '2 pilot clients live',
@@ -131,11 +122,6 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'Review before launch', detail: 'A clear summary reduces uncertainty and catches configuration mistakes.', tradeoff: 'The flow adds a deliberate checkpoint before execution.' },
       { title: 'Performance in the product', detail: 'Campaign health includes execution status and results.', tradeoff: 'The team needed reliable operational data, not only interface changes.' },
     ],
-    collaboration: [
-      'I owned the end-to-end product design for the campaign experience.',
-      'The work connected user needs, engineering constraints, and campaign operations.',
-      'Early client conversations shaped the workflow before broader expansion.',
-    ],
     observed: [
       'Two trigger models supported in one campaign experience',
       'A measurement plan defined active usage, satisfaction, and campaign performance',
@@ -170,11 +156,6 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'Modular rule groups', detail: 'The editor follows the investor mental model instead of exposing one long form.', tradeoff: 'More structure required careful migration of existing setups.' },
       { title: 'Live opportunity feedback', detail: 'Volume and balance react to the current configuration.', tradeoff: 'Useful feedback depends on fast, dependable calculations.' },
       { title: 'Warnings in context', detail: 'Accessible guidance appears next to risky or conflicting choices.', tradeoff: 'Warnings had to help without blocking expert users.' },
-    ],
-    collaboration: [
-      'Customer success brought the churn and support evidence into the product conversation.',
-      'I translated that evidence into the mental model, interaction structure, and success criteria.',
-      'Engineering constraints shaped backward compatibility and live-feedback behavior.',
     ],
     observed: [
       'A complete design direction and measurable release criteria were defined',
@@ -211,11 +192,6 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'Two different information rhythms', detail: 'Dense comparison in the list, guided evidence in the detail view.', tradeoff: 'Not every field appears in both places.' },
       { title: 'Investment signals first', detail: 'The hierarchy reflects the decision users are trying to make.', tradeoff: 'Secondary property data moves behind the main story.' },
       { title: 'Filters as part of exploration', detail: 'Filters stay close to the list and its visible results.', tradeoff: 'The interface favors quick iteration over a separate advanced search.' },
-    ],
-    collaboration: [
-      'I connected user behavior and support evidence to a new information hierarchy.',
-      'Product and engineering helped define the available signals and dependable states.',
-      'The release was evaluated through product usage, satisfaction, and issue volume.',
     ],
     observed: [
       '50% increase in daily active users (DAU)',
@@ -254,11 +230,6 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'Shared widget grammar', detail: 'Teams learn a consistent way to read health and change.', tradeoff: 'Special cases had to fit a limited visual vocabulary.' },
       { title: 'Build on existing tools', detail: 'The hub used current infrastructure with no new software spend.', tradeoff: 'The design worked within the limits of those tools.' },
     ],
-    collaboration: [
-      'I mapped questions with business teams and traced each answer to its source and owner.',
-      'Engineering and operations helped verify data behavior and define actionable alerts.',
-      'The product became a shared place to discuss health, not only a reporting surface.',
-    ],
     observed: [
       '6 systems connected',
       '91 widgets across 11 business areas',
@@ -296,11 +267,6 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'Progressive disclosure', detail: 'Complexity appears only after the user has enough context.', tradeoff: 'The team had to define a dependable sequence for every path.' },
       { title: 'Conversion with a quality guardrail', detail: 'The test did not treat more submissions as success on their own.', tradeoff: 'Marketing and product metrics had to be read together.' },
     ],
-    collaboration: [
-      'I worked with product and marketing across Colombia and Mexico.',
-      'Behavioral evidence shaped the sequence, while business partners protected lead quality.',
-      'The redesigned funnel was evaluated through an A/B test against the existing experience.',
-    ],
     observed: [
       'The flow was reduced from 11 screens to 7',
       'Qualified conversion increased 30%',
@@ -336,10 +302,6 @@ export const PRESENTATION_STORIES: Record<string, PresentationStory> = {
       { title: 'Start with the viewing moment', detail: 'The first questions describe context instead of genre taxonomy.', tradeoff: 'The concept depends on a useful mapping from context to titles.' },
       { title: 'Minimal branching', detail: 'Each answer changes the next prompt or removes options.', tradeoff: 'The flow avoids expert controls in favor of speed.' },
       { title: 'One recommendation at a time', detail: 'The interface creates a decision instead of another catalog.', tradeoff: 'Users need an easy way to reject and refine the suggestion.' },
-    ],
-    collaboration: [
-      'This was a one-week personal concept, so I owned research, product framing, interaction design, and prototyping.',
-      'The work produced a testable hypothesis and validation plan rather than a launched product.',
     ],
     observed: [
       'A focused one-week concept and interactive direction were completed',

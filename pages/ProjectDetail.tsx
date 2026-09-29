@@ -6,11 +6,22 @@ import { NavBar } from '../components/NavBar';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { LoadingImage } from '../components/LoadingImage';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, ChevronDown, Presentation } from 'lucide-react';
+import { Search, ChevronDown, Presentation, UsersRound, PenLine, Code2, ChartNoAxesCombined, ShieldCheck, Check } from 'lucide-react';
 import nowAppResearchPdf from '../assets/docs/nowapp-research.pdf';
 
 // Shared card shell, matches home page section cards
 const CARD = 'section-card rounded-3xl border border-zinc-800 bg-zinc-900 overflow-hidden';
+
+const ResponsibilityIcon: React.FC<{ text: string }> = ({ text }) => {
+  const iconClass = 'w-4 h-4 shrink-0';
+  if (/research|interview|reviewed|mapped|audit/i.test(text)) return <Search className={iconClass} aria-hidden="true" />;
+  if (/align|partner|collaborat/i.test(text)) return <UsersRound className={iconClass} aria-hidden="true" />;
+  if (/accessib|quality|guardrail/i.test(text)) return <ShieldCheck className={iconClass} aria-hidden="true" />;
+  if (/design|iterat|prototype/i.test(text)) return <PenLine className={iconClass} aria-hidden="true" />;
+  if (/build|built|code|frontend|backend|implement/i.test(text)) return <Code2 className={iconClass} aria-hidden="true" />;
+  if (/test|measur|monitor|evaluat/i.test(text)) return <ChartNoAxesCombined className={iconClass} aria-hidden="true" />;
+  return <Check className={iconClass} aria-hidden="true" />;
+};
 
 const ProjectGalleryRail: React.FC<{
   images: ProjectImage[];
@@ -309,51 +320,33 @@ export const ProjectDetail: React.FC = () => {
 
                 <p className="text-lg text-zinc-200">{project.narrative.role.title}</p>
 
-                {/* Each responsibility as its own card */}
+                <p className="text-[10px] text-zinc-600 tracking-[0.02em]">What I did</p>
                 <div className="flex flex-col gap-2">
                   {project.narrative.role.responsibilities.map((item) => (
                     <div
                       key={item}
-                      className="rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-3.5"
+                      className="flex items-start gap-3 rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-3.5"
                     >
+                      <span className="project-accent-label mt-0.5"><ResponsibilityIcon text={item} /></span>
                       <p className="text-sm text-zinc-400 leading-relaxed">{item}</p>
                     </div>
                   ))}
                 </div>
 
-                {/* Team, only when project credits collaborators */}
-                {project.team && (
-                  <div className="pt-2 space-y-4">
+                {project.narrative.role.collaborators?.length ? (
+                  <div className="pt-2 space-y-3">
                     <p className="text-[10px] text-zinc-600 tracking-[0.02em]">
-                      Team
+                      Worked with
                     </p>
-                    {project.team.note ? (
-                      <p className="text-sm text-zinc-400 leading-relaxed">
-                        {project.team.note}
-                      </p>
-                    ) : null}
-                    <div className="flex flex-col gap-2">
-                      {project.team.members.map((member) => (
-                        <div
-                          key={member.name}
-                          className="rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-3.5"
-                        >
-                          <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-                            <p className="text-sm text-zinc-200 font-semibold">
-                              {member.name}
-                            </p>
-                            <p className="text-[10px] text-zinc-500 tracking-[0.02em]">
-                              {member.role}
-                            </p>
-                          </div>
-                          <p className="text-sm text-zinc-400 mt-2 leading-relaxed">
-                            {member.contribution}
-                          </p>
-                        </div>
+                    <div className="flex flex-wrap gap-2">
+                      {project.narrative.role.collaborators.map((collaborator) => (
+                        <span key={collaborator} className="rounded-full border border-zinc-800 bg-zinc-900/40 px-3.5 py-1.5 text-[11px] text-zinc-400">
+                          {collaborator}
+                        </span>
                       ))}
                     </div>
                   </div>
-                )}
+                ) : null}
 
                 {/* Duration + Tools stacked below */}
                 <div className="space-y-6 pt-2">

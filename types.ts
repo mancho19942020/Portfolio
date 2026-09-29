@@ -12,17 +12,6 @@ export interface ProjectImage {
   caption?: string;
 }
 
-export interface TeamMember {
-  name: string;
-  role: string;
-  contribution: string;
-}
-
-export interface ProjectTeam {
-  note?: string;
-  members: TeamMember[];
-}
-
 export interface ProjectNarrativeChapter {
   label: string;
   title: string;
@@ -40,6 +29,7 @@ export interface ProjectNarrative {
   role: {
     title: string;
     responsibilities: string[];
+    collaborators?: string[];
   };
   challenge: {
     summary: string;
@@ -76,7 +66,6 @@ export interface Project {
   previewImageIndex?: number;
   previewImagePosition?: string;
   coverImage?: ProjectImage;
-  team?: ProjectTeam;
   caseStudySnapshot?: CaseStudySnapshot;
   narrative: ProjectNarrative;
   images: ProjectImage[];

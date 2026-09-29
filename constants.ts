@@ -1,16 +1,16 @@
 import { Project, ExperienceItem, SkillGroup } from './types';
-import buybox01 from './assets/projects/buybox/01.jpg';
-import buybox02 from './assets/projects/buybox/02.jpg';
-import buybox03 from './assets/projects/buybox/03.jpg';
-import buybox04 from './assets/projects/buybox/04.jpg';
-import buybox05 from './assets/projects/buybox/05.jpg';
-import buybox06 from './assets/projects/buybox/06.jpg';
-import propertyList01 from './assets/projects/property-list/01.jpg';
-import propertyList02 from './assets/projects/property-list/02.jpg';
-import propertyList03 from './assets/projects/property-list/03.jpg';
-import propertyList04 from './assets/projects/property-list/04.jpg';
-import propertyList05 from './assets/projects/property-list/05.jpg';
-import propertyList06 from './assets/projects/property-list/06.jpg';
+import buybox01 from './assets/projects/buybox/01.webp';
+import buybox02 from './assets/projects/buybox/02.webp';
+import buybox03 from './assets/projects/buybox/03.webp';
+import buybox04 from './assets/projects/buybox/04.webp';
+import buybox05 from './assets/projects/buybox/05.webp';
+import buybox06 from './assets/projects/buybox/06.webp';
+import propertyList01 from './assets/projects/property-list/01.webp';
+import propertyList02 from './assets/projects/property-list/02.webp';
+import propertyList03 from './assets/projects/property-list/03.webp';
+import propertyList04 from './assets/projects/property-list/04.webp';
+import propertyList05 from './assets/projects/property-list/05.webp';
+import propertyList06 from './assets/projects/property-list/06.webp';
 import metricsHubMockup from './assets/projects/metrics-hub/mockup.webp';
 import metricsHub02 from './assets/projects/metrics-hub/metrics-02.webp';
 import metricsHub03 from './assets/projects/metrics-hub/metrics-03.webp';
@@ -20,44 +20,51 @@ import metricsHub06 from './assets/projects/metrics-hub/metrics-06.webp';
 import metricsHub07 from './assets/projects/metrics-hub/metrics-07.webp';
 import metricsHub08 from './assets/projects/metrics-hub/metrics-08.webp';
 import metricsHub09 from './assets/projects/metrics-hub/metrics-09.webp';
-import dmAutomation01 from './assets/projects/dm-automation/01.jpg';
-import dmAutomation02 from './assets/projects/dm-automation/02.jpg';
-import dmAutomation03 from './assets/projects/dm-automation/03.jpg';
-import dmAutomation04 from './assets/projects/dm-automation/04.jpg';
-import dmAutomation05 from './assets/projects/dm-automation/05.jpg';
-import smartFunnel01 from './assets/projects/smart-funnel/01.jpg';
-import smartFunnel02 from './assets/projects/smart-funnel/02.jpg';
-import smartFunnel03 from './assets/projects/smart-funnel/03.jpg';
-import smartFunnel04 from './assets/projects/smart-funnel/04.jpg';
-import nowApp01 from './assets/projects/now-app/01.jpg';
-import nowApp02 from './assets/projects/now-app/02.jpg';
-import nowApp03 from './assets/projects/now-app/03.jpg';
-import nowApp04 from './assets/projects/now-app/04.jpg';
-import nowApp05 from './assets/projects/now-app/05.jpg';
-import nowApp06 from './assets/projects/now-app/06.jpg';
-import roof000 from './assets/projects/8020roof/new images/000-cover.webp';
-import roofDashboard from './assets/projects/8020roof/new images/001.webp';
-import roofPropertyList from './assets/projects/8020roof/new images/002.webp';
-import roofPropertyView from './assets/projects/8020roof/new images/003.webp';
-import roofBuybox from './assets/projects/8020roof/new images/004.webp';
-import roofBuyboxEdit from './assets/projects/8020roof/new images/005.webp';
-import roofFulfillment from './assets/projects/8020roof/new images/006.webp';
-import roofDoorKnocking from './assets/projects/8020roof/new images/007.webp';
-import roofDataHealthOverview from './assets/projects/8020roof/new images/008.webp';
-import roofDataHealthDetails from './assets/projects/8020roof/new images/009.webp';
-import phoenixCover from './assets/projects/phoenix/cover.jpg';
-import phoenixBrands from './assets/projects/phoenix/01-tokens-brands-panels.png';
-import phoenixSwitcher from './assets/projects/phoenix/05-brand-switcher-iq-dark.png';
-import phoenixDataTable from './assets/projects/phoenix/06-component-data-table-dm-light.png';
-import phoenixRules from './assets/projects/phoenix/07-golden-rules-roof-dark.png';
-import phoenixButton from './assets/projects/phoenix/10-button-iq-light.png';
+import dmAutomation01 from './assets/projects/dm-automation/01.webp';
+import dmAutomation02 from './assets/projects/dm-automation/02.webp';
+import dmAutomation03 from './assets/projects/dm-automation/03.webp';
+import dmAutomation04 from './assets/projects/dm-automation/04.webp';
+import dmAutomation05 from './assets/projects/dm-automation/05.webp';
+import smartFunnel01 from './assets/projects/smart-funnel/01.webp';
+import smartFunnel02 from './assets/projects/smart-funnel/02.webp';
+import smartFunnel03 from './assets/projects/smart-funnel/03.webp';
+import smartFunnel04 from './assets/projects/smart-funnel/04.webp';
+import nowApp01 from './assets/projects/now-app/01.webp';
+import nowApp02 from './assets/projects/now-app/02.webp';
+import nowApp03 from './assets/projects/now-app/03.webp';
+import nowApp04 from './assets/projects/now-app/04.webp';
+import nowApp05 from './assets/projects/now-app/05.webp';
+import nowApp06 from './assets/projects/now-app/06.webp';
+import roof000 from './assets/projects/8020roof/02 new images/000.webp';
+import roofDashboard from './assets/projects/8020roof/02 new images/001.webp';
+import roofPropertyList from './assets/projects/8020roof/02 new images/002.webp';
+import roofPropertyView from './assets/projects/8020roof/02 new images/003.webp';
+import roofBuybox from './assets/projects/8020roof/02 new images/004.webp';
+import roofBuyboxEdit from './assets/projects/8020roof/02 new images/005.webp';
+import roofFulfillment from './assets/projects/8020roof/02 new images/006.webp';
+import roofDoorKnocking from './assets/projects/8020roof/02 new images/007.webp';
+import roofDataHealthOverview from './assets/projects/8020roof/02 new images/008.webp';
+import roofDataHealthDetails from './assets/projects/8020roof/02 new images/009.webp';
+import roofDetailTen from './assets/projects/8020roof/02 new images/010.webp';
+import phoenixCover from './assets/projects/phoenix/new images/000.webp';
+import phoenix01 from './assets/projects/phoenix/new images/001.webp';
+import phoenix02 from './assets/projects/phoenix/new images/002.webp';
+import phoenix03 from './assets/projects/phoenix/new images/003.webp';
+import phoenix04 from './assets/projects/phoenix/new images/004.webp';
+import phoenix05 from './assets/projects/phoenix/new images/005.webp';
+import phoenix06 from './assets/projects/phoenix/new images/006.webp';
+import phoenix07 from './assets/projects/phoenix/new images/007.webp';
+import phoenix08 from './assets/projects/phoenix/new images/008.webp';
+import phoenix09 from './assets/projects/phoenix/new images/009.webp';
+import phoenix10 from './assets/projects/phoenix/new images/010.webp';
+import phoenix11 from './assets/projects/phoenix/new images/011.webp';
 
 export const PROJECTS: Project[] = [
   {
     id: "phoenix",
     title: "Phoenix",
     showcaseTitle: "One design system to rule them all.",
-    showcasePreview: "8020IQ is growing quickly, and each new brand needs to feel connected without slowing down the team. Phoenix gives us one shared foundation for design and code, so a new brand takes nine token changes instead of a new interface.",
+    showcasePreview: "As new brands and internal products emerged, copied interfaces began to drift. Phoenix gives design and engineering one shared language, so teams can launch faster and improve every product from one source.",
     subtitle: "One design system for every 8020 brand",
     category: "8020IQ",
     type: "Multi-brand design system · platform",
@@ -66,32 +73,25 @@ export const PROJECTS: Project[] = [
     tools: ["Figma", "Claude Code", "Nuxt 4", "Vue 3", "TypeScript", "Tailwind CSS v4", "shadcn-vue", "Playwright", "Vitest", "GitHub Actions"],
     tags: ["Design system", "Multi-brand", "Vibecoding", "Platform", "Accessibility"],
     thumbnailGradient: "from-emerald-950 to-zinc-900",
-    coverImage: { src: phoenixCover, alt: "Phoenix design system catalog on a laptop" },
+    coverImage: { src: phoenixCover, alt: "Phoenix shared design system shown across four 8020 brands" },
     previewImagePosition: "62% center",
-    team: {
-      note: "Phoenix began as a joint initiative between design and frontend. Jhon and I met regularly, spoke with clients, and worked through the business needs behind each new brand. We used those conversations to build one system that design and frontend could shape together in code.",
-      members: [
-        { name: "Germán Alvarez", role: "Senior product designer · design system steward", contribution: "Design-system structure, token model, component experience, and quality rules" },
-        { name: "Camilo Rico", role: "Product director", contribution: "Product direction and the multi-brand business need" },
-        { name: "Jhon Fredy Berrio", role: "Lead front-end developer", contribution: "Co-builder of the shared components, catalog, and frontend foundation" }
-      ]
-    },
     narrative: {
       introduction: {
         company: "8020IQ",
         industry: "PropTech SaaS",
         year: "2026",
-        summary: "Phoenix is the design system behind 8020IQ, 8020REI, 8020ROOF, and 8020 Direct Mail. One component library, token canon, and living catalog serve every product. A brand is nine CSS declarations on a shared foundation."
+        summary: "Phoenix unifies the design and code behind 8020IQ, 8020REI, 8020ROOF, and 8020 Direct Mail. Shared components, accessible patterns, and brand themes give teams one source of truth as new products and AI-assisted workflows grow."
       },
       role: {
         title: "Design system steward & builder",
         responsibilities: [
-          "Co-led the initiative with Jhon Fredy Berrio, our Lead Frontend Developer. We worked from client and business needs to build one shared system in code.",
-          "Set a multi-brand architecture: one shared canon and one nine-token accent layer per brand.",
-          "Built the catalog in code so designers and frontend teams could work from the same components, tokens, and live specimens.",
-          "Wrote accessibility and quality gates so unfiled, forked, or stale components cannot ship.",
-          "Drove adoption by promoting proven app components into the catalog and retiring copies."
-        ]
+          "Researched client and internal-team needs, then audited repeated patterns across the products.",
+          "Aligned product and frontend on a shared architecture that preserves each brand's identity.",
+          "Designed and built a live catalog using the same components and tokens as the products.",
+          "Added accessibility checks and code rules so AI-assisted changes stay consistent.",
+          "Measured adoption, promoted proven components, and retired duplicate files."
+        ],
+        collaborators: ["Product director", "Frontend engineering", "Clients", "Internal product teams"]
       },
       challenge: {
         summary: "The company had become a family of products, but each app had inherited copies of the same UI. Components drifted, dark mode varied by product, and brand colors were hardcoded per app.",
@@ -99,22 +99,28 @@ export const PROJECTS: Project[] = [
         constraints: ["Five apps already in production or staging", "Adoption needed to be incremental", "AI-assisted changes needed machine-checkable rules"],
         insights: ["A brand is nine declarations once everything else is shared", "A catalog should measure its own adoption", "Accessibility should be checked in source, not copied from a guide", "Promotion beats decree: prove it in an app, then share it"]
       },
-      approach: ["Defined 124 shared tokens with paired light and dark values", "Isolated each brand to nine accent tokens in one manifest", "Rendered 82 components and shells live from the same package the apps import", "Added automated gates for registry, component, motion, and accessibility claims", "Generated AI-facing documentation so agents extend the system instead of forking it"],
-      outcome: ["Four brands, two themes, and one shared component library", "64 duplicate component files retired from app trees", "1,001 component import sites measured by the catalog", "82 of 82 components and shells rendered live", "A new brand can be declared with nine tokens and one manifest entry"],
+      approach: ["Mapped repeated patterns and brand differences across the products", "Built one shared component library with light and dark themes", "Kept brand identity in a small theme layer instead of separate libraries", "Added automated checks for components, motion, and accessibility", "Documented the system so AI-assisted and human changes follow the same rules"],
+      outcome: ["Four brands and two themes share one component foundation", "64 duplicate component files retired from app trees", "Shared changes reach connected products from one source", "A live catalog makes behavior, accessibility, and adoption visible", "New brands can start from an existing, tested foundation"],
       chapters: [
         { label: "Act 01", title: "Growth was creating the same work four times", paragraphs: ["8020IQ was growing from one product into a family of brands. Each new product needed its own identity, but teams were rebuilding common interface parts separately. That made design and development slower, and every fix risked working differently from one product to another."], highlights: ["Four brands growing on separate foundations", "Common components maintained in several places", "Every new brand increased the cost of keeping products aligned"] },
-        { label: "Act 02", title: "We first mapped what the products already shared", paragraphs: ["Before deciding what Phoenix should contain, we mapped the components, tokens, and patterns already used across the products. The inventory showed where teams were solving the same problem repeatedly and gave us a measurable starting point."], highlights: ["1,001 component imports mapped", "Remaining duplicates identified by name", "Color contrast measured from the real token files"] },
-        { label: "Act 03", title: "One shared system, nine visual changes per brand", paragraphs: ["We kept common behavior, layout, states, and accessibility rules in one shared system. Each brand only changes nine accent values, so it can look distinct without creating another component library."], highlights: ["124 shared tokens", "Four brands and two themes", "Nine accent values define each brand"] },
-        { label: "Act 04", title: "Design and frontend worked with the real components", paragraphs: ["Phoenix works as a live catalog. Designers and frontend developers can inspect, combine, and review the same coded components used by the products. Automated checks make missing components and accessibility problems visible before release."], highlights: ["82 live component examples", "Automated quality checks", "Documentation generated from the code"] },
-        { label: "Act 05", title: "One change could now improve every product", paragraphs: ["Phoenix now supports four brands and two themes from one component source. The team retired 64 duplicate files, rendered all 82 catalog entries, and created a faster starting point for the next brand."], highlights: ["Nine values plus one manifest entry per brand", "Accessibility checked in both themes", "Shared fixes reach every connected product"] }
+        { label: "Act 02", title: "We mapped what the products already shared", paragraphs: ["We audited components, visual rules, and code already used across the products. The inventory showed where teams were solving the same problem repeatedly and gave us a starting point for one shared system."], highlights: ["Duplicate patterns identified", "Brand differences separated from shared behavior", "Contrast measured in the real theme files"] },
+        { label: "Act 03", title: "One system, distinct brands", paragraphs: ["Common behavior, layout, states, and accessibility rules now live in one place. A small visual layer gives each brand its identity without another component library."], highlights: ["One UX language across the product family", "Light and dark themes", "Brand identity without component forks"] },
+        { label: "Act 04", title: "Design and frontend used the real components", paragraphs: ["Phoenix is a live catalog. Designers and engineers can inspect and review the same coded components used by the products. Automated checks make missing components and accessibility problems visible before release."], highlights: ["Live component examples", "Automated quality checks", "Documentation generated from code"] },
+        { label: "Act 05", title: "One improvement could reach every product", paragraphs: ["Four brands and two themes now use one component source. Retiring duplicate files reduced drift, while the catalog gives the next product a tested starting point."], highlights: ["64 duplicate files retired", "Accessibility checked in both themes", "Shared fixes reach connected products"] }
       ]
     },
     images: [
-      { src: phoenixBrands, alt: "Four brands rendered from one canon" },
-      { src: phoenixSwitcher, alt: "Phoenix brand switcher" },
-      { src: phoenixDataTable, alt: "Phoenix live component page" },
-      { src: phoenixRules, alt: "Phoenix design system rules" },
-      { src: phoenixButton, alt: "Phoenix button component" }
+      { src: phoenix01, alt: "Phoenix design system overview and navigation" },
+      { src: phoenix02, alt: "Phoenix brand themes and shared color values" },
+      { src: phoenix03, alt: "Phoenix component catalog organized by purpose" },
+      { src: phoenix04, alt: "Phoenix DataTable component and usage guidance" },
+      { src: phoenix05, alt: "Phoenix responsive StatGrid component" },
+      { src: phoenix06, alt: "Phoenix StatTile in light and dark themes" },
+      { src: phoenix07, alt: "Phoenix button variants, sizes, and states" },
+      { src: phoenix08, alt: "Phoenix alert dialog in light and dark themes" },
+      { src: phoenix09, alt: "Phoenix dialog component and form example" },
+      { src: phoenix10, alt: "Phoenix WizardStepper navigation component" },
+      { src: phoenix11, alt: "Phoenix AppShell page structure" }
     ]
   },
   // 8020REI (Priority 1)
@@ -150,26 +156,6 @@ export const PROJECTS: Project[] = [
       src: roof000,
       alt: "8020ROOF cover"
     },
-    team: {
-      note: "We were three builders without rigid lanes. Each person led where they were strongest, and all three contributed across frontend, backend, data, and QA with shared ownership of the platform.",
-      members: [
-        {
-          name: "Camilo Rico",
-          role: "Product director",
-          contribution: "Builder and data owner"
-        },
-        {
-          name: "Nicolas Hernandez",
-          role: "Lead QA",
-          contribution: "Builder, tests, and security owner"
-        },
-        {
-          name: "Germán Alvarez",
-          role: "Senior product designer",
-          contribution: "Builder and product UX / UI owner"
-        }
-      ]
-    },
     narrative: {
       introduction: {
         company: "8020REI",
@@ -180,11 +166,13 @@ export const PROJECTS: Project[] = [
       role: {
         title: "Senior product designer & builder",
         responsibilities: [
-          "Led product design end to end: property intelligence, the Buy Box, fulfillment, and the door-knocking beta.",
-          "Adopted shadcn and customized it into the platform's component library, aligned to the brand and the roofing experience.",
-          "Built UI directly in code with Claude Code, moving to Claude or Figma when a screen needed precision.",
-          "Audited every feature with the team for design and UX consistency, and validated it with two pilot clients."
-        ]
+          "Researched the roofing market, competitor workflows, and the manual service the business needed to replace.",
+          "Interviewed prospective roofing clients and aligned the product model with the product director and builders.",
+          "Designed and iterated property intelligence, Buy Boxes, fulfillment, and the door-knocking beta.",
+          "Built production UI with AI-assisted development and a shared component library.",
+          "Tested the workflow with two pilot clients, refined it from feedback, and supported launch."
+        ],
+        collaborators: ["Product director", "Engineering and QA", "Prospective clients", "Pilot clients"]
       },
       challenge: {
         summary: "8020REI had a working data business for investor list generation, but the roofing vertical still ran by hand. One person assembled, scored, and split Excel files for each client. The business needed to prove it could launch a second vertical without expanding the engineering team.",
@@ -287,15 +275,16 @@ export const PROJECTS: Project[] = [
       ]
     },
     images: [
-      { src: roofDashboard, alt: "8020ROOF dashboard" },
-      { src: roofPropertyList, alt: "8020ROOF property list" },
-      { src: roofPropertyView, alt: "8020ROOF property details" },
-      { src: roofBuybox, alt: "8020ROOF Buy Box" },
-      { src: roofBuyboxEdit, alt: "8020ROOF Buy Box numeric filters" },
-      { src: roofFulfillment, alt: "8020ROOF monthly fulfillment pipeline and channel output" },
-      { src: roofDoorKnocking, alt: "8020ROOF door knocking routes and QR codes" },
-      { src: roofDataHealthOverview, alt: "8020ROOF data health overview" },
-      { src: roofDataHealthDetails, alt: "8020ROOF data health field coverage details" }
+      { src: roofDashboard, alt: "8020ROOF dashboard with property metrics and opportunity map" },
+      { src: roofPropertyList, alt: "8020ROOF sortable property list" },
+      { src: roofPropertyView, alt: "8020ROOF property map and detail panel" },
+      { src: roofBuybox, alt: "8020ROOF saved Buy Boxes" },
+      { src: roofBuyboxEdit, alt: "8020ROOF Buy Box county filters" },
+      { src: roofFulfillment, alt: "8020ROOF Buy Box weighting controls" },
+      { src: roofDoorKnocking, alt: "8020ROOF Buy Box ZIP code selection" },
+      { src: roofDataHealthOverview, alt: "8020ROOF door-knocking routes and QR codes" },
+      { src: roofDataHealthDetails, alt: "8020ROOF door-knocking route map" },
+      { src: roofDetailTen, alt: "8020ROOF data health coverage table" }
     ]
   },
   {
@@ -309,21 +298,23 @@ export const PROJECTS: Project[] = [
     tools: ["Figma", "Figma Make", "Google Analytics", "Heap", "Clarity", "ChatGPT"],
     tags: ["Product strategy", "Automation flow", "Complex logic", "Experimentation"],
     thumbnailGradient: "from-emerald-900 to-zinc-900",
+    coverImage: { src: dmAutomation01, alt: "DM campaign product preview" },
     narrative: {
       introduction: {
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "DM Campaign brings direct mail into RapidResponse, turning manual outreach into an automated, data-driven part of the platform."
+        summary: "DM Campaign brings direct mail into the platform. A guided flow helps investors configure automated outreach, review what will happen, and track campaign status."
       },
       role: {
         title: "Senior product designer",
         responsibilities: [
-          "Owned end-to-end product design for the automation system",
-          "Partnered with Product, Engineering, and Customer Success on scope and feasibility",
-          "Defined interaction flows, guardrails, and system feedback states",
-          "Shaped onboarding, configuration, and performance visibility"
-        ]
+          "Researched investor and stakeholder needs alongside Customer Success and Product.",
+          "Aligned campaign scope and feasibility with engineering and operations.",
+          "Designed and iterated onboarding, configuration, guardrails, and status feedback.",
+          "Defined how users review campaign performance and how the team would measure adoption."
+        ],
+        collaborators: ["Product", "Engineering", "Customer Success", "Investors"]
       },
       challenge: {
         summary: "Discovery combined leadership requirements, stakeholder interviews, investor research, and benchmark analysis across direct mail and campaign platforms. The opportunity was to automate outreach triggered by data events and list delivery while preserving control and transparency.",
@@ -435,10 +426,6 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: dmAutomation01,
-        alt: "DM campaign screen 01"
-      },
-      {
         src: dmAutomation02,
         alt: "DM campaign screen 02"
       },
@@ -469,22 +456,23 @@ export const PROJECTS: Project[] = [
     tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics", "ChatGPT", "Zoom"],
     tags: ["Data visualization", "Filtering logic", "Legacy redesign"],
     thumbnailGradient: "from-emerald-950 to-zinc-900",
+    coverImage: { src: buybox01, alt: "BuyBox editor product preview" },
     narrative: {
       introduction: {
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "Redesigned the BuyBox editor after churn feedback and Customer Success escalations linked configuration problems to poor list quality and misaligned marketing output. The goal was to turn a dense rules engine into a guided decision system aligned with marketing capacity, market opportunity, and investor goals."
+        summary: "Churn feedback and Customer Success cases showed that investors struggled to configure Buy Boxes. I redesigned the rules engine as a guided decision flow that connects market opportunity, marketing capacity, and investor goals."
       },
       role: {
         title: "Senior product designer",
         responsibilities: [
-          "Research and stakeholder alignment",
-          "Experience strategy and information architecture",
-          "Wireframes, prototyping, and experimentation",
-          "Design reviews with executive leadership",
-          "Final UI aligned to the Kairo design system"
-        ]
+          "Reviewed churn feedback and Customer Success cases to identify where BuyBox setup failed.",
+          "Aligned the investment rules, marketing needs, and success criteria with Product and leadership.",
+          "Designed and iterated the information architecture, live feedback, warnings, and prototypes.",
+          "Prepared an accessible UI direction and release measures for engineering review."
+        ],
+        collaborators: ["Product", "Engineering", "Customer Success", "Leadership"]
       },
       challenge: {
         summary: "Churn feedback and Customer Success escalations showed that the legacy editor assumed expertise instead of teaching investors how BuyBox decisions affected list quality and marketing output.",
@@ -603,10 +591,6 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: buybox01,
-        alt: "BuyBox editor screen 01"
-      },
-      {
         src: buybox02,
         alt: "BuyBox editor screen 02"
       },
@@ -641,23 +625,23 @@ export const PROJECTS: Project[] = [
     tools: ["Figma", "Figma Make", "Heap", "Clarity", "Google Analytics", "ChatGPT", "GPT"],
     tags: ["Information density", "Efficiency", "Data tables"],
     thumbnailGradient: "from-zinc-800 to-zinc-950",
+    coverImage: { src: propertyList01, alt: "Property view product preview" },
     narrative: {
       introduction: {
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2025",
-        summary: "Reworked the property list and property view so investors could evaluate opportunities without switching to external tools. The new experience turns a data exporter into a decision-making workspace."
+        summary: "I reworked the property list and detail view so investors could evaluate opportunities in the product, with the most useful signals visible at the right moment."
       },
       role: {
         title: "Senior product designer",
         responsibilities: [
-          "Research planning and execution",
-          "Stakeholder alignment across Product, Data, CS, and Engineering",
-          "Benchmark analysis and competitive research",
-          "Information architecture and interaction design",
-          "Wireframes, prototyping, and iteration",
-          "Final UI aligned to the Kairo design system"
-        ]
+          "Researched investor decisions, support feedback, and competing property tools.",
+          "Aligned the most useful property signals with Product, Data, Customer Success, and Engineering.",
+          "Designed and iterated list exploration, filters, and a clearer property-detail hierarchy.",
+          "Used product usage, satisfaction, and issue reports to evaluate the updated experience."
+        ],
+        collaborators: ["Product", "Data", "Engineering", "Customer Success", "Investors"]
       },
       challenge: {
         summary: "The property list and property view limited property understanding and led investors to use external platforms for key decisions.",
@@ -778,10 +762,6 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: propertyList01,
-        alt: "Property view screen 01"
-      },
-      {
         src: propertyList02,
         alt: "Property view screen 02"
       },
@@ -832,7 +812,7 @@ export const PROJECTS: Project[] = [
     ],
     tags: ["Data unification", "Business decisions", "Accessible intelligence"],
     thumbnailGradient: "from-cyan-950 to-zinc-950",
-    previewImageIndex: 0,
+    coverImage: { src: metricsHubMockup, alt: "Metrics Hub dashboard product preview" },
     previewImagePosition: "left center",
     caseStudySnapshot: {
       businessProblem: "Business-critical data was distributed across six systems, leaving Product, Customer Success, and Operations to make decisions with partial evidence.",
@@ -845,17 +825,18 @@ export const PROJECTS: Project[] = [
         company: "8020REI",
         industry: "PropTech SaaS",
         year: "2026",
-        summary: "I led the 0-to-1 creation of an internal analytics platform that turns data from six disconnected sources into a shared operational workspace for non-technical teams."
+        summary: "I designed and built an internal workspace that connects six data sources. Nontechnical teams can now investigate business health in one place and act on issues sooner."
       },
       role: {
         title: "Senior product designer & builder",
         responsibilities: [
-          "Identified the organizational need and led the initiative from concept to production",
-          "Mapped data ownership, access constraints, and business questions across teams",
-          "Designed the full information architecture, navigation, and widget workspace",
-          "Built frontend and backend layers for multi-source data exploration and monitoring",
-          "Defined the Kairo design system and contribution workflows with automated quality gates"
-        ]
+          "Interviewed business teams about decisions they could not make from disconnected data.",
+          "Mapped source ownership, access constraints, and key questions across six systems.",
+          "Designed and iterated navigation, metric patterns, and a shared widget workspace.",
+          "Built frontend and backend layers with AI assistance, then monitored real use and operational issues.",
+          "Created contribution and quality rules so the platform could grow consistently."
+        ],
+        collaborators: ["Product director", "Engineering", "Data teams", "Customer Success", "Operations"]
       },
       challenge: {
         summary: "Business-critical metrics lived in disconnected tools, so teams made product, campaign, and customer decisions with partial evidence.",
@@ -964,7 +945,6 @@ export const PROJECTS: Project[] = [
       ]
     },
     images: [
-      { src: metricsHubMockup, alt: "Metrics Hub dashboard overview" },
       { src: metricsHub02, alt: "Metrics Hub screen 02" },
       { src: metricsHub03, alt: "Metrics Hub screen 03" },
       { src: metricsHub04, alt: "Metrics Hub screen 04" },
@@ -989,20 +969,23 @@ export const PROJECTS: Project[] = [
     tools: ["Figma", "Google Analytics", "ChatGPT", "Hotjar", "Clarity"],
     tags: ["Conversion rate", "A/B testing", "Mobile first"],
     thumbnailGradient: "from-purple-950 to-zinc-900",
+    coverImage: { src: smartFunnel01, alt: "Habi mobile acquisition funnel product preview" },
     narrative: {
       introduction: {
         company: "TuHabi",
         industry: "PropTech",
         year: "2024",
-        summary: "Rebuilt the mobile acquisition funnel for the Mexico product to increase qualified lead conversion. I led the work remotely from Colombia for a product operated in Mexico."
+        summary: "I redesigned Habi's mobile acquisition funnel in Mexico using behavioral data and A/B tests. The flow fell from eleven screens to seven, and qualified lead conversion increased by 30%."
       },
       role: {
         title: "Product designer",
         responsibilities: [
-          "Led discovery, IA, and interaction design for the acquisition flow",
-          "Partnered with marketing to align lead quality requirements",
-          "Designed, tested, and iterated funnel variants with analytics input"
-        ]
+          "Used behavioral data to locate drop-off in the eleven-screen mobile journey.",
+          "Aligned qualification needs with Product and Marketing across Mexico and Colombia.",
+          "Designed and iterated a seven-screen flow with progressive disclosure.",
+          "Tested variants through A/B experiments and reviewed qualified conversion."
+        ],
+        collaborators: ["Product", "Marketing", "Growth", "Users"]
       },
       challenge: {
         summary: "The registration funnel was long and friction-heavy, leading to mid-flow drop-offs and low trust on mobile.",
@@ -1108,10 +1091,6 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: smartFunnel01,
-        alt: "Smart funnel screen 01"
-      },
-      {
         src: smartFunnel02,
         alt: "Smart funnel screen 02"
       },
@@ -1139,6 +1118,7 @@ export const PROJECTS: Project[] = [
     tools: ["Figma", "Google Slides", "ChatGPT"],
     tags: ["Research", "Concept", "Decision flow"],
     thumbnailGradient: "from-zinc-800 to-zinc-900",
+    coverImage: { src: nowApp01, alt: "Now App concept preview" },
     narrative: {
       introduction: {
         company: "Personal project",
@@ -1149,10 +1129,10 @@ export const PROJECTS: Project[] = [
       role: {
         title: "UX/UI designer",
         responsibilities: [
-          "Planned and led qualitative interviews and synthesis",
-          "Built the concept definition, IA, and user flows",
-          "Designed the UI concept and interaction model",
-          "Documented learnings and validation criteria"
+          "Interviewed viewers and synthesized the moments that made choosing a movie difficult.",
+          "Reviewed competing streaming discovery patterns and framed a testable hypothesis.",
+          "Designed a guided decision flow and mobile UI prototype.",
+          "Documented what a future user test should measure; the concept has not launched."
         ]
       },
       challenge: {
@@ -1260,10 +1240,6 @@ export const PROJECTS: Project[] = [
     },
     images: [
       {
-        src: nowApp01,
-        alt: "Now App screen 01"
-      },
-      {
         src: nowApp02,
         alt: "Now App screen 02"
       },
@@ -1294,11 +1270,12 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: "Jun 2024 – Present",
     location: "Remote · U.S.-based SaaS",
     description: [
-      "Lead product strategy, research, interaction design, delivery, and measurement for data-heavy B2B SaaS",
-      "Design and build production interfaces with React, Next.js, Vue, Nuxt, and TypeScript",
-      "Increased daily active users (DAU) by 50%, reached 70%+ positive in-product CSAT, and reduced reported issues by about 80%",
-      "Built Metrics Hub from zero to one, connecting six data sources into 91 widgets across 11 business areas",
-      "Co-built multi-brand design systems and helped ship a self-serve SaaS vertical to production in six weeks"
+      "Lead discovery, client research, design, implementation, and measurement across data-heavy B2B SaaS products",
+      "Work with clients, Customer Success, Product, Data, and Engineering to turn operational needs into usable workflows",
+      "Designed and built Metrics Hub, connecting six data sources and exposing an issue that blocked client mailings",
+      "Helped launch 8020ROOF as a self-serve product after researching the roofing market and testing with pilot clients",
+      "Co-built Phoenix so four brands share a consistent design and code foundation, with accessible patterns and fewer duplicate components",
+      "Across the property experience, daily active users rose 50%, positive in-product CSAT exceeded 70%, and reported issues fell about 80%"
     ]
   },
   {
@@ -1307,11 +1284,10 @@ export const EXPERIENCE: ExperienceItem[] = [
     period: "Aug 2022 – Jun 2024",
     location: "Hybrid · Colombia",
     description: [
-      "Led product design across acquisition, internal operations, customer service, and research for Colombia and Mexico",
-      "Led discovery, behavioral analysis, IA, interaction design, prototyping, and experimentation for acquisition and internal tools",
-      "Reduced a mobile-first funnel from 11 screens to 7 and increased qualified lead conversion by 30% through A/B testing",
+      "Led research, interaction design, and testing across acquisition and operations in Colombia and Mexico",
+      "Used behavioral data and A/B tests to reduce a mobile funnel from 11 screens to 7, increasing qualified lead conversion by 30%",
       "Designed a role-based operations platform for commercial and zone leaders managing teams and territories",
-      "Conducted cross-functional UX research and built and iterated AI-assisted customer-service prompts"
+      "Partnered with Product, Growth, Marketing, and Operations to evaluate and iterate customer journeys"
     ]
   },
   {
