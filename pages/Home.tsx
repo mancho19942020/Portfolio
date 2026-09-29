@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import { NavBar } from '../components/NavBar';
 import { LoadingImage } from '../components/LoadingImage';
+import { HeroPhysics } from '../components/HeroPhysics';
 import { resolvedLogos } from '../components/ToolsCarousel';
 import { EXPERIENCE, PROJECTS, SKILLS } from '../constants';
 
@@ -73,6 +74,7 @@ export const Home: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -113,7 +115,8 @@ export const Home: React.FC = () => {
       <NavBar />
       <main className={'dashboard' + (ready ? ' dashboard--ready' : '') + (activeExperience !== null ? ' dashboard--experience-open' : '') + (hoveredProject ? ' dashboard--project-hovered' : '')}>
         <div className="dashboard__left">
-          <section className={'dashboard-hero' + (activeExperience !== null ? ' is-condensed' : '')} aria-label="Introduction">
+          <section ref={heroRef} className={'dashboard-hero' + (activeExperience !== null ? ' is-condensed' : '')} aria-label="Introduction">
+            <HeroPhysics containerRef={heroRef} active={ready} />
             <h1><span className="dashboard-hero__typed dashboard-hero__typed--name">Germán Alvarez</span></h1>
             <p className="dashboard-hero__description" aria-hidden={activeExperience !== null}>
               I design and build data-heavy B2B SaaS and mobile-first products, from research and metrics to production code.
@@ -131,13 +134,13 @@ export const Home: React.FC = () => {
                   <article
                     key={experience.company}
                     className={'dashboard-experience__card' + (expanded ? ' is-expanded' : '') + (condensed ? ' is-condensed' : '')}
+                    onClick={() => setActiveExperience(expanded ? null : index)}
                   >
                     <button
                       type="button"
                       className="dashboard-experience__trigger"
                       aria-expanded={expanded}
                       aria-controls={detailsId}
-                      onClick={() => setActiveExperience(expanded ? null : index)}
                     >
                       <span className="dashboard-experience__heading">
                         <strong>{experience.company}</strong>
@@ -145,7 +148,6 @@ export const Home: React.FC = () => {
                       </span>
                       <span className="dashboard-experience__subline" aria-hidden={condensed}>
                         <span>{experience.location || 'On-site · Bogotá'}</span>
-                        <ChevronDown size={13} className={'dashboard-experience__chevron' + (expanded ? ' is-expanded' : '')} aria-hidden="true" />
                       </span>
                     </button>
                     <div id={detailsId} className="dashboard-experience__details" aria-hidden={!expanded}>
@@ -153,6 +155,7 @@ export const Home: React.FC = () => {
                         {experience.description.map((detail) => <li key={detail}>{detail}</li>)}
                       </ul>
                     </div>
+                    <ChevronDown size={15} className={'dashboard-experience__chevron' + (expanded ? ' is-expanded' : '')} aria-hidden="true" />
                   </article>
                 );
               })}

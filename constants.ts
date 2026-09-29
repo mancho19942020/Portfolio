@@ -1290,7 +1290,7 @@ export const PROJECTS: Project[] = [
 export const EXPERIENCE: ExperienceItem[] = [
   {
     company: "8020REI",
-    role: "Senior product designer",
+    role: "Sr. product designer",
     period: "Jun 2024 – Present",
     location: "Remote · U.S.-based SaaS",
     description: [
