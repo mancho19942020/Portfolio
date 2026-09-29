@@ -7,12 +7,9 @@ const CV_PDF_PATH = '/German-David-Alvarez-CV.pdf';
 export const NavBar: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
-  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
-    if (typeof window === 'undefined') {
-      return 'light';
-    }
-    return localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
-  });
+  const [theme, setTheme] = useState<'light' | 'dark'>(() =>
+    typeof window !== 'undefined' && localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
+  );
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
@@ -20,67 +17,32 @@ export const NavBar: React.FC = () => {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
-  };
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-zinc-800/50 bg-zinc-950/90 backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-3 md:px-5 h-16 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          {isHome ? (
-            <span className="px-3.5 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/40 text-[11px] font-semibold text-zinc-100 tracking-tight">
-              Germán D. Alvarez
-            </span>
-          ) : (
-            <Link
-              to="/"
-              className="glow-reactive glow-button flex items-center gap-2 text-zinc-400 hover:text-white transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              <span className="text-sm font-medium">Back</span>
-            </Link>
-          )}
-        </div>
-
-        <div className="flex items-center gap-1.5 md:gap-2">
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="glow-reactive glow-button btn-outline flex items-center gap-1.5 px-2.5 md:px-3.5 py-1.5 rounded-full border border-zinc-800 text-[11px] font-semibold text-zinc-400 transition-colors"
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-          >
-            {theme === 'light' ? <Moon className="w-3.5 h-3.5" /> : <Sun className="w-3.5 h-3.5" />}
-            <span className="hidden md:inline">{theme === 'light' ? 'Dark' : 'Light'}</span>
-          </button>
-          <a
-            href="https://linkedin.com/in/germanalvarezg"
-            target="_blank"
-            rel="noreferrer"
-            className="glow-reactive glow-button btn-outline flex items-center gap-1.5 px-2.5 md:px-3.5 py-1.5 rounded-full border border-zinc-800 text-[11px] font-semibold text-zinc-400 transition-colors"
-            aria-label="LinkedIn profile"
-          >
-            <Linkedin className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">LinkedIn</span>
-          </a>
-          <a
-            href={CV_PDF_PATH}
-            download="German-David-Alvarez-CV.pdf"
-            className="glow-reactive glow-button btn-outline flex items-center gap-1.5 px-2.5 md:px-3.5 py-1.5 rounded-full border border-zinc-800 text-[11px] font-semibold text-zinc-400 transition-colors"
-            aria-label="Download CV"
-          >
-            <Download className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">CV</span>
-          </a>
-          <a
-            href="mailto:germanproduct94@gmail.com"
-            className="glow-reactive glow-button btn-outline flex items-center gap-1.5 px-2.5 md:px-3.5 py-1.5 rounded-full border border-zinc-800 text-[11px] font-semibold text-zinc-400 transition-colors"
-            aria-label="Contact via email"
-          >
-            <Mail className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Contact</span>
-          </a>
-        </div>
+    <nav className={`portfolio-nav ${isHome ? 'portfolio-nav--home' : ''}`} aria-label="Main navigation">
+      {!isHome && (
+        <Link to="/" className="portfolio-nav__back" aria-label="Back to portfolio">
+          <ArrowLeft size={15} aria-hidden="true" /> <span>Back</span>
+        </Link>
+      )}
+      <div className="portfolio-nav__actions">
+        <button
+          type="button"
+          onClick={() => setTheme((previous) => previous === 'light' ? 'dark' : 'light')}
+          className="portfolio-nav__button"
+          aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+          title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
+        >
+          {theme === 'light' ? <Moon size={14} aria-hidden="true" /> : <Sun size={14} aria-hidden="true" />}
+        </button>
+        <a href="https://linkedin.com/in/germanalvarezg" target="_blank" rel="noreferrer" className="portfolio-nav__button" aria-label="LinkedIn profile" title="LinkedIn profile">
+          <Linkedin size={14} aria-hidden="true" />
+        </a>
+        <a href="mailto:germanproduct94@gmail.com" className="portfolio-nav__button" aria-label="Contact by email" title="Contact by email">
+          <Mail size={14} aria-hidden="true" />
+        </a>
+        <a href={CV_PDF_PATH} download="German-David-Alvarez-CV.pdf" className="portfolio-nav__button portfolio-nav__cv" aria-label="Download CV" title="Download CV">
+          <Download size={14} aria-hidden="true" /><span>CV</span>
+        </a>
       </div>
     </nav>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
-import { ProjectNarrativeChapter } from '../types';
+import { ProjectImage, ProjectNarrativeChapter } from '../types';
 import { NavBar } from '../components/NavBar';
 import { ImageLightbox } from '../components/ImageLightbox';
 import { LoadingImage } from '../components/LoadingImage';
@@ -11,6 +11,35 @@ import nowAppResearchPdf from '../assets/docs/nowapp-research.pdf';
 
 // Shared card shell, matches home page section cards
 const CARD = 'section-card rounded-3xl border border-zinc-800 bg-zinc-900 overflow-hidden';
+
+const ProjectGalleryRail: React.FC<{
+  images: ProjectImage[];
+  onOpen: (index: number) => void;
+  label: string;
+}> = ({ images, onOpen, label }) => (
+  <section className="project-gallery" aria-label={label}>
+    <div className="project-gallery__rail no-scrollbar" data-lenis-prevent>
+      {images.map((image, index) => (
+        <button
+          key={`${label}-${image.src}`}
+          type="button"
+          onClick={() => onOpen(index)}
+          className="project-gallery__item"
+          aria-label={`Enlarge image ${index + 1} of ${images.length}: ${image.alt}`}
+        >
+          <LoadingImage
+            src={image.src}
+            alt={image.alt}
+            wrapperClassName="project-gallery__image-wrap"
+            className="project-gallery__image"
+            loading={index === 0 ? 'eager' : 'lazy'}
+            fetchPriority={index === 0 ? 'high' : 'auto'}
+          />
+        </button>
+      ))}
+    </div>
+  </section>
+);
 
 // ─── Collapsible act card ─────────────────────────────────────────────────────
 const ActCard: React.FC<{
@@ -152,8 +181,6 @@ export const ProjectDetail: React.FC = () => {
     return <Navigate to="/" replace />;
   }
 
-  const primaryImages = project.images.slice(0, 2);
-  const secondaryImages = project.images.slice(2);
   const isCaseStudy = project.category === 'Freelance';
   const categoryLabel = isCaseStudy ? 'UX/UI case study' : project.category;
   const showNowAppResearch = project.id === 'freelance-1';
@@ -168,21 +195,21 @@ export const ProjectDetail: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen text-zinc-100 selection:bg-zinc-700 selection:text-white">
+    <div className="project-detail-page min-h-screen text-zinc-100 selection:bg-zinc-700 selection:text-white">
       <NavBar />
 
-      <main className="max-w-6xl mx-auto px-3 md:px-5 pt-20 pb-6">
-        <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-4">
+      <main className="project-detail-main">
+        <div className="project-detail-grid">
 
           {/* ── LEFT COLUMN ─────────────────────────────────────────────── */}
-          <div className="space-y-3 md:space-y-4">
+          <div className="project-detail-content space-y-3 md:space-y-4">
 
             {/* Card 1: Header, tag, title, subtitle, meta, summary */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className={CARD}
+              className={`${CARD} project-detail-card`}
             >
               <div className="px-6 md:px-10 py-10 space-y-5">
                 {/* Company tag */}
@@ -237,8 +264,10 @@ export const ProjectDetail: React.FC = () => {
               </div>
             </motion.div>
 
+            <ProjectGalleryRail images={project.images} onOpen={setLightboxIndex} label="Project images" />
+
             {snapshot && (
-              <motion.section {...sectionMotion} className={CARD} aria-labelledby="case-snapshot-heading">
+              <motion.section {...sectionMotion} className={`${CARD} project-detail-card`} aria-labelledby="case-snapshot-heading">
                 <div className="px-6 md:px-10 py-10">
                   <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
                     <h2
@@ -273,32 +302,8 @@ export const ProjectDetail: React.FC = () => {
               </motion.section>
             )}
 
-            {/* Mobile images, first 2 */}
-            {primaryImages.length > 0 && (
-              <div className="lg:hidden space-y-3">
-                {primaryImages.map((image, i) => (
-                  <button
-                    key={image.src}
-                    type="button"
-                    onClick={() => setLightboxIndex(i)}
-                    className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
-                    aria-label={`Open image ${i + 1} of ${project.images.length}`}
-                  >
-                    <LoadingImage
-                      src={image.src}
-                      alt={image.alt}
-                      wrapperClassName="w-full min-h-[180px] sm:min-h-[240px]"
-                      className="block h-auto w-full object-cover"
-                      loading={i === 0 ? 'eager' : 'lazy'}
-                      fetchPriority={i === 0 ? 'high' : 'auto'}
-                    />
-                  </button>
-                ))}
-              </div>
-            )}
-
             {/* Card 2: Role, title, responsibility cards, duration, tools */}
-            <motion.div {...sectionMotion} className={CARD}>
+            <motion.div {...sectionMotion} className={`${CARD} project-detail-card`}>
               <div className="px-6 md:px-10 py-10 space-y-6">
                 <h2 className="project-accent-label text-xs font-bold tracking-[0.03em]">Role</h2>
 
@@ -378,7 +383,7 @@ export const ProjectDetail: React.FC = () => {
             </motion.div>
 
             {/* Card 3: Case narrative, collapsible act cards */}
-            <motion.div {...sectionMotion} className={CARD}>
+            <motion.div {...sectionMotion} className={`${CARD} project-detail-card`}>
               <div className="px-6 md:px-10 pt-10 pb-4">
                 <h2 className="project-accent-label text-xs font-bold tracking-[0.03em]">
                   Case narrative
@@ -396,55 +401,31 @@ export const ProjectDetail: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Mobile images, rest */}
-            {secondaryImages.length > 0 && (
-              <div className="lg:hidden space-y-3">
-                {secondaryImages.map((image, i) => {
-                  const globalIndex = i + primaryImages.length;
-                  return (
-                    <button
-                      key={image.src}
-                      type="button"
-                      onClick={() => setLightboxIndex(globalIndex)}
-                      className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
-                      aria-label={`Open image ${globalIndex + 1} of ${project.images.length}`}
-                    >
-                      <LoadingImage
-                        src={image.src}
-                        alt={image.alt}
-                        wrapperClassName="w-full min-h-[180px] sm:min-h-[240px]"
-                        className="block h-auto w-full object-cover"
-                        loading="lazy"
-                      />
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+            <ProjectGalleryRail images={project.images} onOpen={setLightboxIndex} label="Project images after the case narrative" />
           </div>
 
           {/* RIGHT COLUMN, sticky image panel */}
-          <aside className="hidden lg:block">
+          <aside className="project-detail-aside hidden lg:block">
             {/* data-lenis-prevent: opt this container out of global Lenis
                 smooth-scroll so its internal overflow-y-auto can receive
                 wheel events directly (Lenis steals them otherwise). */}
             <div
               data-lenis-prevent
-              className="lg:sticky lg:top-24 space-y-3 lg:max-h-[calc(100vh-7rem)] overflow-y-auto no-scrollbar"
+              className="project-detail-aside__rail no-scrollbar"
             >
               {project.images.map((image, i) => (
                 <button
                   key={image.src}
                   type="button"
                   onClick={() => setLightboxIndex(i)}
-                  className="block w-full rounded-3xl border border-zinc-800 bg-zinc-900/40 overflow-hidden cursor-zoom-in p-0 text-left"
+                  className="project-detail-aside__image"
                   aria-label={`Open image ${i + 1} of ${project.images.length}`}
                 >
                   <LoadingImage
                     src={image.src}
                     alt={image.alt}
-                    wrapperClassName="w-full min-h-[220px]"
-                    className="block h-auto w-full object-cover"
+                    wrapperClassName="project-detail-aside__image-wrap"
+                    className="project-detail-aside__preview"
                     loading={i === 0 ? 'eager' : 'lazy'}
                     fetchPriority={i === 0 ? 'high' : 'auto'}
                   />
@@ -458,7 +439,7 @@ export const ProjectDetail: React.FC = () => {
           <span>
             {project.title}, {project.category}
           </span>
-          <span>© 2025 Germán David Alvarez</span>
+          <span>© 2026 Germán David Alvarez</span>
         </footer>
       </main>
 

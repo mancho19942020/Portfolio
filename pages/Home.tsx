@@ -1,398 +1,225 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { ArrowUpRight, ChevronDown } from 'lucide-react';
 import { NavBar } from '../components/NavBar';
-import { ScrollReveal } from '../components/ScrollReveal';
-import { ToolsCarousel } from '../components/ToolsCarousel';
-import { InterestsRibbon } from '../components/InterestsRibbon';
-import { SectionLabel } from '../components/SectionLabel';
-import { DisplayMarquee } from '../components/DisplayMarquee';
-import { PinnedReveal } from '../components/PinnedReveal';
-import { ProjectShowcaseStack } from '../components/ProjectShowcase';
-import { smoothScrollToElement } from '../components/SmoothScroll';
-import { PROJECTS, EXPERIENCE, SKILLS } from '../constants';
-import { ArrowDown, ChevronDown, Download } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { LoadingImage } from '../components/LoadingImage';
+import { resolvedLogos } from '../components/ToolsCarousel';
+import { EXPERIENCE, PROJECTS, SKILLS } from '../constants';
 
-const CV_PDF_PATH = '/German-David-Alvarez-CV.pdf';
-
-type ExperienceItem = (typeof EXPERIENCE)[number];
-type ExperienceItemWithSecondary = ExperienceItem & {
-  secondaryRole?: string;
-  secondaryPeriod?: string;
-  secondaryLocation?: string;
-};
-
-// Shared card shell classes
-const CARD = 'section-card rounded-3xl border border-zinc-800 bg-zinc-900 overflow-hidden';
-
-// ─── Experience card ──────────────────────────────────────────────────────────
-const ExperienceCard: React.FC<{ exp: ExperienceItemWithSecondary; index: number }> = ({ exp, index }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const listId = `experience-details-${index}`;
-
-  return (
-    <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-4">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <h4 className="font-semibold text-zinc-100 text-base mb-1">{exp.company}</h4>
-          <div className="flex flex-col gap-1.5">
-            <span className="text-sm text-zinc-400">{exp.role}</span>
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-zinc-600">
-              <span>{exp.period}</span>
-              {exp.location ? <span>• {exp.location}</span> : null}
-            </div>
-            {exp.secondaryRole ? (
-              <div className="mt-1.5">
-                <span className="text-sm text-zinc-400">{exp.secondaryRole}</span>
-                <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px] text-zinc-600">
-                  <span>{exp.secondaryPeriod}</span>
-                  {exp.secondaryLocation ? <span>• {exp.secondaryLocation}</span> : null}
-                </div>
-              </div>
-            ) : null}
-          </div>
-        </div>
-        <button
-          type="button"
-          onClick={() => setIsExpanded((prev) => !prev)}
-          aria-expanded={isExpanded}
-          aria-controls={listId}
-          className="shrink-0 p-1.5 text-zinc-500 hover:text-zinc-300 transition-colors"
-        >
-          <span className="sr-only">{isExpanded ? 'Collapse' : 'Expand'}</span>
-          <ChevronDown className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} />
-        </button>
-      </div>
-      <AnimatePresence initial={false}>
-        {isExpanded ? (
-          <motion.div
-            id={listId}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="overflow-hidden"
-          >
-            <ul className="mt-3 space-y-1.5 text-sm text-zinc-500 leading-relaxed max-w-sm list-disc pl-4">
-              {exp.description.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </motion.div>
-        ) : null}
-      </AnimatePresence>
-    </div>
-  );
-};
-
-// ─── Capabilities list ───────────────────────────────────────────────────────
-const CAPABILITIES = [
-  'Product strategy',
-  'UX research',
-  'UX + UI design',
-  'Design systems',
-  'Prototyping',
-  'AI-augmented workflows',
-  'AI / ML interfaces',
-  'Data visualization',
-  'Full-stack implementation',
-  'Cross-functional leadership',
+const projectOrder = [
+  '8020-roof',
+  'phoenix',
+  'habi-funnels',
+  '8020-metrics-hub',
+  '8020-property-list',
+  '8020-buybox',
+  'freelance-1',
 ];
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+const orderedProjects = PROJECTS
+  .filter((project) => projectOrder.includes(project.id))
+  .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
+
+function Ticker({ items, duration = 48, reverse = false, tools = false }: {
+  items: Array<{ label: string; src?: string }>;
+  duration?: number;
+  reverse?: boolean;
+  tools?: boolean;
+}) {
+  return (
+    <div className="dashboard-ticker" aria-label={items.map((item) => item.label).join(', ')}>
+      <div
+        className={'dashboard-ticker__track' + (reverse ? ' dashboard-ticker__track--reverse' : '')}
+        style={{ animationDuration: String(duration) + 's' }}
+        aria-hidden="true"
+      >
+        {[...items, ...items].map((item, index) => (
+          <span className={'dashboard-pill' + (tools ? ' dashboard-pill--tool' : '')} key={item.label + index}>
+            {item.src && <img src={item.src} alt="" loading="lazy" />}
+            {item.label}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function DashboardSkeleton() {
+  return (
+    <div className="dashboard-skeleton" aria-hidden="true">
+      <div className="dashboard-skeleton__left">
+        <div className="dashboard-skeleton__hero dashboard-skeleton__block">
+          <i /><i /><i />
+        </div>
+        <div className="dashboard-skeleton__lower">
+          <div className="dashboard-skeleton__experience">
+            {EXPERIENCE.map((item) => <div className="dashboard-skeleton__block" key={item.company}><i /><i /></div>)}
+          </div>
+          <div className="dashboard-skeleton__skills dashboard-skeleton__block">
+            <i /><i /><i /><i />
+          </div>
+        </div>
+      </div>
+      <div className="dashboard-skeleton__projects">
+        {Array.from({ length: 4 }, (_, index) => <div className="dashboard-skeleton__block" key={index}><b /><i /><i /></div>)}
+      </div>
+    </div>
+  );
+}
+
 export const Home: React.FC = () => {
-  // Lead with the highest-priority production case studies, then close with
-  // the NowApp concept as a complementary mobile UX example.
-  const projectOrder = [
-    "8020-roof",
-    "phoenix",
-    "habi-funnels",
-    "8020-metrics-hub",
-    "8020-property-list",
-    "8020-buybox",
-    "freelance-1",
-  ];
+  const [activeExperience, setActiveExperience] = useState<number | null>(null);
+  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+  const [ready, setReady] = useState(false);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
 
-  const orderedProjects = PROJECTS
-    .filter(p => projectOrder.includes(p.id))
-    .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
+  useEffect(() => {
+    const timer = window.setTimeout(() => setReady(true), reduceMotion ? 0 : 650);
+    return () => window.clearTimeout(timer);
+  }, [reduceMotion]);
 
-  const scrollToSection = (id: string) => {
-    smoothScrollToElement(id);
-  };
+  // A small, slow peek makes the mobile project rail discoverable without
+  // taking control away from a person who has started swiping it.
+  useEffect(() => {
+    const rail = projectsRef.current;
+    if (!ready || !rail || reduceMotion || !window.matchMedia('(max-width: 699px)').matches) return;
+    let stopped = false;
+    let frame = 0;
+    const stop = () => { stopped = true; cancelAnimationFrame(frame); };
+    const startTimer = window.setTimeout(() => {
+      const started = performance.now();
+      const animate = (now: number) => {
+        if (stopped) return;
+        const progress = Math.min((now - started) / 4200, 1);
+        rail.scrollLeft = 38 * Math.sin(Math.PI * progress);
+        if (progress < 1) frame = requestAnimationFrame(animate);
+      };
+      frame = requestAnimationFrame(animate);
+    }, 900);
+    rail.addEventListener('pointerdown', stop, { once: true });
+    rail.addEventListener('wheel', stop, { once: true });
+    return () => {
+      stop();
+      window.clearTimeout(startTimer);
+      rail.removeEventListener('pointerdown', stop);
+      rail.removeEventListener('wheel', stop);
+    };
+  }, [ready, reduceMotion]);
 
   return (
-    <div className="min-h-screen text-zinc-100 selection:bg-zinc-700 selection:text-white">
+    <div className="dashboard-page">
       <NavBar />
+      <main className={'dashboard' + (ready ? ' dashboard--ready' : '') + (activeExperience !== null ? ' dashboard--experience-open' : '') + (hoveredProject ? ' dashboard--project-hovered' : '')}>
+        <div className="dashboard__left">
+          <section className={'dashboard-hero' + (activeExperience !== null ? ' is-condensed' : '')} aria-label="Introduction">
+            <h1><span className="dashboard-hero__typed dashboard-hero__typed--name">Germán Alvarez</span></h1>
+            <p className="dashboard-hero__description" aria-hidden={activeExperience !== null}>
+              I design and build data-heavy B2B SaaS and mobile-first products, from research and metrics to production code.
+            </p>
+            <p className="dashboard-hero__role"><span className="dashboard-hero__typed dashboard-hero__typed--role">Sr. product designer</span></p>
+          </section>
 
-      <main className="max-w-6xl mx-auto px-3 md:px-5 pt-20 pb-6 space-y-3 md:space-y-4">
-
-        {/* ── CARD 1: HERO ─────────────────────────────────────────────────── */}
-        <div className={CARD}>
-          <section className="min-h-[calc(100svh-5.5rem)] md:min-h-[calc(100vh-5.5rem)] flex flex-col justify-center gap-6 md:gap-8 py-10 sm:py-14 md:py-16">
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="px-6 sm:px-10 md:px-20"
-            >
-              <SectionLabel>Senior product designer · Bogotá</SectionLabel>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full"
-            >
-              <DisplayMarquee text="Germán Alvarez" glyph="✦" repeats={6} durationSeconds={42} />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-              className="px-6 sm:px-10 md:px-20 flex flex-col gap-5 md:gap-6"
-            >
-              <p className="text-base md:text-lg text-zinc-400 max-w-xl leading-relaxed font-light">
-                I design and build data-heavy B2B SaaS and mobile-first products, from research and metrics to production code.
-              </p>
-
-              <div className="flex items-center gap-4">
-                <div className="flex flex-col md:flex-row gap-3 flex-1">
-                  <button
-                    onClick={() => scrollToSection('about')}
-                    className="glow-reactive glow-button btn-outline px-7 py-3.5 border border-zinc-800 rounded-full font-semibold transition-colors text-sm w-full md:w-auto"
+          <div className="dashboard__lower">
+            <section className="dashboard-experience" aria-label="Experience">
+              {EXPERIENCE.map((experience, index) => {
+                const expanded = activeExperience === index;
+                const condensed = activeExperience !== null && !expanded;
+                const detailsId = 'dashboard-experience-' + index;
+                return (
+                  <article
+                    key={experience.company}
+                    className={'dashboard-experience__card' + (expanded ? ' is-expanded' : '') + (condensed ? ' is-condensed' : '')}
                   >
-                    About me
-                  </button>
-                  <button
-                    onClick={() => scrollToSection('work')}
-                    className="glow-reactive glow-button btn-outline px-7 py-3.5 border border-zinc-800 rounded-full font-semibold transition-colors text-sm w-full md:w-auto"
-                  >
-                    View work
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => scrollToSection('cta')}
-                    className="glow-reactive glow-button btn-primary px-7 py-3.5 font-semibold rounded-full transition-all hover:scale-[1.02] active:scale-[0.98] text-sm w-full md:w-auto"
-                  >
-                    Let's talk
-                  </button>
-                </div>
-                <ArrowDown className="hidden md:block text-zinc-700 w-5 h-5 animate-bounce flex-none" />
+                    <button
+                      type="button"
+                      className="dashboard-experience__trigger"
+                      aria-expanded={expanded}
+                      aria-controls={detailsId}
+                      onClick={() => setActiveExperience(expanded ? null : index)}
+                    >
+                      <span className="dashboard-experience__heading">
+                        <strong>{experience.company}</strong>
+                        <span>{experience.role}, {experience.period}</span>
+                      </span>
+                      <span className="dashboard-experience__subline" aria-hidden={condensed}>
+                        <span>{experience.location || 'On-site · Bogotá'}</span>
+                        <ChevronDown size={13} className={'dashboard-experience__chevron' + (expanded ? ' is-expanded' : '')} aria-hidden="true" />
+                      </span>
+                    </button>
+                    <div id={detailsId} className="dashboard-experience__details" aria-hidden={!expanded}>
+                      <ul>
+                        {experience.description.map((detail) => <li key={detail}>{detail}</li>)}
+                      </ul>
+                    </div>
+                  </article>
+                );
+              })}
+            </section>
+
+            <section className="dashboard-skills" aria-label="Skills and tools">
+              <div className="dashboard-skills__tools">
+                <Ticker items={resolvedLogos.slice(0, 10).map((logo) => ({ label: logo.label, src: logo.src }))} duration={92} tools />
+                <Ticker items={resolvedLogos.slice(10, 20).map((logo) => ({ label: logo.label, src: logo.src }))} duration={98} reverse tools />
+                <Ticker items={resolvedLogos.slice(20).map((logo) => ({ label: logo.label, src: logo.src }))} duration={104} tools />
               </div>
-            </motion.div>
-
-          </section>
-        </div>
-
-        {/* ── TOOLS + INTERESTS ─────────────────────────────────────────────── */}
-          {/* No card container, sits directly on the page background, matching
-            the Capabilities section. */}
-        <div className="scroll-mt-4">
-          <section id="tools" className="px-6 sm:px-10 md:px-20 py-10">
-            <ScrollReveal>
-              <ToolsCarousel />
-            </ScrollReveal>
-          </section>
-          <section id="interests" className="px-6 sm:px-10 md:px-20 py-10">
-            <ScrollReveal>
-              <InterestsRibbon />
-            </ScrollReveal>
-          </section>
-        </div>
-
-        {/* ── INTRO REVEAL (pinned) ─────────────────────────────────────────── */}
-        {/* Standalone card without overflow-hidden so position:sticky works. */}
-        <div id="intro" className="section-card rounded-3xl border border-zinc-800 bg-zinc-900 scroll-mt-4">
-          <PinnedReveal
-            pinHeight="220vh"
-            topOffset="5rem"
-            label={<SectionLabel>Intro</SectionLabel>}
-            segments={[
-              {
-                text:
-                  "I'm a product designer and builder who turns complex data and ambiguous business problems into products teams can ship, measure, and improve. I work across ",
-              },
-              {
-                text:
-                  'research, product analytics, mobile journeys, design systems, and frontend implementation',
-                accent: true,
-              },
-              {
-                text:
-                  '. I stay close from discovery through production, using evidence and technical constraints to turn ideas into practical products.',
-              },
-            ]}
-          />
-        </div>
-
-        {/* ── CARD 3: ABOUT / EXPERIENCE / EXPERTISE ────────────────────────── */}
-        <div id="about" className={`${CARD} scroll-mt-4`}>
-          <section className="px-6 sm:px-10 md:px-20 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
-
-            <div>
-              <ScrollReveal>
-                <div className="mb-8">
-                  <SectionLabel>About</SectionLabel>
-                </div>
-                <p className="text-zinc-300 leading-relaxed text-lg md:text-xl font-light">
-                  Senior product designer and product builder working across research, product analytics, interaction
-                  design, mobile-first journeys, design systems, and hands-on frontend implementation. I connect user
-                  needs, business decisions, and technical constraints, then stay involved through production and
-                  measurable iteration.
-                </p>
-                <div className="mt-10 space-y-4">
-                  <h3 className="text-xs text-zinc-500 tracking-[0.02em]">Education</h3>
-                  <div className="space-y-4 text-sm text-zinc-400">
-                    <div>
-                      <p className="text-zinc-200">Industrial designer</p>
-                      <p className="text-zinc-500">Pontificia Universidad Javeriana</p>
-                      <p className="text-zinc-600">2011 – 2016</p>
+              <div className="dashboard-skills__groups">
+                {SKILLS.map((group, index) => {
+                  const midpoint = Math.ceil(group.items.length / 2);
+                  return (
+                    <div className="dashboard-skills__group" key={group.category}>
+                      <h2>{group.category}</h2>
+                      <Ticker items={group.items.slice(0, midpoint).map((label) => ({ label }))} duration={80 + index * 6} reverse={index === 1} />
+                      <Ticker items={group.items.slice(midpoint).map((label) => ({ label }))} duration={88 + index * 6} reverse={index !== 1} />
                     </div>
-                    <div>
-                      <p className="text-zinc-200">Master's in branding and brand strategy, design and visual communication</p>
-                      <p className="text-zinc-500">OBS Business School</p>
-                      <p className="text-zinc-600">2020 – 2021</p>
-                    </div>
-                  </div>
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div>
-              <ScrollReveal delay={0.2}>
-                <div className="mb-8">
-                  <SectionLabel>Experience</SectionLabel>
-                </div>
-                <div className="space-y-3">
-                  {EXPERIENCE.map((exp, i) => (
-                    <ExperienceCard key={i} exp={exp} index={i} />
-                  ))}
-                </div>
-              </ScrollReveal>
-            </div>
-
-            <div>
-              <ScrollReveal delay={0.4}>
-                <div className="mb-8">
-                  <SectionLabel>Expertise</SectionLabel>
-                </div>
-                <div className="space-y-10">
-                  {SKILLS.map((group, i) => (
-                    <div key={i}>
-                      <h5 className="text-sm font-bold text-zinc-300 mb-4">{group.category}</h5>
-                      <div className="flex flex-wrap gap-2.5">
-                        {group.items.map(skill => (
-                          <span
-                            key={skill}
-                            className="skill-pill px-3.5 py-1.5 rounded-full bg-zinc-900/40 border border-zinc-800 text-[11px] text-zinc-400 cursor-default"
-                          >
-                            <span>{skill}</span>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </ScrollReveal>
-            </div>
-
-          </section>
-        </div>
-
-        {/* ── CARD 4: SELECTED WORK ─────────────────────────────────────────── */}
-        {/* No overflow-hidden so the sticky project stack can pin to the viewport */}
-        <div id="work" className="section-card rounded-3xl border border-zinc-800 bg-zinc-900 scroll-mt-4">
-          <ScrollReveal>
-            <div className="px-6 sm:px-10 md:px-20 pt-12 md:pt-16 pb-2">
-              <SectionLabel>Selected work</SectionLabel>
-            </div>
-          </ScrollReveal>
-          <div className="px-6 sm:px-10 md:px-20 pt-10 pb-14 md:pb-20">
-            <ProjectShowcaseStack projects={orderedProjects} />
+                  );
+                })}
+              </div>
+            </section>
           </div>
         </div>
 
-        {/* ── CAPABILITIES (What I do) ──────────────────────────────────────── */}
-        {/* No card container, sits directly on the page background. */}
-        <div id="capabilities" className="scroll-mt-4">
-          <section className="px-6 sm:px-10 md:px-20 py-14 md:py-20">
-            <ScrollReveal>
-              <div className="flex flex-col gap-4 mb-10 md:mb-14">
-                <SectionLabel>Capabilities</SectionLabel>
-                <h2
-                  className="font-bold tracking-tight text-zinc-100"
-                  style={{ fontSize: 'clamp(2rem, 4.5vw, 3.25rem)', lineHeight: 1.05, letterSpacing: '-0.025em' }}
-                >
-                  What I do.
-                </h2>
-              </div>
-
-              <div className="capabilities-grid border-t border-zinc-800">
-                {CAPABILITIES.map((item) => (
-                  <div key={item} className="capability-row">
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </ScrollReveal>
-          </section>
-        </div>
-
-        {/* ── CARD 5: CTA + FOOTER ──────────────────────────────────────────── */}
-        <div id="cta" className={`${CARD} scroll-mt-4`}>
-          {/* Closing marquee, the headline itself */}
-          <div className="py-10 md:py-14 border-b border-zinc-800">
-            <DisplayMarquee
-              text="Let's build something scalable"
-              glyph="✦"
-              repeats={4}
-              durationSeconds={48}
-            />
+        <section className="dashboard-projects" aria-label="Selected projects">
+          <div className="dashboard-projects__rail no-scrollbar" ref={projectsRef} data-lenis-prevent>
+            {orderedProjects.map((project, index) => (
+              <Link
+                to={'/project/' + project.id}
+                key={project.id}
+                className={'dashboard-project' + (hoveredProject === project.id ? ' is-hovered' : '')}
+                onMouseEnter={() => setHoveredProject(project.id)}
+                onMouseLeave={() => setHoveredProject(null)}
+                onFocus={() => setHoveredProject(project.id)}
+                onBlur={() => setHoveredProject(null)}
+                aria-label={'View ' + project.title + ' project'}
+              >
+                <div className="dashboard-project__image">
+                  <LoadingImage
+                    src={project.coverImage?.src || project.images[0]?.src}
+                    alt={project.coverImage?.alt || project.title}
+                    wrapperClassName="dashboard-project__image-wrap"
+                    className="dashboard-project__img"
+                    loading={index < 2 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                  />
+                </div>
+                <div className="dashboard-project__copy">
+                  <h2>{project.showcaseTitle || project.title}</h2>
+                  <p>{project.showcasePreview || project.subtitle}</p>
+                </div>
+                <span className="dashboard-project__arrow" aria-hidden="true"><ArrowUpRight size={17} /></span>
+              </Link>
+            ))}
           </div>
-          <section className="px-6 sm:px-10 md:px-20 pt-12 md:pt-16 pb-10 text-center">
-            <ScrollReveal>
-              <div className="mb-10 flex justify-center">
-                <SectionLabel>Get in touch</SectionLabel>
-              </div>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a
-                  href={CV_PDF_PATH}
-                  download="German-David-Alvarez-CV.pdf"
-                  className="glow-reactive glow-button btn-outline inline-flex items-center justify-center gap-2 px-10 py-4 border border-zinc-800 font-semibold rounded-full transition-colors text-base w-full sm:w-auto whitespace-nowrap"
-                  aria-label="Download CV"
-                >
-                  <Download className="w-4 h-4" />
-                  Download CV
-                </a>
-                <a
-                  href="https://calendly.com/mancho19942020/30min"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="glow-reactive glow-button btn-outline inline-flex items-center justify-center px-10 py-4 border border-zinc-800 font-semibold rounded-full transition-colors text-base w-full sm:w-auto whitespace-nowrap"
-                >
-                  Schedule meeting
-                </a>
-                <a
-                  href="https://wa.me/573015247033"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="glow-reactive glow-button btn-primary inline-flex items-center justify-center px-10 py-4 font-semibold rounded-full hover:scale-[1.02] transition-all text-base w-full sm:w-auto whitespace-nowrap"
-                  aria-label="Contact via WhatsApp"
-                >
-                  WhatsApp
-                </a>
-              </div>
-            </ScrollReveal>
-          </section>
-          <footer className="px-6 sm:px-10 md:px-20 pb-12 pt-8 text-center text-zinc-700 text-xs border-t border-zinc-800">
-              <p>Designed and shipped end-to-end by Germán David Alvarez.</p>
-              <p className="mt-2">© 2025 · Vibecoded with Claude Code, Cursor, GPT Codex, and Gemini.</p>
-          </footer>
-        </div>
+        </section>
 
+        <AnimatePresence>
+          {!ready && (
+            <motion.div className="dashboard-loading" initial={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : 0.6, ease: 'easeOut' }}>
+              <DashboardSkeleton />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
     </div>
   );

@@ -47,7 +47,7 @@ const TOOL_LOGOS: ToolLogoItem[] = [
   { label: 'Google Slides', file: 'google-slides.svg' }
 ];
 
-const resolvedLogos: ToolLogoResolved[] = TOOL_LOGOS
+export const resolvedLogos: ToolLogoResolved[] = TOOL_LOGOS
   .map((item) => ({
     ...item,
     src: LOGO_FILES[`../assets/logos/tools/${item.file}`]
