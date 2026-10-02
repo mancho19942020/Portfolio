@@ -277,42 +277,6 @@ export const ProjectDetail: React.FC = () => {
 
             <ProjectGalleryRail images={project.images} onOpen={setLightboxIndex} label="Project images" />
 
-            {snapshot && (
-              <motion.section {...sectionMotion} className={`${CARD} project-detail-card`} aria-labelledby="case-snapshot-heading">
-                <div className="px-6 md:px-10 py-10">
-                  <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
-                    <h2
-                      id="case-snapshot-heading"
-                      className="project-accent-label text-xs font-bold tracking-[0.03em]"
-                    >
-                      Case study at a glance
-                    </h2>
-                    <p className="text-[10px] text-zinc-600 tracking-[0.02em]">
-                      Evidence before output
-                    </p>
-                  </div>
-                  <dl className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {[
-                      ['Business problem', snapshot.businessProblem],
-                      ['Discovery and constraints', snapshot.discoveryAndConstraints],
-                      ['Key design decision', snapshot.keyDesignDecision],
-                      ['Observed impact', snapshot.observedImpact],
-                    ].map(([label, value]) => (
-                      <div
-                        key={label}
-                        className="rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-4"
-                      >
-                        <dt className="text-[10px] text-zinc-600 tracking-[0.02em]">
-                          {label}
-                        </dt>
-                        <dd className="mt-2 text-sm text-zinc-300 leading-relaxed">{value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                </div>
-              </motion.section>
-            )}
-
             {/* Card 2: Role, title, responsibility cards, duration, tools */}
             <motion.div {...sectionMotion} className={`${CARD} project-detail-card`}>
               <div className="px-6 md:px-10 py-10 space-y-6">
@@ -374,6 +338,42 @@ export const ProjectDetail: React.FC = () => {
                 </div>
               </div>
             </motion.div>
+
+            {snapshot && (
+              <motion.section {...sectionMotion} className={`${CARD} project-detail-card`} aria-labelledby="case-snapshot-heading">
+                <div className="px-6 md:px-10 py-10">
+                  <div className="flex flex-wrap items-baseline justify-between gap-3 mb-6">
+                    <h2
+                      id="case-snapshot-heading"
+                      className="project-accent-label text-xs font-bold tracking-[0.03em]"
+                    >
+                      Case study at a glance
+                    </h2>
+                    <p className="text-[10px] text-zinc-600 tracking-[0.02em]">
+                      Evidence before output
+                    </p>
+                  </div>
+                  <dl className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {[
+                      ['Business problem', snapshot.businessProblem],
+                      ['Discovery and constraints', snapshot.discoveryAndConstraints],
+                      ['Key design decision', snapshot.keyDesignDecision],
+                      ['Observed impact', snapshot.observedImpact],
+                    ].map(([label, value]) => (
+                      <div
+                        key={label}
+                        className="rounded-2xl border border-zinc-800 bg-zinc-900/40 px-4 py-4"
+                      >
+                        <dt className="text-[10px] text-zinc-600 tracking-[0.02em]">
+                          {label}
+                        </dt>
+                        <dd className="mt-2 text-sm text-zinc-300 leading-relaxed">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </motion.section>
+            )}
 
             {/* Card 3: Case narrative, collapsible act cards */}
             <motion.div {...sectionMotion} className={`${CARD} project-detail-card`}>

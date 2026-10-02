@@ -23,7 +23,7 @@ const orderedProjects = PROJECTS
   .sort((a, b) => projectOrder.indexOf(a.id) - projectOrder.indexOf(b.id));
 
 function Ticker({ items, duration = 48, reverse = false, tools = false }: {
-  items: Array<{ label: string; src?: string }>;
+  items: Array<{ label: string; src?: string; darkContrast?: boolean }>;
   duration?: number;
   reverse?: boolean;
   tools?: boolean;
@@ -37,7 +37,7 @@ function Ticker({ items, duration = 48, reverse = false, tools = false }: {
       >
         {[...items, ...items].map((item, index) => (
           <span className={'dashboard-pill' + (tools ? ' dashboard-pill--tool' : '')} key={item.label + index}>
-            {item.src && <img src={item.src} alt="" loading="lazy" />}
+            {item.src && <img src={item.src} alt="" data-dark-contrast={item.darkContrast || undefined} loading="lazy" />}
             {item.label}
           </span>
         ))}
@@ -163,9 +163,9 @@ export const Home: React.FC = () => {
 
             <section className="dashboard-skills" aria-label="Skills and tools">
               <div className="dashboard-skills__tools">
-                <Ticker items={resolvedLogos.slice(0, 10).map((logo) => ({ label: logo.label, src: logo.src }))} duration={92} tools />
-                <Ticker items={resolvedLogos.slice(10, 20).map((logo) => ({ label: logo.label, src: logo.src }))} duration={98} reverse tools />
-                <Ticker items={resolvedLogos.slice(20).map((logo) => ({ label: logo.label, src: logo.src }))} duration={104} tools />
+                <Ticker items={resolvedLogos.slice(0, 10)} duration={92} tools />
+                <Ticker items={resolvedLogos.slice(10, 20)} duration={98} reverse tools />
+                <Ticker items={resolvedLogos.slice(20)} duration={104} tools />
               </div>
               <div className="dashboard-skills__groups">
                 {SKILLS.map((group, index) => {
